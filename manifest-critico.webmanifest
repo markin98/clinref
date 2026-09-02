@@ -1,0 +1,30 @@
+{
+ "name": "ClinRef · Manejo de Paciente Crítico",
+ "short_name": "ClinRef Crítico",
+ "start_url": "./guia_bolso_paciente_critico.html",
+ "scope": "./",
+ "display": "standalone",
+ "orientation": "portrait",
+ "background_color": "#F3F5F8",
+ "theme_color": "#C5321F",
+ "icons": [
+  {
+   "src": "icones/critico-192.png",
+   "sizes": "192x192",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "icones/critico-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "icones/critico-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}

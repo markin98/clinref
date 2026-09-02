@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<title>ClinRef · Guias de Bolso</title>
+<meta name="theme-color" content="#F3F5F8"/>
+<link rel="icon" href="icones/critico.svg"/>
+<link rel="manifest" href="manifest-clinref.webmanifest"/>
+<link rel="apple-touch-icon" href="icones/clinref-512.png"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-title" content="ClinRef"/>
+<style>
+  :root{--bg:#F3F5F8;--surface:#fff;--ink:#0F1720;--soft:#5B6470;--line:#DDE3E9;}
+  @media (prefers-color-scheme:dark){
+    :root{--bg:#10161C;--surface:#161D24;--ink:#E7ECF1;--soft:#9AA5B1;--line:#26303A;}
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    padding:32px 20px calc(40px + env(safe-area-inset-bottom));}
+  main{max-width:520px;margin:0 auto;}
+  h1{font-size:26px;letter-spacing:-.02em;margin:0 0 6px;}
+  p.sub{color:var(--soft);font-size:14.5px;line-height:1.5;margin:0 0 26px;}
+  a.card{display:flex;align-items:center;gap:15px;text-decoration:none;color:inherit;
+    background:var(--surface);border:1px solid var(--line);border-radius:14px;
+    padding:15px 16px;margin-bottom:12px;transition:.15s ease;}
+  a.card:hover{border-color:var(--soft);}
+  a.card img{width:48px;height:48px;border-radius:11px;flex-shrink:0;}
+  .t{font-weight:600;font-size:15.5px;letter-spacing:-.01em;}
+  .d{color:var(--soft);font-size:13px;margin-top:3px;line-height:1.4;}
+  .nota{margin-top:26px;color:var(--soft);font-size:12.5px;line-height:1.6;
+    border-top:1px solid var(--line);padding-top:16px;}
+</style>
+</head>
+<body>
+<main>
+<h1>ClinRef</h1>
+<p class="sub">Referência clínica rápida — hospital, plantão e ambulatório. Abra um guia e use o menu do navegador em <b>Adicionar à tela inicial</b> para deixá-lo como atalho com ícone próprio.</p>
+
+<a class="card" href="guia_bolso_paciente_critico.html">
+<img src="icones/critico-192.png" alt=""/>
+<span><span class="t">Paciente Crítico</span><span class="d">XABCDE, choque, IOT, ventilação, PCR, arritmias, SCA, AVE, toxicologia, escalas</span></span></a>
+
+<a class="card" href="guia_bolso_plantao.html">
+<img src="icones/plantao-192.png" alt=""/>
+<span><span class="t">Plantão</span><span class="d">Condutas e prescrições por sistema, calculadoras e apresentações</span></span></a>
+
+<a class="card" href="guia_bolso_psiquiatria.html">
+<img src="icones/psiquiatria-192.png" alt=""/>
+<span><span class="t">Psicofarmacologia</span><span class="d">Classes, uso agudo, abstinências, troca e desmame, gestação, monitorização</span></span></a>
+
+<p class="nota">Material de consulta de uso pessoal. Não substitui a diretriz original, o protocolo da instituição nem o julgamento clínico. Cada guia traz a lista de referências e o limite de uso na última seção.</p>
+</main>
+
+<script>
+if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+  window.addEventListener('load', function(){ navigator.serviceWorker.register('./sw.js').catch(function(){}); });
+}
+</script>
+</body>
+</html>

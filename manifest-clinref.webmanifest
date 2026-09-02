@@ -1,0 +1,30 @@
+{
+ "name": "ClinRef · Guias de Bolso",
+ "short_name": "ClinRef",
+ "start_url": "./index.html",
+ "scope": "./",
+ "display": "standalone",
+ "orientation": "portrait",
+ "background_color": "#F3F5F8",
+ "theme_color": "#16202B",
+ "icons": [
+  {
+   "src": "icones/clinref-192.png",
+   "sizes": "192x192",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "icones/clinref-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "icones/clinref-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}

@@ -1,0 +1,30 @@
+{
+ "name": "ClinRef · Guia de Plantão",
+ "short_name": "ClinRef Plantão",
+ "start_url": "./guia_bolso_plantao.html",
+ "scope": "./",
+ "display": "standalone",
+ "orientation": "portrait",
+ "background_color": "#F3F5F8",
+ "theme_color": "#1D5FBF",
+ "icons": [
+  {
+   "src": "icones/plantao-192.png",
+   "sizes": "192x192",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "icones/plantao-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "icones/plantao-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}

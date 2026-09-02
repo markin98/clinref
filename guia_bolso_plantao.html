@@ -1,0 +1,2633 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="#F3F5F8" id="metaTheme" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="yes" name="mobile-web-app-capable"/>
+<title>Guia de Bolso · Plantão</title>
+<link rel="manifest" href="manifest-plantao.webmanifest"/>
+<link rel="icon" type="image/png" sizes="192x192" href="icones/plantao-192.png"/>
+<link rel="icon" type="image/svg+xml" href="icones/plantao.svg"/>
+<link rel="apple-touch-icon" href="icones/plantao-512.png"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-title" content="ClinRef Plantão"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --bg:#F3F5F8; --surface:#FFFFFF; --ink:#16202B; --ink-soft:#55636F; --line:#DDE3E9;
+    --mono:'IBM Plex Mono',monospace; --sans:'IBM Plex Sans',sans-serif; --disp:'Space Grotesk',sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+
+  .masthead{padding:44px 22px 26px;max-width:980px;margin:0 auto;position:relative;}
+  .pulse-line{position:absolute;top:0;left:0;right:0;height:3px;
+    background:linear-gradient(90deg,#C5321F 0 12.5%,#1D5FBF 12.5% 25%,#7A3FC4 25% 37.5%,#0E7C86 37.5% 50%,#A8631B 50% 62.5%,#D97706 62.5% 75%,#15803D 75% 87.5%,#B5308C 87.5% 100%);}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);display:flex;align-items:center;gap:8px;}
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:#C5321F;animation:blip 1.6s infinite ease-in-out;}
+  @keyframes blip{0%,100%{opacity:1;}50%{opacity:.25;}}
+  h1.title{font-family:var(--disp);font-weight:700;font-size:clamp(28px,5vw,42px);letter-spacing:-.01em;margin:8px 0 6px;}
+  .subtitle{color:var(--ink-soft);font-size:15px;max-width:64ch;}
+
+  nav.tabs{position:sticky;top:0;z-index:50;background:rgba(243,245,248,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);}
+  .tabs-inner{position:relative;max-width:980px;margin:0 auto;display:flex;gap:6px;padding:9px 22px;overflow-x:auto;}
+  .tab{--accent:#666;font-family:var(--mono);font-size:12.5px;font-weight:600;text-decoration:none;color:var(--accent-ink,var(--accent));
+    padding:11px 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface);white-space:nowrap;transition:.15s ease;}
+  .tab.active{background:var(--accent);color:#fff;border-color:var(--accent);}
+
+  main{max-width:980px;margin:0 auto;padding:6px 22px 100px;}
+
+  .toolbar{max-width:980px;margin:6px auto 0;padding:0 22px;display:flex;gap:8px;justify-content:flex-end;}
+  .btn-mini{font-family:var(--mono);font-size:11.5px;font-weight:600;color:var(--ink-soft);background:var(--surface);
+    border:1px solid var(--line);border-radius:7px;padding:5px 10px;cursor:pointer;}
+  .btn-mini:hover{color:var(--ink);}
+
+  .search-wrap{max-width:980px;margin:10px auto 0;padding:0 22px;display:flex;align-items:center;gap:8px;}
+  .search-box{flex:1;min-width:0;display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);
+    border-radius:10px;padding:9px 12px;}
+  .search-box:focus-within{border-color:#9AA7B2;}
+  .search-box svg{flex-shrink:0;color:var(--ink-soft);}
+  .search-box input{flex:1;min-width:0;border:none;outline:none;font-family:var(--sans);font-size:14.5px;background:transparent;color:var(--ink);}
+  .search-box input::placeholder{color:#9AA7B2;}
+  .search-count{font-family:var(--mono);font-size:12px;color:var(--ink-soft);white-space:nowrap;min-width:70px;text-align:right;}
+  .search-nav,.search-clear{font-family:var(--mono);font-size:13px;color:var(--ink-soft);background:var(--surface);
+    border:1px solid var(--line);border-radius:7px;width:30px;height:30px;cursor:pointer;line-height:1;}
+  .search-nav:hover,.search-clear:hover{color:var(--ink);border-color:#9AA7B2;}
+  .search-no-results{max-width:980px;margin:16px auto 0;padding:14px 22px;color:var(--ink-soft);font-size:14px;
+    background:var(--surface);border:1px dashed var(--line);border-radius:10px;text-align:center;}
+
+  mark.search-hit{background:#FFE8A3;color:inherit;border-radius:2px;padding:0 1px;}
+  mark.search-hit.active{background:#FFB020;box-shadow:0 0 0 2px #FFB020;}
+
+  .sec{--accent:#666;margin-top:50px;}
+  .sec .head{display:flex;align-items:baseline;gap:12px;border-bottom:2px solid var(--accent);padding-bottom:10px;margin-bottom:18px;}
+  .sec .idx{font-family:var(--mono);font-size:12px;font-weight:600;padding:3px 8px;border-radius:5px;background:var(--accent);color:#fff;}
+  .sec .head h2{font-family:var(--disp);font-size:23px;margin:0;font-weight:600;}
+  .sec .head .tag{font-family:var(--mono);font-size:11.5px;color:var(--ink-soft);}
+
+  .sec details{background:var(--surface);border:1px solid var(--line);border-radius:9px;margin:8px 0;overflow:hidden;}
+  .sec summary{cursor:pointer;list-style:none;padding:11px 14px;font-weight:600;font-size:14.5px;display:flex;align-items:center;gap:8px;}
+  .sec summary::-webkit-details-marker{display:none;}
+  .sec summary::before{content:"+";color:var(--accent-ink,var(--accent));font-family:var(--mono);font-weight:700;width:14px;}
+  .sec details[open] summary::before{content:"–";}
+  .sec details[open] summary{border-bottom:1px solid var(--line);}
+  .sec .body{padding:12px 16px 14px;font-size:14px;}
+
+  .sec table{width:100%;border-collapse:collapse;font-size:13.3px;margin:6px 0;}
+  .sec thead th{text-align:left;font-family:var(--mono);font-size:10.8px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);
+    padding:6px 9px;border-bottom:2px solid var(--accent);background:#FAFBFC;}
+  .sec tbody td{padding:7px 9px;border-bottom:1px solid var(--line);vertical-align:top;}
+  .sec tbody tr:last-child td{border-bottom:none;}
+  .sec .table-wrap{margin:6px 0;}
+  .sec td.drug{font-weight:600;}
+
+  @media (max-width:640px){
+    .sec table{display:block;width:100%;}
+    .sec thead{display:none;}
+    .sec tbody{display:block;}
+    .sec tr{display:block;border:1px solid var(--line);border-radius:9px;margin-bottom:8px;padding:9px 12px;background:var(--surface);}
+    .sec tbody tr:last-child{margin-bottom:0;}
+    .sec td{display:block;padding:3px 0;border-bottom:none;}
+    .sec td:empty{display:none;}
+    .sec td:first-child{font-weight:700;font-size:14px;color:var(--accent-ink,var(--accent));padding-bottom:6px;margin-bottom:4px;border-bottom:1px solid var(--line);}
+    .sec td:first-child::before{content:none;}
+    .sec td:not(:first-child)::before{
+      content:attr(data-label);
+      display:block;
+      font-family:var(--mono);
+      font-size:9.5px;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+      color:var(--ink-soft);
+      margin-bottom:1px;
+    }
+  }
+
+  .dose{font-family:var(--mono);font-weight:600;color:var(--accent-ink,var(--accent));background:#F0F2F5;padding:1px 5px;border-radius:4px;font-size:.92em;}
+
+  .sec ul.compact{margin:6px 0;padding-left:18px;}
+  .sec ul.compact li{margin-bottom:3px;}
+
+  .callout{border-left:4px solid var(--accent);background:#F7F8FA;padding:9px 13px;border-radius:6px;font-size:13.3px;margin:10px 0;}
+  .callout b{font-weight:700;}
+
+  .subhead{font-family:var(--disp);font-weight:600;font-size:13.5px;margin:12px 0 4px;color:var(--accent-ink,var(--accent));}
+  .subhead:first-child{margin-top:0;}
+  .lede{color:var(--ink-soft);font-size:13.3px;}
+
+  footer{max-width:980px;margin:0 auto;padding:28px 22px 60px;color:var(--ink-soft);font-size:12.5px;border-top:1px solid var(--line);margin-top:60px;}
+
+  @media print{
+    nav.tabs,.toolbar{display:none;} .pulse-line{display:none;} body{background:#fff;}
+    .sec{page-break-inside:avoid;} details{page-break-inside:avoid;}
+    .sec details{border:1px solid #ccc;}
+  }
+  @media (max-width:640px){ .sec .head h2{font-size:19px;} h1.title{font-size:26px;} }
+
+  /* ===== v2.0 — tema escuro, paleta de busca, peso, FABs ===== */
+  :root{color-scheme:light;}
+  html[data-theme="dark"]{color-scheme:dark;}
+  html[data-theme="dark"] body{
+    --bg:#10161C; --surface:#1A232C; --ink:#E7EDF3; --ink-soft:#96A3AF; --line:#2B3843;
+  }
+  @supports (color:color-mix(in srgb,red,blue)){
+    html[data-theme="dark"] .sec, html[data-theme="dark"] .tab{--accent-ink:color-mix(in srgb,var(--accent) 62%,#fff);}
+  }
+  html[data-theme="dark"] nav.tabs{background:rgba(16,22,28,.92);}
+  html[data-theme="dark"] .sec thead th{background:#151D24;}
+  html[data-theme="dark"] .dose{background:#233040;}
+  html[data-theme="dark"] .callout{background:#151D24;}
+  html[data-theme="dark"] mark.search-hit{background:#6B4E00;color:#FFF3D6;}
+  html[data-theme="dark"] mark.search-hit.active{background:#9A7100;box-shadow:0 0 0 2px #9A7100;}
+
+  .util-bar{max-width:980px;margin:10px auto 0;padding:0 22px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+  .search-open{flex:1;min-width:170px;display:flex;align-items:center;gap:9px;background:var(--surface);border:1px solid var(--line);
+    border-radius:10px;padding:10px 13px;cursor:pointer;color:var(--ink-soft);font-family:var(--sans);font-size:14px;text-align:left;min-height:44px;}
+  .search-open:hover,.search-open:focus-visible{border-color:#9AA7B2;color:var(--ink);}
+  .search-open svg{flex-shrink:0;}
+  .search-open kbd{margin-left:auto;font-family:var(--mono);font-size:11px;border:1px solid var(--line);border-radius:5px;padding:1px 6px;color:var(--ink-soft);}
+  .peso-ctl{display:flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--line);border-radius:10px;
+    padding:6px 10px;font-family:var(--mono);font-size:12.5px;font-weight:600;color:var(--ink-soft);min-height:44px;}
+  .peso-ctl input{width:52px;border:none;outline:none;background:transparent;color:var(--ink);font-family:var(--mono);
+    font-size:15px;font-weight:600;text-align:right;-moz-appearance:textfield;}
+  .peso-ctl input::-webkit-outer-spin-button,.peso-ctl input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0;}
+  .btn-mini{min-height:44px;}
+  #themeBtn{font-size:15px;line-height:1;min-width:44px;}
+  .wv{white-space:nowrap;}
+
+  .palette{position:fixed;inset:0;z-index:200;background:rgba(10,15,20,.45);backdrop-filter:blur(2px);
+    display:flex;align-items:flex-start;justify-content:center;padding:8vh 14px 14px;}
+  .palette[hidden]{display:none;}
+  .palette-panel{width:100%;max-width:660px;background:var(--surface);border:1px solid var(--line);border-radius:14px;
+    box-shadow:0 18px 50px rgba(0,0,0,.30);display:flex;flex-direction:column;max-height:78vh;overflow:hidden;}
+  .palette-head{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid var(--line);}
+  .palette-head svg{color:var(--ink-soft);flex-shrink:0;}
+  .palette-head input{flex:1;min-width:0;border:none;outline:none;background:transparent;color:var(--ink);
+    font-family:var(--sans);font-size:16px;}
+  .palette-head input::placeholder{color:var(--ink-soft);}
+  .pal-close{border:1px solid var(--line);background:transparent;color:var(--ink-soft);border-radius:8px;
+    width:34px;height:34px;cursor:pointer;font-size:14px;line-height:1;}
+  .pal-close:hover{color:var(--ink);border-color:#9AA7B2;}
+  .palette-results{overflow-y:auto;padding:6px;overscroll-behavior:contain;}
+  .pal-row{--a:#666;display:block;width:100%;text-align:left;background:transparent;border:none;border-left:3px solid var(--a);
+    border-radius:8px;padding:9px 12px;cursor:pointer;font-family:var(--sans);color:var(--ink);}
+  .pal-row+.pal-row{margin-top:2px;}
+  .pal-row:hover,.pal-row.sel{background:var(--bg);}
+  .pal-row .pal-sec{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--a);}
+  .pal-row .pal-title{display:block;font-weight:600;font-size:14.5px;margin-top:1px;}
+  .pal-row .pal-snip{display:block;font-size:12.5px;color:var(--ink-soft);margin-top:2px;line-height:1.4;}
+  .pal-row .pal-snip mark{background:#FFE8A3;color:#4A3A00;border-radius:2px;padding:0 1px;}
+  html[data-theme="dark"] .pal-row .pal-snip mark{background:#6B4E00;color:#FFF3D6;}
+  .pal-empty{padding:20px 14px;color:var(--ink-soft);font-size:14px;text-align:center;}
+  .pal-cross{display:block;margin:6px;padding:10px 12px;border:1px dashed var(--line);border-radius:8px;
+    font-size:13.5px;color:var(--ink-soft);text-decoration:none;text-align:center;}
+  .pal-cross:hover{color:var(--ink);border-color:#9AA7B2;}
+  .pal-hint{padding:6px 14px 10px;font-family:var(--mono);font-size:10.5px;color:var(--ink-soft);border-top:1px solid var(--line);}
+  body.pal-open{overflow:hidden;}
+
+  .fabs{position:fixed;right:14px;bottom:16px;z-index:150;display:flex;flex-direction:column;gap:10px;}
+  .fab{width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink-soft);
+    cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.18);font-size:17px;}
+  .fab:hover{color:var(--ink);}
+  #fabTop{opacity:0;pointer-events:none;transition:opacity .2s;}
+  #fabTop.show{opacity:1;pointer-events:auto;}
+
+  section.sec,.sec details{scroll-margin-top:64px;}
+  details.flash{animation:flashPulse 1.6s ease;}
+  @keyframes flashPulse{0%{box-shadow:0 0 0 3px #FFB020;}100%{box-shadow:0 0 0 0 rgba(255,176,32,0);}}
+
+  .rev{font-family:var(--mono);font-size:11px;}
+
+  @media print{
+    html[data-theme="dark"] body{--bg:#fff;--surface:#fff;--ink:#111;--ink-soft:#555;--line:#ccc;}
+    .util-bar,.fabs,.palette{display:none !important;}
+  }
+  @media (max-width:640px){
+    .palette{padding:4vh 8px 8px;}
+    .peso-ctl{flex:0 0 auto;}
+  }
+
+
+  /* ===== v2.1 — calculadoras ===== */
+  .cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin:4px 0 10px;}
+  .cf{display:flex;flex-direction:column;gap:3px;font-family:var(--mono);font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft);}
+  .cf input,.cf select{border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;padding:8px 10px;min-height:42px;width:100%;}
+  .cf input:focus,.cf select:focus{outline:none;border-color:#9AA7B2;}
+  .cres{font-family:var(--mono);font-size:13.5px;font-weight:600;background:var(--bg);border:1px dashed var(--line);border-radius:8px;padding:10px 12px;margin:8px 0;white-space:pre-line;line-height:1.6;}
+  .cres.warn{border-color:#D97706;color:#B45309;}
+  html[data-theme="dark"] .cres.warn{color:#F5B458;}
+  .cnote{font-size:12px;color:var(--ink-soft);margin-top:2px;}
+
+
+  /* ===== segunda linha: tópicos da seção em leitura (v3.2) ===== */
+  .subtabs{position:sticky;top:var(--tabs-h,55px);z-index:49;background:rgba(243,245,248,.94);
+    backdrop-filter:blur(6px);border-bottom:1px solid var(--line);
+    max-height:0;overflow:hidden;transition:max-height .22s ease;}
+  .subtabs.on{max-height:70px;}
+  html[data-theme="dark"] .subtabs{background:rgba(16,20,26,.94);}
+  .subtabs-inner{position:relative;max-width:960px;margin:0 auto;display:flex;gap:14px;
+    padding:0 24px;overflow-x:auto;scrollbar-width:none;}
+  .subtabs-inner::-webkit-scrollbar{display:none;}
+  .subtab{font-size:12.5px;font-weight:600;letter-spacing:-.01em;color:var(--ink-soft);
+    background:none;border:0;border-bottom:2px solid transparent;padding:11px 4px 9px;
+    min-height:42px;white-space:nowrap;cursor:pointer;transition:.15s ease;font-family:inherit;}
+  .subtab:hover{color:var(--ink);}
+  .subtab.active{color:var(--sub-ac,var(--ink));border-bottom-color:var(--sub-ac,var(--ink));}
+  @media print{ .subtabs{display:none !important;} }
+
+  /* ===== ajustes de layout (v4) ===== */
+  .block-head h2, .sec .head h2{min-width:0;overflow-wrap:normal;flex:0 1 auto;}
+  .fold-ind{flex-shrink:0;}
+  /* em tela estreita a tag desce de linha em vez de espremer o título */
+  @media (max-width:640px){
+    .block-head, .sec .head, summary.block-head{flex-wrap:wrap;}
+    .block-head .tag, .sec .head .tag{order:4;flex:1 0 100%;margin-top:2px;}
+    .fold-ind{order:3;}
+  }
+  .util-bar{flex-wrap:wrap;}
+  @media (max-width:420px){
+    .btn-mini{padding:0 10px;font-size:12px;}
+    .peso-ctl{padding:0 10px;}
+  }
+
+  :root{--bib:#5B6470; --bib-soft:#EEF0F3;}
+  html[data-theme="dark"] body{--bib:#9AA5B1; --bib-soft:#1E2329;}
+  .tab.bib{color:var(--bib);}
+  .tab.active.bib{background:var(--bib);color:#fff;}
+  .bib-bg{background:var(--bib);}
+  .bib h3{color:var(--bib);}
+  .bib .biblist li{list-style:none;position:relative;padding-left:16px;margin-bottom:9px;line-height:1.5;font-size:14px;}
+  .bib .biblist li::before{content:"—";position:absolute;left:0;color:var(--bib);}
+  .bib .biblist{padding:0;margin:10px 0 18px;}
+  .callout.bib{border-color:var(--bib);background:var(--bib-soft);color:#3C444E;}
+  html[data-theme="dark"] .callout.bib{color:#C3CBD4;}
+
+  :root{--apr:#0F766E; --apr-soft:#E0F1EF;}
+  html[data-theme="dark"] body{--apr:#5CC9BE; --apr-soft:#0D2A27;}
+  .tab.apr{color:var(--apr);} .tab.active.apr{background:var(--apr);color:#fff;}
+  .apr-bg{background:var(--apr);} .apr h3{color:var(--apr);}
+  .apr .dose{background:var(--apr-soft);color:var(--apr);}
+  .callout.apr{border-color:var(--apr);background:var(--apr-soft);color:#0A544E;}
+  html[data-theme="dark"] .callout.apr{color:#B6E5DF;}
+  @media (max-width:640px){ .apr td:first-child{color:var(--apr);} }
+  .amp{font-family:var(--mono);font-size:.82em;color:var(--ink-soft);}
+</style>
+</head>
+<body>
+<div class="masthead">
+<div class="pulse-line"></div>
+<div class="eyebrow"><span class="dot"></span> Referência rápida · plantão</div>
+<h1 class="title">Guia de Bolso do Plantão</h1>
+<p class="subtitle">Prescrições, diluições, condutas e cuidados paliativos condensados por sistema — para consulta rápida à beira-leito. Algoritmos complexos (taquiarritmia, bradiarritmia/BAV, ECG de IAM, sequência completa de IOT) estão no <a href="guia_bolso_paciente_critico.html" style="color:inherit;font-weight:600;">Guia de Paciente Crítico →</a>. Convenção: nome genérico primeiro, nome comercial entre parênteses. Calculadoras rápidas (DHE, dengue, TFG, infusões) na seção 10.</p>
+</div>
+<nav class="tabs">
+<div class="tabs-inner" id="tabsInner">
+<a class="tab" data-cat="card" href="#card" style="--accent:#C5321F">Cardio</a>
+<a class="tab" data-cat="air" href="#air" style="--accent:#1D5FBF">Via Aérea</a>
+<a class="tab" data-cat="neu" href="#neu" style="--accent:#7A3FC4">Neuro/Psiq</a>
+<a class="tab" data-cat="res" href="#res" style="--accent:#0E7C86">Resp</a>
+<a class="tab" data-cat="gas" href="#gas" style="--accent:#A8631B">GI/Hepato</a>
+<a class="tab" data-cat="ren" href="#ren" style="--accent:#D97706">Renal/Metab</a>
+<a class="tab" data-cat="inf" href="#inf" style="--accent:#15803D">Infecto</a>
+<a class="tab" data-cat="div" href="#div" style="--accent:#B5308C">Dor/Tox/Diversos</a>
+<a class="tab" data-cat="pal" href="#pal" style="--accent:#0F766E">Paliativos</a>
+<a class="tab" data-cat="calc" href="#calc" style="--accent:#4F46E5">Calc</a>
+<a class="tab" data-cat="apresentacoes" href="#apresentacoes" style="--accent:#0F766E">Apresentações</a>
+<a class="tab" data-cat="referencias" href="#referencias" style="--accent:#5B6470">Referências</a>
+</div>
+</nav>
+<div class="subtabs"><div class="subtabs-inner" id="subTabsInner"></div></div>
+<div class="util-bar">
+<label class="peso-ctl" title="Peso do paciente — recalcula as doses marcadas">⚖<input id="pesoInput" inputmode="decimal" max="250" min="30" step="1" type="number"/>kg</label>
+<button class="btn-mini" id="themeBtn" title="Tema claro/escuro" type="button">◐</button>
+<button class="btn-mini" id="toggleAll" type="button">Expandir tudo</button>
+</div>
+<main>
+<!-- ======================= CARDIO ======================= -->
+<section class="sec" id="card" style="--accent:#C5321F">
+<div class="head"><span class="idx">01</span><h2>Cardiovascular</h2><span class="tag">arritmias · SCA · aminas</span></div>
+<details>
+<summary>Aminas vasoativas — diluições padrão</summary>
+<div class="body table-wrap"><table>
+<thead><tr><th>Droga</th><th>Diluição</th><th>Referência</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Droga">Noradrenalina 4mg/4mL</td><td data-label="Diluição">5 amp (20mL) em 180mL SF0,9%</td><td data-label="Referência">Iniciar <span class="dose">10mL/h</span> (100mcg/mL)</td></tr>
+<tr><td class="drug" data-label="Droga">Noradrenalina — concentrada (restrição de volume)</td><td data-label="Diluição">8 amp (4mg/4mL) + 218mL SF0,9% = 250mL</td><td data-label="Referência">~128mcg/mL — reduz volume infundido, útil se restrição hídrica</td></tr>
+<tr><td class="drug" data-label="Droga">Dobutamina 250mg/20mL</td><td data-label="Diluição">1 amp em 230mL SF0,9%</td><td data-label="Referência">mcg/kg/min: mL/h × 1000 / 60 / peso</td></tr>
+<tr><td class="drug" data-label="Droga">Nitroglicerina (Tridil) 50mg/5mL</td><td data-label="Diluição">1 amp em 245mL SG5%</td><td data-label="Referência">Iniciar dose baixa (ex: 5mL/h)</td></tr>
+<tr><td class="drug" data-label="Droga">Nitroprussiato de Sódio (Nipride) 50mg/2mL</td><td data-label="Diluição">1 amp em 248mL SG5% (200mcg/mL)</td><td data-label="Referência">Iniciar <span class="dose">0,3–0,5mcg/kg/min</span>, titular (máx 10mcg/kg/min)</td></tr>
+<tr><td class="drug" data-label="Droga">Dopamina 50mg/10mL</td><td data-label="Diluição">5 amp em 200mL SF0,9%/SGI5%</td><td data-label="Referência">Dose-dependente: <span class="dose">3–5mcg/kg/min</span> ("renal"*) · 5–10 (inotrópico) · 10–20 (vasopressor)</td></tr>
+<tr><td class="drug" data-label="Droga">Vasopressina</td><td data-label="Diluição">1mL em 200mL SGI5%/SF0,9%</td><td data-label="Referência">0,1U/mL</td></tr>
+</tbody>
+</table>
+<div class="callout">Difícil desmame de noradrenalina → pensar em insuficiência adrenal (Hidrocortisona 50mg 6/6h), hipocalcemia, hipofosfatemia, acidose, hipovolemia.</div>
+<div class="callout">*"Dose renal" de dopamina é conceito sem sustentação em evidência atual (não comprovadamente nefroprotetora) — mantido aqui só como referência histórica de faixa de dose.</div>
+</div>
+</details>
+<details>
+<summary>Taquiarritmias — condutas e doses</summary>
+<div class="body table-wrap"><table>
+<thead><tr><th>Situação</th><th>Droga</th><th>Dose</th><th>Observações</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Situação">TSV paroxística</td><td data-label="Droga">Adenosina 6mg/2mL</td><td data-label="Dose"><span class="dose">1 amp</span> bolus rápido + flush 20mL SF0,9%; sem resposta → <span class="dose">2 amp</span></td><td data-label="Observações">Metade da dose se transplantado/acesso central; evitar em asma descompensada</td></tr>
+<tr><td class="drug" data-label="Situação">TV monomórfica (estável)</td><td data-label="Droga">Amiodarona 150mg/3mL</td><td data-label="Dose">Ataque: <span class="dose">1 amp em 100mL SGI5%, 30min</span>; impregnação: <span class="dose">6 amp (900mg) em 230mL, 10mL/h</span></td><td data-label="Observações">Alternativas: sotalol, procainamida, lidocaína</td></tr>
+<tr><td class="drug" data-label="Situação">TV monomórfica (instável)</td><td data-label="Droga">Cardioversão elétrica</td><td data-label="Dose"><span class="dose">100J</span></td><td data-label="Observações">Sincronizada</td></tr>
+<tr><td class="drug" data-label="Situação">Torsades de pointes</td><td data-label="Droga">Sulfato de Magnésio + correção de K</td><td data-label="Dose">Corrigir K (alvo 4,5–5,5) e Mg</td><td data-label="Observações">QT longo congênito: betabloqueador; instável: desfibrilação não sincronizada</td></tr>
+<tr><td class="drug" data-label="Situação">Controle de FC em FA/Flutter</td><td data-label="Droga">Metoprolol 5mg/5mL</td><td data-label="Dose"><span class="dose">1 amp EV 5min</span>, repetir a cada 5min</td><td data-label="Observações">Máx 15mg total; alternativa: Deslanosídeo 0,4mg/2mL 1amp EV lento</td></tr>
+<tr><td class="drug" data-label="Situação">Bradicardia sintomática instável</td><td data-label="Droga">Atropina</td><td data-label="Dose"><span class="dose">1mg EV 1/1min</span> + marcapasso transcutâneo</td><td data-label="Observações">2ª linha: Dopamina 5–20mcg/kg/min ou Epinefrina 2–10mcg/min</td></tr>
+</tbody>
+</table>
+<p class="lede"><b>Cardioversão de taquicardia instável — sequência OSACO:</b> Orientar → Sedoanalgesiar → Ambuzar → Sincronizar → Cardioverter → Observar. Energia: FA monofásico 100–200J/bifásico 50–100J; Flutter bifásico 50–100J.</p>
+<div class="callout">Diagnóstico e classificação completos (árvore de taquiarritmia, BAV/Mobitz, doses de sotalol/procainamida) → ver <b>Guia de Paciente Crítico</b>, seção Arritmias &amp; ECG.</div>
+</div>
+</details>
+<details>
+<summary>Síndrome coronariana aguda / IAM</summary>
+<div class="body">
+<div class="subhead">Classificação e conduta geral</div>
+<div class="table-wrap"><table>
+<thead><tr><th>Categoria</th><th>Conduta</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Categoria">Sem supra de ST</td><td data-label="Conduta">Terapia antitrombótica/anti-isquêmica (tabela abaixo)</td></tr>
+<tr><td class="drug" data-label="Categoria">Com supra de ST</td><td data-label="Conduta">Mesma terapia antitrombótica/anti-isquêmica + reperfusão imediata (hemodinâmica ou trombólise)</td></tr>
+<tr><td class="drug" data-label="Categoria">IAM de ventrículo direito</td><td data-label="Conduta">Suspeitar em IAM inferior (D2/D3/aVF), confirmar com V3R/V4R. <b>Não fazer</b> morfina/nitrato/diurético; expandir volume se hipotensão</td></tr>
+<tr><td class="drug" data-label="Categoria">CATE imediato (&lt;2h)</td><td data-label="Conduta">IC, choque, TV/FV, angina refratária</td></tr>
+<tr><td class="drug" data-label="Categoria">Suplementação de O₂</td><td data-label="Conduta">Só se Sat&lt;90% — evitar hiperóxia de rotina</td></tr>
+</tbody>
+</table></div>
+<div class="subhead">Sem supra de ST — terapia antitrombótica/anti-isquêmica</div>
+<div class="table-wrap"><table>
+<thead><tr><th>Droga</th><th>Dose</th><th>Observações</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Droga">AAS (Ácido Acetilsalicílico)</td><td data-label="Dose"><span class="dose">3cp (300mg)</span> ataque + 1cp/24h</td><td data-label="Observações">Se não alérgico/sem sangramento ativo</td></tr>
+<tr><td class="drug" data-label="Droga">Ticagrelor</td><td data-label="Dose"><span class="dose">2cp (180mg)</span> ataque + 1cp 12/12h</td><td data-label="Observações">—</td></tr>
+<tr><td class="drug" data-label="Droga">Clopidogrel (alternativa)</td><td data-label="Dose"><span class="dose">4cp (300mg)</span> ataque; <span class="dose">8cp (600mg)</span> se for para ICP</td><td data-label="Observações">—</td></tr>
+<tr><td class="drug" data-label="Droga">Captopril</td><td data-label="Dose">Iniciar dose baixa VO (ex: 6,25–12,5mg)</td><td data-label="Observações">IECA — benefício de mortalidade, especialmente IAM anterior/disfunção de VE; cautela se hipotenso</td></tr>
+<tr><td class="drug" data-label="Droga">Atorvastatina</td><td data-label="Dose">40–80mg 1cp</td><td data-label="Observações">Checar perfil lipídico em 24h</td></tr>
+<tr><td class="drug" data-label="Droga">Dinitrato de Isossorbida (Isordil)</td><td data-label="Dose">5mg SL, repetir a cada 5min se dor persistente</td><td data-label="Observações">Evitar se PAS&lt;90, IAM de VD, sildenafila nas últimas 24h. Sem melhora: Nitroglicerina EV (ver Aminas Vasoativas)</td></tr>
+<tr><td class="drug" data-label="Droga">Enoxaparina</td><td data-label="Dose">1mg/kg SC 12/12h</td><td data-label="Observações">0,75mg/kg se &gt;75a; metade da dose se ClCr&lt;30</td></tr>
+<tr><td class="drug" data-label="Droga">Atenolol (betabloqueador)</td><td data-label="Dose">25–100mg VO</td><td data-label="Observações">Evitar se IC, BAV, broncoespasmo, choque, uso de cocaína</td></tr>
+<tr><td class="drug" data-label="Droga">Morfina</td><td data-label="Dose">Só se dor refratária</td><td data-label="Observações">Não usar em IAM inferior/VD/DPOC</td></tr>
+</tbody>
+</table></div>
+<div class="subhead">Trombólise</div>
+<div class="table-wrap"><table>
+<thead><tr><th>Droga</th><th>Dose</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Droga">Alteplase</td><td data-label="Dose">Bolus 15mg + <span class="dose">0,75mg/kg em 30min</span> (máx 50mg) + <span class="dose">0,50mg/kg em 60min</span> (máx 35mg) — dose máx total 100mg</td></tr>
+</tbody>
+</table></div>
+<div class="callout">Contraindicações absolutas: AVCh prévio, AVCi &lt;3 meses, lesão estrutural SNC, cirurgia SNC/medular &lt;2 meses, dissecção de aorta, sangramento ativo, TCE/trauma facial &lt;3 meses, HAS grave não controlada.</div>
+<div class="subhead">Pericardite aguda</div>
+<div class="table-wrap"><table>
+<thead><tr><th>Droga</th><th>Dose</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Droga">AAS ou Ibuprofeno</td><td data-label="Dose">AAS 650–1000mg 8/8h OU Ibuprofeno 600–800mg 8/8h</td></tr>
+<tr><td class="drug" data-label="Droga">Colchicina</td><td data-label="Dose">0,5mg 12/12h por 3–6 meses</td></tr>
+<tr><td class="drug" data-label="Droga">Prednisona (refratário)</td><td data-label="Dose">20mg (0,25–0,5mg/kg/dia) por 2–4 semanas</td></tr>
+</tbody>
+</table></div>
+<div class="callout">Diagnóstico eletrocardiográfico completo — critérios de supra, <b>correlação território ↔ artéria culpada</b>, equivalentes de oclusão (de Winter, Wellens), Sgarbossa, escolha e tempos de reperfusão e complicações do IAM → <a href="guia_bolso_paciente_critico.html#sca" style="color:inherit;font-weight:600;">Guia de Paciente Crítico, seção 08 — SCA →</a></div>
+</div>
+</details>
+<details>
+<summary>ACLS — ritmo de parada (referência)</summary>
+<div class="body">
+<p><b>FV/TV sem pulso:</b> choque (200J bif/360J mono) → RCP 2min → adrenalina 1mg → choque → amiodarona 300mg (ou lidocaína) → choque → adrenalina → choque → amiodarona 150mg. Repetir adrenalina a cada 3–5min.</p>
+<p><b>AESP/Assistolia:</b> RCP contínua + adrenalina 1mg imediato, repetir a cada 3–5min; investigar 5H/5T.</p>
+<p><b>Pós-parada:</b> A-via aérea (capnografia 35–45mmHg) · B-SpO₂ 92–98% · C-PAS≥90/PAM≥65 (cristaloide 1–2L/noradrenalina) · D-comatoso → controle de temperatura 32–36°C.</p>
+<div class="callout">Algoritmo completo, doses de referência por peso e cuidados pós-RCE detalhados → Guia de Paciente Crítico, seção PCR.</div>
+</div>
+</details>
+<details>
+<summary>Endocardite bacteriana</summary>
+<div class="body">
+<p>Suspeitar: febre + sopro. Critérios de Duke: <span class="dose">2 maiores</span> OU <span class="dose">1 maior + 3 menores</span> OU <span class="dose">5 menores</span>.</p>
+<ul class="compact">
+<li><b>Maiores:</b> hemocultura com agente típico em 2 amostras (ou bacteremia persistente); ECO com vegetação, abscesso, deiscência ou nova regurgitação valvar</li>
+<li><b>Menores:</b> fator de risco (predisposição/drogas IV); febre ≥38°C; fenômenos vasculares (embolia, hemorragia, manchas de Janeway); fenômenos imunológicos (manchas de Roth, fator reumatoide, glomerulonefrite); hemocultura não preenchendo critério maior</li>
+</ul>
+<p class="lede">Agentes mais comuns: <i>Streptococcus viridans</i> (valva nativa, subaguda), <i>S. aureus</i> (valva nativa, aguda/uso de drogas IV); Enterococo/<i>S. bovis</i> (avaliar colonoscopia).</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Cenário</th><th>Esquema</th><th>Duração</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Cenário">Valva nativa, subaguda</td><td data-label="Esquema">Aguardar culturas se estável; se empírico: Vancomicina 15–20mg/kg 12/12h (~1–1,5g) + Ceftriaxona 2g/dia</td><td data-label="Duração">4–6 semanas</td></tr>
+<tr><td class="drug" data-label="Cenário">Valva nativa, aguda / uso de drogas IV</td><td data-label="Esquema">Vancomicina 15–20mg/kg 12/12h + Gentamicina 1mg/kg 8/8h (<span class="wv" data-d="0" data-k1="1" data-u="mg">70mg</span>) — ou Cefepime 2g 8/8h no lugar da genta</td><td data-label="Duração">4–6 semanas</td></tr>
+<tr><td class="drug" data-label="Cenário">Valva protética (&lt;1 ano da troca)</td><td data-label="Esquema">Vancomicina 15–20mg/kg 12/12h + Gentamicina 1mg/kg 8/8h + Rifampicina 300mg 8/8h</td><td data-label="Duração"><b>≥6 semanas</b> (não meses)</td></tr>
+<tr><td class="drug" data-label="Cenário">Profilaxia pré-procedimento*</td><td data-label="Esquema">Amoxicilina 2g VO 1h antes — alérgico a penicilina: Azitromicina 500mg ou Clindamicina 600mg VO 1h antes</td><td data-label="Duração">Dose única</td></tr>
+</tbody>
+</table></div>
+<p class="lede">*Manipulação dentária/gengival em: prótese valvar, endocardite prévia, cardiopatia cianótica não corrigida.</p>
+</div>
+</details>
+<details>
+<summary>Crise / emergência hipertensiva</summary>
+<div class="body table-wrap"><table>
+<thead><tr><th>Situação</th><th>Droga</th><th>Dose</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Situação">Crise (sem lesão de órgão-alvo)</td><td data-label="Droga">Captopril</td><td data-label="Dose">25–50mg VO</td></tr>
+<tr><td data-label="Situação"></td><td data-label="Droga">Clonidina</td><td data-label="Dose">0,1–0,2mg VO</td></tr>
+<tr><td data-label="Situação"></td><td data-label="Droga">Hidralazina</td><td data-label="Dose">25–50mg VO</td></tr>
+<tr><td class="drug" data-label="Situação">Emergência (com lesão aguda)</td><td data-label="Droga">Nitroprussiato de Sódio (Nipride) 50mg/2mL</td><td data-label="Dose">2mL+248mL SG5% EV BIC</td></tr>
+<tr><td data-label="Situação"></td><td data-label="Droga">Nitroglicerina (Tridil) 50mg/5mL</td><td data-label="Dose">1amp+245mL SG5% EV BIC</td></tr>
+</tbody>
+</table></div>
+</details>
+<details>
+<summary>Febre reumática</summary>
+<div class="body">
+<p class="lede">Após 1–5 semanas de infecção de orofaringe.</p>
+<ul class="compact">
+<li><b>Critérios maiores:</b> cardite, artrite (poliarticular migratória), eritema marginado, nódulos subcutâneos, coreia de Sydenham</li>
+<li><b>Critérios menores:</b> artralgia, ↑VHS/PCR, PR prolongado</li>
+</ul>
+<div class="table-wrap"><table>
+<thead><tr><th>Droga</th><th>Uso</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Droga">Penicilina G Benzatina</td><td data-label="Uso">IM dose única</td></tr>
+<tr><td class="drug" data-label="Droga">AAS ou Naproxeno</td><td data-label="Uso">Artrite</td></tr>
+<tr><td class="drug" data-label="Droga">Corticoide</td><td data-label="Uso">Cardite</td></tr>
+<tr><td class="drug" data-label="Droga">Fenobarbital, Haloperidol ou Ác. Valproico</td><td data-label="Uso">Coreia</td></tr>
+</tbody>
+</table></div>
+<div class="subhead">Profilaxia secundária (previne recorrência e progressão da cardiopatia)</div>
+<div class="table-wrap"><table>
+<thead><tr><th>Situação</th><th>Duração da profilaxia</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Situação">Penicilina G Benzatina 1.200.000U IM a cada 3–4 semanas — sem cardite</td><td data-label="Duração da profilaxia">5 anos ou até 21 anos (o que for mais longo)</td></tr>
+<tr><td class="drug" data-label="Situação">Com cardite, sem sequela valvar residual</td><td data-label="Duração da profilaxia">10 anos ou até 21 anos</td></tr>
+<tr><td class="drug" data-label="Situação">Com sequela valvar residual</td><td data-label="Duração da profilaxia">10 anos ou até 40 anos (alguns casos, por toda a vida)</td></tr>
+</tbody>
+</table></div>
+</div>
+</details>
+</section>
+<!-- ======================= VIA AÉREA / SEDAÇÃO ======================= -->
+<section class="sec" id="air" style="--accent:#1D5FBF">
+<div class="head"><span class="idx">02</span><h2>Via Aérea &amp; Sedação</h2><span class="tag">IOT · sedoanalgesia · BNM</span></div>
+<details>
+<summary>Intubação — indução</summary>
+<div class="body table-wrap"><table>
+<thead><tr><th>Droga</th><th>Dose/kg</th><th>Prático (<span class="wkg">70</span>kg)</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Droga">Fentanil 50mcg/mL</td><td data-label="Dose/kg">2–3mcg/kg</td><td data-label="Prático p/ peso"><span class="dose wv" data-d="1" data-k1="0.04" data-k2="0.06" data-u="mL">2,8–4,2mL</span> EV lento</td></tr>
+<tr><td class="drug" data-label="Droga">Etomidato 2mg/mL</td><td data-label="Dose/kg">0,3mg/kg</td><td data-label="Prático p/ peso"><span class="dose wv" data-d="1" data-k1="0.15" data-u="mL">10,5mL</span> EV (diluir se acordado)</td></tr>
+<tr><td class="drug" data-label="Droga">Cetamina 50mg/mL</td><td data-label="Dose/kg">1–1,5mg/kg</td><td data-label="Prático p/ peso"><span class="dose wv" data-d="1" data-k1="0.02" data-k2="0.03" data-u="mL">1,4–2,1mL</span> EV — ideal em asmático</td></tr>
+<tr><td class="drug" data-label="Droga">Succinilcolina (Suxametônio)</td><td data-label="Dose/kg">1–2mg/kg</td><td data-label="Prático p/ peso">Diluir 1FR (100mg)+10mL AD (10mg/mL) — aspirar <span class="dose wv" data-d="1" data-k1="0.1" data-k2="0.2" data-u="mL">7–14mL</span> EV</td></tr>
+<tr><td class="drug" data-label="Droga">Rocurônio 10mg/mL</td><td data-label="Dose/kg">1–1,2mg/kg</td><td data-label="Prático p/ peso"><span class="dose wv" data-d="1" data-k1="0.1" data-k2="0.12" data-u="mL">7–8,4mL</span> EV puro</td></tr>
+</tbody>
+</table>
+<div class="callout"><b>Succinilcolina = Suxametônio</b> (cloreto de suxametônio) — mesmo fármaco, nomes distintos. Evitar em: neuropatas, queimados/imobilizados &gt;48–72h, suspeita de hipercalemia.</div>
+<div class="callout"><b>Resgate pré-IOT (hipotensão):</b> Adrenalina 1mL+19mL SF0,9% → 0,5–1mL EV a cada 5min.</div>
+<div class="callout">Sequência completa (7 P's), checklist SOAP-ME, critérios de via aérea difícil (LEMON) e complicações → Guia de Paciente Crítico, seção IOT.</div>
+</div>
+</details>
+<details>
+<summary>Sedoanalgesia contínua pós-IOT</summary>
+<div class="body table-wrap"><table>
+<thead><tr><th>Droga</th><th>Diluição</th><th>mL/h para <span class="wkg">70</span>kg</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Droga">Fentanil 50mcg/mL</td><td data-label="Diluição">50mL+50mL SF0,9%</td><td data-label="mL/h p/ peso"><span class="dose wv" data-d="1" data-k1="0.04" data-k2="0.08" data-u="mL/h">2,8–5,6mL/h</span></td></tr>
+<tr><td class="drug" data-label="Droga">Midazolam 5mg/mL</td><td data-label="Diluição">20mL+80mL SF0,9%</td><td data-label="mL/h p/ peso"><span class="dose wv" data-d="1" data-k1="0.02" data-k2="0.2" data-u="mL/h">1,4–14mL/h</span></td></tr>
+<tr><td class="drug" data-label="Droga">Dexmedetomidina (Precedex) 100mcg/mL (amp 2mL)</td><td data-label="Diluição">2mL+48mL SF0,9% (4mcg/mL)</td><td data-label="mL/h p/ peso"><span class="dose wv" data-d="1" data-k1="0.05" data-k2="0.175" data-u="mL/h">3,5–12,3mL/h</span></td></tr>
+<tr><td class="drug" data-label="Droga">Cetamina 50mg/mL</td><td data-label="Diluição">10mL+240mL SF0,9% (2mg/mL)</td><td data-label="mL/h p/ peso"><span class="dose wv" data-d="0" data-k1="0.371" data-u="mL/h">26mL/h</span></td></tr>
+<tr><td class="drug" data-label="Droga">Morfina 10mg/mL (alternativa)</td><td data-label="Diluição">2amp+98mL SF0,9%</td><td data-label="mL/h"><span class="dose">5mL/h</span> (fixo)</td></tr>
+</tbody>
+</table>
+<p class="lede">Alternativa simples: Fentanil 4amp+160mL SF0,9% + Midazolam 4amp+160mL SF0,9%, iniciar <span class="dose">5–8mL/h</span> cada.</p>
+</div>
+</details>
+<details>
+<summary>Bloqueio neuromuscular contínuo (pós-IOT, 24–48h)</summary>
+<div class="body table-wrap"><table>
+<thead><tr><th>Droga</th><th>Diluição</th><th>mL/h para <span class="wkg">70</span>kg</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Droga">Cisatracúrio 2mg/mL (nefro/hepatopata)</td><td data-label="Diluição">50mL+50mL SF0,9%</td><td data-label="mL/h p/ peso"><span class="dose wv" data-d="1" data-k1="0.12" data-u="mL/h">8,4mL/h</span></td></tr>
+<tr><td class="drug" data-label="Droga">Rocurônio 10mg/mL</td><td data-label="Diluição">10mL+90mL SF0,9%</td><td data-label="mL/h p/ peso"><span class="dose wv" data-d="1" data-k1="0.48" data-k2="0.72" data-u="mL/h">33,6–50,4mL/h</span></td></tr>
+</tbody>
+</table></div>
+</details>
+<details>
+<summary>Sedação para cardioversão elétrica</summary>
+<div class="body table-wrap"><table>
+<thead><tr><th>Droga</th><th>Dose</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Droga">Etomidato</td><td data-label="Dose">Pré-medicar com 2mL fentanil; após 2min, <span class="dose">20mg (10mL)</span> bolus</td></tr>
+<tr><td class="drug" data-label="Droga">Propofol</td><td data-label="Dose"><span class="dose">30–50mg</span> bolus</td></tr>
+<tr><td class="drug" data-label="Droga">Midazolam</td><td data-label="Dose"><span class="dose">3–5mg</span> bolus, repetir até sedação adequada</td></tr>
+</tbody>
+</table>
+<p class="lede">Etomidato: sem broncoespasmo/depressão CV. Midazolam: efeito prolongado, parcialmente revertido por flumazenil.</p>
+</div>
+</details>
+</section>
+<!-- ======================= NEURO / PSIQ ======================= -->
+<section class="sec" id="neu" style="--accent:#7A3FC4">
+<div class="head"><span class="idx">03</span><h2>Neurologia &amp; Psiquiatria</h2><span class="tag">convulsão · AVE · HIC · agitação</span></div>
+<div class="callout"><b>Psicofarmacologia completa — escolha dentro de cada classe, faixas de dose, uso agudo e combinações, escalonamento, troca e desmame, gestação e lactação, monitorização laboratorial e interações → <a href="guia_bolso_psiquiatria.html" style="color:inherit;font-weight:600;">Guia de Psicofarmacologia →</a></b></div>
+<details>
+<summary>Crise convulsiva / estado de mal epiléptico</summary>
+<div class="body table-wrap"><table>
+<thead><tr><th>Passo</th><th>Droga</th><th>Dose</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Passo">1</td><td data-label="Droga">Diazepam 10mg/2mL (ou Midazolam IM)</td><td data-label="Dose"><span class="dose">1 amp EV lento</span></td></tr>
+<tr><td class="drug" data-label="Passo">2 — persistência 10min</td><td data-label="Droga">Fenitoína (Hidantal) 250mg/5mL</td><td data-label="Dose"><span class="dose">4 amp + 250mL SF0,9%, 30–60min</span> (não exceder 50mg/min; não diluir em SG). 4 amp = 1g (ampola de 250mg) — ataque pleno é <span class="dose">18–20mg/kg</span> (<span class="wv" data-d="1" data-k1="0.072" data-k2="0.08" data-u=" amp">5–5,6 amp</span> neste peso): completar se a crise persistir</td></tr>
+<tr><td data-label="Passo"></td><td data-label="Droga">Alternativa: Levetiracetam</td><td data-label="Dose"><span class="dose">60mg/kg</span> (≈ <span class="dose wv" data-d="1" data-k1="0.06" data-max="4.5" data-u="g">4,2g</span>) EV em 15min (máx 4,5g) — eficácia equivalente à fenitoína, sem necessidade de monitorização cardíaca</td></tr>
+<tr><td class="drug" data-label="Passo">3 — persistência 20min</td><td data-label="Droga">Fenitoína + Diazepam</td><td data-label="Dose">Fenitoína 2amp (500mg) + SF0,9% até 100mL (evitar &gt;10mg/mL) + Diazepam 1–2mg/min EV lento (máx 10–20mg)</td></tr>
+<tr><td class="drug" data-label="Passo">4 — refratário</td><td data-label="Droga">IOT + Fenobarbital 200mg/2mL</td><td data-label="Dose"><span class="dose">10mL+90mL SF0,9%</span></td></tr>
+</tbody>
+</table>
+<p class="lede">Sempre respeitar velocidade máxima de 50mg/min de fenitoína (risco de flebite/precipitação em concentração &gt;10mg/mL). Levetiracetam, Fenitoína e Valproato são considerados equivalentes como 2ª linha — escolher conforme disponibilidade/comorbidades.</p>
+</div>
+</details>
+<details>
+<summary>Pré-eclâmpsia grave / eclâmpsia</summary>
+<div class="body table-wrap">
+<div class="callout"><b>Convulsão em gestante ≥20 semanas (ou até 6 semanas pós-parto) = eclâmpsia até prova em contrário.</b> MgSO₄ trata E previne — BZD/fenitoína não são 1ª linha.</div>
+<table>
+<thead><tr><th>Etapa</th><th>Esquema — MgSO₄ 50% (amp 10mL = 5g)</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Etapa">Ataque</td><td data-label="Esquema"><span class="dose">4g EV</span>: 8mL de MgSO₄ 50% + 12mL AD/SF, EV lento em 15–20min</td></tr>
+<tr><td class="drug" data-label="Etapa">Manutenção — Zuspan (com BIC)</td><td data-label="Esquema"><span class="dose">1g/h</span>: 10mL (5g) + 490mL SF0,9% a 100mL/h</td></tr>
+<tr><td class="drug" data-label="Etapa">Manutenção — Pritchard (sem BIC)</td><td data-label="Esquema">Após o ataque EV: <span class="dose">10g IM</span> (10mL em cada nádega) → 5g IM 4/4h</td></tr>
+<tr><td class="drug" data-label="Etapa">Convulsão persistente</td><td data-label="Esquema">Repetir <span class="dose">2g EV</span> lento; refratária → via aérea/UTI</td></tr>
+</tbody>
+</table>
+<div class="callout"><b>Vigiar intoxicação:</b> reflexo patelar presente, FR ≥12irpm, diurese ≥25mL/h. Antídoto: Gluconato de cálcio 10% <span class="dose">10mL (1g) EV lento</span>.</div>
+<table>
+<thead><tr><th>PA ≥160×110</th><th>Esquema</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Droga">Hidralazina 20mg/1mL</td><td data-label="Esquema">1 amp + 19mL SF (1mg/mL) → <span class="dose">5mL EV lento</span>; repetir 5–10mg a cada 20min (máx 20–30mg). Alvo PAS 140–155 × PAD 90–105 — queda gradual</td></tr>
+<tr><td class="drug" data-label="Droga">Nifedipino (alternativa)</td><td data-label="Esquema"><span class="dose">10mg VO</span>, repetir a cada 20–30min (máx 30mg)</td></tr>
+</tbody>
+</table>
+<div class="callout">Não usar IECA/BRA nem nitroprussiato. Tratamento definitivo é o <b>parto</b> — acionar obstetrícia precocemente; decúbito lateral esquerdo + O₂.</div>
+</div>
+</details>
+<details>
+<summary>Hipertensão intracraniana</summary>
+<div class="body table-wrap"><table>
+<thead><tr><th>Droga</th><th>Dose</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Droga">NaCl 20%</td><td data-label="Dose"><span class="dose">0,7mL/kg</span> (≈ <span class="dose wv" data-d="0" data-k1="0.7" data-u="mL">49mL</span>) EV lento</td></tr>
+<tr><td class="drug" data-label="Droga">Manitol 20%</td><td data-label="Dose"><span class="dose">0,25–1,0 g/kg</span> EV até 6/6h</td></tr>
+</tbody>
+</table>
+<p class="lede">Tríade de Cushing: hipertensão + bradicardia + taquipneia.</p>
+</div>
+</details>
+<details>
+<summary>AVE isquêmico, hemorrágico e HSA</summary>
+<div class="body table-wrap"><table>
+<thead><tr><th>Tipo</th><th>Conduta</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Tipo">Isquêmico — geral</td><td data-label="Conduta">Controlar glicemia/temperatura/sódio; HAS permissiva (tratar só se &gt;220×120, ou &gt;185×110 se candidato à trombólise)</td></tr>
+<tr><td class="drug" data-label="Tipo">Isquêmico — trombólise</td><td data-label="Conduta">Alteplase 0,9mg/kg (máx 90mg) <span class="amp">(FA 50mg)</span> até 4,5h — 10% bolus + 90% em 60min. Alternativa: Tenecteplase 0,25mg/kg (máx 25mg) <span class="amp">(FA 50mg = 10.000U)</span> bolus único IV (não inferior, mais simples de administrar — cada vez mais usada como 1ª opção). Sem AVCh prévio/AVC-TCE &lt;3m</td></tr>
+<tr><td class="drug" data-label="Tipo">Isquêmico — trombectomia mecânica</td><td data-label="Conduta">Considerar até <b>24h</b> do início dos sintomas se oclusão de grande vaso + critérios de imagem favoráveis (não descartar só por "passou da janela de 4,5h")</td></tr>
+<tr><td class="drug" data-label="Tipo">Isquêmico — manutenção</td><td data-label="Conduta">AAS 100mg 2cp; Atorvastatina 20–80mg; Enoxaparina 40mg <span class="amp">(seringa 20/40/60/80mg)</span> SC/dia</td></tr>
+<tr><td class="drug" data-label="Tipo">Hemorrágico (HIC/hematoma intraparenquimatoso)</td><td data-label="Conduta">Controle pressórico PAS 130–140mmHg; suporte, reversão de anticoagulação se em uso, avaliação neurocirúrgica</td></tr>
+<tr><td class="drug" data-label="Tipo">Hemorragia subaracnóidea (HSA)</td><td data-label="Conduta">Nimodipina VO/SNG 60mg 4/4h por 14–21 dias — reduz vasoespasmo/isquemia tardia (não indicada para HIC comum)</td></tr>
+</tbody>
+</table></div>
+<div class="callout"><b>NIHSS, janela e critérios de trombólise, contraindicações, alvos pressóricos nos três cenários, trombectomia, complicações do trombolítico, territórios vasculares, ICH Score e Hunt-Hess → <a href="guia_bolso_paciente_critico.html#ave" style="color:inherit;font-weight:600;">Guia de Paciente Crítico, seção 09 — AVE →</a></b></div>
+</details>
+<details>
+<summary>Cefaleia</summary>
+<div class="body">
+<div class="subhead">Enxaqueca — abortivo</div>
+<div class="table-wrap"><table>
+<thead><tr><th>Droga</th><th>Dose</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Droga">Sumatriptano (Sumax)</td><td data-label="Dose">25–50mg VO ou 6mg SC (repetir só se recorrência, máx 12mg/dia)</td></tr>
+<tr><td class="drug" data-label="Droga">Dipirona 500mg/mL</td><td data-label="Dose">4mL+16mL SF0,9% EV</td></tr>
+<tr><td class="drug" data-label="Droga">Metoclopramida (Plasil)</td><td data-label="Dose">1amp+18mL AD EV</td></tr>
+<tr><td class="drug" data-label="Droga">Dexametasona 10mg/2,5mL</td><td data-label="Dose">2,5mL+17,5mL SF0,9% EV (reduz recorrência)</td></tr>
+</tbody>
+</table></div>
+<div class="subhead">Outros tipos</div>
+<div class="table-wrap"><table>
+<thead><tr><th>Quadro</th><th>Conduta</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Quadro">Enxaqueca — profilático</td><td data-label="Conduta">Betabloqueador (Atenolol/Propranolol), Amitriptilina/Venlafaxina, Flunarizina, Valproato/Topiramato</td></tr>
+<tr><td class="drug" data-label="Quadro">Tensional</td><td data-label="Conduta">Abortivo: analgésicos/AINE. Profilático: Amitriptilina 25mg</td></tr>
+<tr><td class="drug" data-label="Quadro">Em salvas</td><td data-label="Conduta">Dor unilateral periorbitária em facadas (15–180min). Abortivo: O₂ + triptano SC. Profilático: Verapamil + Prednisona</td></tr>
+</tbody>
+</table></div>
+</div>
+</details>
+<details>
+<summary>Vertigem</summary>
+<div class="body table-wrap"><table>
+<thead><tr><th>Droga</th><th>Dose</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Droga">Dimenidrinato</td><td data-label="Dose">50mg VO 6/6h (ou 1amp EV 6/6h)</td></tr>
+<tr><td class="drug" data-label="Droga">Meclizina</td><td data-label="Dose">25mg VO 6/6h</td></tr>
+<tr><td class="drug" data-label="Droga">Diazepam (refratário)</td><td data-label="Dose">10mg EV 12/12h</td></tr>
+<tr><td class="drug" data-label="Droga">Clonazepam (refratário)</td><td data-label="Dose">0,5mg VO 12/12h</td></tr>
+<tr><td class="drug" data-label="Droga">Domperidona (vômitos)</td><td data-label="Dose">10mg VO 8/8h</td></tr>
+<tr><td class="drug" data-label="Droga">Ondansetrona (vômitos)</td><td data-label="Dose">4mg EV 8/8h</td></tr>
+<tr><td class="drug" data-label="Droga">Betaistina (manutenção — Menière)</td><td data-label="Dose">24mg 12/12h</td></tr>
+</tbody>
+</table></div>
+</details>
+<details>
+<summary>Agitação psicomotora — escalonamento</summary>
+<div class="body table-wrap">
+<div class="callout"><b>Sequência:</b> desescalada verbal → medicação VO → IM → contenção física (último recurso). Ambiente calmo, reduzir estímulos, postura não confrontativa — <b>oferecer VO primeiro</b>: aceitar a medicação já é desescalada.</div>
+<table>
+<thead><tr><th>Etapa</th><th>Esquema</th><th>Observações</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Etapa">VO — aceita medicação</td><td data-label="Esquema">Haloperidol 2mg/mL <span class="dose">25–50 gotas (2,5–5mg)</span> ± Clonazepam 2,5mg/mL 10–20 gotas <i>ou</i> Prometazina 25–50mg VO</td><td data-label="Observações">Reavaliar em 30–60min; repetir 1x se necessário</td></tr>
+<tr><td class="drug" data-label="Etapa">IM — clássico ("HF")</td><td data-label="Esquema">Haloperidol <span class="dose">5mg IM</span> (1 amp) + Prometazina <span class="dose">50mg IM</span> (1 amp)</td><td data-label="Observações">Prometazina reduz distonia e soma sedação; repetir haloperidol em 30–60min se necessário</td></tr>
+<tr><td class="drug" data-label="Etapa">IM — intensa/refratária</td><td data-label="Esquema">Haloperidol 5mg IM + Midazolam <span class="dose">7,5–15mg IM</span> (½–1 amp de 15mg/3mL)</td><td data-label="Observações">⚠ Maior risco de depressão respiratória: SSVV 15/15min, flumazenil e material de via aérea à mão</td></tr>
+<tr><td class="drug" data-label="Etapa">Contenção física</td><td data-label="Esquema">Último recurso — equipe treinada (4–5 pessoas), sempre com medicação associada</td><td data-label="Observações">Monitorização, reavaliação frequente para retirada precoce e registro detalhado em prontuário</td></tr>
+</tbody>
+</table>
+<div class="callout">Haloperidol prolonga QT — cautela/ECG prévio se possível em cardiopata, distúrbio eletrolítico ou uso de outras drogas que prolongam QT. Dose sedativa ≠ dose antipsicótica: o objetivo agudo é segurança, não tratamento de fundo.</div>
+</div>
+</details>
+<details>
+<summary>Agitação — escolha por etiologia</summary>
+<div class="body table-wrap"><table>
+<thead><tr><th>Contexto</th><th>1ª escolha</th><th>Evitar / atenção</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Contexto">Intoxicação por cocaína/estimulantes</td><td data-label="1ª escolha">BZD (diazepam VO/EV ou midazolam IM)</td><td data-label="Evitar / atenção">Evitar haloperidol se hipertermia (piora termorregulação); <b>nunca betabloqueador</b> (alfa sem oposição). TV/grave: bicarbonato</td></tr>
+<tr><td class="drug" data-label="Contexto">Intoxicação etílica</td><td data-label="1ª escolha">Se imprescindível: haloperidol 5mg IM</td><td data-label="Evitar / atenção">Evitar BZD (rebaixamento/depressão respiratória). Decúbito lateral, glicemia, tiamina</td></tr>
+<tr><td class="drug" data-label="Contexto">Abstinência alcoólica</td><td data-label="1ª escolha"><b>BZD é o tratamento</b> (diazepam)</td><td data-label="Evitar / atenção">Antipsicótico isolado ↓ limiar convulsivo — só associar a BZD se sintomas psicóticos</td></tr>
+<tr><td class="drug" data-label="Contexto">Psicose primária / mania</td><td data-label="1ª escolha">Antipsicótico (VO se aceitar; HF IM se recusa)</td><td data-label="Evitar / atenção">Investigar 1º episódio (excluir causa orgânica)</td></tr>
+<tr><td class="drug" data-label="Contexto">Idoso / delirium</td><td data-label="1ª escolha">Haloperidol <span class="dose">0,5–1mg</span> (metade da dose ou menos)</td><td data-label="Evitar / atenção">Evitar BZD (piora delirium — exceto abstinência) e evitar prometazina (anticolinérgico piora confusão); buscar causa orgânica</td></tr>
+<tr><td class="drug" data-label="Contexto">Gestante</td><td data-label="1ª escolha">Haloperidol ± prometazina</td><td data-label="Evitar / atenção">Evitar valproato (teratogênico)</td></tr>
+</tbody>
+</table>
+<p class="lede">Agitação é sintoma, não diagnóstico — sempre procurar a causa (hipoglicemia, hipóxia, TCE, infecção, intoxicação/abstinência).</p>
+</div>
+</details>
+<details>
+<summary>Síndrome de abstinência alcoólica</summary>
+<div class="body table-wrap"><table>
+<thead><tr><th>Quadro</th><th>Esquema</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Quadro">Leve–moderada (VO)</td><td data-label="Esquema">Diazepam <span class="dose">10mg VO 6/6–8/8h</span> — ou 10mg a cada 1–2h conforme sintomas até controle. Guiar pela CIWA-Ar, alvo <span class="dose">&lt;8</span></td></tr>
+<tr><td class="drug" data-label="Quadro">Grave / não aceita VO</td><td data-label="Esquema">Diazepam <span class="dose">10mg EV lento</span>, repetir a cada 15–60min conforme CIWA-Ar até controle</td></tr>
+<tr><td class="drug" data-label="Quadro">Delirium tremens (48–96h: confusão + tremor + disautonomia ± febre)</td><td data-label="Esquema">BZD EV em doses altas + suporte intensivo; refratário: associar fenobarbital — manejar em urgência/CTI</td></tr>
+<tr><td class="drug" data-label="Quadro">Suporte</td><td data-label="Esquema">Hidratação venosa concomitante; corrigir K/Mg/P</td></tr>
+</tbody>
+</table>
+<div class="callout"><b>Tiamina antes de qualquer glicose</b> (risco de precipitar Wernicke-Korsakoff) — doses na seção Dor/Tox/Diversos, card Vitaminas.</div>
+<div class="callout">Convulsão de abstinência: prevenção e tratamento são com <b>BZD</b> — fenitoína <b>não previne</b> crise de abstinência alcoólica.</div>
+</div>
+</details>
+<details>
+<summary>CIWA-Ar — escala de abstinência alcoólica</summary>
+<div class="body table-wrap"><table>
+<thead><tr><th>Item</th><th>O que graduar</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Item">1 · Náuseas/vômitos (0–7)</td><td data-label="O que graduar">De ausentes a vômitos constantes</td></tr>
+<tr><td class="drug" data-label="Item">2 · Tremor (0–7)</td><td data-label="O que graduar">Braços estendidos: de ausente a intenso mesmo sem extensão</td></tr>
+<tr><td class="drug" data-label="Item">3 · Sudorese (0–7)</td><td data-label="O que graduar">De ausente a profusa</td></tr>
+<tr><td class="drug" data-label="Item">4 · Ansiedade (0–7)</td><td data-label="O que graduar">De tranquilo a pânico</td></tr>
+<tr><td class="drug" data-label="Item">5 · Agitação (0–7)</td><td data-label="O que graduar">De normal a não fica parado/debate-se</td></tr>
+<tr><td class="drug" data-label="Item">6 · Distúrbios táteis (0–7)</td><td data-label="O que graduar">Parestesias, prurido, "bichos na pele" até alucinação tátil contínua</td></tr>
+<tr><td class="drug" data-label="Item">7 · Distúrbios auditivos (0–7)</td><td data-label="O que graduar">Hipersensibilidade a sons até alucinação auditiva contínua</td></tr>
+<tr><td class="drug" data-label="Item">8 · Distúrbios visuais (0–7)</td><td data-label="O que graduar">Fotossensibilidade até alucinação visual contínua</td></tr>
+<tr><td class="drug" data-label="Item">9 · Cefaleia/pressão na cabeça (0–7)</td><td data-label="O que graduar">De ausente a extremamente intensa</td></tr>
+<tr><td class="drug" data-label="Item">10 · Orientação/sensório (0–4)</td><td data-label="O que graduar">Orientado com contas seriadas → desorientado em pessoa/lugar</td></tr>
+</tbody>
+</table>
+<div class="callout">Soma máx 67. <b>&lt;10</b> leve → suporte, BZD conforme sintomas · <b>10–18</b> moderada → diazepam guiado por sintomas, reavaliar 1/1h · <b>≥19</b> grave → doses maiores/EV, monitorização, considerar CTI. Reaplicar ~1h após cada dose (cortes variam entre serviços).</div>
+</div>
+</details>
+<details>
+<summary>Distonia aguda / impregnação por antipsicótico</summary>
+<div class="body table-wrap"><table>
+<thead><tr><th>Quadro</th><th>Conduta</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Quadro">Distonia aguda (crise oculógira, torcicolo, opistótono, trismo)</td><td data-label="Conduta">Biperideno <span class="dose">5mg IM/EV</span> (1 amp), repetir em 30min se necessário; formas leves: 2mg VO 2–3x/dia. Alternativa: Prometazina 25–50mg IM</td></tr>
+<tr><td class="drug" data-label="Quadro">Distonia laríngea (estridor, disfonia)</td><td data-label="Conduta"><b>Via aérea em risco</b> — Biperideno EV imediato + preparar material de via aérea</td></tr>
+<tr><td class="drug" data-label="Quadro">Acatisia (inquietação subjetiva + incapacidade de ficar parado)</td><td data-label="Conduta">Reduzir antipsicótico; Propranolol <span class="dose">20–40mg 12/12h</span> ± BZD — biperideno pouco eficaz</td></tr>
+<tr><td class="drug" data-label="Quadro">Parkinsonismo (rigidez, bradicinesia, tremor)</td><td data-label="Conduta">Reduzir dose / trocar por atípico; Biperideno 2mg VO 2–3x/dia</td></tr>
+</tbody>
+</table>
+<div class="callout">Não confundir acatisia com piora da agitação — aumentar o antipsicótico piora o quadro. Recorrência em uso contínuo → discutir troca do antipsicótico com quem acompanha.</div>
+</div>
+</details>
+<details>
+<summary>Síndrome neuroléptica maligna × Síndrome serotoninérgica</summary>
+<div class="body table-wrap"><table>
+<thead><tr><th></th><th>SNM</th><th>Serotoninérgica</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Item">Gatilho</td><td data-label="SNM">Antipsicótico (início/↑ dose) ou retirada de dopaminérgico</td><td data-label="Serotoninérgica">Serotoninérgico: ISRS/dual, tramadol, linezolida, lítio, associações</td></tr>
+<tr><td class="drug" data-label="Item">Instalação</td><td data-label="SNM">Dias a semanas</td><td data-label="Serotoninérgica">Horas (&lt;24h)</td></tr>
+<tr><td class="drug" data-label="Item">Exame</td><td data-label="SNM">Rigidez "cano de chumbo", <b>hipo</b>rreflexia, CPK muito elevada</td><td data-label="Serotoninérgica"><b>Clonus, hiperreflexia</b>, mioclonia, midríase</td></tr>
+<tr><td class="drug" data-label="Item">Em comum</td><td data-label="SNM" colspan="2">Hipertermia + disautonomia + alteração de consciência</td></tr>
+<tr><td class="drug" data-label="Item">Conduta</td><td data-label="SNM">Suspender antipsicótico; suporte (resfriamento físico, hidratação, BZD); grave: bromocriptina/dantroleno — CTI</td><td data-label="Serotoninérgica">Suspender serotoninérgico; suporte + BZD; grave: ciproeptadina <span class="dose">12mg VO</span> ataque</td></tr>
+</tbody>
+</table>
+<div class="callout">Antitérmico comum <b>não resolve</b> a hipertermia (origem muscular) — resfriamento físico + BZD. Na SNM, não reintroduzir antipsicótico precocemente (aguardar ≥2 semanas da resolução).</div>
+</div>
+</details>
+<details>
+<summary>Pós-tentativa / avaliação de risco suicida</summary>
+<div class="body table-wrap">
+<div class="callout"><b>O risco clínico precede o psiquiátrico:</b> intoxicação medicamentosa, rebaixamento, lesões ou instabilidade → estabilizar/encaminhar à urgência clínica antes de qualquer conduta psiquiátrica.</div>
+<p class="lede">Avaliar: ideação (passiva × ativa), plano, letalidade e acesso aos meios, tentativas prévias, uso de substâncias, impulsividade e desesperança × fatores de proteção (rede de apoio, vínculos, projetos).</p>
+<table>
+<thead><tr><th>Estrato</th><th>Conduta</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Estrato">Baixo — ideação passiva, sem plano, proteção robusta</td><td data-label="Conduta">Retorno ambulatorial breve (1–2 semanas) + orientar sinais de alerta à família</td></tr>
+<tr><td class="drug" data-label="Estrato">Moderado — ideação ativa sem plano estruturado</td><td data-label="Conduta">Reavaliação em 24–72h + plano de segurança + acionar rede de apoio</td></tr>
+<tr><td class="drug" data-label="Estrato">Alto — plano + acesso a meios + sem proteção</td><td data-label="Conduta"><b>Não deixar sair sozinho</b>: observação/internação, acompanhante contínuo, avaliação psiquiátrica antes da alta</td></tr>
+</tbody>
+</table>
+<div class="callout">Conduta imediata: restringir acesso aos meios, acolhimento sem julgamento e <b>registro detalhado</b> da avaliação em prontuário. Plano de segurança: sinais de alerta pessoais + contatos de apoio + rede (CERSAM/SUP) + CVV 188.</div>
+</div>
+</details>
+<details>
+<summary>Meningite</summary>
+<div class="body">
+<div class="table-wrap"><table>
+<thead><tr><th>Faixa etária</th><th>Agentes</th><th>Esquema empírico</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Faixa etária">RN–3 meses (pediátrico)</td><td data-label="Agentes">Strepto grupo B, E. coli, Listeria</td><td data-label="Esquema empírico">Cefotaxima + Ampicilina (dose por kg)</td></tr>
+<tr><td class="drug" data-label="Faixa etária">3 meses–55 anos</td><td data-label="Agentes">Meningococo, Pneumococo</td><td data-label="Esquema empírico">Ceftriaxona <span class="dose">2g EV 12/12h</span> ± Vancomicina 15–20mg/kg 8/8–12/12h</td></tr>
+<tr><td class="drug" data-label="Faixa etária">&gt;55 anos ou debilitado</td><td data-label="Agentes">+ Listeria</td><td data-label="Esquema empírico">Ceftriaxona <span class="dose">2g EV 12/12h</span> + Ampicilina 2g EV 4/4h ± Vancomicina</td></tr>
+<tr><td class="drug" data-label="Faixa etária">Alergia grave a betalactâmico</td><td data-label="Agentes">—</td><td data-label="Esquema empírico">Vancomicina + Moxifloxacino 400mg/dia (ou Aztreonam no lugar da ceftriaxona)</td></tr>
+</tbody>
+</table></div>
+<div class="table-wrap"><table>
+<thead><tr><th>Agente confirmado</th><th>Duração total de tratamento</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Agente confirmado">Meningococo</td><td data-label="Duração total de tratamento">5–7 dias</td></tr>
+<tr><td class="drug" data-label="Agente confirmado">Pneumococo</td><td data-label="Duração total de tratamento">10–14 dias</td></tr>
+<tr><td class="drug" data-label="Agente confirmado">Listeria</td><td data-label="Duração total de tratamento">21 dias</td></tr>
+<tr><td class="drug" data-label="Agente confirmado">Agente não identificado (empírico)</td><td data-label="Duração total de tratamento">10–14 dias</td></tr>
+</tbody>
+</table></div>
+<div class="callout"><b>Atenção:</b> a dose de Ceftriaxona para meningite (2g 12/12h) é <b>maior</b> que a dose padrão usada em outras infecções (1g 12/12h, ver Infectologia) — necessária para penetração liquórica adequada.</div>
+<p class="lede">Dexametasona 20min antes do ATB (reduz sequela em pneumococo). Isolamento por gotícula nas 1ªs 24h se meningo/Haemophilus. Profilaxia de contactantes: Rifampicina — meningo 12/12h×2d, Haemophilus 24/24h×4d.</p>
+</div>
+</details>
+</section>
+<!-- ======================= RESPIRATÓRIO ======================= -->
+<section class="sec" id="res" style="--accent:#0E7C86">
+<div class="head"><span class="idx">04</span><h2>Respiratório</h2><span class="tag">asma · DPOC · EAP · pneumonia</span></div>
+<details>
+<summary>Asma / DPOC — crise</summary>
+<div class="body table-wrap"><table>
+<thead><tr><th>Droga</th><th>Dose</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Droga">Salbutamol/Fenoterol + Ipratrópio (inalatório)</td><td data-label="Dose">8 jatos 20/20min na 1ªh; manutenção 1/1h–4/4h</td></tr>
+<tr><td class="drug" data-label="Droga">Fenoterol + Ipratrópio (nebulização)</td><td data-label="Dose">Fenoterol 10–20 gotas (crianças: peso/3) + Ipratrópio 0,25mg/mL 30 gotas + 5mL SF0,9%</td></tr>
+<tr><td class="drug" data-label="Droga">Hidrocortisona</td><td data-label="Dose">100mg EV 24/24h</td></tr>
+<tr><td class="drug" data-label="Droga">Prednisona</td><td data-label="Dose">20mg VO 2cp (manutenção: 40mg/dia por 5–7 dias)</td></tr>
+<tr><td class="drug" data-label="Droga">Sulfato de Magnésio 10% (refratário)</td><td data-label="Dose">20mL+80mL SF0,9%, correr 20–30min</td></tr>
+<tr><td class="drug" data-label="Droga">Adrenalina (refratariedade mantida)</td><td data-label="Dose">0,01mg/kg SC/IM (0,3–0,5mg a cada 20min)</td></tr>
+<tr><td class="drug" data-label="Droga">Terbutalina (alternativa)</td><td data-label="Dose">0,25mg SC 20/20min</td></tr>
+</tbody>
+</table>
+<p class="lede">DPOC manutenção: Salmeterol+Fluticasona (Seretide) 25/50mcg 2 jatos 12/12h + Tiotrópio (Spiriva) 2,5mcg 2 jatos/manhã. O₂ domiciliar se PaO₂≤55mmHg ou Sat≤88%, ou PaO₂ 56–59 + policitemia/cor pulmonale.</p>
+</div>
+</details>
+<details>
+<summary>Edema agudo de pulmão</summary>
+<div class="body">
+<div class="callout info"><b>Ventilação não invasiva (CPAP/BiPAP):</b> iniciar precocemente em todo paciente sem contraindicação — reduz necessidade de IOT e mortalidade (evidência consistente, pilar do tratamento junto com diuréticos/vasodilatadores).</div>
+<div class="table-wrap"><table>
+<thead><tr><th>Droga</th><th>Dose</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Droga">Furosemida 20mg/2mL</td><td data-label="Dose">≥2x a dose domiciliar, EV, até melhora da congestão</td></tr>
+<tr><td class="drug" data-label="Droga">Nitroglicerina (Tridil) 50mg/5mL</td><td data-label="Dose">1amp+245mL SG5% EV BIC</td></tr>
+<tr><td class="drug" data-label="Droga">Dobutamina 250mg/20mL</td><td data-label="Dose">1amp+230mL SF0,9% (se disfunção de VE)</td></tr>
+<tr><td class="drug" data-label="Droga">Morfina 10mg/mL (uso seletivo)</td><td data-label="Dose">1amp+9mL ABD, 3–5mL EV lento a cada 5–30min</td></tr>
+</tbody>
+</table></div>
+<p class="lede">Morfina: as diretrizes atuais desencorajam uso rotineiro em EAP — associada a maior mortalidade/IOT em estudos observacionais (registro ADHERE). Reservar para dor/ansiedade significativa, com cautela.</p>
+</div>
+</details>
+<details>
+<summary>TVP e TEP</summary>
+<div class="body">
+<div class="callout info"><b>Suspeita clínica:</b> iniciar anticoagulação terapêutica empírica + solicitar Doppler venoso para confirmação — não atrasar a anticoagulação aguardando o exame se a suspeita for alta.</div>
+<div class="subhead">Anticoagulação oral direta (DOAC) — 1ª linha atual na maioria dos casos (CHEST 2021)</div>
+<div class="table-wrap"><table>
+<thead><tr><th>Droga</th><th>Dose</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Droga">Rivaroxabana</td><td data-label="Dose">15mg VO 12/12h ×21 dias, depois 20mg VO 1x/dia (manutenção)</td></tr>
+<tr><td class="drug" data-label="Droga">Apixabana</td><td data-label="Dose">10mg VO 12/12h ×7 dias, depois 5mg VO 12/12h (manutenção)</td></tr>
+</tbody>
+</table></div>
+<p class="lede">Duração mínima 3 meses (provocado) — considerar indefinida se não provocado/recorrente. <b>Preferir Heparina/Enoxaparina em vez de DOAC</b> se: câncer ativo (LMWH ainda referência, embora DOAC seja aceitável em casos selecionados), gestação, síndrome antifosfolípide, ClCr muito reduzido, ou instabilidade/necessidade de reversão rápida.</p>
+<div class="subhead">Heparinização parenteral (instabilidade, contraindicação a DOAC, ou ponte)</div>
+<div class="table-wrap"><table>
+<thead><tr><th>Droga</th><th>Dose</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Droga">Heparina não fracionada (terapêutica)</td><td data-label="Dose">5.000U/mL, diluir 5mL em 250mL SF0,9% (100U/mL); posologia <span class="dose">16U/kg/h</span> (peso×0,16 = mL/h → <span class="dose wv" data-d="1" data-k1="0.16" data-u="mL/h">11,2mL/h</span>)</td></tr>
+</tbody>
+</table></div>
+<p class="lede">PTTa 6/6h, alvo 1,5–2,5x controle.</p>
+<div class="subhead">Enoxaparina — referência rápida (todos os contextos)</div>
+<div class="table-wrap"><table>
+<thead><tr><th>Contexto</th><th>Dose</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Contexto">Profilático</td><td data-label="Dose">1mg/kg SC 1x/dia (MID) — ou dose fixa 40mg SC 1x/dia (padrão em peso médio, ex: profilaxia pós-AVE)</td></tr>
+<tr><td class="drug" data-label="Contexto">Terapêutico (TVP/TEP, SCA)</td><td data-label="Dose">1mg/kg SC 12/12h (BID) — em TVP/TEP, alternativa: 1,5mg/kg SC 1x/dia</td></tr>
+<tr><td class="drug" data-label="Contexto">Terapêutico, &gt;75 anos</td><td data-label="Dose">0,75mg/kg SC 12/12h</td></tr>
+<tr><td class="drug" data-label="Contexto">DRC / ClCr&lt;30</td><td data-label="Dose">1mg/kg SC 1x/dia (mesma dose do profilático, independente do contexto)</td></tr>
+</tbody>
+</table></div>
+</div>
+</details>
+<details>
+<summary>Pneumonia comunitária</summary>
+<div class="body">
+<p><b>CURB-65:</b> Confusão · Ureia≥43 · FR≥30 · PAS≤90/PAD≤60 · idade≥65. 0–1 = ambulatório; ≥2 = internar; tubo/choque = CTI.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Gravidade</th><th>Esquema</th><th>Duração</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Gravidade">Ambulatório, hígido</td><td data-label="Esquema">Amoxicilina 1g 8/8h — ou Doxiciclina 100mg 12/12h — ou Azitromicina 500mg 1x/dia</td><td data-label="Duração">5 dias (mín. 48–72h afebril)</td></tr>
+<tr><td class="drug" data-label="Gravidade">Ambulatório c/ comorbidade ou ATB recente</td><td data-label="Esquema">Amoxicilina+Clavulanato 875/125mg 12/12h + Azitromicina 500mg 1x/dia — ou Levofloxacino 750mg 1x/dia (monoterapia)</td><td data-label="Duração">5–7 dias</td></tr>
+<tr><td class="drug" data-label="Gravidade">Enfermaria</td><td data-label="Esquema">Ceftriaxona 1–2g/dia + Azitromicina 500mg 1x/dia — ou Levofloxacino 750mg 1x/dia (monoterapia)</td><td data-label="Duração">5–7 dias</td></tr>
+<tr><td class="drug" data-label="Gravidade">CTI</td><td data-label="Esquema">Ceftriaxona 2g/dia (ou Ampicilina-Sulbactam 3g 6/6h) + Azitromicina 500mg/dia ou Levofloxacino 750mg/dia</td><td data-label="Duração">7 dias</td></tr>
+<tr><td class="drug" data-label="Gravidade">CTI + risco de MRSA</td><td data-label="Esquema">+ Vancomicina 15–20mg/kg 12/12h (~1–1,5g) — ou Linezolida 600mg 12/12h</td><td data-label="Duração">7 dias</td></tr>
+<tr><td class="drug" data-label="Gravidade">CTI + risco de Pseudomonas</td><td data-label="Esquema">+ Piperacilina-Tazobactam 4,5g 6/6h, ou Cefepime 2g 8/8h, ou Meropenem 1g 8/8h — associado a Levofloxacino 750mg/dia ou Ciprofloxacino 400mg 12/12h</td><td data-label="Duração">7 dias (estender se complicada)</td></tr>
+</tbody>
+</table></div>
+<div class="callout">Derrame parapneumônico complicado: pH&lt;7,2, LDH&gt;1000, glicose&lt;40-60, pus/bactérias → drenagem em selo d'água.</div>
+</div>
+</details>
+<details>
+<summary>Síndromes torácicas específicas</summary>
+<div class="body table-wrap"><table>
+<thead><tr><th>Síndrome</th><th>Achados</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Síndrome">Veia cava superior</td><td data-label="Achados">Edema/congestão de face, circulação colateral, turgência jugular. Causas: Ca pulmão, linfoma, trombose sobre CVC. Elevar cabeceira (furosemida controversa)</td></tr>
+<tr><td class="drug" data-label="Síndrome">Pancoast</td><td data-label="Achados">Dor em ombro/escápula ipsilateral + distribuição de nervo ulnar + destruição de 1ª-2ª costelas no RX</td></tr>
+<tr><td class="drug" data-label="Síndrome">Horner</td><td data-label="Achados">Miose + ptose + enoftalmia + anidrose facial ipsilateral (associada a Pancoast)</td></tr>
+</tbody>
+</table></div>
+</details>
+</section>
+<!-- ======================= GASTRO/HEPATO ======================= -->
+<section class="sec" id="gas" style="--accent:#A8631B">
+<div class="head"><span class="idx">05</span><h2>GI / Hepato / Cirurgia</h2><span class="tag">HDA · ascite · abdome agudo</span></div>
+<details>
+<summary>Hemorragia digestiva</summary>
+<div class="body table-wrap"><table>
+<thead><tr><th>Droga</th><th>Dose</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Droga">Omeprazol</td><td data-label="Dose">40mg EV 12/12h</td></tr>
+<tr><td class="drug" data-label="Droga">Terlipressina 1mg/mL</td><td data-label="Dose">2mg EV bolus + 1mg a cada 4h (varizes)</td></tr>
+<tr><td class="drug" data-label="Droga">Octreotide 0,5mg/mL</td><td data-label="Dose">1amp+250mL SF0,9%, 25mL/h</td></tr>
+<tr><td class="drug" data-label="Droga">Ceftriaxona (profilaxia PBE, 1ª opção)</td><td data-label="Dose">1g/24h ×7d</td></tr>
+<tr><td class="drug" data-label="Droga">Norfloxacino (profilaxia PBE, alternativa)</td><td data-label="Dose">400mg 12/12h×7d</td></tr>
+</tbody>
+</table>
+<p class="lede"><b>Tratamento definitivo (varizes):</b> EDA com escleroterapia ou ligadura elástica — a farmacoterapia (Terlipressina/Octreotide, ou Somatostatina como alternativa) é ponte até o procedimento.</p>
+<p class="lede">Varizes sem sangramento: profilaxia se calibre médio/grande, Child B/C, ou pontos avermelhados — Carvedilol 3,125–6,25mg 12/12h (máx 6,25) ou Propranolol 20mg 12/12h (betabloqueadores), ou ligadura elástica.</p>
+</div>
+</details>
+<details>
+<summary>Ascite / PBE / SHR</summary>
+<div class="body">
+<p class="lede">GASA≥1,1 = transudato (cirrose/IC); &lt;1,1 = exsudato.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Situação</th><th>Conduta</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Situação">Ascite (geral)</td><td data-label="Conduta">Restrição de Na 2g/dia + espironolactona/furosemida, meta perda 0,5kg/dia</td></tr>
+<tr><td class="drug" data-label="Situação">PBE (PMN&gt;250 + cultura monobacteriana)</td><td data-label="Conduta">Cefotaxima 2g 8/8h ×5d, ou Ceftriaxona 1g 12/12h ×5–7d</td></tr>
+<tr><td class="drug" data-label="Situação">Profilaxia 2ária de PBE</td><td data-label="Conduta">Norfloxacino 400mg/dia</td></tr>
+<tr><td class="drug" data-label="Situação">Peritonite bacteriana secundária</td><td data-label="Conduta">+ Metronidazol, avaliar cirurgia</td></tr>
+<tr><td class="drug" data-label="Situação">Profilaxia de SHR na PBE (Albumina)</td><td data-label="Conduta">D1: 1,5g/kg EV 6h; D3: 1g/kg EV 6h</td></tr>
+<tr><td class="drug" data-label="Situação">Após paracentese &gt;5L</td><td data-label="Conduta">Repor 8–10g albumina por litro retirado</td></tr>
+<tr><td class="drug" data-label="Situação">Diagnóstico de SHR</td><td data-label="Conduta">Albumina 1g/kg/dia por 2 dias — positivo se sem melhora da injúria renal</td></tr>
+<tr><td class="drug" data-label="Situação">Tratamento de SHR confirmada</td><td data-label="Conduta">Albumina 20–40g/dia + Terlipressina (mesma diluição da HDA) por 5 dias</td></tr>
+</tbody>
+</table></div>
+</div>
+</details>
+<details>
+<summary>Encefalopatia hepática</summary>
+<div class="body table-wrap"><table>
+<thead><tr><th>Via</th><th>Dose</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Via">Oral</td><td data-label="Dose">Lactulose 667mg/mL, 20mL 8/8h (até 3 evacuações/dia)</td></tr>
+<tr><td class="drug" data-label="Via">Retal</td><td data-label="Dose">Lactulose 130mL+370mL glicerina</td></tr>
+</tbody>
+</table></div>
+</details>
+<details>
+<summary>Abdome agudo cirúrgico</summary>
+<div class="body">
+<div class="table-wrap"><table>
+<thead><tr><th>Quadro</th><th>Conduta</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Quadro">Apendicite &lt;48h</td><td data-label="Conduta">Apendicectomia + ATB</td></tr>
+<tr><td class="drug" data-label="Quadro">Apendicite &gt;48h com peritonite</td><td data-label="Conduta">Reanimação volêmica + cirurgia de urgência + ATB</td></tr>
+<tr><td class="drug" data-label="Quadro">Apendicite (abscesso)</td><td data-label="Conduta">Drenagem + ATB + colonoscopia em 4–6 semanas ± apendicectomia tardia</td></tr>
+<tr><td class="drug" data-label="Quadro">Diverticulite (abscesso ≥4cm)</td><td data-label="Conduta">Drenagem + cirurgia eletiva</td></tr>
+</tbody>
+</table></div>
+<div class="subhead">Antibioticoterapia por quadro</div>
+<div class="table-wrap"><table>
+<thead><tr><th>Quadro</th><th>Esquema</th><th>Duração</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Quadro">Apendicite não complicada (pós-op)</td><td data-label="Esquema">Cefoxitina 2g 6/6h — ou Gentamicina 5mg/kg/dia + Metronidazol 500mg 8/8h — ou Ceftriaxona 1g/dia + Metronidazol 500mg 8/8h</td><td data-label="Duração">24h (dose única perioperatória pode bastar)</td></tr>
+<tr><td class="drug" data-label="Quadro">Apendicite perfurada/complicada</td><td data-label="Esquema">Ceftriaxona 1–2g/dia + Metronidazol 500mg 8/8h — ou Piperacilina-Tazobactam 4,5g 6/6h se grave</td><td data-label="Duração">4–7 dias pós controle do foco</td></tr>
+<tr><td class="drug" data-label="Quadro">Diverticulite sem complicação</td><td data-label="Esquema">Ciprofloxacino 500mg 12/12h + Metronidazol 500mg 8/8h VO — ou Amoxicilina+Clavulanato 875mg 12/12h VO</td><td data-label="Duração">7–10 dias</td></tr>
+<tr><td class="drug" data-label="Quadro">Diverticulite exuberante</td><td data-label="Esquema">Ceftriaxona 1–2g/dia + Metronidazol 500mg 8/8h EV — trocar para VO quando melhora clínica</td><td data-label="Duração">Total 7–14 dias (EV+VO)</td></tr>
+<tr><td class="drug" data-label="Quadro">Colecistite aguda</td><td data-label="Esquema">Ampicilina-Sulbactam 1,5–3g 6/6h — ou Ceftriaxona 1g/dia + Metronidazol 500mg 8/8h — grave: Piperacilina-Tazobactam 4,5g 6/6h</td><td data-label="Duração">Colecistectomia precoce (&lt;72h): suspender em 24h pós-op. Sem cirurgia: 7–10 dias</td></tr>
+<tr><td class="drug" data-label="Quadro">Colangite aguda</td><td data-label="Esquema">Piperacilina-Tazobactam 4,5g 6/6h — ou Ceftriaxona 2g/dia + Metronidazol 500mg 8/8h — grave: Meropenem 1g 8/8h</td><td data-label="Duração">7–14 dias + drenagem biliar</td></tr>
+</tbody>
+</table></div>
+</div>
+</details>
+<details>
+<summary>Constipação / Diarreia / Cólera / Rabdomiólise</summary>
+<div class="body table-wrap"><table>
+<thead><tr><th>Quadro</th><th>Conduta</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Quadro">Constipação</td><td data-label="Conduta">Polietilenoglicol 60g/sachê 1x/dia ou Lactulose 15mL 8/8h VO; clister glicerinado 12% 10mL/kg</td></tr>
+<tr><td class="drug" data-label="Quadro">Diarreia</td><td data-label="Conduta">Floratil 1cp 12/12h + Racecadotril 1cp 8/8h (máx 400mg) + Sais de Reidratação Oral (Rehidrat) — 1 envelope em 500mL de água, beber ao longo do dia</td></tr>
+<tr><td class="drug" data-label="Quadro">Diarreia c/ sangue, melena ou comprometimento geral</td><td data-label="Conduta">Ciprofloxacino 500mg 12/12h×3d, reavaliar em 2 dias — ou Azitromicina 500mg 1x/dia×3d (cobre Campylobacter, preferir se gestante/criança); refratário: Ceftriaxona 2g IM/dia por 2–5d</td></tr>
+<tr><td class="drug" data-label="Quadro">Cólera</td><td data-label="Conduta">Hidratação agressiva (esquema A–D) — prioridade absoluta. ATB adjuvante (reduz duração/transmissão): Azitromicina 1g VO dose única, ou Doxiciclina 300mg VO dose única</td></tr>
+<tr><td class="drug" data-label="Quadro">Rabdomiólise</td><td data-label="Conduta">Hidratação vigorosa; se CPK&gt;5000 e pH&lt;7,5/HCO3&lt;30: Bicarbonato 8,4% 150mL+SG5% 850mL, 200mL/h (alvo diurese 200mL/h)</td></tr>
+</tbody>
+</table></div>
+</details>
+</section>
+<!-- ======================= RENAL/METABOLICO ======================= -->
+<section class="sec" id="ren" style="--accent:#D97706">
+<div class="head"><span class="idx">06</span><h2>Renal / Metabólico / Endócrino</h2><span class="tag">eletrólitos · glicemia · acidose</span></div>
+<details>
+<summary>Distúrbios do potássio</summary>
+<div class="body table-wrap"><table>
+<thead><tr><th>Situação</th><th>Droga</th><th>Dose</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Situação">Hipercalemia (K&gt;6,5 ou ECG alterado)</td><td data-label="Droga">Gluconato de Cálcio 10%</td><td data-label="Dose">1amp+50mL SF0,9%, 3min (estabiliza membrana, não reduz K)</td></tr>
+<tr><td data-label="Situação"></td><td data-label="Droga">Insulina Regular + Glicose ("solução polarizante")</td><td data-label="Dose">10UI + SG50% 100mL (ou 10UI em SG10% 500mL)</td></tr>
+<tr><td data-label="Situação"></td><td data-label="Droga">Salbutamol ou Fenoterol</td><td data-label="Dose">Salbutamol 4 jatos (spray) 4/4h — ou Fenoterol nebulização 10–15 gotas 4/4h</td></tr>
+<tr><td data-label="Situação"></td><td data-label="Droga">Poliestirenosulfonato de Cálcio (Sorcal)</td><td data-label="Dose">30g VO 4/4h (manutenção: 12/12h)</td></tr>
+<tr><td data-label="Situação"></td><td data-label="Droga">Furosemida</td><td data-label="Dose">EV</td></tr>
+<tr><td class="drug" data-label="Situação">Hipocalemia leve (K 3,0–3,5)</td><td data-label="Droga">Cloreto de Potássio xarope 6%</td><td data-label="Dose">10–30mL VO 6/6h</td></tr>
+<tr><td data-label="Situação"></td><td data-label="Droga">Cloreto de Potássio 6mEq/cp</td><td data-label="Dose">1cp 6/6h</td></tr>
+<tr><td class="drug" data-label="Situação">Hipocalemia (K&lt;3,0)</td><td data-label="Droga">Cloreto de Potássio 10%</td><td data-label="Dose">2amp+500mL SF0,9%, correr 2–3h (acesso periférico) — evitar soro glicosado</td></tr>
+<tr><td class="drug" data-label="Situação">Hipocalemia — protocolo alternativo (BIC)</td><td data-label="Droga">KCl 30mL + SF0,9% 500mL</td><td data-label="Dose">Correr a <span class="dose">50mL/h</span> — posologia usual de referência: 20mL de KCl 12/12h (ajustar conforme concentração disponível na instituição)</td></tr>
+</tbody>
+</table></div>
+</details>
+<details>
+<summary>Distúrbios do sódio</summary>
+<div class="body table-wrap"><table>
+<thead><tr><th>Situação</th><th>Conduta</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Situação">Hiponatremia crônica assintomática (120–129)</td><td data-label="Conduta">Considerar Furosemida 40mg <span class="amp">(amp 2mL = 20mg)</span> 2x/dia se sem hipovolemia</td></tr>
+<tr><td class="drug" data-label="Situação">Hiponatremia aguda sintomática</td><td data-label="Conduta">NaCl 3% (30amp NaCl10% em 700mL ABD, ou 75mL NaCl20% em 425mL ABD) EV BIC — corrigir <span class="dose">máx 10mEq/24h</span></td></tr>
+<tr><td class="drug" data-label="Situação">Hiponatremia — protocolo alternativo (bolus)</td><td data-label="Conduta">NaCl 10% 100mL + SF0,9% 400mL — infundir <span class="dose">100mL em bolus/60min</span>, reavaliar Na sérico antes de repetir</td></tr>
+<tr><td class="drug" data-label="Situação">Hipernatremia</td><td data-label="Conduta">Água filtrada por SNE 200mL 6/6h, ou NaCl 0,45%, ou SGI5% 60mL/h — corrigir <span class="dose">máx 10mEq/L em 24h</span> (correção rápida demais causa edema cerebral)</td></tr>
+</tbody>
+</table></div>
+</details>
+<details>
+<summary>Distúrbios de cálcio, magnésio e paratireoide</summary>
+<div class="body table-wrap"><table>
+<thead><tr><th>Situação</th><th>Conduta</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Situação">Hipercalcemia</td><td data-label="Conduta">Hidratação 200–300mL/h (diurese 100–150mL/h) + Pamidronato 60–90mg EV 4h</td></tr>
+<tr><td class="drug" data-label="Situação">Hipocalcemia</td><td data-label="Conduta">Gluconato de Cálcio 10% 1amp+50mL SF0,9%/SGI5%, 1h</td></tr>
+<tr><td class="drug" data-label="Situação">Hipomagnesemia</td><td data-label="Conduta">Sulfato de Magnésio 50% 4–5mL+500mL SF0,9%, correr 4–5h</td></tr>
+<tr><td class="drug" data-label="Situação">Hiperparatireoidismo 1º (↑PTH ↑Ca)</td><td data-label="Conduta">Mulher jovem, fraqueza, nefrolitíase. Tratamento definitivo: paratireoidectomia se sintomático/complicado</td></tr>
+<tr><td class="drug" data-label="Situação">Hiperparatireoidismo 2º (↑PTH ↓Ca, DRC)</td><td data-label="Conduta">Restringir fósforo, quelantes (Sevelamer), Calcitriol, Cinacalcete</td></tr>
+<tr><td class="drug" data-label="Situação">Hiperparatireoidismo 3º (DRC + ↑Ca)</td><td data-label="Conduta">Paratireoidectomia</td></tr>
+<tr><td class="drug" data-label="Situação">Doença óssea adinâmica (↓PTH ↑Ca)</td><td data-label="Conduta">Reduzir/evitar quelantes de fósforo à base de cálcio e vitamina D; permitir PTH discretamente mais alto</td></tr>
+</tbody>
+</table></div>
+</details>
+<details>
+<summary>Cetoacidose / hipoglicemia / controle glicêmico / DM</summary>
+<div class="body table-wrap"><table>
+<thead><tr><th>Situação</th><th>Conduta</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Situação">CAD/EHH — Volume</td><td data-label="Conduta">SF0,9% 1000mL na 1ªh (NaCl 0,45% se Na&gt;135)</td></tr>
+<tr><td class="drug" data-label="Situação">CAD/EHH — Insulina</td><td data-label="Conduta"><span class="dose">0,1U/kg/h</span> (≈ <span class="dose wv" data-d="1" data-k1="0.1" data-u="U/h">7U/h</span>) (glicemia=200 → trocar para SG5% e manter insulina)</td></tr>
+<tr><td class="drug" data-label="Situação">CAD/EHH — Potássio</td><td data-label="Conduta">K&gt;5,2 não repor; 3,5–5,2 repor 20–30mEq/L; K&lt;3,3 repor e adiar insulina</td></tr>
+<tr><td class="drug" data-label="Situação">Hipoglicemia (&lt;60–70mg/dL)</td><td data-label="Conduta">Glicose 50%, <span class="dose">4 amp EV</span></td></tr>
+<tr><td class="drug" data-label="Situação">Controle glicêmico UTI</td><td data-label="Conduta">Iniciar se 2 glicemias&gt;180. Diluição 100UI+100mL SF0,9%. Início: &gt;180→2mL/h; &gt;220→4mL/h. Glicemia&lt;60: desligar bomba + 40mL SG50%</td></tr>
+<tr><td class="drug" data-label="Situação">Insulinoterapia DM (esquemas)</td><td data-label="Conduta">Dose total 0,3–1U/kg/dia. Duas aplicações: 2/3 manhã + 1/3 noite (NPH/Regular 70/30% manhã, 50/50% noite)</td></tr>
+</tbody>
+</table></div>
+</details>
+<details>
+<summary>Acidose metabólica / IRA / diálise / função renal</summary>
+<div class="body">
+<div class="table-wrap"><table>
+<thead><tr><th>Situação</th><th>Conduta</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Situação">Acidose grave (pH≤7,2, HCO3&lt;10)</td><td data-label="Conduta">Bicarbonato 8,4% 150mL+SG5% 850mL, 1–2mL/kg lento</td></tr>
+<tr><td class="drug" data-label="Situação">Insuficiência Renal Aguda — manutenção volêmica</td><td data-label="Conduta">SF0,9% <span class="dose">30mL/kg/dia</span> — ajustar conforme volemia, débito urinário e resposta; evitar sobrecarga em oligúrico</td></tr>
+</tbody>
+</table></div>
+<p class="lede">Déficit de HCO3 (mEq) = (HCO3 desejado − atual) × 0,5 × peso.</p>
+<ul class="compact">
+<li><b>Diálise de urgência:</b> síndrome urêmica com sangramento GI/pericardite/encefalopatia, acidose/hipercalemia/hipervolemia refratários, intoxicações</li>
+<li><b>Ureia/Creatinina:</b> relação &gt;40 sugere causa pré-renal (repor volemia); &lt;15 sugere causa intrínseca</li>
+<li><b>Diagnóstico de Cushing:</b> Dexametasona 1mg 23h + cortisol 8h; ou cortisol livre urinário 24h; ou cortisol salivar 21h</li>
+</ul>
+</div>
+</details>
+<details>
+<summary>Gasometria arterial — leitura em 4 passos + ânion gap</summary>
+<div class="body table-wrap"><table>
+<thead><tr><th>Passo</th><th>Como fazer</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Passo">1 · pH</td><td data-label="Como fazer">&lt;7,35 acidemia · &gt;7,45 alcalemia</td></tr>
+<tr><td class="drug" data-label="Passo">2 · Distúrbio primário</td><td data-label="Como fazer">Quem explica o pH: pCO₂ (respiratório) ou HCO₃⁻ (metabólico)</td></tr>
+<tr><td class="drug" data-label="Passo">3 · Compensação esperada</td><td data-label="Como fazer">Acidose metabólica (Winter): pCO₂ esperado = <span class="dose">1,5×HCO₃⁻ + 8 (±2)</span> — medido acima do esperado = acidose respiratória associada; abaixo = alcalose respiratória associada. Alcalose metabólica: pCO₂ ↑ ~0,7 por +1 de HCO₃⁻. Respiratório: HCO₃⁻ varia 1 (agudo) ou 3–4 (crônico) a cada 10mmHg de pCO₂</td></tr>
+<tr><td class="drug" data-label="Passo">4 · Ânion gap</td><td data-label="Como fazer"><span class="dose">AG = Na⁺ − (Cl⁻ + HCO₃⁻)</span>, normal 8–12 — corrigir pela albumina: +2,5 no AG por g/dL abaixo de 4</td></tr>
+</tbody>
+</table>
+<table>
+<thead><tr><th>AG elevado</th><th>AG normal (hiperclorêmica)</th></tr></thead>
+<tbody>
+<tr><td data-label="AG elevado">Cetoacidose (diabética, alcoólica, jejum) · acidose láctica · uremia · intoxicações (metanol, etilenoglicol, salicilato)</td><td data-label="AG normal">Diarreia · acidose tubular renal · expansão excessiva com SF0,9%</td></tr>
+</tbody>
+</table>
+<div class="callout">Distúrbio misto é a regra no paciente grave — sempre conferir a compensação esperada antes de fechar a leitura.</div>
+</div>
+</details>
+<details>
+<summary>Desnutrição grave / síndrome de realimentação</summary>
+<div class="body">
+<p><b>Dieta inicial:</b> <span class="dose">25kcal/kg/dia</span>, começando com 1/3 e aumento gradual.</p>
+<div class="callout">Vigiar síndrome de realimentação: rebaixamento de consciência + mioclonia (associada a hipofosfatemia/hipocalemia/hipomagnesemia na reintrodução calórica).</div>
+</div>
+</details>
+</section>
+<!-- ======================= INFECTO ======================= -->
+<section class="sec" id="inf" style="--accent:#15803D">
+<div class="head"><span class="idx">07</span><h2>Infectologia</h2><span class="tag">ATB · sepse · HIV · ITU</span></div>
+<details>
+<summary>Antimicrobianos — doses EV (uso geral)</summary>
+<div class="body table-wrap"><table>
+<thead><tr><th>Droga</th><th>Dose</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Droga">Meropenem</td><td data-label="Dose"><span class="dose">1g 8/8h</span> (2g 8/8h se grave)</td></tr>
+<tr><td class="drug" data-label="Droga">Vancomicina</td><td data-label="Dose"><span class="dose">1g 12/12h</span> — monitorizar nível da 4ª dose (alvo 10–20)</td></tr>
+<tr><td class="drug" data-label="Droga">Piperacilina-Tazobactam</td><td data-label="Dose"><span class="dose">4,5g 6/6h ou 8/8h</span></td></tr>
+<tr><td class="drug" data-label="Droga">Polimixina B</td><td data-label="Dose">15–25.000U/kg/dia 12/12h (máx 2.000.000)</td></tr>
+<tr><td class="drug" data-label="Droga">Cefepime</td><td data-label="Dose">1–2g 12/12h (neutropenia febril: 2g 8/8h)</td></tr>
+<tr><td class="drug" data-label="Droga">Ampicilina</td><td data-label="Dose">1–2g 6/6h <span class="lede">(meningite/endocardite: 2g 4/4h — ver seções específicas)</span></td></tr>
+<tr><td class="drug" data-label="Droga">Ceftriaxona</td><td data-label="Dose">1g 12/12h <span class="lede">(meningite: 2g 12/12h — ver seção Neuro)</span></td></tr>
+<tr><td class="drug" data-label="Droga">Ciprofloxacino</td><td data-label="Dose">400mg 12/12h</td></tr>
+<tr><td class="drug" data-label="Droga">Levofloxacino</td><td data-label="Dose">750mg 1x/dia (pneumonia)</td></tr>
+<tr><td class="drug" data-label="Droga">Amoxicilina+Clavulanato</td><td data-label="Dose">500+100mg EV 30min, <span class="dose">8/8h</span></td></tr>
+</tbody>
+</table></div>
+<p class="lede">Tabela de dose geral — a <b>duração</b> do tratamento é específica por foco infeccioso (ver o card correspondente: Meningite, Abdome agudo, Pneumonia, ITU, etc.); em geral 7–14 dias, exceto quando indicado o contrário.</p>
+</details>
+<details>
+<summary>Sepse / choque séptico</summary>
+<div class="body">
+<ul class="compact">
+<li><b>SIRS + infecção:</b> Febre; FC&gt;90; FR&gt;20; Leucócitos&gt;12.000 ou &lt;4.000</li>
+<li><b>Choque séptico:</b> sepse com hipotensão refratária a 30mL/kg de cristaloide, necessitando vasopressor para PAM≥65 + lactato&gt;2mmol/L</li>
+</ul>
+<div class="callout"><b>Sepsis-3 (definição atual):</b> sepse = infecção + disfunção orgânica (Δ SOFA ≥2); choque séptico = vasopressor para PAM≥65 + lactato&gt;2 após reposição adequada. O SIRS acima segue útil como triagem sensível à beira-leito; qSOFA ≥2 sinaliza gravidade (ver Guia de Paciente Crítico, Escalas).</div>
+<div class="subhead">Pacote da 1ª hora na sepse</div>
+<div class="table-wrap"><table>
+<thead><tr><th>Ação</th><th>Detalhe</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Ação">Lactato</td><td data-label="Detalhe">Dosar; repetir se inicial elevado</td></tr>
+<tr><td class="drug" data-label="Ação">Hemoculturas</td><td data-label="Detalhe">Colher antes do ATB, sem atrasar o início</td></tr>
+<tr><td class="drug" data-label="Ação">Antibiótico</td><td data-label="Detalhe">Amplo espectro, iniciar em até 1h (ver Antimicrobianos para doses)</td></tr>
+<tr><td class="drug" data-label="Ação">Cristaloide</td><td data-label="Detalhe">30mL/kg em até 3h se hipotensão ou lactato≥4mmol/L — preferir cristaloide balanceado (Ringer Lactato) a SF0,9%</td></tr>
+<tr><td class="drug" data-label="Ação">Noradrenalina (1ª linha)</td><td data-label="Detalhe">Se hipotensão refratária ao volume — meta PAM≥65mmHg (ver diluição em Aminas Vasoativas)</td></tr>
+<tr><td class="drug" data-label="Ação">Vasopressina (2ª droga)</td><td data-label="Detalhe">Adicionar se Noradrenalina <span class="amp">(2mg/mL, amp 4mL = 8mg)</span> em dose crescente (~0,25–0,5mcg/kg/min) sem atingir meta — 0,03U/min fixo, reduz dose de catecolamina</td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="callout"><b>Reconhecimento do choque, janelas de perfusão, TEC como alvo de ressuscitação, escolha de vasopressor e atualizações da diretriz vigente de sepse → <a href="guia_bolso_paciente_critico.html#choque" style="color:inherit;font-weight:600;">Guia de Paciente Crítico, seção 02 — Choque →</a></b></div>
+
+</details>
+<details>
+<summary>IVAS / faringoamigdalite (Centor)</summary>
+<div class="body">
+<ul class="compact">
+<li>Considerar ATB se ≥3 de: exsudato amigdaliano, adenopatia cervical anterior dolorosa, febre, ausência de tosse</li>
+</ul>
+<div class="table-wrap"><table>
+<thead><tr><th>Droga</th><th>Dose</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Droga">Penicilina Benzatina</td><td data-label="Dose">1,2 milhões UI IM dose única</td></tr>
+<tr><td class="drug" data-label="Droga">Amoxicilina</td><td data-label="Dose">500mg 8/8h ou 875mg 12/12h ×10d</td></tr>
+<tr><td class="drug" data-label="Droga">Azitromicina</td><td data-label="Dose">500mg 1x/dia ×5d</td></tr>
+</tbody>
+</table></div>
+<p class="lede">+ Prednisona 60mg 1x/dia×1-3d ± Ibuprofeno 600mg 8/8h para sintomas.</p>
+</div>
+</details>
+<details>
+<summary>ITU</summary>
+<div class="body table-wrap"><table>
+<thead><tr><th>Quadro</th><th>Droga</th><th>Dose</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Quadro">Baixa (disúria/polaciúria)</td><td data-label="Droga">Fosfomicina Trometamol</td><td data-label="Dose">3g VO dose única (1ª linha em diretrizes atuais — IDSA)</td></tr>
+<tr><td data-label="Quadro"></td><td data-label="Droga">Nitrofurantoína</td><td data-label="Dose">100mg 6/6h×3–7d</td></tr>
+<tr><td data-label="Quadro"></td><td data-label="Droga">Norfloxacino</td><td data-label="Dose">400mg 12/12h×3d</td></tr>
+<tr><td data-label="Quadro"></td><td data-label="Droga">Amoxicilina</td><td data-label="Dose">250mg 12/12h×5d</td></tr>
+<tr><td data-label="Quadro"></td><td data-label="Droga">Cefalexina</td><td data-label="Dose">500mg 6/6h×5d</td></tr>
+<tr><td data-label="Quadro"></td><td data-label="Droga">Fenazopiridina (disúria intensa)</td><td data-label="Dose">200mg VO 3x/dia×2d</td></tr>
+<tr><td class="drug" data-label="Quadro">Alta (febre + Giordano+)</td><td data-label="Droga">Ciprofloxacino</td><td data-label="Dose">500mg 12/12h VO ×7d</td></tr>
+<tr><td data-label="Quadro"></td><td data-label="Droga">Levofloxacino</td><td data-label="Dose">500–750mg EV/VO 24/24h ×5–7d</td></tr>
+<tr><td data-label="Quadro"></td><td data-label="Droga">Ceftriaxona (grave/internado)</td><td data-label="Dose">1g EV/dia ×10–14d (step-down VO ao melhorar)</td></tr>
+<tr><td class="drug" data-label="Quadro">Recorrente (≥2 em 6 meses)</td><td data-label="Droga">Nitrofurantoína</td><td data-label="Dose">100mg/noite×6 meses</td></tr>
+<tr><td data-label="Quadro"></td><td data-label="Droga">Cefalexina</td><td data-label="Dose">500mg/noite×6 meses</td></tr>
+</tbody>
+</table>
+<p class="lede">ITU alta: não usar SMX-TMP empírico (resistência local frequentemente &gt;20%).</p>
+</div>
+</details>
+<details>
+<summary>Ginecológicas / uretrites / sífilis</summary>
+<div class="body table-wrap"><table>
+<thead><tr><th>Quadro</th><th>Droga</th><th>Dose</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Quadro">Candidíase</td><td data-label="Droga">Clotrimazol 1–2% creme</td><td data-label="Dose">Intravaginal 3–7 noites</td></tr>
+<tr><td data-label="Quadro"></td><td data-label="Droga">Fluconazol (alternativa)</td><td data-label="Dose">150mg VO dose única</td></tr>
+<tr><td class="drug" data-label="Quadro">Vaginose / Tricomoníase</td><td data-label="Droga">Metronidazol</td><td data-label="Dose">500mg 12/12h×7d (ou 2g dose única em tricomoníase)</td></tr>
+<tr><td class="drug" data-label="Quadro">Uretrite gonocócica</td><td data-label="Droga">Ceftriaxona</td><td data-label="Dose">500mg IM dose única (monoterapia — padrão CDC 2020+; 1g se ≥150kg). Associar Azitromicina 1g VO dose única <b>somente se</b> clamídia não descartada</td></tr>
+<tr><td class="drug" data-label="Quadro">Uretrite não gonocócica (clamídia)</td><td data-label="Droga">Doxiciclina (1ª linha)</td><td data-label="Dose">100mg VO 12/12h ×7d</td></tr>
+<tr><td data-label="Quadro"></td><td data-label="Droga">Azitromicina (alternativa/adesão)</td><td data-label="Dose">1g VO dose única</td></tr>
+<tr><td class="drug" data-label="Quadro">Doença inflamatória pélvica</td><td data-label="Droga">Ceftriaxona + Doxiciclina + Metronidazol</td><td data-label="Dose">500mg IM + 100mg 12/12h×14d + 500mg 12/12h×14d</td></tr>
+<tr><td class="drug" data-label="Quadro">Nefrolitíase (expulsivo)</td><td data-label="Droga">Tansulosina ou Nifedipino</td><td data-label="Dose">0,4mg/dia (4–6sem) ou 10–20mg 8/8h</td></tr>
+<tr><td class="drug" data-label="Quadro">Sífilis precoce</td><td data-label="Droga">Penicilina Benzatina</td><td data-label="Dose">1.200.000U em cada glúteo, dose única</td></tr>
+<tr><td class="drug" data-label="Quadro">Sífilis tardia</td><td data-label="Droga">Penicilina Benzatina</td><td data-label="Dose">1.200.000U em cada glúteo, 1x/semana×3 semanas</td></tr>
+</tbody>
+</table>
+<div class="callout"><b>Violência sexual:</b> Sífilis (Penicilina Benzatina) + Tricomoníase (Metronidazol 2g) + Gonorreia (Ceftriaxona 500mg) + Clamídia (Azitromicina 1g) + PEP HIV + contracepção de emergência (Levonorgestrel 1,5mg) + Hep B se não vacinado (Imunoglobulina 12–50U/kg IM + esquema vacinal).</div>
+</div>
+</details>
+<details>
+<summary>Acidente perfurocortante</summary>
+<div class="body">
+<p>Avaliar material infectante (sangue/secreção/líquido compartimental) e status sorológico de paciente-fonte e exposto.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Droga</th><th>Dose</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Droga">PEP HIV</td><td data-label="Dose">TDF+3TC+DTG, iniciar idealmente &lt;2h (máx 72h), por 28 dias</td></tr>
+</tbody>
+</table></div>
+<p class="lede">Reforçar profilaxia antitetânica conforme cartão vacinal.</p>
+</div>
+</details>
+<details>
+<summary>ORL / oftalmo / pele</summary>
+<div class="body table-wrap"><table>
+<thead><tr><th>Quadro</th><th>Droga</th><th>Dose</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Quadro">Otite média</td><td data-label="Droga">Amoxicilina+Clavulanato</td><td data-label="Dose">500+125mg 8/8h×10–14d</td></tr>
+<tr><td data-label="Quadro"></td><td data-label="Droga">Alérgico a penicilina: Azitromicina</td><td data-label="Dose">500mg 1x/dia×3d</td></tr>
+<tr><td class="drug" data-label="Quadro">Otite externa</td><td data-label="Droga">Ciprofloxacino+Hidrocortisona (gotas)</td><td data-label="Dose">Tópico 12/12h×7d</td></tr>
+<tr><td class="drug" data-label="Quadro">Sinusite</td><td data-label="Droga">Amoxicilina+Clavulanato</td><td data-label="Dose">875+125mg 8/8h×10–14d</td></tr>
+<tr><td data-label="Quadro"></td><td data-label="Droga">Alérgico a penicilina: Levofloxacino</td><td data-label="Dose">500mg 1x/dia×5–7d</td></tr>
+<tr><td data-label="Quadro"></td><td data-label="Droga">Alérgico a penicilina: Clindamicina + Cefpodoxima</td><td data-label="Dose">300mg 8/8h + 200mg 12/12h×10d</td></tr>
+<tr><td class="drug" data-label="Quadro">Conjuntivite</td><td data-label="Droga">Tobramicina+Dexametasona (colírio)</td><td data-label="Dose">6/6h×7d</td></tr>
+<tr><td class="drug" data-label="Quadro">Herpes Zoster</td><td data-label="Droga">Aciclovir</td><td data-label="Dose">400mg 5x/dia×7d</td></tr>
+<tr><td class="drug" data-label="Quadro">Herpes Simplex</td><td data-label="Droga">Aciclovir</td><td data-label="Dose">200mg 5x/dia×7d</td></tr>
+</tbody>
+</table>
+<p class="lede">Sinusite: + lavagem nasal + corticoide 5d se necessário.</p>
+</div>
+</details>
+<details>
+<summary>HIV</summary>
+<div class="body">
+<div class="table-wrap"><table>
+<thead><tr><th>Contexto</th><th>Esquema</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Contexto">TARV preferencial</td><td data-label="Esquema">TDF+3TC+DTG (troca DTG por EFV se TB em tratamento; TDF contraindicado se TFG&lt;60 — substituir por ABC ou AZT conforme HLA-B*5701)</td></tr>
+<tr><td class="drug" data-label="Contexto">PEP (até 72h, ideal &lt;2h)</td><td data-label="Esquema">TDF+3TC+DTG por 28 dias. Testar em 30–90 dias</td></tr>
+<tr><td class="drug" data-label="Contexto">PrEP</td><td data-label="Esquema">TDF+FTC uso contínuo</td></tr>
+</tbody>
+</table></div>
+<p class="lede"><b>Transmissão vertical:</b> pré-natal com TDF+3TC (+EFV 1º tri / +DTG 2º–3º tri); parto — CV&gt;1000 ou desconhecida: AZT IV+cesárea eletiva; puerpério: RN com AZT+3TC+RAL por 28 dias.</p>
+<p class="lede"><b>PneumoAIDS:</b> Pneumocistose (CD4&lt;200) — SMX-TMP 21d, corticoide se PaO₂&lt;70. TB — RIPE 6 meses. Histoplasmose disseminada — Anfotericina B.</p>
+<p class="lede"><b>NeuroAIDS:</b> Meningite criptocócica — Anfotericina B (2sem)+Fluconazol. Neurotoxoplasmose (lesões múltiplas) — Sulfadiazina+Pirimetamina+Ác. Folínico. Linfoma 1º SNC (lesão única) — paliativo.</p>
+<p class="lede"><b>Odinofagia:</b> Cândida (placas) → Fluconazol. CMV (úlceras profundas) → Ganciclovir. Herpes (úlceras rasas múltiplas) → Aciclovir.</p>
+</div>
+</details>
+<details>
+<summary>Síndromes febris (arboviroses / bacterianas / parasitárias)</summary>
+<div class="body table-wrap"><table>
+<thead><tr><th>Doença</th><th>Marca</th><th>Conduta</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Doença">Dengue</td><td data-label="Marca">Alarme: dor abd, vômitos, ↑Ht; Grave: choque/sangramento</td><td data-label="Conduta">Hidratação escalonada (A–D) conforme classificação</td></tr>
+<tr><td class="drug" data-label="Doença">Febre tifoide</td><td data-label="Marca">Confusão, enterorragia</td><td data-label="Conduta">Ceftriaxona 2g/dia ×10–14d — ou Ciprofloxacino 500mg 12/12h ×10–14d</td></tr>
+<tr><td class="drug" data-label="Doença">Leptospirose</td><td data-label="Marca">Sufusão conjuntival, mialgia panturrilha, ↑CPK; Weil: icterícia+IRA</td><td data-label="Conduta">Grave: Penicilina G Cristalina 1,5 milhões U EV 6/6h ×7d — leve: Doxiciclina 100mg 12/12h ×7d</td></tr>
+<tr><td class="drug" data-label="Doença">Malária</td><td data-label="Marca">Febre em crises + anemia hemolítica</td><td data-label="Conduta">Vivax: Cloroquina (25mg/kg total em 3 dias) + Primaquina 0,5mg/kg/dia ×7d — Falciparum: Artesunato (esquema por peso) + Clindamicina 20mg/kg/dia 8/8h ×7d</td></tr>
+<tr><td class="drug" data-label="Doença">Calazar</td><td data-label="Marca">Hepatoesplenomegalia, pancitopenia</td><td data-label="Conduta">Antimonial pentavalente / Anfotericina B lipossomal</td></tr>
+</tbody>
+</table></div>
+</details>
+</section>
+<!-- ======================= DOR / TOX / DIVERSOS ======================= -->
+<section class="sec" id="div" style="--accent:#B5308C">
+<div class="head"><span class="idx">08</span><h2>Dor · Alergia · Toxicologia · Diversos</h2><span class="tag">analgesia · intoxicações · hemocomponentes</span></div>
+<details>
+<summary>Analgésicos e AINEs</summary>
+<div class="body table-wrap"><table>
+<thead><tr><th>Droga</th><th>Dose</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Droga">Dipirona 1g/2mL</td><td data-label="Dose">1amp+8mL AD EV (ou 2amp+16mL para dor mais intensa)</td></tr>
+<tr><td class="drug" data-label="Droga">Tramadol 100mg/2mL</td><td data-label="Dose">1amp+100mL SF0,9% EV 30min</td></tr>
+<tr><td class="drug" data-label="Droga">Morfina 10mg/mL</td><td data-label="Dose">1amp+9mL AD, 3–5mL/dose EV lento (equivalência EV:oral = 1:3)</td></tr>
+<tr><td class="drug" data-label="Droga">Cetoprofeno 100mg/2mL</td><td data-label="Dose">1amp+100mL SF0,9%, correr 20min</td></tr>
+<tr><td class="drug" data-label="Droga">Butilbrometo de Escopolamina + Dipirona (Buscopan Composto)</td><td data-label="Dose">1amp+15–20mL AD, EV lento (5min)</td></tr>
+<tr><td class="drug" data-label="Droga">Paracetamol+Codeína (Tylex) 500+30mg</td><td data-label="Dose">1cp VO 6/6h</td></tr>
+<tr><td class="drug" data-label="Droga">Nimesulida</td><td data-label="Dose">100mg VO 12/12h</td></tr>
+<tr><td class="drug" data-label="Droga">Diclofenaco Sódico (Voltaren)</td><td data-label="Dose">50mg VO 8/8h ou 75mg/3mL IM</td></tr>
+<tr><td class="drug" data-label="Droga">Diclofenaco Potássico (Cataflam)</td><td data-label="Dose">50mg VO 8/8h</td></tr>
+<tr><td class="drug" data-label="Droga">Celecoxib</td><td data-label="Dose">200mg VO 12/12h</td></tr>
+<tr><td class="drug" data-label="Droga">Tenoxicam (Tilatil)</td><td data-label="Dose">20mg VO 1x/dia, ou 20–40mg diluído em 2mL AD IM/EV bolus</td></tr>
+<tr><td class="drug" data-label="Droga">Ibuprofeno</td><td data-label="Dose">600mg VO 8/8h</td></tr>
+</tbody>
+</table></div>
+</details>
+<details>
+<summary>Lombalgia</summary>
+<div class="body table-wrap"><table>
+<thead><tr><th>Droga</th><th>Dose</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Droga">Dexametasona + Complexo B (Dexa-Citoneurin)</td><td data-label="Dose">1amp IM a cada 3 dias (×3)</td></tr>
+<tr><td class="drug" data-label="Droga">Cetoprofeno 100mg/2mL</td><td data-label="Dose">1amp+100mL SF0,9%, 20min</td></tr>
+<tr><td class="drug" data-label="Droga">Cafeína+Carisoprodol+Diclofenaco+Paracetamol (Sedilax)</td><td data-label="Dose">1cp VO 8/8h</td></tr>
+</tbody>
+</table></div>
+</details>
+<details>
+<summary>Abdome / queixas gastrointestinais (sintomáticos)</summary>
+<div class="body table-wrap"><table>
+<thead><tr><th>Droga</th><th>Dose</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Droga">Ondansetrona 4mg/2mL</td><td data-label="Dose">1amp+50mL SF0,9%</td></tr>
+<tr><td class="drug" data-label="Droga">Bromoprida 5mg/mL</td><td data-label="Dose">2mL+15mL SF0,9% EV</td></tr>
+<tr><td class="drug" data-label="Droga">Metoclopramida (Plasil)</td><td data-label="Dose">1amp+18mL AD EV</td></tr>
+<tr><td class="drug" data-label="Droga">Butilbrometo de Escopolamina + Dipirona (Buscopan Composto)</td><td data-label="Dose">5mL+20mL SF0,9% EV</td></tr>
+<tr><td class="drug" data-label="Droga">Butilbrometo de Escopolamina (Buscopan Simples)</td><td data-label="Dose">1amp+19mL SF0,9% EV</td></tr>
+</tbody>
+</table></div>
+</details>
+<details>
+<summary>Anafilaxia e alergias</summary>
+<div class="body table-wrap"><table>
+<thead><tr><th>Droga</th><th>Dose</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Droga">Adrenalina IM 1:1000 (1ª opção)</td><td data-label="Dose">0,3–0,5mg adulto / 0,01mL/kg criança (máx 0,3mL); repetir em 5–15min se necessário</td></tr>
+<tr><td class="drug" data-label="Droga">Adrenalina IV (casos graves/PCR)</td><td data-label="Dose">Diluir 1amp em 9mL SF0,9%, fazer 0,1–0,3mL em 5min</td></tr>
+<tr><td class="drug" data-label="Droga">Metilprednisolona ou Hidrocortisona</td><td data-label="Dose">125mg ou 500mg EV</td></tr>
+<tr><td class="drug" data-label="Droga">Difenidramina ou Prometazina (Fenergan)</td><td data-label="Dose">IM</td></tr>
+<tr><td class="drug" data-label="Droga">Famotidina (anti-H2 adjuvante)</td><td data-label="Dose"><span class="dose">20mg EV</span> — a ranitidina foi retirada do mercado</td></tr>
+</tbody>
+</table>
+<p class="lede">O₂ 8–10L/min sob máscara.</p>
+<div class="callout warn"><b>Observação pós-alta:</b> mínimo 4–6h após resolução completa dos sintomas (reação bifásica pode ocorrer em até 20% dos casos, geralmente nas primeiras 8h, raramente até 24-72h). Estender observação se: reação grave/refratária, broncoespasmo importante, necessidade de múltiplas doses de adrenalina, ou histórico de reação bifásica prévia.</div>
+</div>
+</details>
+<details>
+<summary>Equivalência de corticoides</summary>
+<div class="body table-wrap"><table>
+<thead><tr><th>Corticoide</th><th>Dose equivalente</th><th>Mineralocorticoide</th><th>Duração</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Corticoide">Hidrocortisona</td><td data-label="Dose equivalente"><span class="dose">20mg</span></td><td data-label="Mineralocorticoide">++</td><td data-label="Duração">Curta (8–12h)</td></tr>
+<tr><td class="drug" data-label="Corticoide">Prednisona / Prednisolona</td><td data-label="Dose equivalente"><span class="dose">5mg</span></td><td data-label="Mineralocorticoide">+</td><td data-label="Duração">Intermediária (12–36h)</td></tr>
+<tr><td class="drug" data-label="Corticoide">Metilprednisolona</td><td data-label="Dose equivalente"><span class="dose">4mg</span></td><td data-label="Mineralocorticoide">~0</td><td data-label="Duração">Intermediária (12–36h)</td></tr>
+<tr><td class="drug" data-label="Corticoide">Dexametasona</td><td data-label="Dose equivalente"><span class="dose">0,75mg</span></td><td data-label="Mineralocorticoide">0</td><td data-label="Duração">Longa (36–72h)</td></tr>
+<tr><td class="drug" data-label="Corticoide">Betametasona</td><td data-label="Dose equivalente"><span class="dose">0,6mg</span></td><td data-label="Mineralocorticoide">0</td><td data-label="Duração">Longa (36–72h)</td></tr>
+</tbody>
+</table>
+<div class="callout">Troca EV↔VO ≈ 1:1 para prednisona/prednisolona/metilprednisolona (biodisponibilidade oral alta).</div>
+<div class="callout"><b>Insuficiência adrenal aguda:</b> Hidrocortisona <span class="dose">100mg EV</span> + 50mg 6/6h — dexametasona não repõe efeito mineralocorticoide (mas não interfere no cortisol sérico se colhido antes).</div>
+</div>
+</details>
+<details>
+<summary>Intoxicações</summary>
+<div class="body table-wrap"><table>
+<thead><tr><th>Intoxicação</th><th>Antídoto / Conduta</th><th>Dose</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Intoxicação">Paracetamol</td><td data-label="Antídoto / Conduta">N-acetilcisteína</td><td data-label="Dose">Ataque 140mg/kg VO + 17 doses de manutenção 70mg/kg 4/4h</td></tr>
+<tr><td class="drug" data-label="Intoxicação">"Chumbinho" (anticolinesterásico)</td><td data-label="Antídoto / Conduta">Atropina 0,5mg/mL</td><td data-label="Dose">1–2amp bolus, repetir até controle dos sintomas muscarínicos (sem dose máxima estabelecida)</td></tr>
+<tr><td class="drug" data-label="Intoxicação">Cocaína (sintomas adrenérgicos)</td><td data-label="Antídoto / Conduta">Midazolam</td><td data-label="Dose">1amp+9mL AD, fazer 5mL</td></tr>
+<tr><td class="drug" data-label="Intoxicação">Opioides (miose + rebaixamento + bradipneia)</td><td data-label="Antídoto / Conduta">Naloxona 0,4mg/mL</td><td data-label="Dose"><span class="dose">0,4mg EV</span> a cada 2–3min até FR&gt;12 (máx ~10mg); sem acesso: 0,8mg IM. Meia-vida menor que a do opioide — vigiar re-sedação; manter suporte ventilatório</td></tr>
+<tr><td class="drug" data-label="Intoxicação">Benzodiazepínicos</td><td data-label="Antídoto / Conduta">Flumazenil 0,1mg/mL — com cautela</td><td data-label="Dose"><span class="dose">0,2mg EV em 30s</span>, repetir a cada 1min até 1mg — evitar se uso crônico de BZD ou co-ingestão de tricíclico (risco de convulsão); suporte ventilatório costuma bastar</td></tr>
+</tbody>
+</table>
+<p class="lede">Alternativa na cocaína: Diazepam conforme intensidade. Se TV/intoxicação grave: bicarbonato de sódio (não fazer betabloqueador).</p>
+</div>
+</details>
+<details>
+<summary>Hemocomponentes</summary>
+<div class="body table-wrap"><table>
+<thead><tr><th>Componente</th><th>Indicação / Dose</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Componente">Concentrado de hemácias</td><td data-label="Indicação / Dose">1 bolsa=300mL, infundir 60–120min (máx 4h); eleva Hb 1–1,5. Reação febril não hemolítica recorrente → hemácias leucodepletadas</td></tr>
+<tr><td class="drug" data-label="Componente">Plaquetas</td><td data-label="Indicação / Dose">1 unidade/7–10kg; transfundir se &lt;10.000, ou &lt;20.000 com febre/mucosite/anticoagulante, ou &lt;50.000 com sangramento GI/genitourinário ou procedimento; &gt;100.000 se sangramento em SNC/oftálmico ou cirurgia neuro/oftalmológica. Incremento &lt;5.000 = refratário</td></tr>
+<tr><td class="drug" data-label="Componente">Plasma fresco congelado</td><td data-label="Indicação / Dose">Deficiência de fatores + sangramento ativo, ou RNI&gt;1,5/TTPa&gt;1,5x antes de procedimento invasivo</td></tr>
+<tr><td class="drug" data-label="Componente">Crioprecipitado</td><td data-label="Indicação / Dose">Hipofibrinogenemia — 1 unidade/10kg</td></tr>
+<tr><td class="drug" data-label="Componente">Ácido Tranexâmico 250mg/5mL</td><td data-label="Indicação / Dose">1amp+50–100mL SF0,9% EV, ou 2–3amp+250mL 8/8h</td></tr>
+<tr><td class="drug" data-label="Componente">Vitamina K</td><td data-label="Indicação / Dose">1amp IM (coagulopatia/sangramento associado a varfarina ou colestase)</td></tr>
+</tbody>
+</table>
+<div class="callout"><b>TRALI:</b> anticorpos do plasma do doador reagem contra leucócitos do receptor; ocorre até 6h da transfusão. Tratamento é suporte (não é reação alérgica clássica).</div>
+<div class="callout"><b>Processamento especial:</b> Irradiado — previne doença enxerto-hospedeiro pós-transfusional (pós-transplante de medula/órgão sólido imunossuprimido, receptor parente 1º grau do doador, linfoma de Hodgkin). Lavado — reação alérgica recorrente não evitada com medicação. Desleucocitado — prevenção de reação febril hemolítica aguda, aloimunização HLA, politransfundidos, candidato a transplante renal, prevenção de transmissão de CMV.</div>
+</div>
+</details>
+<details>
+<summary>Reversão de anticoagulação — sangramento grave</summary>
+<div class="body table-wrap"><table>
+<thead><tr><th>Situação</th><th>Conduta</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Situação">Varfarina — sangramento grave / AVCh</td><td data-label="Conduta">Suspender + Vitamina K <span class="dose">10mg EV</span> diluída, em 20–30min (anafilactoide se rápido) + <b>Complexo Protrombínico 4F</b> <span class="dose">25–50 U/kg</span> (≈25 se INR 2–4 · 35 se 4–6 · 50 se &gt;6). Sem CCP: PFC 10–15mL/kg</td></tr>
+<tr><td class="drug" data-label="Situação">Varfarina — INR&gt;10 sem sangramento</td><td data-label="Conduta">Suspender + Vitamina K <span class="dose">2,5–5mg VO</span>; reavaliar INR em 24–48h</td></tr>
+<tr><td class="drug" data-label="Situação">Dabigatrana</td><td data-label="Conduta">Idarucizumabe <span class="dose">5g EV</span> (2 frascos de 2,5g); indisponível → CCP + considerar hemodiálise (é dialisável)</td></tr>
+<tr><td class="drug" data-label="Situação">Rivaroxabana / Apixabana / Edoxabana</td><td data-label="Conduta">CCP 4F <span class="dose">50 U/kg</span> (andexanet raramente disponível); ingestão &lt;2h → carvão ativado</td></tr>
+<tr><td class="drug" data-label="Situação">Heparina não fracionada</td><td data-label="Conduta">Protamina <span class="dose">1mg por 100U</span> de HNF das últimas 2–3h, EV lento (máx 50mg) — hipotensão/anafilaxia se infusão rápida</td></tr>
+<tr><td class="drug" data-label="Situação">Enoxaparina</td><td data-label="Conduta">Protamina <span class="dose">1mg por 1mg</span> de enoxaparina se &lt;8h da dose (0,5mg/1mg se 8–12h) — reversão parcial (~60%)</td></tr>
+<tr><td class="drug" data-label="Situação">Sangramento pós-trombolítico</td><td data-label="Conduta">Crioprecipitado 10U + Ácido tranexâmico <span class="dose">1g EV</span>; alvo fibrinogênio &gt;150</td></tr>
+<tr><td class="drug" data-label="Situação">Antiplaquetários (AAS/clopidogrel)</td><td data-label="Conduta">Plaquetas <b>não</b> de rotina no AVCh (estudo PATCH: pior desfecho) — considerar só se neurocirurgia; DDAVP 0,3mcg/kg pode ser considerada</td></tr>
+</tbody>
+</table>
+<div class="callout">Sempre associar compressão/medida local e hemostasia dirigida. Registrar o motivo da reversão e planejar com a equipe o momento de reintroduzir a anticoagulação.</div>
+</div>
+</details>
+<details>
+<summary>Vitaminas / suplementação</summary>
+<div class="body table-wrap"><table>
+<thead><tr><th>Vitamina/Suplemento</th><th>Indicação</th><th>Dose</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Vitamina/Suplemento">Tiamina</td><td data-label="Indicação">Wernicke-Korsakoff</td><td data-label="Dose">500mg 8/8h×2d → 250mg 24/24h×5d → manutenção 100mg/dia</td></tr>
+<tr><td class="drug" data-label="Vitamina/Suplemento">Cianocobalamina (Vitamina B12)</td><td data-label="Indicação">Anemia perniciosa</td><td data-label="Dose">1000mcg IM semanal×4 sem, depois mensal</td></tr>
+<tr><td class="drug" data-label="Vitamina/Suplemento">Sacarato de Hidróxido Férrico (Noripurum)</td><td data-label="Indicação">Anemia ferropriva</td><td data-label="Dose">EV 5–10mL+250mL SF0,9%, 1–3x/semana</td></tr>
+<tr><td class="drug" data-label="Vitamina/Suplemento">Sulfato Ferroso</td><td data-label="Indicação">Anemia ferropriva</td><td data-label="Dose">VO 1h antes das refeições</td></tr>
+</tbody>
+</table></div>
+</details>
+<details>
+<summary>Cólica nefrética / Gota</summary>
+<div class="body table-wrap"><table>
+<thead><tr><th>Quadro</th><th>Droga</th><th>Dose</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Quadro">Cólica nefrética</td><td data-label="Droga">Cetoprofeno 100mg/2mL + Dipirona 1g/2mL EV</td><td data-label="Dose">Cetoprofeno: 1amp+100mL SF0,9%, 20min. Dipirona: 1amp+8mL AD</td></tr>
+<tr><td data-label="Quadro"></td><td data-label="Droga">Morfina 10mg/mL (refratária)</td><td data-label="Dose">1amp+9mL AD, 3–5mL EV lento</td></tr>
+<tr><td data-label="Quadro"></td><td data-label="Droga">Tansulosina (expulsivo)</td><td data-label="Dose">0,4mg/noite×10d</td></tr>
+<tr><td class="drug" data-label="Quadro">Gota (crise)</td><td data-label="Droga">Cetoprofeno ou Naproxeno</td><td data-label="Dose">50mg 8/8h ou 550mg 12/12h×5–7d</td></tr>
+<tr><td data-label="Quadro"></td><td data-label="Droga">Colchicina (2ª linha)</td><td data-label="Dose">0,5–1mg ataque + 0,5mg 1h depois (máx 1,5–2mg/dia)</td></tr>
+</tbody>
+</table>
+<p class="lede">Gota: evitar AAS/alopurinol na crise.</p>
+<div class="callout">Cuidados paliativos (opioides, dispneia, sororoca, sedação paliativa) → ver seção <b>09 · Paliativos</b>.</div>
+</div>
+</details>
+<details>
+<summary>Pré-operatório e manejo perioperatório</summary>
+<div class="body">
+<div class="subhead">Exames pré-operatórios</div>
+<div class="table-wrap"><table>
+<thead><tr><th>Perfil do paciente</th><th>Exames</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Perfil do paciente">&lt;40a, sem comorbidades, cirurgia pequeno porte</td><td data-label="Exames">Hemograma, Coagulograma</td></tr>
+<tr><td class="drug" data-label="Perfil do paciente">&lt;40a, com comorbidades OU cirurgia grande porte</td><td data-label="Exames">+ Íons, Glicose, Ureia, Creatinina, ECG</td></tr>
+<tr><td class="drug" data-label="Perfil do paciente">&gt;40a, risco cirúrgico complexo</td><td data-label="Exames">+ Rx de tórax</td></tr>
+<tr><td class="drug" data-label="Perfil do paciente">Tabagista</td><td data-label="Exames">+ ECG</td></tr>
+<tr><td class="drug" data-label="Perfil do paciente">Mulher em idade fértil</td><td data-label="Exames">+ BhCG no dia</td></tr>
+</tbody>
+</table></div>
+<div class="subhead">Suspensão de anticoagulantes/antiagregantes antes da cirurgia</div>
+<div class="table-wrap"><table>
+<thead><tr><th>Fármaco</th><th>Suspender antes da cirurgia</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Fármaco">AAS</td><td data-label="Suspender antes da cirurgia">Não suspender (rotina)</td></tr>
+<tr><td class="drug" data-label="Fármaco">AAS + Heparina (dupla)</td><td data-label="Suspender antes da cirurgia">24h</td></tr>
+<tr><td class="drug" data-label="Fármaco">Clopidogrel</td><td data-label="Suspender antes da cirurgia">7 dias (padrão); risco trombótico alto (stent recente): individualizar, pode reduzir para 5 dias</td></tr>
+<tr><td class="drug" data-label="Fármaco">Heparina não fracionada EV</td><td data-label="Suspender antes da cirurgia">4h</td></tr>
+<tr><td class="drug" data-label="Fármaco">Enoxaparina — dose profilática</td><td data-label="Suspender antes da cirurgia">10–12h</td></tr>
+<tr><td class="drug" data-label="Fármaco">Enoxaparina — dose terapêutica</td><td data-label="Suspender antes da cirurgia">24h</td></tr>
+<tr><td class="drug" data-label="Fármaco">Fondaparinux — dose profilática</td><td data-label="Suspender antes da cirurgia">Geralmente não suspender</td></tr>
+<tr><td class="drug" data-label="Fármaco">Dabigatrana (Pradaxa)</td><td data-label="Suspender antes da cirurgia">7 dias (protocolo conservador citado; ajustar conforme função renal — pode ser menor com ClCr normal)</td></tr>
+<tr><td class="drug" data-label="Fármaco">Rivaroxabana (Xarelto)</td><td data-label="Suspender antes da cirurgia">48h</td></tr>
+<tr><td class="drug" data-label="Fármaco">Apixabana (Eliquis)</td><td data-label="Suspender antes da cirurgia">48h</td></tr>
+<tr><td class="drug" data-label="Fármaco">Cilostazol</td><td data-label="Suspender antes da cirurgia">42h</td></tr>
+<tr><td class="drug" data-label="Fármaco">Varfarina</td><td data-label="Suspender antes da cirurgia">5 dias — checar INR no dia anterior (alvo ≤1,3–1,5 conforme protocolo local); ponte com heparina se alto risco trombótico</td></tr>
+</tbody>
+</table></div>
+<div class="callout warn"><b>Atenção Varfarina:</b> uma fonte institucional cita "suspender 48h", mas isso diverge da literatura padrão (ASRA 2018, ESAIC 2022) — 48h é insuficiente para normalizar o INR na maioria dos pacientes, dada a meia-vida longa da varfarina. Use 5 dias como referência segura e confirme o protocolo da sua instituição.</div>
+<div class="subhead">Hemotransfusão</div>
+<div class="table-wrap"><table>
+<thead><tr><th>Contexto</th><th>Gatilho</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Contexto">Padrão (restritivo, evidência TRICC)</td><td data-label="Gatilho">Hb&lt;7g/dL</td></tr>
+<tr><td class="drug" data-label="Contexto">Doença cardiovascular / perioperatório de grande porte (evidência FOCUS)</td><td data-label="Gatilho">Hb&lt;8g/dL, ou meta pré-operatória &gt;8g/dL</td></tr>
+<tr><td class="drug" data-label="Contexto">Repercussão hemodinâmica ou sangramento ativo</td><td data-label="Gatilho">Transfundir independente do valor</td></tr>
+</tbody>
+</table></div>
+<div class="callout">Manter corticoide crônico com reforço de estresse cirúrgico (Hidrocortisona 50–100mg + doses adicionais). AINE: suspender 1–3d. Metformina: suspender 24–48h antes.</div>
+</div>
+</details>
+</section>
+<!-- ======================= PALIATIVOS ======================= -->
+<section class="sec" id="pal" style="--accent:#0F766E">
+<div class="head"><span class="idx">09</span><h2>Cuidados Paliativos</h2><span class="tag">opioides · sintomas · fim de vida</span></div>
+<details>
+<summary>Opioides — início, titulação e resgate</summary>
+<div class="body">
+<div class="subhead">Paciente virgem de opioide (opioid-naive)</div>
+<div class="table-wrap"><table>
+<thead><tr><th>Via</th><th>Dose inicial</th><th>Intervalo</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Via">Morfina VO (solução 10mg/mL ou cp)</td><td data-label="Dose inicial"><span class="dose">5mg</span> (idoso/frágil: 2,5mg)</td><td data-label="Intervalo">4/4h fixo + resgate</td></tr>
+<tr><td class="drug" data-label="Via">Morfina SC</td><td data-label="Dose inicial"><span class="dose">2,5mg</span></td><td data-label="Intervalo">4/4h fixo + resgate</td></tr>
+<tr><td class="drug" data-label="Via">Morfina EV</td><td data-label="Dose inicial"><span class="dose">1–2mg</span> lento, titular a cada 10–15min até analgesia</td><td data-label="Intervalo">4/4h ou infusão contínua</td></tr>
+<tr><td class="drug" data-label="Via">Codeína (dor leve-moderada)</td><td data-label="Dose inicial">30mg VO</td><td data-label="Intervalo">4/4h (máx 360mg/dia)</td></tr>
+<tr><td class="drug" data-label="Via">Tramadol (dor moderada)</td><td data-label="Dose inicial">50mg VO/EV</td><td data-label="Intervalo">6/6h (máx 400mg/dia)</td></tr>
+</tbody>
+</table></div>
+<div class="subhead">Dose de resgate (dor irruptiva)</div>
+<div class="callout"><b>Regra:</b> resgate = <span class="dose">1/6 da dose diária total</span> do opioide, na mesma via, disponível a cada 1h se necessário.<br/>
+Exemplo: morfina 30mg/dia VO → resgate de 5mg VO. Se usar ≥3 resgates/dia, <b>aumentar a dose fixa em 30–50%</b> (ou somar o total de resgates à dose diária e redistribuir).</div>
+<div class="subhead">Infusão contínua</div>
+<div class="table-wrap"><table>
+<thead><tr><th>Preparo</th><th>Dose</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Preparo">Morfina 10mg/mL — solução 1:10</td><td data-label="Dose">10 amp (100mg) + SF0,9% 90mL = <span class="dose">1mg/mL</span>; iniciar 1–2mL/h EV/SC em BIC, titular</td></tr>
+<tr><td class="drug" data-label="Preparo">Conversão de dose oral para infusão</td><td data-label="Dose">Dose diária VO ÷ 3 = dose diária parenteral → dividir por 24h</td></tr>
+</tbody>
+</table></div>
+</div>
+</details>
+<details>
+<summary>Equianalgesia e rotação de opioides</summary>
+<div class="body">
+<div class="table-wrap"><table>
+<thead><tr><th>Opioide</th><th>Equivalente a 10mg de Morfina VO</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Opioide">Morfina VO</td><td data-label="Equivalente a 10mg de Morfina VO">10mg (referência)</td></tr>
+<tr><td class="drug" data-label="Opioide">Morfina SC/EV</td><td data-label="Equivalente a 10mg de Morfina VO"><span class="dose">3,3mg</span> (relação VO:parenteral ≈ 3:1)</td></tr>
+<tr><td class="drug" data-label="Opioide">Codeína VO</td><td data-label="Equivalente a 10mg de Morfina VO">~100mg (relação 10:1)</td></tr>
+<tr><td class="drug" data-label="Opioide">Tramadol VO</td><td data-label="Equivalente a 10mg de Morfina VO">~50–100mg (relação 5–10:1)</td></tr>
+<tr><td class="drug" data-label="Opioide">Oxicodona VO</td><td data-label="Equivalente a 10mg de Morfina VO">~5–7mg (relação ~1,5:1)</td></tr>
+<tr><td class="drug" data-label="Opioide">Metadona VO</td><td data-label="Equivalente a 10mg de Morfina VO">Relação variável e dose-dependente — <b>não usar regra fixa</b>; rotação exige experiência/especialista</td></tr>
+<tr><td class="drug" data-label="Opioide">Fentanil transdérmico</td><td data-label="Equivalente a 10mg de Morfina VO">Adesivo 25mcg/h ≈ 60–90mg de morfina VO/dia</td></tr>
+</tbody>
+</table></div>
+<div class="callout warn"><b>Ao rotacionar:</b> calcular a dose equianalgésica e <b>reduzir 25–50%</b> (tolerância cruzada incompleta), depois titular pela resposta. Exceção: se a rotação for por dor não controlada, pode-se reduzir menos.</div>
+<p class="lede">Adesivo de fentanil não serve para dor instável/aguda (início lento, 12–24h para efeito pleno e igual tempo para dissipar) — usar só com dor já estabilizada e dose conhecida.</p>
+</div>
+</details>
+<details>
+<summary>Efeitos adversos dos opioides — manejo</summary>
+<div class="body table-wrap"><table>
+<thead><tr><th>Efeito</th><th>Conduta</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Efeito">Constipação</td><td data-label="Conduta"><b>Profilaxia obrigatória desde a 1ª dose</b> (não desenvolve tolerância): Bisacodil 5–10mg/noite, ou Lactulose 15–30mL 12/12h, ou Polietilenoglicol 1 sachê/dia; associar Senne se necessário</td></tr>
+<tr><td class="drug" data-label="Efeito">Náusea/vômito</td><td data-label="Conduta">Geralmente transitória (3–5 dias): Metoclopramida 10mg 8/8h, ou Haloperidol 1–2mg/dia</td></tr>
+<tr><td class="drug" data-label="Efeito">Sonolência excessiva</td><td data-label="Conduta">Comum nos primeiros dias; se persistir, reduzir dose 25% ou rotacionar opioide</td></tr>
+<tr><td class="drug" data-label="Efeito">Prurido</td><td data-label="Conduta">Anti-histamínico; se refratário, considerar rotação</td></tr>
+<tr><td class="drug" data-label="Efeito">Delirium/mioclonia (neurotoxicidade)</td><td data-label="Conduta">Hidratar, reduzir dose, rotacionar opioide; avaliar função renal (acúmulo de metabólitos da morfina)</td></tr>
+<tr><td class="drug" data-label="Efeito">Depressão respiratória</td><td data-label="Conduta">Rara se titulação adequada. Se FR&lt;8 + rebaixamento: Naloxona <b>diluída</b> — 1 amp (0,4mg) em 9mL SF, fazer 1mL (0,04mg) a cada 1–2min até reverter</td></tr>
+</tbody>
+</table>
+<div class="callout warn">Naloxona em dose plena no paciente paliativo precipita crise de dor e abstinência — sempre diluir e titular. Sonolência isolada, sem bradipneia, <b>não</b> é indicação de naloxona.</div>
+</div>
+</details>
+<details>
+<summary>Dispneia</summary>
+<div class="body table-wrap"><table>
+<thead><tr><th>Droga</th><th>Dose</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Droga">Morfina (1ª linha) — virgem de opioide</td><td data-label="Dose"><span class="dose">2,5–5mg VO</span> ou 1–2mg SC/EV, 4/4h; titular conforme resposta</td></tr>
+<tr><td class="drug" data-label="Droga">Morfina — já em uso de opioide</td><td data-label="Dose">Aumentar a dose basal em 25–50%</td></tr>
+<tr><td class="drug" data-label="Droga">Midazolam (se ansiedade associada)</td><td data-label="Dose">2,5–5mg SC/EV, ou 5–15mg/24h em infusão</td></tr>
+<tr><td class="drug" data-label="Droga">O₂ suplementar</td><td data-label="Dose">Só se hipoxemia — em normoxêmico, ventilador/ar corrente no rosto tem efeito semelhante</td></tr>
+</tbody>
+</table>
+<p class="lede">Medidas não farmacológicas: cabeceira elevada, ambiente ventilado, técnicas de respiração, presença tranquilizadora.</p>
+</div>
+</details>
+<details>
+<summary>Náusea e vômito</summary>
+<div class="body table-wrap"><table>
+<thead><tr><th>Causa provável</th><th>Droga de escolha</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Causa provável">Induzida por opioide / gastroparesia</td><td data-label="Droga de escolha">Metoclopramida 10mg <span class="amp">(amp 2mL = 10mg)</span> VO/SC/EV 8/8h</td></tr>
+<tr><td class="drug" data-label="Causa provável">Metabólica (uremia, hipercalcemia, drogas)</td><td data-label="Droga de escolha">Haloperidol 1–2mg <span class="amp">(amp 1mL = 5mg)</span> VO/SC à noite (ou 0,5–1mg 12/12h)</td></tr>
+<tr><td class="drug" data-label="Causa provável">Hipertensão intracraniana</td><td data-label="Droga de escolha">Dexametasona 4–8mg/dia</td></tr>
+<tr><td class="drug" data-label="Causa provável">Obstrução intestinal maligna</td><td data-label="Droga de escolha">Octreotide 100mcg SC 8/8h + Dexametasona + antiemético; evitar procinético se obstrução completa</td></tr>
+<tr><td class="drug" data-label="Causa provável">Refratária / multifatorial</td><td data-label="Droga de escolha">Ondansetrona 4–8mg <span class="amp">(amp 4mL = 8mg)</span> 8/8h; considerar associar classes diferentes</td></tr>
+</tbody>
+</table></div>
+</details>
+<details>
+<summary>Delirium e agitação terminal</summary>
+<div class="body">
+<div class="table-wrap"><table>
+<thead><tr><th>Droga</th><th>Dose</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Droga">Haloperidol (1ª linha)</td><td data-label="Dose"><span class="dose">0,5–2mg</span> VO/SC/EV, repetir a cada 30–60min se necessário; manutenção 1–5mg/24h</td></tr>
+<tr><td class="drug" data-label="Droga">Risperidona (VO, delirium hipoativo/leve)</td><td data-label="Dose">0,5–1mg 12/12h</td></tr>
+<tr><td class="drug" data-label="Droga">Midazolam (agitação refratária)</td><td data-label="Dose">2,5–5mg SC/EV, ou infusão 10–30mg/24h</td></tr>
+<tr><td class="drug" data-label="Droga">Levomepromazina (refratário)</td><td data-label="Dose">6,25–12,5mg SC 12/12h</td></tr>
+</tbody>
+</table></div>
+<p class="lede">Sempre buscar causas reversíveis antes: dor não controlada, retenção urinária, fecaloma, hipoxemia, hipoglicemia, hipercalcemia, infecção, abstinência, efeito de droga.</p>
+</div>
+</details>
+<details>
+<summary>Sororoca (secreção de vias aéreas) e tosse</summary>
+<div class="body table-wrap"><table>
+<thead><tr><th>Sintoma</th><th>Droga</th><th>Dose</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Sintoma">Sororoca (death rattle)</td><td data-label="Droga">Butilbrometo de Escopolamina (Buscopan)</td><td data-label="Dose">20mg SC/EV 6/6h ou 60–120mg/24h em infusão</td></tr>
+<tr><td data-label="Sintoma"></td><td data-label="Droga">Ipratrópio inalatório</td><td data-label="Dose">40 gotas 4/4h</td></tr>
+<tr><td class="drug" data-label="Sintoma">Tosse</td><td data-label="Droga">Codeína</td><td data-label="Dose">10–20mg VO 4/4h</td></tr>
+<tr><td data-label="Sintoma"></td><td data-label="Droga">Morfina (se já em uso)</td><td data-label="Dose">Aumentar dose basal</td></tr>
+</tbody>
+</table>
+<div class="callout"><b>Sororoca:</b> iniciar antimuscarínico <b>precocemente</b> — reduz a produção de nova secreção, mas não elimina a já acumulada. Reduzir hidratação parenteral. Posicionar em decúbito lateral. Explicar à família que o ruído em geral <b>não causa sofrimento ao paciente</b> — o desconforto é sobretudo de quem assiste.</div>
+</div>
+</details>
+<details>
+<summary>Via subcutânea (hipodermóclise)</summary>
+<div class="body">
+<p class="lede">Alternativa quando VO e EV não são viáveis — de fácil manutenção, permite cuidado domiciliar e evita punções repetidas.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Aspecto</th><th>Referência</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Aspecto">Sítios</td><td data-label="Referência">Região deltoide, abdome, face anterior da coxa, região escapular; rodízio a cada 5–7 dias (ou se sinais inflamatórios)</td></tr>
+<tr><td class="drug" data-label="Aspecto">Volume</td><td data-label="Referência">Até ~1000–1500mL/24h por sítio (infusão contínua); em bolus, até 500mL por sítio</td></tr>
+<tr><td class="drug" data-label="Aspecto">Soluções compatíveis</td><td data-label="Referência">SF0,9%, SG5%, soluções isotônicas</td></tr>
+<tr><td class="drug" data-label="Aspecto">Drogas comumente usadas SC</td><td data-label="Referência">Morfina, Midazolam, Haloperidol, Metoclopramida, Butilbrometo de Escopolamina, Dexametasona, Ondansetrona, Furosemida, Tramadol</td></tr>
+<tr><td class="drug" data-label="Aspecto">Não usar SC</td><td data-label="Referência">Diazepam, Clorpromazina, eletrólitos concentrados (KCl), soluções hipertônicas — risco de necrose local</td></tr>
+</tbody>
+</table></div>
+</div>
+</details>
+<details>
+<summary>Sedação paliativa</summary>
+<div class="body">
+<div class="callout warn"><b>Indicação:</b> sintoma refratário e intolerável (dispneia, dor, agitação, sangramento maciço) em paciente em fim de vida, após esgotadas as alternativas. Requer: consenso da equipe, discussão com paciente (se possível) e família, e <b>registro em prontuário</b> da indicação e do processo decisório.</div>
+<div class="table-wrap"><table>
+<thead><tr><th>Droga</th><th>Dose</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Droga">Midazolam (1ª linha)</td><td data-label="Dose">Indução 2,5–5mg SC/EV; manutenção <span class="dose">0,5–1mg/h</span> (10–60mg/24h), titular ao alívio do sintoma</td></tr>
+<tr><td class="drug" data-label="Droga">Levomepromazina</td><td data-label="Dose">12,5–25mg SC, manutenção 50–100mg/24h</td></tr>
+<tr><td class="drug" data-label="Droga">Fenobarbital (refratário)</td><td data-label="Dose">100–200mg SC/EV, manutenção 600–1200mg/24h</td></tr>
+</tbody>
+</table></div>
+<p class="lede">Manter analgesia em paralelo (sedativo não é analgésico). Titular pela <b>ausência de desconforto</b>, não por um nível de consciência alvo. Sedação paliativa proporcional e bem indicada não abrevia a vida e é distinta de eutanásia.</p>
+</div>
+</details>
+<details>
+<summary>Últimos dias de vida — ajustes práticos</summary>
+<div class="body">
+<ul class="compact">
+<li><b>Suspender</b> o que não traz conforto: estatina, anti-hipertensivo, hipoglicemiante, anticoagulante profilático, vitaminas, exames de rotina, controle de sinais vitais de horário</li>
+<li><b>Manter/converter</b> para SC ou VO em solução: analgésico, antiemético, ansiolítico, antissecretor, anticonvulsivante</li>
+<li><b>Prescrever antecipadamente ("se necessário")</b> para os 4 sintomas mais prováveis: dor, dispneia, agitação e sororoca — evita atraso no alívio de madrugada</li>
+<li>Hidratação artificial: reavaliar — em geral não melhora conforto no fim de vida e pode piorar secreções/edema</li>
+<li>Cuidados de conforto: higiene oral frequente, mudança de decúbito conforme tolerância, ambiente calmo, presença da família</li>
+<li>Comunicação: explicar à família o que esperar (mudança do padrão respiratório, sororoca, redução da ingesta) — reduz sofrimento e pedidos de intervenção fútil</li>
+</ul>
+</div>
+</details>
+</section>
+<!-- ======================= CALCULADORAS ======================= -->
+<section class="sec" id="calc" style="--accent:#4F46E5">
+<div class="head"><span class="idx">10</span><h2>Calculadoras</h2><span class="tag">DHE · dengue · TFG · infusões</span></div>
+<details>
+<summary>Sódio — hipo/hipernatremia</summary>
+<div class="body">
+<div class="cgrid">
+<label class="cf">Peso (kg)<input class="cw" id="naPeso" inputmode="decimal" type="text"/></label>
+<label class="cf">Sexo<select id="naSexo"><option value="m">Masculino</option><option value="f">Feminino</option></select></label>
+<label class="cf">Na⁺ atual (mEq/L)<input id="naAtual" inputmode="decimal" type="text"/></label>
+</div>
+<div class="cres" id="naOut">—</div>
+<div class="callout"><b>Correção máx 8 mEq/L/24h</b> (risco de desmielinização osmótica). Hiponatremia <b>sintomática</b> (convulsão/coma): NaCl 3% <span class="dose">100–150mL EV em 10–20min</span>, repetir até 2× conforme resposta. Na hipernatremia, somar perdas insensíveis (~30–40mL/h) ao cálculo.</div>
+</div>
+</details>
+<details>
+<summary>Potássio — conversor de apresentações</summary>
+<div class="body">
+<div class="cgrid">
+<label class="cf">mEq de K⁺ desejados<input id="kMeq" inputmode="decimal" type="text"/></label>
+</div>
+<div class="cres" id="kOut">—</div>
+<p class="cnote">Regras rápidas: cada 10 mEq EV eleva K⁺ ~0,1 mEq/L · máx 10 mEq/h em acesso periférico (20 mEq/h em central monitorizado) · evitar soro glicosado no veículo.</p>
+</div>
+</details>
+<details>
+<summary>Cálcio corrigido pela albumina</summary>
+<div class="body">
+<div class="cgrid">
+<label class="cf">Ca total (mg/dL)<input id="caT" inputmode="decimal" type="text"/></label>
+<label class="cf">Albumina (g/dL)<input id="caAlb" inputmode="decimal" type="text"/></label>
+</div>
+<div class="cres" id="caOut">—</div>
+<p class="cnote">Ca corrigido = Ca medido + 0,8 × (4 − albumina). Sintomático/grave: Gluconato de cálcio 10% 10–20mL EV lento.</p>
+</div>
+</details>
+<details>
+<summary>Bicarbonato — déficit</summary>
+<div class="body">
+<div class="cgrid">
+<label class="cf">Peso (kg)<input class="cw" id="bicPeso" inputmode="decimal" type="text"/></label>
+<label class="cf">HCO₃⁻ atual<input id="bicAtual" inputmode="decimal" type="text"/></label>
+<label class="cf">HCO₃⁻ alvo<input id="bicAlvo" inputmode="decimal" type="text" value="15"/></label>
+</div>
+<div class="cres" id="bicOut">—</div>
+<p class="cnote">Déficit = 0,3 × peso × (alvo − atual). NaHCO₃ 8,4%: 1mL = 1mEq. Repor bicarbonato só nas indicações clássicas (pH&lt;7,1–7,2 refratário, hipercalemia, intox por tricíclico) — tratar a causa primeiro.</p>
+</div>
+</details>
+<details>
+<summary>Osmolaridade sérica</summary>
+<div class="body">
+<div class="cgrid">
+<label class="cf">Na⁺ (mEq/L)<input id="osNa" inputmode="decimal" type="text"/></label>
+<label class="cf">Glicose (mg/dL)<input id="osGli" inputmode="decimal" type="text"/></label>
+<label class="cf">Ureia (mg/dL)<input id="osUr" inputmode="decimal" type="text"/></label>
+</div>
+<div class="cres" id="osOut">—</div>
+<p class="cnote">Total = 2×Na + glicose/18 + ureia/6 · Efetiva (tonicidade) = 2×Na + glicose/18. Normal ~285–295 mOsm/kg. Gap osmolar &gt;10 → pensar álcoois tóxicos.</p>
+</div>
+</details>
+<details>
+<summary>Dengue — hidratação por grupo (MS 2024, 6ª ed.)</summary>
+<div class="body">
+<div class="cgrid">
+<label class="cf">Peso (kg)<input class="cw" id="dgPeso" inputmode="decimal" type="text"/></label>
+</div>
+<div class="cres" id="dgOut">—</div>
+<div class="callout"><b>B</b> = sem sinal de alarme + fator de risco/sangramento espontâneo · <b>C</b> = sinal de alarme · <b>D</b> = choque/gravidade. Grupo C sem melhora após a 1ª hora → conduzir como D; D sem resposta após 3 expansões → albumina/aminas + UTI. Idoso/cardiopata/DRC: individualizar volumes (evitar sobrecarga). Diurese-alvo ~1mL/kg/h.</div>
+</div>
+</details>
+<details>
+<summary>TFG — CKD-EPI 2021 + Cockcroft-Gault</summary>
+<div class="body">
+<div class="cgrid">
+<label class="cf">Creatinina (mg/dL)<input id="tfCr" inputmode="decimal" type="text"/></label>
+<label class="cf">Idade<input id="tfIdade" inputmode="decimal" type="text"/></label>
+<label class="cf">Sexo<select id="tfSexo"><option value="m">Masculino</option><option value="f">Feminino</option></select></label>
+<label class="cf">Peso (kg) — p/ CG<input class="cw" id="tfPeso" inputmode="decimal" type="text"/></label>
+</div>
+<div class="cres" id="tfOut">—</div>
+<p class="cnote">CKD-EPI 2021 (sem raça) estadia a DRC; Cockcroft-Gault segue sendo a referência de bula para ajuste de dose (DOACs etc.). Cr instável (IRA) invalida ambos.</p>
+</div>
+</details>
+<details>
+<summary>Infusão vasoativa — mcg/kg/min ⇄ mL/h</summary>
+<div class="body">
+<div class="cgrid">
+<label class="cf">Peso (kg)<input class="cw" id="ivPeso" inputmode="decimal" type="text"/></label>
+<label class="cf">Concentração (mcg/mL)<input id="ivConc" inputmode="decimal" type="text" value="100"/></label>
+<label class="cf">Dose (mcg/kg/min)<input id="ivDose" inputmode="decimal" type="text"/></label>
+<label class="cf">Taxa (mL/h)<input id="ivTaxa" inputmode="decimal" type="text"/></label>
+</div>
+<div class="cres" id="ivOut">—</div>
+<p class="cnote">Preencha dose OU taxa — o outro campo é calculado. Concentrações das diluições deste guia: Nora padrão <b>100</b> · Nora concentrada <b>128</b> · Dobutamina <b>1000</b> · Nitroglicerina <b>200</b> · Nipride <b>200</b>. Fórmula: mL/h = dose × peso × 60 ÷ concentração.</p>
+</div>
+</details>
+<details>
+<summary>Gotejamento — sem bomba de infusão</summary>
+<div class="body">
+<div class="cgrid">
+<label class="cf">Volume (mL)<input id="gtVol" inputmode="decimal" type="text"/></label>
+<label class="cf">Tempo (h)<input id="gtTempo" inputmode="decimal" type="text"/></label>
+</div>
+<div class="cres" id="gtOut">—</div>
+<p class="cnote">Macrogotas: gtt/min = mL/h ÷ 3 · Microgotas: mgtt/min = mL/h.</p>
+</div>
+</details>
+<details>
+<summary>QT corrigido</summary>
+<div class="body">
+<div class="cgrid">
+<label class="cf">QT medido (ms)<input id="qtQT" inputmode="decimal" type="text"/></label>
+<label class="cf">FC (bpm)<input id="qtFC" inputmode="decimal" type="text"/></label>
+</div>
+<div class="cres" id="qtOut">—</div>
+<p class="cnote">Prolongado: &gt;450ms (H) / &gt;460ms (M). ≥500ms = risco alto de Torsades → corrigir K/Mg/Ca, revisar fármacos (ver QT na seção Arritmias &amp; ECG do Guia Crítico). Bazett superestima em FC alta — Fridericia é mais fiel.</p>
+</div>
+</details>
+<details>
+<summary>PAM · Ânion gap</summary>
+<div class="body">
+<div class="cgrid">
+<label class="cf">PAS<input id="paS" inputmode="decimal" type="text"/></label>
+<label class="cf">PAD<input id="paD" inputmode="decimal" type="text"/></label>
+</div>
+<div class="cres" id="pamOut">—</div>
+<div class="cgrid">
+<label class="cf">Na⁺<input id="agNa" inputmode="decimal" type="text"/></label>
+<label class="cf">Cl⁻<input id="agCl" inputmode="decimal" type="text"/></label>
+<label class="cf">HCO₃⁻<input id="agHco" inputmode="decimal" type="text"/></label>
+<label class="cf">Albumina (opcional)<input id="agAlb" inputmode="decimal" type="text"/></label>
+</div>
+<div class="cres" id="agOut">—</div>
+<p class="cnote">PAM = (PAS + 2×PAD) ÷ 3 — alvo ≥65 no choque. AG = Na − (Cl + HCO₃), normal 8–12; corrigido soma 2,5 por g/dL de albumina abaixo de 4 (causas: card Gasometria, seção Renal/Metab).</p>
+</div>
+</details>
+</section>
+<section class="sec apr" id="apresentacoes" style="--accent:#0F766E">
+<div class="head"><span class="idx">11</span><h2>Apresentações</h2><span class="tag">o que vem em 1 ampola</span></div>
+<div class="callout warn"><b>Apresentações variam entre fabricante e entre hospitais.</b> Esta tabela traz o que é mais encontrado na rede brasileira e serve para converter dose em volume rapidamente — <b>confira sempre o rótulo da ampola antes de aspirar</b>. Onde há mais de uma apresentação corrente, as duas estão listadas.</div>
+
+<details>
+<summary>Parada e emergência cardiovascular</summary>
+<div class="body">
+<div class="table-wrap"><table>
+<thead><tr><th>Droga</th><th>Concentração</th><th>1 ampola =</th></tr></thead>
+<tbody>
+<tr><td data-label="Droga">Adrenalina</td><td data-label="Concentração">1mg/mL</td><td class="dose" data-label="1 amp">1mL = <b>1mg</b></td></tr>
+<tr><td data-label="Droga">Noradrenalina</td><td data-label="Concentração">2mg/mL</td><td class="dose" data-label="1 amp">4mL = <b>8mg</b></td></tr>
+<tr><td data-label="Droga">Dobutamina</td><td data-label="Concentração">12,5mg/mL</td><td class="dose" data-label="1 amp">20mL = <b>250mg</b></td></tr>
+<tr><td data-label="Droga">Dopamina</td><td data-label="Concentração">5mg/mL</td><td class="dose" data-label="1 amp">10mL = <b>50mg</b></td></tr>
+<tr><td data-label="Droga">Amiodarona</td><td data-label="Concentração">50mg/mL</td><td class="dose" data-label="1 amp">3mL = <b>150mg</b></td></tr>
+<tr><td data-label="Droga">Lidocaína 2% s/ vaso</td><td data-label="Concentração">20mg/mL</td><td class="dose" data-label="1 amp">20mL = <b>400mg</b></td></tr>
+<tr><td data-label="Droga">Atropina</td><td data-label="Concentração">0,25mg/mL <b>ou</b> 0,5mg/mL</td><td class="dose" data-label="1 amp">1mL = <b>0,25mg</b> · 1mL = <b>0,5mg</b></td></tr>
+<tr><td data-label="Droga">Deslanosídeo</td><td data-label="Concentração">0,2mg/mL</td><td class="dose" data-label="1 amp">2mL = <b>0,4mg</b></td></tr>
+<tr><td data-label="Droga">Metoprolol</td><td data-label="Concentração">1mg/mL</td><td class="dose" data-label="1 amp">5mL = <b>5mg</b></td></tr>
+<tr><td data-label="Droga">Adenosina</td><td data-label="Concentração">3mg/mL</td><td class="dose" data-label="1 amp">2mL = <b>6mg</b></td></tr>
+<tr><td data-label="Droga">Nitroglicerina</td><td data-label="Concentração">5mg/mL</td><td class="dose" data-label="1 amp">10mL = <b>50mg</b></td></tr>
+<tr><td data-label="Droga">Nitroprussiato</td><td data-label="Concentração">25mg/mL</td><td class="dose" data-label="1 amp">2mL = <b>50mg</b></td></tr>
+<tr><td data-label="Droga">Hidralazina</td><td data-label="Concentração">20mg/mL</td><td class="dose" data-label="1 amp">1mL = <b>20mg</b></td></tr>
+<tr><td data-label="Droga">Furosemida</td><td data-label="Concentração">10mg/mL</td><td class="dose" data-label="1 amp">2mL = <b>20mg</b></td></tr>
+</tbody>
+</table></div>
+</div>
+</details>
+<details>
+<summary>Sedoanalgesia, indução e bloqueio</summary>
+<div class="body">
+<div class="table-wrap"><table>
+<thead><tr><th>Droga</th><th>Concentração</th><th>1 ampola / frasco =</th></tr></thead>
+<tbody>
+<tr><td data-label="Droga">Etomidato</td><td data-label="Concentração">2mg/mL</td><td class="dose" data-label="1 amp">10mL = <b>20mg</b></td></tr>
+<tr><td data-label="Droga">Cetamina</td><td data-label="Concentração">50mg/mL</td><td class="dose" data-label="1 amp">10mL = <b>500mg</b> (há amp de 2mL = 100mg)</td></tr>
+<tr><td data-label="Droga">Propofol 1%</td><td data-label="Concentração">10mg/mL</td><td class="dose" data-label="1 amp">20mL = <b>200mg</b></td></tr>
+<tr><td data-label="Droga">Midazolam</td><td data-label="Concentração">5mg/mL <b>ou</b> 1mg/mL</td><td class="dose" data-label="1 amp">3mL = <b>15mg</b> · 5mL = <b>5mg</b></td></tr>
+<tr><td data-label="Droga">Fentanil</td><td data-label="Concentração">50mcg/mL</td><td class="dose" data-label="1 amp">10mL = <b>500mcg</b> (há amp de 2mL = 100mcg)</td></tr>
+<tr><td data-label="Droga">Morfina</td><td data-label="Concentração">10mg/mL</td><td class="dose" data-label="1 amp">1mL = <b>10mg</b></td></tr>
+<tr><td data-label="Droga">Succinilcolina</td><td data-label="Concentração">Pó liofilizado</td><td class="dose" data-label="1 amp">1 FA = <b>100mg</b> → +10mL AD = 10mg/mL</td></tr>
+<tr><td data-label="Droga">Rocurônio</td><td data-label="Concentração">10mg/mL</td><td class="dose" data-label="1 amp">5mL = <b>50mg</b></td></tr>
+<tr><td data-label="Droga">Cisatracúrio</td><td data-label="Concentração">2mg/mL</td><td class="dose" data-label="1 amp">5mL = <b>10mg</b></td></tr>
+<tr><td data-label="Droga">Dexmedetomidina</td><td data-label="Concentração">100mcg/mL</td><td class="dose" data-label="1 amp">2mL = <b>200mcg</b></td></tr>
+</tbody>
+</table></div>
+</div>
+</details>
+<details>
+<summary>Neuro, psiquiatria e antídotos</summary>
+<div class="body">
+<div class="table-wrap"><table>
+<thead><tr><th>Droga</th><th>Concentração</th><th>1 ampola / frasco =</th></tr></thead>
+<tbody>
+<tr><td data-label="Droga">Haloperidol</td><td data-label="Concentração">5mg/mL</td><td class="dose" data-label="1 amp">1mL = <b>5mg</b></td></tr>
+<tr><td data-label="Droga">Prometazina</td><td data-label="Concentração">25mg/mL</td><td class="dose" data-label="1 amp">2mL = <b>50mg</b></td></tr>
+<tr><td data-label="Droga">Diazepam</td><td data-label="Concentração">5mg/mL</td><td class="dose" data-label="1 amp">2mL = <b>10mg</b></td></tr>
+<tr><td data-label="Droga">Fenitoína</td><td data-label="Concentração">50mg/mL</td><td class="dose" data-label="1 amp">5mL = <b>250mg</b></td></tr>
+<tr><td data-label="Droga">Fenobarbital</td><td data-label="Concentração">100mg/mL</td><td class="dose" data-label="1 amp">2mL = <b>200mg</b></td></tr>
+<tr><td data-label="Droga">Biperideno</td><td data-label="Concentração">5mg/mL</td><td class="dose" data-label="1 amp">1mL = <b>5mg</b></td></tr>
+<tr><td data-label="Droga">Tiamina (B1)</td><td data-label="Concentração">100mg/mL</td><td class="dose" data-label="1 amp">1mL = <b>100mg</b></td></tr>
+<tr><td data-label="Droga">Naloxona</td><td data-label="Concentração">0,4mg/mL</td><td class="dose" data-label="1 amp">1mL = <b>0,4mg</b></td></tr>
+<tr><td data-label="Droga">Flumazenil</td><td data-label="Concentração">0,1mg/mL</td><td class="dose" data-label="1 amp">5mL = <b>0,5mg</b></td></tr>
+</tbody>
+</table></div>
+</div>
+</details>
+<details>
+<summary>Eletrólitos, soluções e diversos</summary>
+<div class="body">
+<div class="table-wrap"><table>
+<thead><tr><th>Solução</th><th>Concentração</th><th>1 ampola / frasco =</th></tr></thead>
+<tbody>
+<tr><td data-label="Solução">Bicarbonato de sódio 8,4%</td><td data-label="Concentração">1mEq/mL</td><td class="dose" data-label="1 amp">10mL = <b>10mEq</b> · frasco 250mL = <b>250mEq</b></td></tr>
+<tr><td data-label="Solução">Gluconato de cálcio 10%</td><td data-label="Concentração">100mg/mL</td><td class="dose" data-label="1 amp">10mL = <b>1g</b> (≈4,5mEq de Ca²⁺)</td></tr>
+<tr><td data-label="Solução">Sulfato de magnésio 50%</td><td data-label="Concentração">500mg/mL</td><td class="dose" data-label="1 amp">10mL = <b>5g</b></td></tr>
+<tr><td data-label="Solução">Glicose 50%</td><td data-label="Concentração">500mg/mL</td><td class="dose" data-label="1 amp">10mL = <b>5g</b></td></tr>
+<tr><td data-label="Solução">Cloreto de potássio 19,1%</td><td data-label="Concentração">2,56mEq/mL</td><td class="dose" data-label="1 amp">10mL = <b>25,6mEq</b></td></tr>
+<tr><td data-label="Solução">Cloreto de sódio 20%</td><td data-label="Concentração">3,4mEq/mL</td><td class="dose" data-label="1 amp">10mL = <b>34mEq</b></td></tr>
+<tr><td data-label="Solução">Dipirona</td><td data-label="Concentração">500mg/mL</td><td class="dose" data-label="1 amp">2mL = <b>1g</b></td></tr>
+<tr><td data-label="Solução">Ondansetrona</td><td data-label="Concentração">2mg/mL</td><td class="dose" data-label="1 amp">4mL = <b>8mg</b></td></tr>
+<tr><td data-label="Solução">Metoclopramida</td><td data-label="Concentração">5mg/mL</td><td class="dose" data-label="1 amp">2mL = <b>10mg</b></td></tr>
+<tr><td data-label="Solução">Hidrocortisona</td><td data-label="Concentração">Pó liofilizado</td><td class="dose" data-label="1 amp">1 FA = <b>100mg</b> ou <b>500mg</b></td></tr>
+</tbody>
+</table></div>
+</div>
+</details>
+</section>
+<section class="sec bib" id="referencias" style="--accent:#5B6470">
+<div class="head"><span class="idx">12</span><h2>Referências</h2><span class="tag">fontes · rastreabilidade</span></div>
+<details>
+<summary>Como usar esta lista</summary>
+<div class="body">
+<div class="callout">Os três guias — <b>Paciente Crítico</b>, <b>Plantão</b> e <b>Psicofarmacologia</b> — compartilham esta mesma lista, de modo que qualquer conduta consultada em qualquer um deles possa ser rastreada até a fonte. Onde diretriz brasileira e internacional divergem, os guias seguem a <b>conduta praticável na rede local</b> e sinalizam a diferença no próprio card. Diretrizes mudam: confirme a versão vigente antes de usar como respaldo formal.</div>
+</div>
+</details>
+<details>
+<summary>Ressuscitação, parada e via aérea</summary>
+<div class="body">
+<ul class="biblist">
+<li>American Heart Association. <b>Guidelines for CPR and Emergency Cardiovascular Care</b> — algoritmos de PCR, ritmos chocáveis e não chocáveis, cuidados pós-RCE, bradi e taquiarritmias, energias de cardioversão e desfibrilação</li>
+<li>American College of Surgeons. <b>ATLS — Advanced Trauma Life Support</b> — avaliação XABCDE, classes de choque hemorrágico</li>
+<li><b>CRASH-2</b> e <b>CRASH-3</b> — ácido tranexâmico no trauma</li>
+<li>Sociedade Brasileira de Cardiologia. <b>Diretriz de Ressuscitação Cardiopulmonar e Cuidados de Emergência</b></li>
+<li>Literatura de via aérea difícil e sequência rápida de intubação (7 P's, LEMON, SOAP-ME); <b>Difficult Airway Society</b> — algoritmos de via aérea não intubável</li>
+</ul>
+</div>
+</details>
+<details>
+<summary>Choque e sepse</summary>
+<div class="body">
+<ul class="biblist">
+<li><b>Surviving Sepsis Campaign — diretriz internacional de sepse e choque séptico</b> (edição de 2026): rastreio com NEWS/NEWS2/MEWS/SIRS em vez de qSOFA, volume inicial, cristaloide balanceado, vasopressor periférico, alvo de PAM por faixa etária, corticoide, antimicrobiano na 1ª hora</li>
+<li><b>ANDROMEDA-SHOCK</b> e <b>ANDROMEDA-SHOCK-2</b> — tempo de enchimento capilar como alvo de ressuscitação</li>
+<li>American College of Cardiology. <b>Consenso de choque cardiogênico</b> (2025) e <b>classificação SCAI SHOCK</b> (estágios A–E)</li>
+<li><b>ECLS-SHOCK</b>, <b>IABP-SHOCK II</b> e <b>DanGer Shock</b> — suporte circulatório mecânico no choque pós-IAM</li>
+<li>Protocolo <b>RUSH</b> para POCUS no choque indiferenciado; literatura de fluidorresponsividade (elevação passiva de pernas, variação de pressão de pulso)</li>
+</ul>
+</div>
+</details>
+<details>
+<summary>Síndrome coronariana aguda e arritmias</summary>
+<div class="body">
+<ul class="biblist">
+<li><b>ACC/AHA — Guideline for the Management of Acute Coronary Syndromes</b> (2025): critérios de IAM com supra, escolha e tempos de reperfusão, terapia antitrombótica, dispositivos no choque</li>
+<li><b>Quarta Definição Universal de Infarto do Miocárdio</b></li>
+<li>Sociedade Brasileira de Cardiologia. <b>Diretrizes de IAM com e sem supra de ST</b> e <b>Diretriz de Fibrilação Atrial</b></li>
+<li><b>Critérios de Sgarbossa</b> e <b>Sgarbossa modificado por Smith</b> — IAM no BRE e no ritmo de marca-passo</li>
+<li>Padrões de oclusão sem supra clássico: <b>de Winter</b>, <b>Wellens</b>, T hiperaguda, supra em aVR; <b>critérios de Brugada</b> para TV × TSV com aberrância</li>
+<li>Classificação de <b>Killip-Kimball</b>; escores <b>GRACE</b> e <b>CHA₂DS₂-VA</b></li>
+</ul>
+</div>
+</details>
+<details>
+<summary>Neurologia vascular</summary>
+<div class="body">
+<ul class="biblist">
+<li>American Heart Association / American Stroke Association. <b>Guidelines for the Early Management of Patients With Acute Ischemic Stroke</b> — janelas, critérios e contraindicações de trombólise, alvos pressóricos, trombectomia</li>
+<li><b>Guideline for the Management of Spontaneous Intracerebral Hemorrhage</b> — alvo pressórico, reversão de anticoagulação, <b>ICH Score</b></li>
+<li><b>NIHSS</b> — National Institutes of Health Stroke Scale; escalas <b>Hunt-Hess</b> e <b>Fisher</b> na hemorragia subaracnóidea</li>
+<li>Ministério da Saúde. <b>Protocolo Clínico e Diretrizes Terapêuticas — Acidente Vascular Cerebral</b> e Linha de Cuidado do AVC</li>
+</ul>
+</div>
+</details>
+<details>
+<summary>Ventilação mecânica e sedoanalgesia</summary>
+<div class="body">
+<ul class="biblist">
+<li><b>ARDSnet</b> e diretrizes de ventilação protetora — volume corrente por peso predito, pressão de platô, driving pressure, tabela de PEEP/FiO₂</li>
+<li>Diretrizes brasileiras de ventilação mecânica (AMIB/SBPT)</li>
+<li>Society of Critical Care Medicine. <b>PADIS Guidelines</b> — dor, agitação, delirium, imobilidade e sono; princípio de analgesia primeiro; escalas <b>RASS</b> e <b>CAM-ICU</b></li>
+</ul>
+</div>
+</details>
+<details>
+<summary>Toxicologia</summary>
+<div class="body">
+<ul class="biblist">
+<li><b>EXTRIP Workgroup</b> — recomendações de terapia extracorpórea nas intoxicações, incluindo lítio</li>
+<li>Regimes de <b>N-acetilcisteína</b> no paracetamol: esquema clássico de 21h e esquemas encurtados de 12h; <b>nomograma de Rumack-Matthew</b></li>
+<li>Manejo de intoxicação por organofosforado: atropinização titulada pelo secamento da secreção brônquica e uso de pralidoxima</li>
+<li>Antídotos e toxíndromes: literatura de toxicologia clínica de emergência</li>
+<li><b>CIATox</b> — Centros de Informação e Assistência Toxicológica, <b>0800 722 6001</b>, 24h</li>
+</ul>
+</div>
+</details>
+<details>
+<summary>Psicofarmacologia e psiquiatria</summary>
+<div class="body">
+<ul class="biblist">
+<li>TAYLOR, D.; BARNES, T.; YOUNG, A. <b>The Maudsley Prescribing Guidelines in Psychiatry</b> — doses, trocas, equivalências e desmame</li>
+<li>STAHL, S. M. <b>Psicofarmacologia: Bases Neurocientíficas e Aplicações Práticas</b> e <b>Prescriber's Guide</b></li>
+<li>CORDIOLI, A. V. <b>Psicofármacos: Consulta Rápida</b></li>
+<li>American Psychiatric Association. <b>DSM-5-TR</b>; Organização Mundial da Saúde. <b>CID-11</b></li>
+<li>DALGALARRONDO, P. <b>Psicopatologia e Semiologia dos Transtornos Mentais</b></li>
+<li>Associação Brasileira de Psiquiatria. <b>Emergências Psiquiátricas</b> e diretrizes de manejo da agitação psicomotora</li>
+<li><b>CIWA-Ar</b> (Sullivan et al., 1989) e <b>COWS</b> — escalas de abstinência alcoólica e de opioides</li>
+<li><b>The Ashton Manual</b> — <i>Benzodiazepines: How They Work and How to Withdraw</i>: tabela de equivalências e esquemas de desmame</li>
+<li>NHS Specialist Pharmacy Service — <b>equivalências de benzodiazepínicos orais</b> e conversão de drogas Z (as fontes divergem; ver a ressalva no card)</li>
+<li>Diretrizes de TDAH no adulto e no adolescente (NICE, CADDRA, ABDA) — escolha de formulação, titulação e conversão entre apresentações de metilfenidato</li>
+<li>Literatura sobre <b>TDAH e transtorno por uso de substâncias</b> — preferência por formulações de liberação prolongada e por pró-fármaco</li>
+<li>ANVISA — <b>Portaria SVS/MS nº 344/1998</b> e regras de notificação de receita para psicotrópicos</li>
+<li>Consenso internacional de monitorização da <b>clozapina</b> após a retirada do programa restritivo de dispensação (2025)</li>
+<li>Estudos de coorte sobre <b>lítio na gestação</b> e risco de malformação cardíaca; literatura de segurança de psicofármacos na gestação e lactação</li>
+<li>Ministério da Saúde. <b>Guia Estratégico para o Cuidado de Pessoas com Necessidades Relacionadas ao Consumo de Álcool e Outras Drogas</b></li>
+</ul>
+</div>
+</details>
+<details>
+<summary>Rede, legislação e organização do cuidado</summary>
+<div class="body">
+<ul class="biblist">
+<li>BRASIL. <b>Lei nº 10.216/2001</b> — proteção e direitos das pessoas com transtornos mentais</li>
+<li>BRASIL. Ministério da Saúde. <b>Portaria nº 3.088/2011</b> — Rede de Atenção Psicossocial (RAPS)</li>
+<li>BRASIL. <b>Lei nº 13.840/2019</b> — internação involuntária</li>
+<li>Prefeitura de Belo Horizonte (SMSA-BH). <b>Protocolos da Coordenação de Saúde Mental</b> — fluxos locais (SUP, retaguarda, CERSAM, HMDCC)</li>
+<li>Conselho Federal de Medicina. <b>Código de Ética Médica</b> e resoluções sobre sigilo e prontuário</li>
+<li>Ministério da Saúde. <b>Política Nacional de Humanização</b> — base do Projeto Terapêutico Singular</li>
+</ul>
+</div>
+</details>
+<details>
+<summary>Clínica geral, infectologia e demais condutas</summary>
+<div class="body">
+<ul class="biblist">
+<li>Diretrizes brasileiras e internacionais por sistema: sepse, pneumonia adquirida na comunidade e hospitalar, infecção do trato urinário, celulite e infecções de pele, meningite</li>
+<li><b>Surviving Sepsis</b> e protocolos institucionais de antibioticoterapia empírica — ajustar sempre ao perfil de resistência local</li>
+<li>Diretrizes de tromboembolismo venoso e de reversão de anticoagulação; escores <b>Wells</b> e <b>PERC</b></li>
+<li>Diretrizes de cetoacidose diabética, estado hiperosmolar, distúrbios hidroeletrolíticos e ácido-base</li>
+<li>Diretrizes de <b>distúrbios hidroeletrolíticos e ácido-base</b> — hiponatremia, hiper e hipocalemia, hipocalcemia, hipomagnesemia e gasometria</li>
+<li>Fórmulas de uso corrente: <b>Cockcroft-Gault</b> e <b>CKD-EPI</b> (função renal), peso predito, correção de sódio e de cálcio, déficit hídrico</li>
+<li>Bulas e rótulos dos fabricantes registrados na <b>ANVISA</b> — apresentações e concentrações das ampolas; a apresentação varia entre fabricante e entre hospitais, conferir sempre o rótulo</li>
+<li>Federação Brasileira das Associações de Ginecologia e Obstetrícia e Ministério da Saúde — <b>pré-eclâmpsia e eclâmpsia</b></li>
+<li>Ministério da Saúde. <b>Manejo Clínico da Dengue</b></li>
+<li>Diretrizes de cuidados paliativos (ANCP) — controle de sintomas e sedação paliativa</li>
+</ul>
+
+<div class="callout warn"><b>Limite de uso.</b> Estes guias são material de consulta rápida de uso pessoal, construídos a partir das fontes acima e submetidos a conferência pontual contra a literatura vigente. Não substituem a diretriz original, o protocolo da instituição onde você trabalha nem o julgamento clínico diante do paciente. Em divergência, prevalecem o protocolo institucional e a diretriz oficial.</div>
+</div>
+</details>
+</section>
+</main>
+<div class="palette" hidden="" id="palette">
+<div class="palette-panel">
+<div class="palette-head">
+<svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-width="2.2" viewBox="0 0 24 24" width="18"><circle cx="11" cy="11" r="7"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line></svg>
+<input autocomplete="off" id="palInput" placeholder="Buscar… (ex: adrenalina, CIWA, hipercalemia)" type="text"/>
+<button class="pal-close" id="palClose" title="Fechar (Esc)" type="button">✕</button>
+</div>
+<div class="palette-results" id="palResults"></div>
+<div class="pal-hint">↑ ↓ navegar · Enter abre · Esc fecha — o resultado abre o card e destaca o termo</div>
+</div>
+</div>
+<div class="fabs">
+<button class="fab" id="fabSearch" title="Buscar (/)" type="button"><svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-width="2.2" viewBox="0 0 24 24" width="18"><circle cx="11" cy="11" r="7"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line></svg></button>
+<button class="fab" id="fabTop" title="Voltar ao topo" type="button">↑</button>
+</div>
+<footer>
+  Guia de bolso de uso pessoal, condensado a partir de material de estudo próprio — consulte sempre protocolos institucionais vigentes e julgamento clínico individualizado. Doses de referência para adulto padrão; ajustar por peso, função renal/hepática e contexto clínico.<br/><span class="rev">Última revisão: 01/09/2026 · v2.12 — ícone próprio embutido; citações remanescentes removidas do corpo; apresentação da ampola completada. v2.11 — apresentação da ampola ao lado da dose nas demais seções, não só na seção de Apresentações. v2.10 — nova seção de Apresentações (o que vem em 1 ampola); fatores de infusão contínua corrigidos para exibir a faixa de dose declarada. v2.9 — nova seção de Referências comum aos três guias; cores das abas restauradas; tiamina e alvo da CIWA-Ar alinhados entre os guias; correções de layout e de alvos de toque. v2.8 — barra de seções de volta no topo, agora com uma 2ª linha que lista os cards da seção em leitura e acompanha a rolagem; painel de índice removido; busca segue na lupa flutuante. v2.7 — barra de abas do topo e caixa de busca substituídas por um índice em painel inferior, com seções e cards navegáveis direto; busca segue na lupa flutuante. v2.6 — link para o novo Guia de Psicofarmacologia e Manejo Psiquiátrico; v2.5 — referências fixas de "70kg" substituídas por valores que recalculam pelo peso informado (succinilcolina em mL, fenitoína em ampolas, gentamicina em mg); v2.4 — barra de seções acompanha automaticamente a seção em leitura; v2.3 — links cruzados para as seções de Choque (02), SCA (08) e AVE (09) do Guia de Paciente Crítico, renumeradas após a inclusão da seção de Choque alinhada à Surviving Sepsis Campaign 2026.</span>
+</footer>
+<script>
+(function(){
+  'use strict';
+  var recalcAll = null;
+  var store = {
+    get:function(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } },
+    set:function(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+  };
+
+  /* ---------- TEMA ---------- */
+  var metaTheme = document.getElementById('metaTheme');
+  var themeBtn = document.getElementById('themeBtn');
+  function applyTheme(t){
+    document.documentElement.setAttribute('data-theme', t);
+    if(metaTheme) metaTheme.setAttribute('content', t==='dark' ? '#10161C' : '#F3F5F8');
+    if(themeBtn){ themeBtn.textContent = t==='dark' ? '☀' : '☾'; themeBtn.title = t==='dark' ? 'Tema claro' : 'Tema escuro'; }
+  }
+  var theme = store.get('gb-theme');
+  if(theme !== 'dark' && theme !== 'light'){
+    theme = (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+  }
+  applyTheme(theme);
+  if(themeBtn) themeBtn.addEventListener('click', function(){
+    theme = (theme==='dark') ? 'light' : 'dark';
+    store.set('gb-theme', theme); applyTheme(theme);
+  });
+
+  /* ---------- PESO ---------- */
+  var pesoInput = document.getElementById('pesoInput');
+  function fmt(v,d){
+    return v.toLocaleString('pt-BR',{minimumFractionDigits:0, maximumFractionDigits:d});
+  }
+  function applyPeso(w){
+    var i, els;
+    els = document.querySelectorAll('.wkg');
+    for(i=0;i<els.length;i++) els[i].textContent = fmt(w,0);
+    els = document.querySelectorAll('.wv');
+    for(i=0;i<els.length;i++){
+      var e = els[i];
+      var k1 = parseFloat(e.getAttribute('data-k1'));
+      if(isNaN(k1)) continue;
+      var k2a = e.getAttribute('data-k2');
+      var k2 = k2a ? parseFloat(k2a) : null;
+      var d = e.getAttribute('data-d') ? parseInt(e.getAttribute('data-d'),10) : 1;
+      var u = e.getAttribute('data-u') || '';
+      var maxA = e.getAttribute('data-max');
+      var mx = maxA ? parseFloat(maxA) : null;
+      var cap = function(v){ return (mx!==null && v>mx) ? mx : v; };
+      var txt = fmt(cap(k1*w), d);
+      if(k2!==null) txt += '–' + fmt(cap(k2*w), d);
+      e.textContent = txt + u;
+    }
+    els = document.querySelectorAll('.cw');
+    for(i=0;i<els.length;i++){ if(els[i].dataset.touched!=='1'){ els[i].value = w; } }
+    if(recalcAll) recalcAll();
+  }
+  var peso = parseFloat(store.get('gb-peso'));
+  if(!(peso>=30 && peso<=250)) peso = 70;
+  if(pesoInput){
+    pesoInput.value = peso;
+    pesoInput.addEventListener('input', function(){
+      var w = parseFloat(pesoInput.value);
+      if(w>=30 && w<=250){ peso=w; store.set('gb-peso', String(w)); applyPeso(w); }
+    });
+  }
+  applyPeso(peso);
+
+  /* ---------- TABS ---------- */
+  var tabs = document.querySelectorAll('.tab');
+  var sections = document.querySelectorAll('section.sec');
+
+  /* ---------- BARRA DE ABAS: centralizar a aba ativa ---------- */
+  var tabsInner = document.querySelector('.tabs-inner');
+  var reduceMotion = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var userScrollingTabs = 0;
+  var progUntil = 0;
+  if(tabsInner){
+    /* se o usuário está arrastando a barra, não brigar com ele */
+    /* só conta como gesto do usuário se a barra realmente rolou por conta
+       dele — um toque na barra sticky durante a rolagem da página não deve
+       bloquear o recentramento */
+    tabsInner.addEventListener('scroll', function(){
+      if(Date.now() > progUntil){ userScrollingTabs = Date.now(); wantedLeft = null; }
+    }, {passive:true});
+  }
+  var wantedLeft = null;
+  function centerTab(el, instant){
+    if(!tabsInner || !el) return;
+    if(!instant && Date.now() - userScrollingTabs < 1200) return;
+    var max = tabsInner.scrollWidth - tabsInner.clientWidth;
+    if(max <= 0) return;                       /* cabe tudo na tela: nada a rolar */
+    /* offsetLeft é medido dentro do conteúdo da barra e NÃO muda durante a
+       animação — usar rects aqui faria o alvo se mover a cada recálculo */
+    var target = el.offsetLeft + el.offsetWidth / 2 - tabsInner.clientWidth / 2;
+    if(target < 0) target = 0;
+    if(target > max) target = max;
+    /* sem atalho por proximidade: se uma animação anterior estiver em curso,
+       sair cedo a deixaria terminar no destino antigo */
+    if(wantedLeft !== null && Math.abs(target - wantedLeft) < 1) return;
+    wantedLeft = target;
+    progUntil = Date.now() + 900;
+    if(instant || reduceMotion || !tabsInner.scrollTo){ tabsInner.scrollLeft = target; }
+    else { tabsInner.scrollTo({left: target, behavior: 'smooth'}); }
+  }
+
+  function currentSection(){
+    var line = window.innerHeight * 0.28;
+    var doc = document.documentElement;
+    if(window.innerHeight + window.pageYOffset >= (doc.scrollHeight - 4)){
+      return sections[sections.length - 1];
+    }
+    var cur = sections[0];
+    for(var i = 0; i < sections.length; i++){
+      if(sections[i].getBoundingClientRect().top <= line) cur = sections[i];
+      else break;
+    }
+    return cur;
+  }
+  function updateActive(){
+    ticking = false;
+    var sec = currentSection();
+    if(!sec) return;
+    var el = document.querySelector('.tab[data-cat="'+sec.id+'"]');
+    if(!el || el.classList.contains('active')) return;
+    for(var i = 0; i < tabs.length; i++) tabs[i].classList.remove('active');
+    el.classList.add('active');
+    centerTab(el);
+  }
+  var ticking = false;
+  function onScroll(){
+    if(ticking) return;
+    ticking = true;
+    (window.requestAnimationFrame || setTimeout)(updateActive);
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll, {passive:true});
+  document.addEventListener('toggle', onScroll, true);
+  updateActive();
+  for(var ti=0; ti<tabs.length; ti++){
+    tabs[ti].addEventListener('click', function(){ userScrollingTabs = 0; centerTab(this); });
+  }
+  setTimeout(function(){
+    var act = document.querySelector('.tab.active');
+    if(act) centerTab(act, true);
+  }, 120);
+
+  /* ---------- EXPANDIR/FECHAR (se houver) ---------- */
+  var exAll = document.getElementById('expandAll'), coAll = document.getElementById('collapseAll');
+  if(exAll) exAll.addEventListener('click', function(){
+    var ds = document.querySelectorAll('main details'); for(var i=0;i<ds.length;i++) ds[i].open = true;
+  });
+  if(coAll) coAll.addEventListener('click', function(){
+    var ds = document.querySelectorAll('main details'); for(var i=0;i<ds.length;i++) ds[i].open = false;
+  });
+
+  /* ---------- BUSCA (paleta) ---------- */
+  var pal = document.getElementById('palette');
+  var palInput = document.getElementById('palInput');
+  var palResults = document.getElementById('palResults');
+  var palClose = document.getElementById('palClose');
+  var searchOpen = document.getElementById('searchOpen');
+  var fabSearch = document.getElementById('fabSearch');
+  var fabTop = document.getElementById('fabTop');
+  var OTHER_FILE = 'guia_bolso_paciente_critico.html';
+  var OTHER_LABEL = 'Guia de Paciente Crítico';
+
+  function fold(s){
+    var out='', a=Array.from(s), i, n;
+    for(i=0;i<a.length;i++){ n=a[i].normalize('NFD'); out += (n.charAt(0)||a[i]).toLowerCase(); }
+    return out;
+  }
+
+  /* índice de cards/tópicos */
+  var index = [];
+  (function(){
+    var secs = document.querySelectorAll('section.sec');
+    secs.forEach(function(sec){
+      var h2 = sec.querySelector('h2');
+      var secName = h2 ? h2.textContent.trim() : '';
+      var accent = (sec.style.getPropertyValue('--accent') || '#666').trim();
+      sec.querySelectorAll('details').forEach(function(det){
+        var sum = det.querySelector('summary');
+        var title = sum ? sum.textContent.trim() : '';
+        var content = det.textContent.replace(/\s+/g,' ').trim();
+        index.push({
+          el: det, title: title, section: secName, accent: accent,
+          foldTitle: fold(title), foldContent: fold(content),
+          contentArr: Array.from(content),
+          hlRoots: function(){ return [det]; },
+          flashEl: function(){ return det; }
+        });
+      });
+    });
+  })();
+
+  var marks = [];
+  function clearMarks(){
+    for(var i=0;i<marks.length;i++){
+      var m = marks[i], p = m.parentNode;
+      if(p){ p.replaceChild(document.createTextNode(m.textContent), m); p.normalize(); }
+    }
+    marks = [];
+  }
+  function markTermsIn(rootEls, terms){
+    var total = 0;
+    rootEls.forEach(function(root){
+      var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+        acceptNode:function(node){
+          if(!node.data || !node.data.trim()) return NodeFilter.FILTER_REJECT;
+          var p = node.parentElement;
+          if(!p || p.tagName==='SCRIPT' || p.tagName==='STYLE' || p.tagName==='MARK') return NodeFilter.FILTER_REJECT;
+          return NodeFilter.FILTER_ACCEPT;
+        }
+      });
+      var nodes=[], n;
+      while((n=walker.nextNode())) nodes.push(n);
+      nodes.forEach(function(node){
+        if(total>250) return;
+        var arr = Array.from(node.data), folded = fold(node.data);
+        var ranges = [];
+        terms.forEach(function(t){
+          var idx = 0, f;
+          while((f = folded.indexOf(t, idx)) !== -1){ ranges.push([f, f+t.length]); idx = f+t.length; }
+        });
+        if(!ranges.length) return;
+        ranges.sort(function(a,b){ return a[0]-b[0]; });
+        var merged=[]; ranges.forEach(function(r){
+          if(merged.length && r[0] <= merged[merged.length-1][1]) merged[merged.length-1][1] = Math.max(merged[merged.length-1][1], r[1]);
+          else merged.push(r.slice());
+        });
+        var frag = document.createDocumentFragment(), last = 0;
+        merged.forEach(function(r){
+          if(r[0]>last) frag.appendChild(document.createTextNode(arr.slice(last, r[0]).join('')));
+          var mk = document.createElement('mark'); mk.className='search-hit';
+          mk.textContent = arr.slice(r[0], r[1]).join('');
+          frag.appendChild(mk); marks.push(mk); total++;
+          last = r[1];
+        });
+        if(last<arr.length) frag.appendChild(document.createTextNode(arr.slice(last).join('')));
+        node.parentNode.replaceChild(frag, node);
+      });
+    });
+  }
+
+  function snippetNode(item, terms){
+    var span = document.createElement('span'); span.className='pal-snip';
+    var fc = item.foldContent, first = -1, tlen = 0;
+    for(var i=0;i<terms.length;i++){
+      var f = fc.indexOf(terms[i]);
+      if(f!==-1 && (first===-1 || f<first)){ first=f; tlen=terms[i].length; }
+    }
+    if(first===-1){ span.textContent = item.contentArr.slice(0,110).join('') + '…'; return span; }
+    var start = Math.max(0, first-45), end = Math.min(item.contentArr.length, first+tlen+65);
+    if(start>0) span.appendChild(document.createTextNode('…'));
+    span.appendChild(document.createTextNode(item.contentArr.slice(start, first).join('')));
+    var mk = document.createElement('mark');
+    mk.textContent = item.contentArr.slice(first, first+tlen).join('');
+    span.appendChild(mk);
+    span.appendChild(document.createTextNode(item.contentArr.slice(first+tlen, end).join('')));
+    if(end<item.contentArr.length) span.appendChild(document.createTextNode('…'));
+    return span;
+  }
+
+  var sel = 0, rows = [];
+  function render(){
+    var q = palInput.value.trim();
+    palResults.textContent = '';
+    rows = []; sel = 0;
+    var cross = document.createElement('a');
+    cross.className = 'pal-cross';
+    cross.href = OTHER_FILE + (q ? ('?q=' + encodeURIComponent(q)) : '');
+    cross.textContent = q ? ('Buscar “'+q+'” no '+OTHER_LABEL+' →') : ('Abrir '+OTHER_LABEL+' →');
+    if(!q){
+      var e = document.createElement('div'); e.className='pal-empty';
+      e.textContent = 'Digite para buscar em títulos e conteúdo — ex.: adrenalina, hipercalemia, CIWA.';
+      palResults.appendChild(e); palResults.appendChild(cross); return;
+    }
+    var fq = fold(q), terms = fq.split(/\s+/).filter(Boolean);
+    var scored = [];
+    index.forEach(function(item){
+      var hay = item.foldTitle + ' ' + item.foldContent;
+      for(var i=0;i<terms.length;i++){ if(hay.indexOf(terms[i])===-1) return; }
+      var score = 0;
+      if(item.foldTitle.indexOf(fq)!==-1) score += 120;
+      var inTitle = terms.every(function(t){ return item.foldTitle.indexOf(t)!==-1; });
+      if(inTitle) score += 60;
+      terms.forEach(function(t){
+        var c=0, idx=0, f;
+        while((f=item.foldContent.indexOf(t,idx))!==-1 && c<20){ c++; idx=f+t.length; }
+        score += c;
+      });
+      scored.push([score, item]);
+    });
+    scored.sort(function(a,b){ return b[0]-a[0]; });
+    scored = scored.slice(0, 22);
+    if(!scored.length){
+      var ne = document.createElement('div'); ne.className='pal-empty';
+      ne.textContent = 'Nenhum resultado aqui.';
+      palResults.appendChild(ne);
+    }
+    scored.forEach(function(pair, i){
+      var item = pair[1];
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'pal-row' + (i===0 ? ' sel' : '');
+      b.style.setProperty('--a', item.accent);
+      var s1 = document.createElement('span'); s1.className='pal-sec'; s1.textContent = item.section;
+      var s2 = document.createElement('span'); s2.className='pal-title'; s2.textContent = item.title;
+      b.appendChild(s1); b.appendChild(s2);
+      b.appendChild(snippetNode(item, terms));
+      b.addEventListener('click', function(){ activate(item, terms); });
+      palResults.appendChild(b); rows.push(b);
+    });
+    palResults.appendChild(cross);
+  }
+
+  function setSel(i){
+    if(!rows.length) return;
+    rows[sel] && rows[sel].classList.remove('sel');
+    sel = (i+rows.length) % rows.length;
+    rows[sel].classList.add('sel');
+    rows[sel].scrollIntoView({block:'nearest'});
+  }
+
+  function activate(item, terms){
+    closePal();
+    clearMarks();
+    item.el.open = true;
+    var secEl = item.el.closest ? item.el.closest('section.sec') : null;
+    if(secEl){
+      var mt = document.querySelector('.tab[data-cat="'+secEl.id+'"]');
+      if(mt){ userScrollingTabs = 0; centerTab(mt); }
+    }
+    markTermsIn(item.hlRoots(), terms);
+    item.flashEl().classList.remove('flash');
+    void item.flashEl().offsetWidth;
+    item.flashEl().classList.add('flash');
+    setTimeout(function(){ item.el.scrollIntoView({behavior:'smooth', block:'start'}); }, 30);
+  }
+
+  function openPal(prefill){
+    clearMarks();
+    pal.hidden = false;
+    document.body.classList.add('pal-open');
+    palInput.value = prefill || '';
+    render();
+    setTimeout(function(){ palInput.focus(); }, 20);
+  }
+  function closePal(){
+    pal.hidden = true;
+    document.body.classList.remove('pal-open');
+  }
+
+  if(searchOpen) searchOpen.addEventListener('click', function(){ openPal(''); });
+  if(fabSearch) fabSearch.addEventListener('click', function(){ openPal(''); });
+  if(palClose) palClose.addEventListener('click', closePal);
+  if(pal) pal.addEventListener('click', function(ev){ if(ev.target===pal) closePal(); });
+  if(palInput){
+    palInput.addEventListener('input', render);
+    palInput.addEventListener('keydown', function(ev){
+      if(ev.key==='ArrowDown'){ ev.preventDefault(); setSel(sel+1); }
+      else if(ev.key==='ArrowUp'){ ev.preventDefault(); setSel(sel-1); }
+      else if(ev.key==='Enter'){ ev.preventDefault(); if(rows[sel]) rows[sel].click(); }
+    });
+  }
+  document.addEventListener('keydown', function(ev){
+    var tag = (document.activeElement && document.activeElement.tagName) || '';
+    if(ev.key==='/' && tag!=='INPUT' && tag!=='TEXTAREA'){ ev.preventDefault(); openPal(''); }
+    else if(ev.key==='Escape'){ if(!pal.hidden){ closePal(); } else { clearMarks(); } }
+  });
+
+
+  var SUB_SEL = 'details > summary';
+  function accentOf(sec){ return (sec.style.getPropertyValue('--accent') || '').trim() || ''; }
+
+
+
+  /* ---------- SEGUNDA LINHA: TÓPICOS DA SEÇÃO ATUAL ---------- */
+  var subBar = document.querySelector('.subtabs');
+  var subInner = document.getElementById('subTabsInner');
+  var subAtual = null, subAlvos = [], subBotoes = [];
+
+  function alturaDasAbas(){
+    var t = document.querySelector('nav.tabs');
+    if(t) document.documentElement.style.setProperty('--tabs-h', t.offsetHeight + 'px');
+  }
+
+  function secAberta(sec){
+    if(!sec) return false;
+    var d = sec.querySelector('details.sec-fold');
+    return d ? d.open : true;   /* seções não colapsáveis contam como abertas */
+  }
+
+  function montaSubBar(sec){
+    if(!subInner || !subBar) return;
+    if(sec === subAtual) return;
+    subAtual = sec;
+    subInner.innerHTML = '';
+    subAlvos = []; subBotoes = [];
+    if(!sec || !secAberta(sec)){ subBar.classList.remove('on'); return; }
+    var itens = sec.querySelectorAll(SUB_SEL);
+    if(itens.length < 2){ subBar.classList.remove('on'); return; }
+    subBar.style.setProperty('--sub-ac', accentOf(sec));
+    for(var i=0;i<itens.length;i++){
+      (function(el){
+        var b = document.createElement('button');
+        b.type = 'button'; b.className = 'subtab';
+        var txt = el.textContent.replace(/\s+/g,' ').trim();
+        b.textContent = txt.length > 34 ? txt.slice(0,32) + '…' : txt;
+        b.title = txt;
+        b.addEventListener('click', function(){
+          if(el.tagName === 'SUMMARY' && el.parentNode) el.parentNode.open = true;
+          el.scrollIntoView({behavior:'smooth', block:'start'});
+        });
+        subInner.appendChild(b);
+        subAlvos.push(el); subBotoes.push(b);
+      })(itens[i]);
+    }
+    subBar.classList.add('on');
+    alturaDasAbas();
+  }
+
+  function marcaSubAtual(){
+    if(!subAlvos.length) return;
+    var linha = window.innerHeight * 0.30;
+    var k = 0;
+    for(var i=0;i<subAlvos.length;i++){
+      if(subAlvos[i].getBoundingClientRect().top <= linha) k = i; else break;
+    }
+    for(var j=0;j<subBotoes.length;j++) subBotoes[j].classList.toggle('active', j === k);
+    var b = subBotoes[k];
+    if(b && subInner){
+      var alvo = b.offsetLeft + b.offsetWidth/2 - subInner.clientWidth/2;
+      var max = subInner.scrollWidth - subInner.clientWidth;
+      alvo = Math.max(0, Math.min(alvo, max));
+      if(Math.abs(alvo - subInner.scrollLeft) > 6) subInner.scrollTo({left:alvo, behavior:'smooth'});
+    }
+  }
+
+  function atualizaSubBar(){
+    var sec = (typeof currentSection === 'function') ? currentSection() : null;
+    montaSubBar(sec);
+    marcaSubAtual();
+  }
+  window.addEventListener('scroll', atualizaSubBar, {passive:true});
+  window.addEventListener('resize', function(){ alturaDasAbas(); atualizaSubBar(); }, {passive:true});
+  document.addEventListener('toggle', function(){ subAtual = null; atualizaSubBar(); }, true);
+  alturaDasAbas();
+  atualizaSubBar();
+
+
+  /* ---------- botão único: expandir / fechar tudo ---------- */
+  var togAll = document.getElementById('toggleAll');
+  function estadoToggle(){
+    if(!togAll) return;
+    var ds = document.querySelectorAll('main details');
+    if(!ds.length){ togAll.style.display = 'none'; return; }
+    var abertos = 0;
+    for(var i=0;i<ds.length;i++) if(ds[i].open) abertos++;
+    var todosAbertos = abertos === ds.length;
+    togAll.textContent = todosAbertos ? 'Fechar tudo' : 'Expandir tudo';
+    togAll.setAttribute('data-modo', todosAbertos ? 'fechar' : 'abrir');
+  }
+  if(togAll){
+    togAll.addEventListener('click', function(){
+      var abrir = this.getAttribute('data-modo') !== 'fechar';
+      var ds = document.querySelectorAll('main details');
+      for(var i=0;i<ds.length;i++) ds[i].open = abrir;
+      if(!abrir) window.scrollTo({top:0, behavior:'smooth'});
+      estadoToggle();
+    });
+    document.addEventListener('toggle', estadoToggle, true);
+    estadoToggle();
+  }
+
+  if(fabTop){
+    fabTop.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+    window.addEventListener('scroll', function(){
+      fabTop.classList.toggle('show', window.scrollY > 600);
+    }, {passive:true});
+  }
+
+  /* busca vinda do outro guia: ?q= ou #q= */
+  var q0 = null;
+  try{ q0 = new URLSearchParams(location.search).get('q'); }catch(e){}
+  if(!q0 && location.hash.indexOf('#q=')===0){
+    try{ q0 = decodeURIComponent(location.hash.slice(3)); }catch(e){}
+  }
+  if(q0) openPal(q0);
+
+  /* ---------- CALCULADORAS ---------- */
+  (function(){
+    var sec = document.getElementById('calc');
+    if(!sec) return;
+    function gv(id){
+      var e = document.getElementById(id);
+      if(!e) return null;
+      var v = parseFloat(String(e.value).replace(',','.'));
+      return isNaN(v) ? null : v;
+    }
+    function put(id, txt, warn){
+      var e = document.getElementById(id);
+      if(!e) return;
+      e.textContent = txt;
+      e.classList[warn ? 'add' : 'remove']('warn');
+    }
+    function fx(v,d){
+      if(d==null) d=1;
+      return v.toLocaleString('pt-BR',{minimumFractionDigits:0, maximumFractionDigits:d});
+    }
+    var ivLast = 'dose';
+
+    function cNa(){
+      var w=gv('naPeso'), at=gv('naAtual');
+      var sx=document.getElementById('naSexo').value;
+      if(w==null||at==null){ put('naOut','Preencha peso e Na⁺.'); return; }
+      var act=w*(sx==='f'?0.5:0.6);
+      if(at<135){
+        var delta=Math.min(8,135-at);
+        var def=act*delta;
+        var ml3=def/0.513;
+        put('naOut','ACT ~'+fx(act,0)+'L · elevar +'+fx(delta,0)+' mEq/L em 24h: '+fx(def,0)+' mEq ≈ '+fx(ml3,0)+' mL de NaCl 3% → '+fx(ml3/24,0)+' mL/h', at<120);
+      } else if(at>145){
+        var agua=act*(at/140-1);
+        var dias=Math.max(1,(at-140)/10);
+        put('naOut','ACT ~'+fx(act,0)+'L · déficit de água livre ~'+fx(agua,1)+' L — corrigindo ≤10 mEq/L/24h: ~'+fx(dias,1)+' dia(s) ≈ '+fx(agua*1000/(dias*24),0)+' mL/h de água VO/SNE ou SG5%', at>160);
+      } else {
+        put('naOut','Na⁺ na faixa normal (135–145).');
+      }
+    }
+    function cK(){
+      var m=gv('kMeq');
+      if(m==null){ put('kOut','Informe os mEq desejados.'); return; }
+      put('kOut', fx(m,0)+' mEq = '+fx(m/1.34,1)+' mL de KCl 10%  ·  '+fx(m/2.56,1)+' mL de KCl 19,1%  ·  '+fx(m/0.805,0)+' mL de xarope 6%  ·  '+fx(m/8,1)+' cp de 600mg (8 mEq)');
+    }
+    function cCa(){
+      var ca=gv('caT'), alb=gv('caAlb');
+      if(ca==null||alb==null){ put('caOut','Preencha Ca e albumina.'); return; }
+      var cor=ca+0.8*(4-alb);
+      put('caOut','Ca corrigido = '+fx(cor,1)+' mg/dL', cor<7.5||cor>12);
+    }
+    function cBic(){
+      var w=gv('bicPeso'), at=gv('bicAtual'), alvo=gv('bicAlvo');
+      if(w==null||at==null||alvo==null){ put('bicOut','Preencha peso, HCO₃⁻ atual e alvo.'); return; }
+      if(at>=alvo){ put('bicOut','HCO₃⁻ já ≥ alvo — sem déficit a repor.'); return; }
+      var def=0.3*w*(alvo-at);
+      put('bicOut','Déficit ~'+fx(def,0)+' mEq (= '+fx(def,0)+' mL de NaHCO₃ 8,4%) — repor 1/3 a 1/2 ('+fx(def/3,0)+'–'+fx(def/2,0)+' mL) e reavaliar gasometria');
+    }
+    function cOsm(){
+      var na=gv('osNa'), gli=gv('osGli'), ur=gv('osUr');
+      if(na==null||gli==null||ur==null){ put('osOut','Preencha Na, glicose e ureia.'); return; }
+      var tot=2*na+gli/18+ur/6, ef=2*na+gli/18;
+      put('osOut','Total ~'+fx(tot,0)+' mOsm/kg  ·  Efetiva ~'+fx(ef,0)+' mOsm/kg');
+    }
+    function cDg(){
+      var w=gv('dgPeso');
+      if(w==null){ put('dgOut','Informe o peso.'); return; }
+      put('dgOut',
+        'B (VO): '+fx(60*w,0)+' mL/dia — ⅓ em SRO ('+fx(20*w,0)+' mL)\n'+
+        'C (EV): SF '+fx(10*w,0)+' mL na 1ª hora → reavaliar (sem melhora: tratar como D)\n'+
+        '   manutenção: '+fx(25*w,0)+' mL em 6h → melhora → '+fx(25*w,0)+' mL em 8h\n'+
+        'D (EV): SF '+fx(20*w,0)+' mL em até 20 min — repetir até 3× conforme resposta');
+    }
+    function cTfg(){
+      var cr=gv('tfCr'), id=gv('tfIdade'), w=gv('tfPeso');
+      var sx=document.getElementById('tfSexo').value;
+      if(cr==null||id==null||cr<=0){ put('tfOut','Preencha creatinina e idade.'); return; }
+      var k=(sx==='f')?0.7:0.9, a=(sx==='f')?-0.241:-0.302;
+      var r=cr/k;
+      var g=142*Math.pow(Math.min(r,1),a)*Math.pow(Math.max(r,1),-1.200)*Math.pow(0.9938,id)*((sx==='f')?1.012:1);
+      var st=(g>=90?'G1':g>=60?'G2':g>=45?'G3a':g>=30?'G3b':g>=15?'G4':'G5');
+      var out='CKD-EPI 2021: '+fx(g,0)+' mL/min/1,73m² ('+st+')';
+      if(w!=null){
+        var cg=((140-id)*w/(72*cr))*((sx==='f')?0.85:1);
+        out+='  ·  Cockcroft-Gault: '+fx(cg,0)+' mL/min';
+      }
+      put('tfOut', out, g<30);
+    }
+    function cInf(){
+      var p=gv('ivPeso'), c=gv('ivConc');
+      if(p==null||c==null||c<=0||p<=0){ put('ivOut','Preencha peso e concentração.'); return; }
+      var dEl=document.getElementById('ivDose'), tEl=document.getElementById('ivTaxa');
+      var d=gv('ivDose'), t=gv('ivTaxa');
+      if(ivLast==='dose' && d!=null){
+        t=d*p*60/c;
+        tEl.value=String(Math.round(t*10)/10).replace('.',',');
+      } else if(ivLast==='taxa' && t!=null){
+        d=t*c/60/p;
+        dEl.value=String(Math.round(d*1000)/1000).replace('.',',');
+      }
+      if(d!=null&&t!=null){
+        put('ivOut', fx(d,2)+' mcg/kg/min ⇄ '+fx(t,1)+' mL/h  ·  '+fx(t/3,0)+' gtt/min (macro)');
+      } else {
+        put('ivOut','Preencha a dose OU a taxa.');
+      }
+    }
+    function cGtt(){
+      var v=gv('gtVol'), h=gv('gtTempo');
+      if(v==null||h==null||h<=0){ put('gtOut','Preencha volume e tempo.'); return; }
+      var mlh=v/h;
+      put('gtOut', fx(mlh,0)+' mL/h  ·  '+fx(mlh/3,0)+' gtt/min (macro)  ·  '+fx(mlh,0)+' mgtt/min (micro)');
+    }
+    function cQtc(){
+      var qt=gv('qtQT'), fc=gv('qtFC');
+      if(qt==null||fc==null||fc<=0){ put('qtOut','Preencha QT e FC.'); return; }
+      var rr=60/fc;
+      var bz=qt/Math.sqrt(rr), fr=qt/Math.cbrt(rr);
+      put('qtOut','Bazett: '+fx(bz,0)+' ms  ·  Fridericia: '+fx(fr,0)+' ms'+(bz>=500?'  — ⚠ ≥500ms: risco alto de Torsades':''), bz>=500);
+    }
+    function cPam(){
+      var s=gv('paS'), d=gv('paD');
+      if(s==null||d==null){ put('pamOut','Preencha PAS e PAD.'); return; }
+      var pam=(s+2*d)/3;
+      put('pamOut','PAM = '+fx(pam,0)+' mmHg', pam<65);
+    }
+    function cAg(){
+      var na=gv('agNa'), cl=gv('agCl'), h=gv('agHco'), alb=gv('agAlb');
+      if(na==null||cl==null||h==null){ put('agOut','Preencha Na, Cl e HCO₃.'); return; }
+      var ag=na-(cl+h);
+      var out='AG = '+fx(ag,0)+' mEq/L';
+      if(alb!=null) out+='  ·  corrigido p/ albumina: '+fx(ag+2.5*(4-alb),1);
+      put('agOut', out, ag>16);
+    }
+
+    var FNS=[cNa,cK,cCa,cBic,cOsm,cDg,cTfg,cInf,cGtt,cQtc,cPam,cAg];
+    recalcAll = function(){
+      for(var i=0;i<FNS.length;i++){ try{ FNS[i](); }catch(e){} }
+    };
+    sec.addEventListener('input', function(ev){
+      var t=ev.target;
+      if(t.classList && t.classList.contains('cw')) t.dataset.touched='1';
+      if(t.id==='ivDose') ivLast='dose';
+      else if(t.id==='ivTaxa') ivLast='taxa';
+      recalcAll();
+    });
+    sec.addEventListener('change', function(){ recalcAll(); });
+    var cwInit=document.querySelectorAll('.cw');
+    for(var i=0;i<cwInit.length;i++){ if(!cwInit[i].value && pesoInput){ cwInit[i].value = pesoInput.value; } }
+    recalcAll();
+  })();
+
+})();
+
+</script>
+<script>
+if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+  navigator.serviceWorker.register('./sw.js').catch(function(){});
+}
+</script>
+</body>
+</html>

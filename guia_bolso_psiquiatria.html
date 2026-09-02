@@ -1,0 +1,2033 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="#F3F5F8" id="metaTheme" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="yes" name="mobile-web-app-capable"/>
+<title>Guia de Bolso · Psicofarmacologia e Manejo Psiquiátrico</title>
+<link rel="manifest" href="manifest-psiquiatria.webmanifest"/>
+<link rel="icon" type="image/png" sizes="192x192" href="icones/psiquiatria-192.png"/>
+<link rel="icon" type="image/svg+xml" href="icones/psiquiatria.svg"/>
+<link rel="apple-touch-icon" href="icones/psiquiatria-512.png"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-title" content="ClinRef Psiq"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --bg: #F3F5F8; --surface: #FFFFFF; --ink: #16202B; --ink-soft: #55636F; --line: #DDE3E9;
+    --abc: #B0341E; --abc-soft: #FBEBE7;
+    --esc: #6B7280; --esc-soft: #F1F2F4;
+    --iot: #1D5FBF; --iot-soft: #E9F0FC;
+    --sed: #7A3FC4; --sed-soft: #F1E9FB;
+    --pcr: #C5321F; --pcr-soft: #FBEAE7;
+    --ecg: #0E7C86; --ecg-soft: #E4F3F4;
+    --mono: 'IBM Plex Mono', monospace; --sans: 'IBM Plex Sans', sans-serif; --disp: 'Space Grotesk', sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+
+  .masthead{padding:52px 24px 34px;max-width:960px;margin:0 auto;position:relative;}
+  .pulse-line{height:3px;border-radius:2px;margin-bottom:22px;
+    background:linear-gradient(90deg,var(--ad) 0% 10%, var(--ap) 10% 20%, var(--eh) 20% 30%, var(--bzd) 30% 40%, var(--agit) 40% 50%, var(--abst) 50% 60%, var(--emerg) 60% 70%, var(--troca) 70% 80%, var(--gest) 80% 90%, var(--monit) 90% 100%);}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);display:flex;align-items:center;gap:8px;}
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--pcr);animation:blip 1.6s infinite ease-in-out;}
+  @keyframes blip{0%,100%{opacity:1;}50%{opacity:.25;}}
+  h1.title{font-family:var(--disp);font-weight:700;font-size:clamp(30px,5vw,46px);letter-spacing:-0.01em;margin:10px 0 8px;}
+  .subtitle{color:var(--ink-soft);font-size:16px;max-width:60ch;}
+
+  nav.tabs{position:sticky;top:0;z-index:50;background:rgba(243,245,248,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);}
+  .tabs-inner{position:relative;max-width:960px;margin:0 auto;display:flex;gap:6px;padding:10px 24px;overflow-x:auto;}
+
+  .search-wrap{max-width:960px;margin:0 auto;padding:8px 24px;display:flex;align-items:center;gap:8px;
+    border-bottom:1px solid var(--line);background:rgba(243,245,248,.92);}
+  .search-box{flex:1;min-width:0;display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);
+    border-radius:10px;padding:8px 12px;}
+  .search-box:focus-within{border-color:#9AA7B2;}
+  .search-box svg{flex-shrink:0;color:var(--ink-soft);}
+  .search-box input{flex:1;min-width:0;border:none;outline:none;font-family:var(--sans);font-size:14px;background:transparent;color:var(--ink);}
+  .search-box input::placeholder{color:#9AA7B2;}
+  .search-count{font-family:var(--mono);font-size:12px;color:var(--ink-soft);white-space:nowrap;min-width:70px;text-align:right;}
+  .search-nav,.search-clear{font-family:var(--mono);font-size:13px;color:var(--ink-soft);background:var(--surface);
+    border:1px solid var(--line);border-radius:7px;width:28px;height:28px;cursor:pointer;line-height:1;}
+  .search-nav:hover,.search-clear:hover{color:var(--ink);border-color:#9AA7B2;}
+  .search-no-results{max-width:960px;margin:16px auto 0;padding:14px 24px;color:var(--ink-soft);font-size:14px;
+    background:var(--surface);border:1px dashed var(--line);border-radius:10px;text-align:center;}
+  mark.search-hit{background:#FFE8A3;color:inherit;border-radius:2px;padding:0 1px;}
+  mark.search-hit.active{background:#FFB020;box-shadow:0 0 0 2px #FFB020;}
+  .tab{font-family:var(--mono);font-size:13px;font-weight:600;text-decoration:none;color:var(--ink-soft);padding:9px 16px;border-radius:999px;border:1px solid var(--line);background:var(--surface);white-space:nowrap;transition:.15s ease;}
+  .tab:hover{border-color:currentColor;}
+
+  main{max-width:960px;margin:0 auto;padding:8px 24px 100px;}
+
+  section.block{margin-top:56px;}
+  .block-head{display:flex;align-items:baseline;gap:14px;border-bottom:2px solid var(--line);padding-bottom:12px;margin-bottom:24px;}
+  .block-head .idx{font-family:var(--mono);font-size:13px;font-weight:600;padding:3px 9px;border-radius:5px;color:#fff;}
+  .block-head h2{font-family:var(--disp);font-size:26px;margin:0;font-weight:600;}
+  .block-head .tag{font-family:var(--mono);font-size:12px;color:var(--ink-soft);}
+
+  h3{font-family:var(--disp);font-size:17px;font-weight:600;margin:32px 0 12px;display:flex;align-items:center;gap:8px;}
+  h3::before{content:"";width:14px;height:2px;background:currentColor;display:inline-block;}
+
+  p{color:var(--ink);}
+  .lede{color:var(--ink-soft);font-size:15px;}
+
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin:14px 0;}
+
+  table{width:100%;border-collapse:collapse;font-size:14px;background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden;}
+  thead th{text-align:left;font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-soft);padding:10px 14px;border-bottom:1px solid var(--line);background:#FAFBFC;}
+  tbody td{padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top;}
+  tbody tr:last-child td{border-bottom:none;}
+  tbody tr:hover{background:#FAFBFC;}
+  .table-wrap{margin:14px 0;}
+
+  code, .dose{font-family:var(--mono);font-weight:600;background:#F0F2F5;padding:1px 6px;border-radius:4px;font-size:.92em;}
+  .ref{font-family:var(--mono);font-size:.88em;color:var(--ink-soft);}
+
+  @media (max-width:640px){
+    table{display:block;width:100%;}
+    thead{display:none;}
+    tbody{display:block;}
+    tr{display:block;border:1px solid var(--line);border-radius:10px;margin-bottom:10px;padding:11px 14px;background:var(--surface);}
+    tbody tr:last-child{margin-bottom:0;}
+    tbody tr:hover{background:var(--surface);}
+    td{display:block;padding:4px 0;border-bottom:none;}
+    td:empty{display:none;}
+    td:first-child{font-weight:700;font-size:14.5px;padding-bottom:7px;margin-bottom:4px;border-bottom:1px solid var(--line);}
+    td:first-child::before{content:none;}
+    td:not(:first-child)::before{
+      content:attr(data-label);
+      display:block;
+      font-family:var(--mono);
+      font-size:10.5px;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+      color:var(--ink-soft);
+      margin-bottom:1px;
+    }
+  }
+
+  .checklist{list-style:none;margin:14px 0;padding:0;display:grid;gap:6px;}
+  .checklist li{position:relative;font-size:14.5px;line-height:1.5;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:9px 12px 9px 37px;}
+  .checklist li::before{content:"";position:absolute;left:12px;top:11px;width:15px;height:15px;border-radius:4px;border:1.5px solid var(--ink-soft);}
+
+  .callout{border-left:4px solid;padding:12px 16px;border-radius:6px;font-size:14.5px;margin:16px 0;}
+  .callout.warn{border-color:var(--pcr);background:var(--pcr-soft);color:#7A2015;}
+  .callout.info{border-color:var(--iot);background:var(--iot-soft);color:#123E82;}
+  .callout.calm{border-color:var(--sed);background:var(--sed-soft);color:#4C2685;}
+  .callout.teal{border-color:var(--ecg);background:var(--ecg-soft);color:#0B4C52;}
+  .callout b{font-weight:700;}
+
+  .seq{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:16px 0;}
+  .seq .step{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px;position:relative;}
+  .seq .step .n{font-family:var(--mono);font-size:11px;color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:8px;}
+  .seq .step .t{font-weight:600;font-size:14px;margin-bottom:2px;}
+  .seq .step .d{font-size:13px;color:var(--ink-soft);}
+
+  .flow{display:flex;flex-direction:column;gap:4px;margin:14px 0;min-width:0;}
+  .flow .row{display:flex;align-items:stretch;gap:8px;min-width:0;}
+  .flow .q{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 13px;font-size:13.8px;flex:1;min-width:0;}
+  .flow .branch{display:flex;gap:8px;margin-left:20px;min-width:0;flex-wrap:wrap;}
+  .flow .yes,.flow .no{border-radius:8px;padding:9px 12px;font-size:13.3px;flex:1;min-width:120px;}
+  .flow .arrow{color:var(--ink-soft);font-family:var(--mono);text-align:center;font-size:12px;padding:2px 0;}
+
+  footer{max-width:960px;margin:0 auto;padding:30px 24px 60px;color:var(--ink-soft);font-size:13px;border-top:1px solid var(--line);margin-top:70px;}
+
+  @media print{
+    nav.tabs,.search-wrap{display:none;} .pulse-line{display:none;} body{background:#fff;}
+    section.block{page-break-before:always;margin-top:0;padding-top:24px;}
+    section.block:first-of-type{page-break-before:avoid;}
+    .card, table{box-shadow:none;}
+  }
+  @media (max-width:640px){ .block-head h2{font-size:21px;} h1.title{font-size:28px;} }
+
+  /* ===== v2.0 — tema escuro, seção VM, paleta de busca, peso, FABs ===== */
+  :root{color-scheme:light;
+        --ad:#1D5FBF; --ad-soft:#E7EFFB;
+        --ap:#7A3FC4; --ap-soft:#F0E9FA;
+        --eh:#0F6B4F; --eh-soft:#E2F1EB;
+        --bzd:#0E7C86; --bzd-soft:#E1F2F3;
+        --agit:#C5321F; --agit-soft:#FBE9E5;
+        --abst:#A35A08; --abst-soft:#FCEFE0;
+        --emerg:#A8265C; --emerg-soft:#FBE9F0;
+        --troca:#3B4E8C; --troca-soft:#E7EBF6;
+        --gest:#4D7C0F; --gest-soft:#EDF4E0;
+        --monit:#6B7280; --monit-soft:#EFF1F3;}
+  html[data-theme="dark"]{color-scheme:dark;}
+  html[data-theme="dark"] body{
+    --bg:#10161C; --surface:#1A232C; --ink:#E7EDF3; --ink-soft:#96A3AF; --line:#2B3843;
+    --ad:#6FA2F2; --ad-soft:#0E2338;
+    --ap:#B389EA; --ap-soft:#241338;
+    --eh:#4FBE96; --eh-soft:#0E2B22;
+    --bzd:#4FB9C3; --bzd-soft:#0D2B2E;
+    --agit:#F0705C; --agit-soft:#3A1611;
+    --abst:#E5A048; --abst-soft:#3A2710;
+    --emerg:#EE7BA8; --emerg-soft:#3A1526;
+    --troca:#8AA0DC; --troca-soft:#161D33;
+    --gest:#A3C948; --gest-soft:#1E2A0E;
+    --monit:#A7B0BC; --monit-soft:#22262B;
+  }
+  html[data-theme="dark"] nav.tabs, html[data-theme="dark"] .search-wrap{background:rgba(16,22,28,.92);}
+  html[data-theme="dark"] thead th{background:#151D24;}
+  html[data-theme="dark"] tbody tr:hover{background:#202B34;}
+  html[data-theme="dark"] code, html[data-theme="dark"] .dose{background:#233040;}
+  html[data-theme="dark"] mark.search-hit{background:#6B4E00;color:#FFF3D6;}
+  html[data-theme="dark"] mark.search-hit.active{background:#9A7100;box-shadow:0 0 0 2px #9A7100;}
+  html[data-theme="dark"] .callout.ad{color:#6FA2F2;}
+  html[data-theme="dark"] .callout.ap{color:#B389EA;}
+  html[data-theme="dark"] .callout.eh{color:#4FBE96;}
+  html[data-theme="dark"] .callout.bzd{color:#4FB9C3;}
+  html[data-theme="dark"] .callout.agit{color:#F0705C;}
+  html[data-theme="dark"] .callout.abst{color:#E5A048;}
+  html[data-theme="dark"] .callout.emerg{color:#EE7BA8;}
+  html[data-theme="dark"] .callout.troca{color:#8AA0DC;}
+  html[data-theme="dark"] .callout.gest{color:#A3C948;}
+  html[data-theme="dark"] .callout.monit{color:#A7B0BC;}
+
+  /* seção VM */
+
+  /* seção Toxicologia (v2.7) */
+
+  /* ===== cores por seção ===== */
+  .tab.ad{color:var(--ad);}
+  .tab.active.ad{background:var(--ad);color:#fff;}
+  .ad-bg{background:var(--ad);}
+  .ad h3{color:var(--ad);}
+  .ad .dose{background:var(--ad-soft);color:var(--ad);}
+  .ad .checklist li::before{border-color:var(--ad);}
+  .ad .seq .step .n{background:var(--ad);}
+  .callout.ad{border-color:var(--ad);background:var(--ad-soft);color:#123E7A;}
+  @media (max-width:640px){ .ad td:first-child{color:var(--ad);} }
+  .tab.ap{color:var(--ap);}
+  .tab.active.ap{background:var(--ap);color:#fff;}
+  .ap-bg{background:var(--ap);}
+  .ap h3{color:var(--ap);}
+  .ap .dose{background:var(--ap-soft);color:var(--ap);}
+  .ap .checklist li::before{border-color:var(--ap);}
+  .ap .seq .step .n{background:var(--ap);}
+  .callout.ap{border-color:var(--ap);background:var(--ap-soft);color:#4E2380;}
+  @media (max-width:640px){ .ap td:first-child{color:var(--ap);} }
+  .tab.eh{color:var(--eh);}
+  .tab.active.eh{background:var(--eh);color:#fff;}
+  .eh-bg{background:var(--eh);}
+  .eh h3{color:var(--eh);}
+  .eh .dose{background:var(--eh-soft);color:var(--eh);}
+  .eh .checklist li::before{border-color:var(--eh);}
+  .eh .seq .step .n{background:var(--eh);}
+  .callout.eh{border-color:var(--eh);background:var(--eh-soft);color:#0A4735;}
+  @media (max-width:640px){ .eh td:first-child{color:var(--eh);} }
+  .tab.bzd{color:var(--bzd);}
+  .tab.active.bzd{background:var(--bzd);color:#fff;}
+  .bzd-bg{background:var(--bzd);}
+  .bzd h3{color:var(--bzd);}
+  .bzd .dose{background:var(--bzd-soft);color:var(--bzd);}
+  .bzd .checklist li::before{border-color:var(--bzd);}
+  .bzd .seq .step .n{background:var(--bzd);}
+  .callout.bzd{border-color:var(--bzd);background:var(--bzd-soft);color:#0A5158;}
+  @media (max-width:640px){ .bzd td:first-child{color:var(--bzd);} }
+  .tab.agit{color:var(--agit);}
+  .tab.active.agit{background:var(--agit);color:#fff;}
+  .agit-bg{background:var(--agit);}
+  .agit h3{color:var(--agit);}
+  .agit .dose{background:var(--agit-soft);color:var(--agit);}
+  .agit .checklist li::before{border-color:var(--agit);}
+  .agit .seq .step .n{background:var(--agit);}
+  .callout.agit{border-color:var(--agit);background:var(--agit-soft);color:#8E2416;}
+  @media (max-width:640px){ .agit td:first-child{color:var(--agit);} }
+  .tab.abst{color:var(--abst);}
+  .tab.active.abst{background:var(--abst);color:#fff;}
+  .abst-bg{background:var(--abst);}
+  .abst h3{color:var(--abst);}
+  .abst .dose{background:var(--abst-soft);color:var(--abst);}
+  .abst .checklist li::before{border-color:var(--abst);}
+  .abst .seq .step .n{background:var(--abst);}
+  .callout.abst{border-color:var(--abst);background:var(--abst-soft);color:#75400A;}
+  @media (max-width:640px){ .abst td:first-child{color:var(--abst);} }
+  .tab.emerg{color:var(--emerg);}
+  .tab.active.emerg{background:var(--emerg);color:#fff;}
+  .emerg-bg{background:var(--emerg);}
+  .emerg h3{color:var(--emerg);}
+  .emerg .dose{background:var(--emerg-soft);color:var(--emerg);}
+  .emerg .checklist li::before{border-color:var(--emerg);}
+  .emerg .seq .step .n{background:var(--emerg);}
+  .callout.emerg{border-color:var(--emerg);background:var(--emerg-soft);color:#7A1740;}
+  @media (max-width:640px){ .emerg td:first-child{color:var(--emerg);} }
+  .tab.troca{color:var(--troca);}
+  .tab.active.troca{background:var(--troca);color:#fff;}
+  .troca-bg{background:var(--troca);}
+  .troca h3{color:var(--troca);}
+  .troca .dose{background:var(--troca-soft);color:var(--troca);}
+  .troca .checklist li::before{border-color:var(--troca);}
+  .troca .seq .step .n{background:var(--troca);}
+  .callout.troca{border-color:var(--troca);background:var(--troca-soft);color:#2A3A6B;}
+  @media (max-width:640px){ .troca td:first-child{color:var(--troca);} }
+  .tab.gest{color:var(--gest);}
+  .tab.active.gest{background:var(--gest);color:#fff;}
+  .gest-bg{background:var(--gest);}
+  .gest h3{color:var(--gest);}
+  .gest .dose{background:var(--gest-soft);color:var(--gest);}
+  .gest .checklist li::before{border-color:var(--gest);}
+  .gest .seq .step .n{background:var(--gest);}
+  .callout.gest{border-color:var(--gest);background:var(--gest-soft);color:#39590B;}
+  @media (max-width:640px){ .gest td:first-child{color:var(--gest);} }
+  .tab.monit{color:var(--monit);}
+  .tab.active.monit{background:var(--monit);color:#fff;}
+  .monit-bg{background:var(--monit);}
+  .monit h3{color:var(--monit);}
+  .monit .dose{background:var(--monit-soft);color:var(--monit);}
+  .monit .checklist li::before{border-color:var(--monit);}
+  .monit .seq .step .n{background:var(--monit);}
+  .callout.monit{border-color:var(--monit);background:var(--monit-soft);color:#4A5058;}
+  @media (max-width:640px){ .monit td:first-child{color:var(--monit);} }
+
+  /* seções colapsáveis (v2.4) */
+  .sec-fold summary.block-head{cursor:pointer;list-style:none;margin-bottom:0;
+    padding-bottom:12px;padding-top:2px;-webkit-tap-highlight-color:transparent;}
+  .sec-fold summary::-webkit-details-marker{display:none;}
+  .sec-fold summary.block-head:hover h2{opacity:.75;}
+  .sec-fold summary.block-head:focus-visible{outline:2px solid var(--ink-soft);outline-offset:3px;border-radius:6px;}
+  .fold-ind{margin-left:auto;align-self:center;font-family:var(--mono);font-size:19px;font-weight:600;
+    line-height:1;color:var(--ink-soft);flex-shrink:0;transition:transform .18s ease;}
+  .fold-ind::before{content:"+";}
+  .sec-fold[open] .fold-ind::before{content:"–";}
+  .sec-fold[open] > summary.block-head{margin-bottom:24px;}
+  .sec-fold .sec-body{animation:foldIn .18s ease;}
+  @keyframes foldIn{from{opacity:0;transform:translateY(-4px);}to{opacity:1;transform:none;}}
+  .sec-fold:not([open]) + *{margin-top:0;}
+  section.block:has(.sec-fold:not([open])){margin-top:14px;}
+  .fold-hint{font-family:var(--mono);font-size:11.5px;color:var(--ink-soft);
+    max-width:960px;margin:0 auto;padding:2px 24px 0;}
+
+  /* seção Choque (v2.3) */
+
+  /* seções SCA e AVE (v2.2) */
+
+  /* tabela compacta de derivações/territórios */
+  .terr td:nth-child(2){font-family:var(--mono);font-weight:600;}
+  .clock{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.03em;
+    background:var(--ave-soft);color:var(--ave);border-radius:5px;padding:2px 7px;white-space:nowrap;}
+
+  .util-bar{max-width:960px;margin:0 auto;padding:8px 24px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+    border-bottom:1px solid var(--line);background:rgba(243,245,248,.92);}
+  html[data-theme="dark"] .util-bar{background:rgba(16,22,28,.92);}
+  .search-open{flex:1;min-width:170px;display:flex;align-items:center;gap:9px;background:var(--surface);border:1px solid var(--line);
+    border-radius:10px;padding:10px 13px;cursor:pointer;color:var(--ink-soft);font-family:var(--sans);font-size:14px;text-align:left;min-height:44px;}
+  .search-open:hover,.search-open:focus-visible{border-color:#9AA7B2;color:var(--ink);}
+  .search-open svg{flex-shrink:0;}
+  .search-open kbd{margin-left:auto;font-family:var(--mono);font-size:11px;border:1px solid var(--line);border-radius:5px;padding:1px 6px;color:var(--ink-soft);}
+  .peso-ctl{display:flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--line);border-radius:10px;
+    padding:6px 10px;font-family:var(--mono);font-size:12.5px;font-weight:600;color:var(--ink-soft);min-height:44px;}
+  .peso-ctl input{width:52px;border:none;outline:none;background:transparent;color:var(--ink);font-family:var(--mono);
+    font-size:15px;font-weight:600;text-align:right;-moz-appearance:textfield;}
+  .peso-ctl input::-webkit-outer-spin-button,.peso-ctl input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0;}
+  #themeBtn{font-family:var(--mono);font-size:15px;font-weight:600;color:var(--ink-soft);background:var(--surface);
+    border:1px solid var(--line);border-radius:10px;min-width:44px;min-height:44px;cursor:pointer;}
+  .btn-mini{font-family:var(--mono);font-size:12.5px;font-weight:600;color:var(--ink-soft);background:var(--surface);
+    border:1px solid var(--line);border-radius:10px;padding:0 12px;min-height:44px;cursor:pointer;white-space:nowrap;}
+  .btn-mini:hover{color:var(--ink);border-color:#9AA7B2;}
+  #themeBtn:hover{color:var(--ink);}
+  .wv{white-space:nowrap;}
+
+  .palette{position:fixed;inset:0;z-index:200;background:rgba(10,15,20,.45);backdrop-filter:blur(2px);
+    display:flex;align-items:flex-start;justify-content:center;padding:8vh 14px 14px;}
+  .palette[hidden]{display:none;}
+  .palette-panel{width:100%;max-width:660px;background:var(--surface);border:1px solid var(--line);border-radius:14px;
+    box-shadow:0 18px 50px rgba(0,0,0,.30);display:flex;flex-direction:column;max-height:78vh;overflow:hidden;}
+  .palette-head{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid var(--line);}
+  .palette-head svg{color:var(--ink-soft);flex-shrink:0;}
+  .palette-head input{flex:1;min-width:0;border:none;outline:none;background:transparent;color:var(--ink);
+    font-family:var(--sans);font-size:16px;}
+  .palette-head input::placeholder{color:var(--ink-soft);}
+  .pal-close{border:1px solid var(--line);background:transparent;color:var(--ink-soft);border-radius:8px;
+    width:34px;height:34px;cursor:pointer;font-size:14px;line-height:1;}
+  .pal-close:hover{color:var(--ink);border-color:#9AA7B2;}
+  .palette-results{overflow-y:auto;padding:6px;overscroll-behavior:contain;}
+  .pal-row{--a:#666;display:block;width:100%;text-align:left;background:transparent;border:none;border-left:3px solid var(--a);
+    border-radius:8px;padding:9px 12px;cursor:pointer;font-family:var(--sans);color:var(--ink);}
+  .pal-row+.pal-row{margin-top:2px;}
+  .pal-row:hover,.pal-row.sel{background:var(--bg);}
+  .pal-row .pal-sec{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--a);}
+  .pal-row .pal-title{display:block;font-weight:600;font-size:14.5px;margin-top:1px;}
+  .pal-row .pal-snip{display:block;font-size:12.5px;color:var(--ink-soft);margin-top:2px;line-height:1.4;}
+  .pal-row .pal-snip mark{background:#FFE8A3;color:#4A3A00;border-radius:2px;padding:0 1px;}
+  html[data-theme="dark"] .pal-row .pal-snip mark{background:#6B4E00;color:#FFF3D6;}
+  .pal-empty{padding:20px 14px;color:var(--ink-soft);font-size:14px;text-align:center;}
+  .pal-cross{display:block;margin:6px;padding:10px 12px;border:1px dashed var(--line);border-radius:8px;
+    font-size:13.5px;color:var(--ink-soft);text-decoration:none;text-align:center;}
+  .pal-cross:hover{color:var(--ink);border-color:#9AA7B2;}
+  .pal-hint{padding:6px 14px 10px;font-family:var(--mono);font-size:10.5px;color:var(--ink-soft);border-top:1px solid var(--line);}
+  body.pal-open{overflow:hidden;}
+
+  .fabs{position:fixed;right:14px;bottom:16px;z-index:150;display:flex;flex-direction:column;gap:10px;}
+  .fab{width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink-soft);
+    cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.18);font-size:17px;}
+  .fab:hover{color:var(--ink);}
+  #fabTop{opacity:0;pointer-events:none;transition:opacity .2s;}
+  #fabTop.show{opacity:1;pointer-events:auto;}
+
+  section.block, section.block h3, .sec-fold summary{scroll-margin-top:64px;}
+  h3.flash{animation:flashPulse 1.6s ease;border-radius:6px;}
+  @keyframes flashPulse{0%{box-shadow:0 0 0 3px #FFB020;}100%{box-shadow:0 0 0 0 rgba(255,176,32,0);}}
+
+  .rev{font-family:var(--mono);font-size:11px;}
+
+  @media print{
+    html[data-theme="dark"] body{--bg:#fff;--surface:#fff;--ink:#111;--ink-soft:#555;--line:#ccc;
+      --abc:#B0341E;--abc-soft:#FBEBE7;--esc:#6B7280;--esc-soft:#F1F2F4;--iot:#1D5FBF;--iot-soft:#E9F0FC;
+      --sed:#7A3FC4;--sed-soft:#F1E9FB;--pcr:#C5321F;--pcr-soft:#FBEAE7;--ecg:#0E7C86;--ecg-soft:#E4F3F4;
+      --ad:#1D5FBF;--ad-soft:#E7EFFB;--ap:#7A3FC4;--ap-soft:#F0E9FA;--eh:#0F6B4F;--eh-soft:#E2F1EB;--bzd:#0E7C86;--bzd-soft:#E1F2F3;--agit:#C5321F;--agit-soft:#FBE9E5;--abst:#A35A08;--abst-soft:#FCEFE0;--emerg:#A8265C;--emerg-soft:#FBE9F0;--troca:#3B4E8C;--troca-soft:#E7EBF6;--gest:#4D7C0F;--gest-soft:#EDF4E0;--monit:#6B7280;--monit-soft:#EFF1F3;}
+    .util-bar,.fabs,.palette{display:none !important;}
+    .fold-ind,.fold-hint{display:none !important;}
+    .sec-fold summary.block-head{margin-bottom:24px;}
+  }
+  @media (max-width:640px){ .palette{padding:4vh 8px 8px;} }
+
+
+
+  /* ===== segunda linha: tópicos da seção em leitura (v3.2) ===== */
+  .subtabs{position:sticky;top:var(--tabs-h,55px);z-index:49;background:rgba(243,245,248,.94);
+    backdrop-filter:blur(6px);border-bottom:1px solid var(--line);
+    max-height:0;overflow:hidden;transition:max-height .22s ease;}
+  .subtabs.on{max-height:70px;}
+  html[data-theme="dark"] .subtabs{background:rgba(16,20,26,.94);}
+  .subtabs-inner{position:relative;max-width:960px;margin:0 auto;display:flex;gap:14px;
+    padding:0 24px;overflow-x:auto;scrollbar-width:none;}
+  .subtabs-inner::-webkit-scrollbar{display:none;}
+  .subtab{font-size:12.5px;font-weight:600;letter-spacing:-.01em;color:var(--ink-soft);
+    background:none;border:0;border-bottom:2px solid transparent;padding:11px 4px 9px;
+    min-height:42px;white-space:nowrap;cursor:pointer;transition:.15s ease;font-family:inherit;}
+  .subtab:hover{color:var(--ink);}
+  .subtab.active{color:var(--sub-ac,var(--ink));border-bottom-color:var(--sub-ac,var(--ink));}
+  @media print{ .subtabs{display:none !important;} }
+
+  /* ===== ajustes de layout (v4) ===== */
+  .block-head h2, .sec .head h2{min-width:0;overflow-wrap:normal;flex:0 1 auto;}
+  .fold-ind{flex-shrink:0;}
+  /* em tela estreita a tag desce de linha em vez de espremer o título */
+  @media (max-width:640px){
+    .block-head, .sec .head, summary.block-head{flex-wrap:wrap;}
+    .block-head .tag, .sec .head .tag{order:4;flex:1 0 100%;margin-top:2px;}
+    .fold-ind{order:3;}
+  }
+  .util-bar{flex-wrap:wrap;}
+  @media (max-width:420px){
+    .btn-mini{padding:0 10px;font-size:12px;}
+    .peso-ctl{padding:0 10px;}
+  }
+
+  :root{--bib:#5B6470; --bib-soft:#EEF0F3;}
+  html[data-theme="dark"] body{--bib:#9AA5B1; --bib-soft:#1E2329;}
+  .tab.bib{color:var(--bib);}
+  .tab.active.bib{background:var(--bib);color:#fff;}
+  .bib-bg{background:var(--bib);}
+  .bib h3{color:var(--bib);}
+  .bib .biblist li{list-style:none;position:relative;padding-left:16px;margin-bottom:9px;line-height:1.5;font-size:14px;}
+  .bib .biblist li::before{content:"—";position:absolute;left:0;color:var(--bib);}
+  .bib .biblist{padding:0;margin:10px 0 18px;}
+  .callout.bib{border-color:var(--bib);background:var(--bib-soft);color:#3C444E;}
+  html[data-theme="dark"] .callout.bib{color:#C3CBD4;}
+
+  :root{--est:#5B21B6; --est-soft:#EFE9FB;}
+  html[data-theme="dark"] body{--est:#A78BFA; --est-soft:#1E1633;}
+  .tab.est{color:var(--est);}
+  .tab.active.est{background:var(--est);color:#fff;}
+  .est-bg{background:var(--est);}
+  .est h3{color:var(--est);}
+  .est .dose{background:var(--est-soft);color:var(--est);}
+  .est .checklist li::before{border-color:var(--est);}
+  .callout.est{border-color:var(--est);background:var(--est-soft);color:#3F1580;}
+  html[data-theme="dark"] .callout.est{color:#CFC0F5;}
+  @media (max-width:640px){ .est td:first-child{color:var(--est);} }
+  .amp{font-family:var(--mono);font-size:.82em;color:var(--ink-soft);}
+</style>
+</head>
+<body>
+<div class="masthead">
+<div class="pulse-line"></div>
+<div class="eyebrow"><span class="dot"></span> Referência rápida · beira-leito</div>
+<h1 class="title">Psicofarmacologia e Manejo Psiquiátrico</h1>
+<p class="subtitle">Escolha da medicação dentro de cada classe, doses e faixas terapêuticas, uso agudo, combinações, escalonamento, troca e desmame por classe, efeitos adversos, gestação e lactação, monitorização laboratorial e interações. Material clínico de referência rápida — emergências clínicas gerais no <a href="guia_bolso_paciente_critico.html" style="color:inherit;font-weight:600;">Guia de Paciente Crítico →</a> e prescrições por sistema no <a href="guia_bolso_plantao.html" style="color:inherit;font-weight:600;">Guia de Plantão →</a>.</p>
+</div>
+<nav class="tabs">
+<div class="tabs-inner" id="tabsInner">
+<a class="tab ad" data-target="antidepressivos" href="#antidepressivos">01 · Antidepressivos</a>
+<a class="tab ap" data-target="antipsicoticos" href="#antipsicoticos">02 · Antipsicóticos</a>
+<a class="tab eh" data-target="estabilizadores" href="#estabilizadores">03 · Estabilizadores de Humor</a>
+<a class="tab bzd" data-target="benzodiazepinicos" href="#benzodiazepinicos">04 · Benzodiazepínicos</a>
+<a class="tab agit" data-target="agitacao" href="#agitacao">05 · Agitação Aguda</a>
+<a class="tab abst" data-target="abstinencias" href="#abstinencias">06 · Abstinências</a>
+<a class="tab emerg" data-target="emergencias" href="#emergencias">07 · Emergências</a>
+<a class="tab troca" data-target="troca" href="#troca">08 · Decisão Terapêutica</a>
+<a class="tab gest" data-target="gestacao" href="#gestacao">09 · Gestação e Lactação</a>
+<a class="tab monit" data-target="monitorizacao" href="#monitorizacao">10 · Monitorização</a>
+<a class="tab est" data-target="psicoestimulantes" href="#psicoestimulantes">11 · Psicoestimulantes</a>
+<a class="tab bib" data-target="referencias" href="#referencias">12 · Referências</a>
+</div>
+</nav>
+<div class="subtabs"><div class="subtabs-inner" id="subTabsInner"></div></div>
+<div class="util-bar">
+<label class="peso-ctl" title="Peso do paciente — recalcula as doses marcadas">⚖<input id="pesoInput" inputmode="decimal" max="250" min="30" step="1" type="number"/>kg</label>
+<button id="themeBtn" title="Tema claro/escuro" type="button">◐</button>
+<button class="btn-mini" id="toggleAll" type="button">Expandir tudo</button>
+</div>
+<p class="fold-hint">Toque no título para abrir a seção · a 2ª linha mostra os tópicos dela</p>
+<main>
+<!-- ============ ANTIDEPRESSIVOS ============ -->
+<section class="block ad" id="antidepressivos">
+<details class="sec-fold" data-sec="antidepressivos">
+<summary class="block-head"><span class="idx ad-bg">01</span><h2>Antidepressivos</h2><span class="tag">escolha por perfil</span><span class="fold-ind" aria-hidden="true"></span></summary>
+<div class="sec-body">
+<div class="callout ad"><b>A escolha não é por potência, é por perfil.</b> Todos os antidepressivos têm eficácia média semelhante na depressão maior. O que decide é qual sintoma-alvo acompanha o quadro (dor, insônia, baixo peso, fadiga), qual efeito colateral o paciente tolera a longo prazo e quais comorbidades e interações existem.</div>
+
+<h3>ISRS — inibidores seletivos da recaptação de serotonina</h3>
+<p class="lede">Mecanismo: bloqueio do transportador de serotonina (SERT). <b>Primeira linha</b> em depressão, TAG, pânico, TEPT, fobia social e TOC (em dose alta).</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Fármaco</th><th>Faixa</th><th>Quando é a melhor escolha</th><th>Cuidados</th></tr></thead>
+<tbody>
+<tr><td data-label="Fármaco"><b>Sertralina</b></td><td class="dose" data-label="Faixa">50–200mg/dia</td><td data-label="Melhor escolha">Perfil mais limpo e escolha padrão na dúvida. <b>Gestação, lactação, idoso, cardiopata, polifarmácia</b></td><td data-label="Cuidados">Diarreia inicial; leve ação dopaminérgica em dose alta</td></tr>
+<tr><td data-label="Fármaco"><b>Escitalopram</b></td><td class="dose" data-label="Faixa">10–20mg/dia</td><td data-label="Melhor escolha">Melhor tolerabilidade da classe; resposta rápida em <b>ansiedade</b></td><td data-label="Cuidados"><b>QTc</b> acima de 20mg; máx 10mg no idoso</td></tr>
+<tr><td data-label="Fármaco"><b>Fluoxetina</b></td><td class="dose" data-label="Faixa">20–80mg/dia</td><td data-label="Melhor escolha">Má adesão (meia-vida longa faz autodesmame); paciente <b>apático ou lentificado</b>; adolescente</td><td data-label="Cuidados">Ativadora — dar pela manhã; inibe CYP2D6; interage por semanas após suspensa</td></tr>
+<tr><td data-label="Fármaco"><b>Paroxetina</b></td><td class="dose" data-label="Faixa">20–50mg/dia</td><td data-label="Melhor escolha">Nicho estreito — ansiedade com insônia marcada</td><td data-label="Cuidados">Pior da classe em descontinuação, anticolinérgicos, peso e disfunção sexual. <b>Evitar em gestante e idoso</b></td></tr>
+<tr><td data-label="Fármaco"><b>Citalopram</b></td><td class="dose" data-label="Faixa">20–40mg/dia</td><td data-label="Melhor escolha">Alternativa ao escitalopram</td><td data-label="Cuidados">Máx 40mg; <b>20mg se &gt;60 anos</b> — alerta formal de QTc</td></tr>
+<tr><td data-label="Fármaco"><b>Fluvoxamina</b></td><td class="dose" data-label="Faixa">50–300mg/dia</td><td data-label="Melhor escolha">Nicho em <b>TOC</b></td><td data-label="Cuidados">Inibidor potente do CYP1A2 — eleva muito clozapina e teofilina</td></tr>
+</tbody>
+</table></div>
+<div class="callout ad"><b>No TOC a dose é outra.</b> Todos os ISRS exigem doses mais altas e espera maior (10–12 semanas). Subdosar e trocar cedo é o erro clássico.</div>
+
+<h3>IRSN — duais (inibidores de serotonina e noradrenalina)</h3>
+<p class="lede">Mecanismo: bloqueio de SERT e NET. O componente noradrenérgico é o que trata <b>dor</b> e sustenta a resposta em quadros refratários.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Fármaco</th><th>Faixa</th><th>Quando é a melhor escolha</th><th>Cuidados</th></tr></thead>
+<tbody>
+<tr><td data-label="Fármaco"><b>Venlafaxina</b></td><td class="dose" data-label="Faixa">75–225mg/dia</td><td data-label="Melhor escolha">Depressão refratária, TAG, dor neuropática. Ação noradrenérgica só <b>a partir de 150mg</b> — abaixo disso comporta-se como ISRS</td><td data-label="Cuidados"><b>Eleva PA</b> em dose alta — medir a cada consulta. Descontinuação difícil</td></tr>
+<tr><td data-label="Fármaco"><b>Desvenlafaxina</b></td><td class="dose" data-label="Faixa">50–100mg/dia</td><td data-label="Melhor escolha">Metabólito ativo da venlafaxina; menos interação e sem necessidade de titulação</td><td data-label="Cuidados">Mesmo cuidado com PA</td></tr>
+<tr><td data-label="Fármaco"><b>Duloxetina</b></td><td class="dose" data-label="Faixa">30–120mg/dia</td><td data-label="Melhor escolha"><b>Depressão com dor crônica</b>, fibromialgia, neuropatia diabética — dual desde doses baixas</td><td data-label="Cuidados">Náusea inicial; evitar em hepatopatia e etilismo ativo</td></tr>
+</tbody>
+</table></div>
+
+<h3>Atípicos — mecanismos distintos, um a um</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Fármaco</th><th>Subclasse e mecanismo</th><th>Faixa</th><th>Melhor escolha quando</th></tr></thead>
+<tbody>
+<tr><td data-label="Fármaco"><b>Mirtazapina</b></td><td data-label="Subclasse"><b>NaSSA</b> — antagonista α₂ + 5HT2/5HT3, agonista H1</td><td class="dose" data-label="Faixa">15–45mg à noite</td><td data-label="Melhor quando"><b>Insônia + baixo peso + náusea</b>. Sem disfunção sexual. Sedação e apetite são <b>maiores em doses baixas</b></td></tr>
+<tr><td data-label="Fármaco"><b>Bupropiona</b></td><td data-label="Subclasse"><b>IRDN</b> — inibe recaptação de dopamina e noradrenalina; sem ação serotoninérgica</td><td class="dose" data-label="Faixa">150–300mg/dia (XR)</td><td data-label="Melhor quando"><b>Fadiga, apatia, disfunção sexual</b> e tabagismo. <b>Contraindicada</b> em risco convulsivo, abstinência alcoólica e transtorno alimentar</td></tr>
+<tr><td data-label="Fármaco"><b>Trazodona</b></td><td data-label="Subclasse"><b>SARI</b> — antagonista 5HT2A com inibição fraca de recaptação; forte bloqueio H1 e α₁</td><td class="dose" data-label="Faixa">50–100mg (sono) · 300–600mg (antidepressiva)</td><td data-label="Melhor quando"><b>Insônia</b>, como alternativa ao benzodiazepínico — uso principal hoje. Hipotensão postural; <b>priapismo</b> é urgência</td></tr>
+<tr><td data-label="Fármaco"><b>Vortioxetina</b></td><td data-label="Subclasse"><b>Multimodal</b> — inibe SERT e modula vários receptores 5HT</td><td class="dose" data-label="Faixa">5–20mg/dia</td><td data-label="Melhor quando">Queixa <b>cognitiva</b> proeminente na depressão; baixa disfunção sexual</td></tr>
+<tr><td data-label="Fármaco"><b>Agomelatina</b></td><td data-label="Subclasse"><b>Melatoninérgico</b> — agonista MT1/MT2 + antagonista 5HT2C</td><td class="dose" data-label="Faixa">25–50mg à noite</td><td data-label="Melhor quando">Depressão com <b>ritmo circadiano desorganizado</b>; sem disfunção sexual nem ganho de peso. <b>Monitorar transaminases</b></td></tr>
+</tbody>
+</table></div>
+<div class="callout ad">Bupropiona e mirtazapina não são serotoninérgicas puras — por isso são as duas mais usadas <b>em associação</b> a um ISRS quando falta resposta parcial, e as escolhas quando a disfunção sexual é o fator limitante.</div>
+
+<h3>Tricíclicos (ADT)</h3>
+<p class="lede">Mecanismo dual (SERT + NET) somado a bloqueio H1, muscarínico e α₁ — daí todo o perfil de efeitos adversos. <b>Nicho atual é a dor</b>, em dose baixa, e o TOC refratário.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Fármaco</th><th>Faixa</th><th>Melhor escolha quando</th><th>Cuidados</th></tr></thead>
+<tbody>
+<tr><td data-label="Fármaco"><b>Amitriptilina</b></td><td class="dose" data-label="Faixa">25–150mg à noite</td><td data-label="Melhor quando">Dor neuropática, enxaqueca, insônia — em <b>dose baixa</b></td><td data-label="Cuidados">A mais anticolinérgica e sedativa da classe; ganho de peso</td></tr>
+<tr><td data-label="Fármaco"><b>Nortriptilina</b></td><td class="dose" data-label="Faixa">25–150mg/dia</td><td data-label="Melhor quando">Quando se quer tricíclico com <b>menos anticolinérgico e menos hipotensão</b> — preferida no idoso, se for inevitável usar ADT</td><td data-label="Cuidados">Permite dosagem sérica</td></tr>
+<tr><td data-label="Fármaco"><b>Clomipramina</b></td><td class="dose" data-label="Faixa">75–250mg/dia</td><td data-label="Melhor quando"><b>TOC refratário</b> — o tricíclico mais serotoninérgico</td><td data-label="Cuidados">Anticolinérgico proeminente, convulsão em dose alta, disfunção sexual</td></tr>
+<tr><td data-label="Fármaco"><b>Imipramina</b></td><td class="dose" data-label="Faixa">75–200mg/dia</td><td data-label="Melhor quando">Pânico, enurese</td><td data-label="Cuidados">Ansiedade paradoxal inicial — começar baixo</td></tr>
+</tbody>
+</table></div>
+<div class="callout warn"><b>O limitante da classe é a overdose.</b> Tricíclico é cardiotóxico em superdosagem — QRS alargado por bloqueio de canal de sódio. Evitar em paciente com risco suicida, e nunca fornecer receita de grande quantidade. Evitar no idoso pelo perfil anticolinérgico (confusão, retenção urinária, queda).</div>
+
+<h3>IMAO</h3>
+<p class="lede">Inibidores da monoaminoxidase — tranilcipromina e fenelzina (irreversíveis), moclobemida (reversível, RIMA). Uso restrito a depressão refratária e atípica, em serviço especializado.</p>
+<ul class="checklist">
+<li><b>Dieta pobre em tiramina</b> obrigatória com os irreversíveis — queijos curados, embutidos, fermentados: risco de crise hipertensiva</li>
+<li><b>Intervalo obrigatório em qualquer troca:</b> 14 dias ao entrar ou sair de um IMAO — e <b>5 semanas ao sair da fluoxetina</b></li>
+<li>Combinação com serotoninérgico, tramadol, linezolida ou triptano: síndrome serotoninérgica grave</li>
+</ul>
+
+<h3>Escolha rápida pelo sintoma dominante</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Situação</th><th>1ª escolha</th><th>Classe</th></tr></thead>
+<tbody>
+<tr><td data-label="Situação">Insônia e perda de peso</td><td data-label="1ª escolha">Mirtazapina</td><td data-label="Classe">Atípico (NaSSA)</td></tr>
+<tr><td data-label="Situação">Dor crônica, enxaqueca, fibromialgia</td><td data-label="1ª escolha">Duloxetina ou venlafaxina; ADT em dose baixa</td><td data-label="Classe">IRSN ou tricíclico</td></tr>
+<tr><td data-label="Situação">Fadiga, apatia, hipersonia</td><td data-label="1ª escolha">Bupropiona ou fluoxetina</td><td data-label="Classe">IRDN ou ISRS ativador</td></tr>
+<tr><td data-label="Situação">Disfunção sexual limitante</td><td data-label="1ª escolha">Bupropiona, mirtazapina, vortioxetina, agomelatina</td><td data-label="Classe">Atípicos</td></tr>
+<tr><td data-label="Situação">Tabagismo concomitante</td><td data-label="1ª escolha">Bupropiona</td><td data-label="Classe">IRDN</td></tr>
+<tr><td data-label="Situação">Idoso, polifarmácia, cardiopata</td><td data-label="1ª escolha">Sertralina ou escitalopram</td><td data-label="Classe">ISRS</td></tr>
+<tr><td data-label="Situação">Gestação e lactação</td><td data-label="1ª escolha">Sertralina — seção 09</td><td data-label="Classe">ISRS</td></tr>
+<tr><td data-label="Situação">TOC</td><td data-label="1ª escolha">ISRS em dose alta; clomipramina se refratário</td><td data-label="Classe">ISRS ou tricíclico</td></tr>
+<tr><td data-label="Situação">Queixa cognitiva marcante</td><td data-label="1ª escolha">Vortioxetina</td><td data-label="Classe">Atípico multimodal</td></tr>
+<tr><td data-label="Situação">Ansiedade com insônia inicial</td><td data-label="1ª escolha">ISRS + trazodona à noite</td><td data-label="Classe">ISRS + SARI</td></tr>
+</tbody>
+</table></div>
+
+<h3>Troca e desmame de antidepressivo</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>De → Para</th><th>Método</th><th>Armadilha</th></tr></thead>
+<tbody>
+<tr><td data-label="De → Para">ISRS → ISRS</td><td data-label="Método"><b>Direta</b> em dose baixa; cruzada rápida (3–7 dias) em dose alta</td><td data-label="Armadilha">Sair da paroxetina exige cruzamento — descontinuação intensa</td></tr>
+<tr><td data-label="De → Para">ISRS → IRSN</td><td data-label="Método">Cruzada em 1–2 semanas</td><td data-label="Armadilha">Medir PA ao subir a venlafaxina acima de 150mg</td></tr>
+<tr><td data-label="De → Para">ISRS/IRSN → mirtazapina ou bupropiona</td><td data-label="Método">Pode <b>sobrepor</b> — mecanismos distintos, sem somar serotonina</td><td data-label="Armadilha">Bupropiona: confirmar ausência de risco convulsivo antes</td></tr>
+<tr><td data-label="De → Para">Fluoxetina → qualquer</td><td data-label="Método">Suspender e iniciar o próximo em dose baixa</td><td data-label="Armadilha">Meia-vida longa mantém sobreposição real por semanas — vigiar síndrome serotoninérgica</td></tr>
+<tr><td data-label="De → Para">Qualquer → tricíclico</td><td data-label="Método">Cruzada lenta, começando o ADT em dose baixa</td><td data-label="Armadilha">Fluoxetina e paroxetina inibem o CYP2D6 e <b>elevam o nível do tricíclico</b> → cardiotoxicidade</td></tr>
+<tr><td data-label="De → Para">Qualquer ↔ IMAO</td><td data-label="Método"><b>Intervalo obrigatório</b> de 14 dias (5 semanas saindo da fluoxetina)</td><td data-label="Armadilha">Não existe cruzamento aqui — é a única troca com <i>washout</i> inegociável</td></tr>
+</tbody>
+</table></div>
+<ul class="checklist">
+<li><b>Desmame:</b> reduzir ~25% a cada 2–4 semanas; em uso &gt;1 ano, 10% a cada 4 semanas</li>
+<li>Síndrome de descontinuação — <b>FINISH</b>: sintomas gripais, Insônia, Náusea, desequilíbrio (<i>Imbalance</i>), distúrbios Sensoriais ("choques") e Hiperestimulação</li>
+<li>Pior com <b>paroxetina e venlafaxina</b>; raro com fluoxetina, que se autodesmama</li>
+<li><b>Tricíclico exige retirada mais lenta</b> — rebote colinérgico (náusea, cólica, sudorese, insônia) além da descontinuação serotoninérgica</li>
+<li><b>Descontinuação × recaída:</b> a primeira começa em dias e melhora em horas com a dose de volta; a recaída leva semanas e não responde tão rápido</li>
+</ul>
+
+<h3>Erros que aparecem toda semana</h3>
+<ul class="checklist">
+<li><b>Trocar antes de 4 semanas em dose adequada.</b> Resposta inicial em 3–4 semanas, plena em 6–8</li>
+<li><b>Antidepressivo isolado em bipolar</b> — risco de virada maníaca. Rastrear euforia prévia, irritabilidade e insônia sem cansaço antes de prescrever</li>
+<li><b>Começar em dose plena no paciente ansioso</b> — a piora inicial derruba a adesão. Metade da dose por 3–7 dias</li>
+<li>Subdosar no TOC e concluir que "não funcionou"</li>
+<li>Manter bupropiona em quem tem risco convulsivo, inclusive abstinência alcoólica em curso</li>
+</ul>
+</div>
+</details>
+</section>
+
+<!-- ============ ANTIPSICÓTICOS ============ -->
+<section class="block ap" id="antipsicoticos">
+<details class="sec-fold" data-sec="antipsicoticos">
+<summary class="block-head"><span class="idx ap-bg">02</span><h2>Antipsicóticos</h2><span class="tag">metabólico · EPS</span><span class="fold-ind" aria-hidden="true"></span></summary>
+<div class="sec-body">
+<div class="callout ap"><b>A escolha se faz por efeito colateral, não por eficácia.</b> Fora a clozapina na refratariedade, os antipsicóticos têm eficácia semelhante entre si. O que muda é o preço a pagar: ganho de peso e síndrome metabólica de um lado, sintomas extrapiramidais e prolactina do outro, sedação e QTc no meio.</div>
+
+<h3>Típicos (1ª geração) — separados por potência</h3>
+<p class="lede">Antagonistas D2 puros. A <b>potência</b> define o perfil de efeitos: alta potência dá mais extrapiramidal e menos sedação; baixa potência faz o inverso.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Fármaco</th><th>Subclasse</th><th>Faixa</th><th>Perfil</th></tr></thead>
+<tbody>
+<tr><td data-label="Fármaco"><b>Haloperidol</b></td><td data-label="Subclasse">Butirofenona — <b>alta potência</b></td><td class="dose" data-label="Faixa">VO 5–20mg/dia · IM 5mg · decanoato 1–4 amp/mês</td><td data-label="Perfil">Muito EPS; <b>pouca</b> sedação, hipotensão e efeito metabólico. <b>Não usar EV</b> — Torsades</td></tr>
+<tr><td data-label="Fármaco"><b>Flufenazina</b></td><td data-label="Subclasse">Fenotiazina piperazínica — alta potência</td><td class="dose" data-label="Faixa">Decanoato 12,5–50mg/mês</td><td data-label="Perfil">Alternativa depot; mesmo perfil extrapiramidal</td></tr>
+<tr><td data-label="Fármaco"><b>Clorpromazina</b></td><td data-label="Subclasse">Fenotiazina alifática — <b>baixa potência</b></td><td class="dose" data-label="Faixa">25–100mg 2–4×/dia</td><td data-label="Perfil">Muita <b>sedação, hipotensão ortostática e anticolinérgico</b>; menos EPS. Cautela em etilista e idoso</td></tr>
+<tr><td data-label="Fármaco"><b>Levomepromazina</b></td><td data-label="Subclasse">Fenotiazina — baixa potência</td><td class="dose" data-label="Faixa">25–100mg/dia</td><td data-label="Perfil">A mais sedativa; usada quando o alvo é sedação</td></tr>
+</tbody>
+</table></div>
+
+<h3>Atípicos (2ª geração)</h3>
+<p class="lede">Antagonismo D2 associado a bloqueio 5HT2A — menos extrapiramidal, mais custo metabólico.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Fármaco</th><th>Faixa</th><th>Melhor escolha quando</th><th>Preço a pagar</th></tr></thead>
+<tbody>
+<tr><td data-label="Fármaco"><b>Risperidona</b></td><td class="dose" data-label="Faixa">1–6mg/dia</td><td data-label="Melhor quando">Sintomas positivos; <b>impulsividade e agressividade</b> (TEA, TPB) em dose baixa; tiques</td><td data-label="Preço">A partir de <b>4mg</b>: EPS e a <b>maior hiperprolactinemia</b> entre os atípicos</td></tr>
+<tr><td data-label="Fármaco"><b>Paliperidona</b></td><td class="dose" data-label="Faixa">3–12mg/dia · depot mensal a semestral</td><td data-label="Melhor quando">Metabólito ativo da risperidona; <b>má adesão</b> — a melhor opção depot</td><td data-label="Preço">Mesmo perfil de prolactina</td></tr>
+<tr><td data-label="Fármaco"><b>Olanzapina</b></td><td class="dose" data-label="Faixa">5–20mg/dia (até 30 em mania) · IM 10mg</td><td data-label="Melhor quando">Mania e agitação aguda; paciente que <b>precisa ganhar peso</b></td><td data-label="Preço"><b>Risco metabólico alto.</b> Nunca IM junto de BZD parenteral</td></tr>
+<tr><td data-label="Fármaco"><b>Quetiapina</b></td><td class="dose" data-label="Faixa">25–800mg/dia</td><td data-label="Melhor quando"><b>Depressão bipolar</b> (300mg XR), insônia, sintomas negativos. Dose sedativa (25–100mg) ≠ dose antipsicótica (400–800mg)</td><td data-label="Preço">Sedação intensa, hipotensão, peso, QTc</td></tr>
+<tr><td data-label="Fármaco"><b>Ziprasidona</b></td><td class="dose" data-label="Faixa">80–160mg/dia</td><td data-label="Melhor quando">Neutralidade metabólica</td><td data-label="Preço"><b>QTc</b>; exige <b>tomar com refeição</b> — em jejum a absorção cai pela metade</td></tr>
+<tr><td data-label="Fármaco"><b>Lurasidona</b></td><td class="dose" data-label="Faixa">40–160mg/dia</td><td data-label="Melhor quando">Depressão bipolar com neutralidade metabólica</td><td data-label="Preço">Acatisia; exige refeição de ≥350 kcal</td></tr>
+<tr><td data-label="Fármaco"><b>Asenapina</b></td><td class="dose" data-label="Faixa">5–10mg 2×/dia SL</td><td data-label="Melhor quando"><b>Sublingual</b> — útil na recusa da via oral</td><td data-label="Preço">Hipoestesia oral; não engolir nem beber por 10min</td></tr>
+<tr><td data-label="Fármaco"><b>Clozapina</b></td><td class="dose" data-label="Faixa">12,5–25mg → 200–600mg/dia</td><td data-label="Melhor quando"><b>Esquizofrenia refratária</b> (≥2 falhas adequadas) e <b>redução de suicidalidade</b> — única com essa evidência</td><td data-label="Preço">Agranulocitose (~1%), miocardite precoce, convulsão, sialorreia, <b>constipação com risco de íleo</b>, síndrome metabólica</td></tr>
+</tbody>
+</table></div>
+<div class="callout warn"><b>A constipação da clozapina mata mais que a agranulocitose.</b> O íleo paralítico é a complicação fatal mais frequente e não há hemograma que o rastreie. Perguntar sobre evacuação em toda consulta e prescrever laxante profilático.</div>
+
+<h3>Agonistas parciais (3ª geração)</h3>
+<p class="lede">Agonismo parcial D2 — estabilizam o tônus dopaminérgico em vez de bloqueá-lo. Isso muda a forma de introduzir a droga, e não só o perfil de efeitos.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Fármaco</th><th>Faixa</th><th>Melhor escolha quando</th><th>Preço a pagar</th></tr></thead>
+<tbody>
+<tr><td data-label="Fármaco"><b>Aripiprazol</b></td><td class="dose" data-label="Faixa">10–30mg/dia · 2–5mg como adjuvante</td><td data-label="Melhor quando"><b>Síndrome metabólica ou risco cardiovascular</b>; hiperprolactinemia (reduz prolactina); potencialização em depressão refratária</td><td data-label="Preço"><b>Acatisia</b> — principal causa de abandono</td></tr>
+<tr><td data-label="Fármaco"><b>Cariprazina</b></td><td class="dose" data-label="Faixa">1,5–6mg/dia</td><td data-label="Melhor quando">Sintomas negativos predominantes; depressão bipolar</td><td data-label="Preço">Acatisia; meia-vida muito longa</td></tr>
+</tbody>
+</table></div>
+
+<h3>Escolha rápida pelo contexto</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Situação</th><th>Escolha</th></tr></thead>
+<tbody>
+<tr><td data-label="Situação">Agitação aguda</td><td data-label="Escolha">Haloperidol ± prometazina, ou olanzapina — seção 05</td></tr>
+<tr><td data-label="Situação">Diabetes, obesidade, dislipidemia</td><td data-label="Escolha">Aripiprazol, ziprasidona ou lurasidona</td></tr>
+<tr><td data-label="Situação">Paciente desnutrido</td><td data-label="Escolha">Olanzapina — o ganho de peso vira aliado</td></tr>
+<tr><td data-label="Situação">Insônia grave associada</td><td data-label="Escolha">Quetiapina em dose baixa</td></tr>
+<tr><td data-label="Situação">Depressão bipolar</td><td data-label="Escolha">Quetiapina, lurasidona ou cariprazina</td></tr>
+<tr><td data-label="Situação">Sintomas negativos</td><td data-label="Escolha">Aripiprazol ou cariprazina; evitar típico em dose alta</td></tr>
+<tr><td data-label="Situação">Hiperprolactinemia sintomática</td><td data-label="Escolha">Trocar para aripiprazol</td></tr>
+<tr><td data-label="Situação">Má adesão recorrente</td><td data-label="Escolha">Depot — paliperidona mensal, haloperidol decanoato</td></tr>
+<tr><td data-label="Situação">Refratariedade (≥2 falhas)</td><td data-label="Escolha">Clozapina — não adiar</td></tr>
+<tr><td data-label="Situação">Idoso com demência</td><td data-label="Escolha"><b>Evitar</b> — aumento de mortalidade. Se inevitável, menor dose e menor tempo</td></tr>
+</tbody>
+</table></div>
+
+<h3>Troca e desmame de antipsicótico</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Cenário</th><th>Método</th><th>Armadilha específica</th></tr></thead>
+<tbody>
+<tr><td data-label="Cenário">Troca padrão</td><td data-label="Método"><b>Cruzada em 2–4 semanas</b>: subir o novo até dose eficaz antes de retirar o antigo</td><td data-label="Armadilha">Trocar rápido em paciente instável é a principal causa de reinternação</td></tr>
+<tr><td data-label="Cenário">Saindo de olanzapina, quetiapina ou clozapina</td><td data-label="Método">Retirada <b>lenta</b></td><td data-label="Armadilha"><b>Rebote colinérgico</b> — náusea, cólica, sudorese, insônia, agitação. Costuma ser confundido com recaída e leva a reintroduzir sem necessidade</td></tr>
+<tr><td data-label="Cenário">Saindo de um sedativo → entrando em aripiprazol</td><td data-label="Método">Sobreposição mais longa, aripiprazol em dose baixa</td><td data-label="Armadilha">Insônia e <b>acatisia</b> nas primeiras semanas; o agonista parcial pode dar <b>piora psicótica transitória</b> ao substituir um antagonista pleno</td></tr>
+<tr><td data-label="Cenário"><b>Retirada de clozapina</b></td><td data-label="Método">Reduzir <b>25mg por semana</b>; nunca abruptamente</td><td data-label="Armadilha">Suspensão abrupta causa <b>psicose de rebote grave</b> e quadro colinérgico. Exceção: agranulocitose e miocardite, onde se suspende na hora e se cobre com outro antipsicótico</td></tr>
+<tr><td data-label="Cenário">Oral → depot</td><td data-label="Método">Manter o oral até o depot atingir nível estável</td><td data-label="Armadilha">Tempo até o platô varia por formulação — retirar o oral cedo demais causa recaída semanas depois</td></tr>
+<tr><td data-label="Cenário">Descontinuação definitiva</td><td data-label="Método">Reduzir ao longo de <b>meses</b>, com plano de recaída pactuado</td><td data-label="Armadilha"><b>Discinesia de retirada</b> e psicose de supersensibilidade podem surgir na redução; não confundir com falha da decisão</td></tr>
+</tbody>
+</table></div>
+</div>
+</details>
+</section>
+
+<!-- ============ ESTABILIZADORES ============ -->
+<section class="block eh" id="estabilizadores">
+<details class="sec-fold" data-sec="estabilizadores">
+<summary class="block-head"><span class="idx eh-bg">03</span><h2>Estabilizadores de Humor</h2><span class="tag">polaridade · litemia</span><span class="fold-ind" aria-hidden="true"></span></summary>
+<div class="sec-body">
+<div class="callout eh"><b>A escolha se faz pela polaridade dominante</b> — qual polo domina o curso da doença e qual polo você precisa prevenir. Mania eufórica clássica e risco suicida puxam para lítio; mania mista, ciclagem rápida e irritabilidade puxam para valproato; predomínio depressivo puxa para lamotrigina ou quetiapina.</div>
+
+<h3>Lítio</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Item</th><th>Detalhe</th></tr></thead>
+<tbody>
+<tr><td data-label="Item">Faixa e alvo</td><td class="dose" data-label="Detalhe">300–1200mg/dia · litemia 0,6–1,2mEq/L (manutenção 0,6–0,8; mania aguda 0,8–1,2)</td></tr>
+<tr><td data-label="Item">Melhor escolha quando</td><td data-label="Detalhe"><b>Padrão-ouro no bipolar I clássico.</b> Previne mania <b>e</b> depressão; <b>única medicação psiquiátrica com evidência sólida de redução de suicídio</b>; reduz mortalidade global</td></tr>
+<tr><td data-label="Item">Coleta</td><td data-label="Detalhe">Litemia <b>12h após a última dose</b></td></tr>
+<tr><td data-label="Item">Cuidados</td><td data-label="Detalhe">Janela estreita; tremor fino é esperado, tremor grosseiro é alerta. Monitorar função renal, TSH e cálcio</td></tr>
+</tbody>
+</table></div>
+
+<h3>Anticonvulsivantes estabilizadores</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Fármaco</th><th>Faixa / nível</th><th>Melhor escolha quando</th><th>Cuidados</th></tr></thead>
+<tbody>
+<tr><td data-label="Fármaco"><b>Valproato</b></td><td class="dose" data-label="Faixa">500–2000mg/dia · mania 20–30mg/kg/dia = <span class="wv" data-d="0" data-k1="20" data-k2="30" data-u="mg">1.400–2.100mg</span> · nível 50–125µg/mL</td><td data-label="Melhor quando"><b>Mania mista, ciclagem rápida, irritabilidade e impulsividade.</b> Resposta mais rápida que a do lítio</td><td data-label="Cuidados"><b>Teratogênico</b>; plaquetopenia, hepatotoxicidade, hiperamonemia, SOP, peso</td></tr>
+<tr><td data-label="Fármaco"><b>Lamotrigina</b></td><td class="dose" data-label="Faixa">25 → 200mg/dia</td><td data-label="Melhor quando"><b>Prevenção da depressão bipolar</b> — o estabilizador do polo depressivo. Neutra em peso</td><td data-label="Cuidados">Pouco eficaz em mania aguda. <b>Titulação lenta obrigatória</b></td></tr>
+<tr><td data-label="Fármaco"><b>Carbamazepina</b></td><td class="dose" data-label="Faixa">400–1200mg/dia</td><td data-label="Melhor quando">Alternativa em mania, agressividade e impulsividade</td><td data-label="Cuidados"><b>Indutor potente do CYP3A4</b>; hiponatremia, leucopenia, Stevens-Johnson; autoindução exige reajuste em 2–4 semanas</td></tr>
+<tr><td data-label="Fármaco"><b>Oxcarbazepina</b></td><td class="dose" data-label="Faixa">600–1800mg/dia</td><td data-label="Melhor quando">Melhor tolerabilidade que a carbamazepina</td><td data-label="Cuidados"><b>Maior risco de hiponatremia</b>; menos indução enzimática</td></tr>
+</tbody>
+</table></div>
+
+<h3>Antipsicóticos com ação estabilizadora</h3>
+<p class="lede">Não são "estabilizadores" por classe química, mas ocupam o mesmo lugar terapêutico — perfil completo na seção 02.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Fármaco</th><th>Papel no bipolar</th></tr></thead>
+<tbody>
+<tr><td data-label="Fármaco">Quetiapina</td><td data-label="Papel">Depressão bipolar e manutenção; 300mg XR</td></tr>
+<tr><td data-label="Fármaco">Olanzapina</td><td data-label="Papel">Mania aguda; manutenção com custo metabólico</td></tr>
+<tr><td data-label="Fármaco">Aripiprazol</td><td data-label="Papel">Mania e manutenção com neutralidade metabólica</td></tr>
+<tr><td data-label="Fármaco">Lurasidona / cariprazina</td><td data-label="Papel">Depressão bipolar</td></tr>
+</tbody>
+</table></div>
+<div class="callout eh"><b>Escolha pela polaridade dominante:</b> mania eufórica clássica e risco suicida → lítio. Mania mista, ciclagem rápida e irritabilidade → valproato. Predomínio depressivo → lamotrigina, quetiapina ou lurasidona. Mulher em idade fértil → lítio ou lamotrigina, nunca valproato.</div>
+
+<h3>Titulação da lamotrigina — o esquema não é negociável</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Semana</th><th>Dose padrão</th><th>Com valproato (metade)</th><th>Com carbamazepina (dobro)</th></tr></thead>
+<tbody>
+<tr><td data-label="Semana">1–2</td><td class="dose" data-label="Padrão">25mg/dia</td><td data-label="Com valproato">25mg em dias alternados</td><td data-label="Com CBZ">50mg/dia</td></tr>
+<tr><td data-label="Semana">3–4</td><td class="dose" data-label="Padrão">50mg/dia</td><td data-label="Com valproato">25mg/dia</td><td data-label="Com CBZ">100mg/dia</td></tr>
+<tr><td data-label="Semana">5</td><td class="dose" data-label="Padrão">100mg/dia</td><td data-label="Com valproato">50mg/dia</td><td data-label="Com CBZ">200mg/dia</td></tr>
+<tr><td data-label="Semana">6 em diante</td><td class="dose" data-label="Padrão">200mg/dia</td><td data-label="Com valproato">100mg/dia</td><td data-label="Com CBZ">300–400mg/dia</td></tr>
+</tbody>
+</table></div>
+<div class="callout warn"><b>Valproato dobra o nível da lamotrigina; carbamazepina reduz pela metade.</b> Errar esse ajuste é a principal causa evitável de Stevens-Johnson. Qualquer rash nas primeiras 8 semanas: <b>suspender imediatamente</b>. Se o paciente perder mais de 5 dias de dose, <b>recomeçar a titulação do zero</b>.</div>
+
+<h3>Troca e desmame de estabilizador</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Cenário</th><th>Método</th><th>Armadilha específica</th></tr></thead>
+<tbody>
+<tr><td data-label="Cenário"><b>Retirada de lítio</b></td><td data-label="Método">Reduzir ao longo de <b>no mínimo 4 semanas</b>, idealmente 3 meses</td><td data-label="Armadilha">Suspensão abrupta causa <b>mania de rebote precoce</b>, e há risco de a resposta não retornar se o lítio for reintroduzido depois</td></tr>
+<tr><td data-label="Cenário">Valproato → lamotrigina</td><td data-label="Método">Introduzir lamotrigina com <b>metade</b> da titulação; ao retirar o valproato, <b>dobrar</b> a lamotrigina</td><td data-label="Armadilha">Esquecer o ajuste na saída faz a lamotrigina cair para nível subterapêutico e o paciente recair</td></tr>
+<tr><td data-label="Cenário">Retirada de carbamazepina</td><td data-label="Método">Retirada gradual, revisando todas as outras doses</td><td data-label="Armadilha">A indução enzimática leva <b>2–4 semanas para desaparecer</b> — o nível dos outros fármacos <b>sobe</b> depois da retirada, inclusive lamotrigina e anticoncepcional</td></tr>
+<tr><td data-label="Cenário">Retirada de lamotrigina</td><td data-label="Método">Reduzir ~25% por semana</td><td data-label="Armadilha">Se voltar a introduzir depois de &gt;5 dias parada, recomeçar a titulação lenta</td></tr>
+<tr><td data-label="Cenário">Troca por antipsicótico</td><td data-label="Método">Sobrepor até o novo atingir dose eficaz</td><td data-label="Armadilha">Fase de troca é a de maior risco de recaída — encurtar intervalos de consulta</td></tr>
+</tbody>
+</table></div>
+
+<h3>Intoxicação por lítio</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Litemia</th><th>Quadro</th><th>Conduta</th></tr></thead>
+<tbody>
+<tr><td data-label="Litemia">1,5–2,0</td><td data-label="Quadro">Tremor grosseiro, náusea, vômito, diarreia, fraqueza</td><td data-label="Conduta">Suspender, hidratar com SF 0,9%, litemia seriada</td></tr>
+<tr><td data-label="Litemia">2,0–2,5</td><td data-label="Quadro">Ataxia, disartria, confusão, fasciculação, nistagmo</td><td data-label="Conduta">Suspender, hidratação vigorosa, monitorização; discutir diálise</td></tr>
+<tr><td data-label="Litemia">&gt;2,5</td><td data-label="Quadro">Convulsão, rebaixamento, arritmia, insuficiência renal</td><td data-label="Conduta"><b>Hemodiálise</b></td></tr>
+</tbody>
+</table></div>
+<div class="callout eh"><b>Critérios de diálise não dependem só do número</b>: indicada se litemia &gt;4,0mEq/L com disfunção renal, <b>ou</b> se houver rebaixamento, convulsão ou arritmia grave <b>independentemente do nível</b>. <b>Carvão ativado não adsorve lítio.</b></div>
+<div class="callout warn"><b>Gatilhos a procurar sempre:</b> AINE (exceto AAS e sulindaco), tiazídico, IECA/BRA, desidratação, diarreia, vômito, dieta hipossódica, febre e insuficiência renal. Na prática, o paciente estável que intoxica quase sempre começou um AINE ou desidratou.</div>
+</div>
+</details>
+</section>
+<!-- ============ BENZODIAZEPÍNICOS ============ -->
+<section class="block bzd" id="benzodiazepinicos">
+<details class="sec-fold" data-sec="benzodiazepinicos">
+<summary class="block-head"><span class="idx bzd-bg">04</span><h2>Benzodiazepínicos</h2><span class="tag">meia-vida · dependência</span><span class="fold-ind" aria-hidden="true"></span></summary>
+<div class="sec-body">
+<div class="callout bzd"><b>A escolha se faz pela meia-vida e pela via metabólica.</b> Meia-vida curta dá alívio rápido e abstinência intensa; meia-vida longa protege contra convulsão e permite desmame, mas acumula em idoso e hepatopata. <b>Regra de ouro: 2 a 4 semanas.</b> Prescrever sem data de saída é como se inicia a maioria das dependências iatrogênicas.</div>
+
+<h3>Classificação por meia-vida</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Meia-vida</th><th>Fármacos</th><th>Consequência prática</th></tr></thead>
+<tbody>
+<tr><td data-label="Meia-vida"><b>Curta</b> (&lt;6h)</td><td data-label="Fármacos">Midazolam, triazolam</td><td data-label="Consequência">Início e fim rápidos — sedação de procedimento. Abstinência entre doses; alto potencial de dependência</td></tr>
+<tr><td data-label="Meia-vida"><b>Intermediária</b> (6–24h)</td><td data-label="Fármacos">Alprazolam, lorazepam, oxazepam, bromazepam</td><td data-label="Consequência">Menor acúmulo; alprazolam é o de maior risco de dependência da classe</td></tr>
+<tr><td data-label="Meia-vida"><b>Longa</b> (&gt;24h)</td><td data-label="Fármacos">Diazepam, clonazepam, clordiazepóxido</td><td data-label="Consequência">Protegem contra convulsão e permitem desmame suave; <b>acumulam</b> em idoso e hepatopata</td></tr>
+</tbody>
+</table></div>
+
+<h3>Classificação pela via metabólica</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Via</th><th>Fármacos</th><th>Quando importa</th></tr></thead>
+<tbody>
+<tr><td data-label="Via">Oxidação hepática (CYP) + metabólitos ativos</td><td data-label="Fármacos">Diazepam, clonazepam, midazolam, alprazolam</td><td data-label="Quando importa">Acumulam em cirrose, idoso e uso de inibidores do CYP</td></tr>
+<tr><td data-label="Via"><b>Glicuronidação direta</b> (sem oxidação)</td><td data-label="Fármacos"><b>Lorazepam, oxazepam, temazepam</b></td><td data-label="Quando importa"><b>Escolha no hepatopata e no idoso</b> — não dependem da função oxidativa nem geram metabólito ativo</td></tr>
+</tbody>
+</table></div>
+<div class="callout warn"><b>Correção de um erro comum:</b> a vantagem de lorazepam e oxazepam no hepatopata é a <b>glicuronidação direta</b>, não "excreção renal". Isso importa nos dois sentidos: seguem seguros na insuficiência renal e são preferíveis ao diazepam na cirrose.</div>
+
+<h3>Doses e nicho de cada um</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Fármaco</th><th>Dose</th><th>Melhor escolha quando</th><th>Cuidados</th></tr></thead>
+<tbody>
+<tr><td data-label="Fármaco"><b>Diazepam</b></td><td class="dose" data-label="Dose">VO 5–10mg 2–4×/dia · EV 5–10mg lento</td><td data-label="Melhor quando"><b>Abstinência alcoólica</b> (droga de escolha) e convulsão</td><td data-label="Cuidados">Acúmulo em idoso e hepatopata. <b>Não fazer IM</b> — absorção errática</td></tr>
+<tr><td data-label="Fármaco"><b>Clonazepam</b></td><td class="dose" data-label="Dose">0,25–2mg 1–3×/dia</td><td data-label="Melhor quando">Ponte ansiolítica enquanto o antidepressivo não age; pânico</td><td data-label="Cuidados">Alta dependência; rebaixamento em etilista; queda no idoso</td></tr>
+<tr><td data-label="Fármaco"><b>Midazolam</b></td><td class="dose" data-label="Dose">IM 5–15mg · EV 2,5–5mg lento</td><td data-label="Melhor quando"><b>Sedação rápida</b> na agitação grave; início em 15–30min IM</td><td data-label="Cuidados">O de maior risco de <b>depressão respiratória</b>. Amnésia. Perigoso em etilista</td></tr>
+<tr><td data-label="Fármaco"><b>Alprazolam</b></td><td class="dose" data-label="Dose">0,25–0,5mg 2–3×/dia</td><td data-label="Melhor quando">Pânico com necessidade de alívio muito rápido</td><td data-label="Cuidados"><b>Maior potencial de dependência da classe</b>; abstinência entre doses. Evitar iniciar</td></tr>
+<tr><td data-label="Fármaco"><b>Lorazepam / oxazepam</b></td><td class="dose" data-label="Dose">Lorazepam 1–2mg</td><td data-label="Melhor quando"><b>Idoso e hepatopata</b></td><td data-label="Cuidados">Nem sempre disponíveis na rede</td></tr>
+</tbody>
+</table></div>
+
+<h3>Hipnóticos não-benzodiazepínicos (drogas Z)</h3>
+<p class="lede">Zolpidem, zopiclona e eszopiclona — agonistas seletivos da subunidade α1 do receptor GABA-A. Menos miorrelaxamento e menos anticonvulsivante, mas <b>a dependência e a abstinência são reais</b>, e não menores que as dos benzodiazepínicos.</p>
+<ul class="checklist">
+<li>Zolpidem 5–10mg à noite (5mg no idoso e na mulher)</li>
+<li><b>Comportamentos complexos do sono</b> — dirigir, comer e cozinhar dormindo, com amnésia: suspender definitivamente se ocorrer</li>
+<li>Mesma regra de tempo curto; mesmo risco de queda no idoso</li>
+<li>Alternativas sem dependência para insônia: trazodona 50–100mg, mirtazapina, quetiapina em dose baixa, higiene do sono e terapia cognitivo-comportamental</li>
+</ul>
+
+<h3>Quando NÃO prescrever</h3>
+<ul class="checklist">
+<li>Ansiedade crônica sem tratamento de base instituído — o BZD vira o tratamento e o antidepressivo nunca começa</li>
+<li>Uso ativo de álcool, opioide ou outro depressor — <b>sinergia respiratória</b></li>
+<li>Idoso: quedas, fratura de quadril, confusão e piora cognitiva</li>
+<li>Apneia do sono e DPOC grave</li>
+<li>História de dependência de qualquer substância — risco de transferência</li>
+<li>Como sedativo de rotina na intoxicação alcoólica aguda — ali o problema é depressão do SNC, não abstinência</li>
+</ul>
+
+<h3>Troca e desmame de benzodiazepínico</h3>
+<h3>Tabela de conversão — equivalências aproximadas</h3>
+<p class="lede">Referência: <b>diazepam 10mg</b>. Servem para converter antes de um desmame, nunca para prescrição direta — variam entre indivíduos e entre fontes.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Fármaco</th><th>≈ diazepam 10mg</th><th>Meia-vida</th></tr></thead>
+<tbody>
+<tr><td data-label="Fármaco">Diazepam</td><td class="dose" data-label="Equivalente">10mg</td><td data-label="Meia-vida">Longa</td></tr>
+<tr><td data-label="Fármaco">Clonazepam</td><td class="dose" data-label="Equivalente">0,5–1mg</td><td data-label="Meia-vida">Longa</td></tr>
+<tr><td data-label="Fármaco">Clordiazepóxido</td><td class="dose" data-label="Equivalente">25mg</td><td data-label="Meia-vida">Longa</td></tr>
+<tr><td data-label="Fármaco">Alprazolam</td><td class="dose" data-label="Equivalente">0,5–1mg</td><td data-label="Meia-vida">Intermediária</td></tr>
+<tr><td data-label="Fármaco">Lorazepam</td><td class="dose" data-label="Equivalente">1mg</td><td data-label="Meia-vida">Intermediária</td></tr>
+<tr><td data-label="Fármaco">Bromazepam</td><td class="dose" data-label="Equivalente">5–6mg</td><td data-label="Meia-vida">Intermediária</td></tr>
+<tr><td data-label="Fármaco">Oxazepam</td><td class="dose" data-label="Equivalente">20–30mg</td><td data-label="Meia-vida">Intermediária</td></tr>
+<tr><td data-label="Fármaco">Temazepam</td><td class="dose" data-label="Equivalente">20mg</td><td data-label="Meia-vida">Intermediária</td></tr>
+<tr><td data-label="Fármaco">Nitrazepam</td><td class="dose" data-label="Equivalente">10mg</td><td data-label="Meia-vida">Longa</td></tr>
+<tr><td data-label="Fármaco">Flunitrazepam</td><td class="dose" data-label="Equivalente">1mg</td><td data-label="Meia-vida">Longa</td></tr>
+<tr><td data-label="Fármaco">Midazolam</td><td class="dose" data-label="Equivalente">7,5mg</td><td data-label="Meia-vida">Curta</td></tr>
+<tr><td data-label="Fármaco">Triazolam</td><td class="dose" data-label="Equivalente">0,5mg</td><td data-label="Meia-vida">Curta</td></tr>
+</tbody>
+</table></div>
+
+<h3>Drogas Z — conversão e desmame</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Fármaco</th><th>Dose usual</th><th>≈ diazepam</th></tr></thead>
+<tbody>
+<tr><td data-label="Fármaco">Zolpidem</td><td class="dose" data-label="Dose usual">5–10mg à noite</td><td data-label="Equivalente">10mg ≈ <b>5–10mg</b> de diazepam</td></tr>
+<tr><td data-label="Fármaco">Zopiclona</td><td class="dose" data-label="Dose usual">3,75–7,5mg à noite</td><td data-label="Equivalente">7,5mg ≈ <b>5–10mg</b> de diazepam</td></tr>
+<tr><td data-label="Fármaco">Eszopiclona</td><td class="dose" data-label="Dose usual">1–3mg à noite</td><td data-label="Equivalente">3mg ≈ <b>5–10mg</b> de diazepam</td></tr>
+<tr><td data-label="Fármaco">Zaleplona</td><td class="dose" data-label="Dose usual">5–10mg à noite</td><td data-label="Equivalente">10mg ≈ <b>5mg</b> de diazepam</td></tr>
+</tbody>
+</table></div>
+<div class="callout warn"><b>A faixa larga acima é honesta, não imprecisão de redação.</b> As fontes divergem: parte da literatura equipara zolpidem 10mg a diazepam 5mg, parte a 10mg, e o manual clássico de desmame chega a 20mg de zolpidem para 10mg de diazepam. Conversão de droga Z para benzodiazepínico é <b>menos confiável</b> que a conversão entre benzodiazepínicos, porque a seletividade de receptor é diferente. Na prática: <b>comece pela extremidade menor</b> e ajuste pelos sintomas, em vez de confiar no número.</div>
+<ul class="checklist">
+<li>Duas rotas possíveis: <b>reduzir a própria droga Z</b> (mais simples quando a dose é baixa e o uso é curto) ou <b>converter para diazepam</b> e desmamar como benzodiazepínico (melhor no uso prolongado ou em dose alta)</li>
+<li>A insônia de rebote nas primeiras noites é <b>esperada e transitória</b> — avisar antes, senão o paciente conclui que "precisa do remédio" e abandona a retirada</li>
+<li>Iniciar terapia cognitivo-comportamental para insônia <b>antes</b> de começar a reduzir aumenta muito a chance de sucesso</li>
+<li>Alternativas de transição sem dependência: trazodona 50–100mg, mirtazapina 7,5–15mg, quetiapina em dose baixa</li>
+</ul>
+
+<h3>Esquema prático de desmame — exemplo</h3>
+<p class="lede">Paciente em <b>clonazepam 2mg/dia</b> há dois anos. Convertendo: 2mg ≈ <b>20–40mg de diazepam</b>; adote o valor menor e ajuste pelos sintomas. Exemplo partindo de 20mg/dia, dividido em duas tomadas:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Etapa</th><th>Dose diária de diazepam</th><th>Duração</th></tr></thead>
+<tbody>
+<tr><td data-label="Etapa">1 — conversão</td><td class="dose" data-label="Dose">20mg</td><td data-label="Duração">1–2 semanas para estabilizar</td></tr>
+<tr><td data-label="Etapa">2</td><td class="dose" data-label="Dose">18mg</td><td data-label="Duração">2 semanas</td></tr>
+<tr><td data-label="Etapa">3</td><td class="dose" data-label="Dose">16mg</td><td data-label="Duração">2 semanas</td></tr>
+<tr><td data-label="Etapa">4–7</td><td class="dose" data-label="Dose">14 → 12 → 10 → 8mg</td><td data-label="Duração">2 semanas cada</td></tr>
+<tr><td data-label="Etapa">8–11</td><td class="dose" data-label="Dose">7 → 6 → 5 → 4mg</td><td data-label="Duração"><b>2–4 semanas cada</b> — reduções menores</td></tr>
+<tr><td data-label="Etapa">12 em diante</td><td class="dose" data-label="Dose">3 → 2 → 1 → 0mg</td><td data-label="Duração"><b>2–4 semanas cada</b> — a fase mais difícil</td></tr>
+</tbody>
+</table></div>
+<div class="callout bzd"><b>Três regras que fazem o desmame funcionar:</b> ① a redução é percentual, não fixa — 2mg saindo de 20mg é 10%, mas saindo de 4mg é 50%, por isso os degraus encolhem no fim; ② se o paciente descompensar numa etapa, <b>volte à dose anterior e espere</b>, não recomece do zero; ③ o ritmo é do paciente — um desmame de 6 a 12 meses concluído vale mais que um de 8 semanas abandonado.</div>
+<ul class="checklist">
+<li><b>Converter para meia-vida longa</b> (diazepam) antes de iniciar a retirada — a queda de nível fica suave e evita abstinência entre doses</li>
+<li>Reduzir <b>5–10% a cada 2 semanas</b>; em uso prolongado o processo leva meses</li>
+<li><b>A última parte é a mais difícil</b> — desacelerar perto do fim, com reduções menores</li>
+<li><b>Nunca suspender abruptamente</b>: risco de convulsão e delirium, comparável ao da abstinência alcoólica</li>
+<li>Tratar o transtorno de base em paralelo, senão a retirada não se sustenta</li>
+<li>Se o paciente descompensar numa etapa, voltar à dose anterior e esperar — não recomeçar do zero</li>
+</ul>
+</div>
+</details>
+</section>
+
+<!-- ============ AGITAÇÃO ============ -->
+<section class="block agit" id="agitacao">
+<details class="sec-fold" data-sec="agitacao">
+<summary class="block-head"><span class="idx agit-bg">05</span><h2>Agitação Aguda</h2><span class="tag">VO · IM · combinações</span><span class="fold-ind" aria-hidden="true"></span></summary>
+<div class="sec-body">
+<div class="callout warn"><b>Contenção química é conforto e segurança, nunca punição.</b> O objetivo é acalmar o paciente a ponto de permitir avaliação e diálogo — não derrubá-lo. Sedação excessiva mascara o exame neurológico, e é justamente o exame que vai revelar a causa orgânica que você ainda não descartou.</div>
+
+<h3>Antes de medicar</h3>
+<div class="seq">
+<div class="step"><div class="n">1</div><div class="t">Causa provável</div><div class="d">psicose, mania, intoxicação, abstinência, delirium, dor</div></div>
+<div class="step"><div class="n">2</div><div class="t">Glicemia e SSVV</div><div class="d">+ oximetria — hipoglicemia imita agitação psiquiátrica</div></div>
+<div class="step"><div class="n">3</div><div class="t">Desescalada verbal</div><div class="d">ambiente calmo, distância segura, voz firme não confrontativa</div></div>
+<div class="step"><div class="n">4</div><div class="t">VO se aceitar</div><div class="d">resposta em 30–60min · mais digno e mais seguro</div></div>
+<div class="step"><div class="n">5</div><div class="t">IM se recusa</div><div class="d">ou risco iminente · início em 15–30min</div></div>
+<div class="step"><div class="n">6</div><div class="t">Monitorar</div><div class="d">SSVV e nível de consciência a cada 15min</div></div>
+</div>
+<div class="callout agit"><b>Regra prática que organiza a escolha:</b> se a agitação vem de <b>abstinência</b>, a base é benzodiazepínico. Se vem de <b>psicose ou mania</b>, a base é antipsicótico. Se vem de <b>intoxicação por estimulante</b>, a base é benzodiazepínico. Se vem de <b>intoxicação por depressor</b>, evite sedar mais — trate o suporte.</div>
+
+<h3>Medicações isoladas</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Medicação</th><th>Dose</th><th>Indicação</th><th>Atenção</th></tr></thead>
+<tbody>
+<tr><td data-label="Medicação">Haloperidol</td><td class="dose" data-label="Dose">IM 5mg (1 amp de 5mg/mL) · VO 25–50gts (2mg/mL)</td><td data-label="Indicação">Sintomas produtivos, agitação psicótica</td><td data-label="Atenção">EPS; repetir em 30–60min se necessário. Não fazer EV</td></tr>
+<tr><td data-label="Medicação">Prometazina</td><td class="dose" data-label="Dose">IM 25–50mg (amp 50mg/2mL) · VO 1–2cp de 25mg</td><td data-label="Indicação">Sedação e prevenção de distonia</td><td data-label="Atenção">Sedação importante, efeito anticolinérgico, hipotensão</td></tr>
+<tr><td data-label="Medicação">Clorpromazina</td><td class="dose" data-label="Dose">VO 25–50gts (40mg/mL)</td><td data-label="Indicação">Fissura, agitação, contenção</td><td data-label="Atenção"><b>Hipotensão</b>; cautela em etilista</td></tr>
+<tr><td data-label="Medicação">Midazolam</td><td class="dose" data-label="Dose">IM 7,5–15mg (amp 15mg/3mL → 1,5–3mL)</td><td data-label="Indicação">Sedação rápida; preferível em intoxicação por estimulante</td><td data-label="Atenção"><b>Depressão respiratória</b>; oximetria obrigatória; risco alto em etilista</td></tr>
+<tr><td data-label="Medicação">Olanzapina</td><td class="dose" data-label="Dose">IM 10mg</td><td data-label="Indicação">Agitação em mania e psicose</td><td data-label="Atenção"><b>Nunca com BZD parenteral</b> — depressão cardiorrespiratória</td></tr>
+<tr><td data-label="Medicação">Clonazepam</td><td class="dose" data-label="Dose">VO 5–20gts (2,5mg/mL)</td><td data-label="Indicação">Sedação e ansiedade</td><td data-label="Atenção">Rebaixamento em etilista</td></tr>
+<tr><td data-label="Medicação">Valproato</td><td class="dose" data-label="Dose">VO 5–10mL (50mg/mL)</td><td data-label="Indicação">Contenção e estabilização em mania</td><td data-label="Atenção"><b>Contraindicado em gestante</b></td></tr>
+<tr><td data-label="Medicação">Diazepam</td><td class="dose" data-label="Dose">VO 10mg</td><td data-label="Indicação">Abstinência alcoólica leve a moderada</td><td data-label="Atenção">Rebaixamento; não fazer IM</td></tr>
+</tbody>
+</table></div>
+
+<h3>Combinações</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Esquema</th><th>Composição</th><th>Indicação</th><th>Atenção</th></tr></thead>
+<tbody>
+<tr><td data-label="Esquema"><b>HF (Haldol + Fenergan)</b></td><td class="dose" data-label="Composição">Haloperidol 5mg <span class="amp">(5mg/mL, amp 1mL)</span> IM + Prometazina 50mg <span class="amp">(25mg/mL, amp 2mL = 50mg)</span> IM</td><td data-label="Indicação">Agitação psicótica ou maníaca grave — o esquema de referência</td><td data-label="Atenção">A prometazina mitiga a distonia do haloperidol e soma sedação</td></tr>
+<tr><td data-label="Esquema">Haloperidol + Midazolam</td><td class="dose" data-label="Composição">Haloperidol 5mg <span class="amp">(5mg/mL, amp 1mL)</span> IM + Midazolam 7,5–15mg <span class="amp">(5mg/mL, amp 3mL = 15mg)</span> IM</td><td data-label="Indicação">Agitação intensa, contenção potente</td><td data-label="Atenção"><b>Maior risco de depressão respiratória.</b> SSVV a cada 15min, oximetria e flumazenil acessível — mas ver a ressalva abaixo</td></tr>
+<tr><td data-label="Esquema">Haloperidol + Clonazepam</td><td class="dose" data-label="Composição">Haloperidol 25–50gts + Clonazepam 10–20gts VO</td><td data-label="Indicação">Contenção com sedação adicional, por via oral</td><td data-label="Atenção">Rebaixamento, sobretudo em etilista</td></tr>
+<tr><td data-label="Esquema">Haloperidol + Prometazina VO</td><td class="dose" data-label="Composição">Haloperidol 25–50gts + Prometazina 1–2cp</td><td data-label="Indicação">Equivalente oral do HF</td><td data-label="Atenção">Preferir sempre que o paciente aceitar</td></tr>
+<tr><td data-label="Esquema">Haloperidol + Clorpromazina</td><td class="dose" data-label="Composição">Haloperidol 25–50gts + Clorpromazina 20–50gts</td><td data-label="Indicação">Agitação muito grave</td><td data-label="Atenção">Hipotensão importante, rebaixamento</td></tr>
+<tr><td data-label="Esquema">Clorpromazina + Clonazepam</td><td class="dose" data-label="Composição">Clorpromazina 20–50gts + Clonazepam 10–20gts</td><td data-label="Indicação">Contenção sem haloperidol</td><td data-label="Atenção">Hipotensão e rebaixamento somados</td></tr>
+</tbody>
+</table></div>
+<div class="callout warn"><b>Sobre "ter flumazenil à mão":</b> tê-lo disponível é correto, mas ele <b>não é o plano</b>. Na depressão respiratória por midazolam, a conduta é suporte ventilatório; o flumazenil pode precipitar convulsão refratária em usuário crônico de BZD ou em co-ingestão de proconvulsivante — situação comum nesta população. O antídoto de verdade é a bolsa-válvula-máscara.</div>
+
+<h3>Situações que mudam a escolha</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Contexto</th><th>Fazer</th><th>Evitar</th></tr></thead>
+<tbody>
+<tr><td data-label="Contexto">Abstinência alcoólica</td><td data-label="Fazer">Benzodiazepínico como base</td><td data-label="Evitar"><b>Antipsicótico isolado</b> — reduz o limiar convulsivo</td></tr>
+<tr><td data-label="Contexto">Intoxicação alcoólica aguda</td><td data-label="Fazer">Haloperidol em dose baixa; contenção verbal; monitorização</td><td data-label="Evitar">BZD adicional — sinergia depressora</td></tr>
+<tr><td data-label="Contexto">Intoxicação por cocaína/crack</td><td data-label="Fazer">Benzodiazepínico</td><td data-label="Evitar"><b>Betabloqueador</b>; haloperidol se houver hipertermia (piora a termorregulação)</td></tr>
+<tr><td data-label="Contexto">Delirium</td><td data-label="Fazer">Tratar a causa; haloperidol em dose baixa se necessário</td><td data-label="Evitar">BZD (piora a confusão), salvo abstinência</td></tr>
+<tr><td data-label="Contexto">Idoso</td><td data-label="Fazer">Metade da dose; haloperidol baixa dose</td><td data-label="Evitar">BZD e anticolinérgicos</td></tr>
+<tr><td data-label="Contexto">Gestante</td><td data-label="Fazer">Haloperidol ± prometazina</td><td data-label="Evitar"><b>Valproato</b>; BZD com cautela — seção 09</td></tr>
+</tbody>
+</table></div>
+</div>
+</details>
+</section>
+
+<!-- ============ ABSTINÊNCIAS ============ -->
+<section class="block abst" id="abstinencias">
+<details class="sec-fold" data-sec="abstinencias">
+<summary class="block-head"><span class="idx abst-bg">06</span><h2>Abstinências</h2><span class="tag">álcool · opioide · BZD</span><span class="fold-ind" aria-hidden="true"></span></summary>
+<div class="sec-body">
+<h3>Abstinência alcoólica — linha do tempo</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Tempo</th><th>Quadro</th><th>Risco</th></tr></thead>
+<tbody>
+<tr><td data-label="Tempo">6–12h</td><td data-label="Quadro">Tremor, sudorese, ansiedade, náusea, taquicardia</td><td data-label="Risco">Baixo — tratável ambulatorialmente</td></tr>
+<tr><td data-label="Tempo">12–24h</td><td data-label="Quadro"><b>Alucinose alcoólica</b> — alucinações com sensório preservado</td><td data-label="Risco">Sinal de gravidade; sensório <b>preservado</b> a distingue do DT</td></tr>
+<tr><td data-label="Tempo">24–48h</td><td data-label="Quadro"><b>Convulsão</b> tônico-clônica generalizada</td><td data-label="Risco">Anuncia risco de DT</td></tr>
+<tr><td data-label="Tempo">48–96h</td><td data-label="Quadro"><b>Delirium tremens</b> — confusão, desorientação, flutuação, febre, disautonomia</td><td data-label="Risco"><b>Mortalidade 5–15% sem tratamento adequado</b></td></tr>
+</tbody>
+</table></div>
+
+<h3>Tratamento</h3>
+<ul class="checklist">
+<li><b>Base:</b> benzodiazepínico de meia-vida longa — diazepam 10mg VO/EV. O efeito "ataque e decrescendo" protege contra convulsão e DT</li>
+<li><b>Esquema guiado por sintomas</b> (CIWA-Ar) reduz dose total e tempo de tratamento em relação ao horário fixo</li>
+<li><b>Não medicar por horário se o paciente estiver sonolento</b> — medicar por sintoma, reavaliando a cada 1–4h</li>
+<li><b>Hepatopatia grave:</b> trocar para lorazepam ou oxazepam</li>
+<li><b>Tiamina no tratamento da encefalopatia de Wernicke: <b>500mg EV 8/8h por 2–3 dias</b> (diluída em 100–250mL de SF 0,9%, correr em 30min) → <b>250mg/dia EV/IM por mais 3–5 dias</b> → manutenção <b>100mg/dia VO</b>. <b>Profilaxia</b> no etilista sem sinais de Wernicke: <b>250–300mg/dia</b>. Em ambos os casos, <b>antes de qualquer carga de glicose</b></b></li>
+<li>Repor K⁺, Mg²⁺ e fósforo; hidratação cuidadosa; avaliar folato e complexo B</li>
+<li>Esquema misto (dose fixa + demanda) em quem tem convulsão prévia, CIWA inicial muito alto ou demência</li>
+</ul>
+<div class="callout warn"><b>Correção importante:</b> <b>fenitoína não é eficaz</b> na convulsão por abstinência alcoólica — a fisiopatologia é GABAérgica, não focal. A conduta é benzodiazepínico (diazepam 10mg EV, ou midazolam 10mg IM sem acesso) e, depois da crise, <b>aumentar o BZD profilático</b>. Hidantalização só se houver outra causa estrutural de convulsão.</div>
+
+<h3>CIWA-Ar — faixas e conduta</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Escore</th><th>Gravidade</th><th>Conduta</th></tr></thead>
+<tbody>
+<tr><td data-label="Escore">&lt;8</td><td data-label="Gravidade">Leve</td><td data-label="Conduta">Geralmente sem necessidade de BZD; suporte e observação</td></tr>
+<tr><td data-label="Escore">8–15</td><td data-label="Gravidade">Moderada</td><td data-label="Conduta">Diazepam 10mg <span class="amp">(amp 2mL = 10mg)</span> a cada 1–2h enquanto CIWA-Ar ≥8; reavaliar</td></tr>
+<tr><td data-label="Escore">&gt;15</td><td data-label="Gravidade">Grave</td><td data-label="Conduta">BZD agressivo, vigilância para DT, considerar internação</td></tr>
+</tbody>
+</table></div>
+<p class="lede">Avalia 10 domínios (náusea, tremor, sudorese, ansiedade, agitação, alterações tátil, auditiva e visual, cefaleia, orientação); escore máximo 67. <b>Meta única: manter abaixo de 8.</b></p>
+
+<h3>Quando internar</h3>
+<ul class="checklist">
+<li>CIWA-Ar &gt;15 ou em ascensão</li>
+<li>História de convulsão por abstinência ou de delirium tremens</li>
+<li>Sinais autonômicos graves: FC &gt;120, PA &gt;180/110, temperatura &gt;38,5°C</li>
+<li>Alucinações ativas, confusão ou sinais neurológicos focais</li>
+<li>Comorbidade clínica descompensada, gestação, idoso frágil</li>
+<li>Ausência de suporte social ou risco de recaída imediata</li>
+<li>Co-ingestão de outras substâncias de risco</li>
+</ul>
+<div class="callout warn"><b>Delirium tremens instalado:</b> BZD em dose alta (diazepam 10mg EV a cada 5–10min até sedação leve) com monitorização contínua. Refratário: fenobarbital ou propofol em ambiente de terapia intensiva. <b>Risco clínico precede risco psiquiátrico</b> — esse paciente vai para a urgência clínica.</div>
+
+<h3>Abstinência de opioides</h3>
+<ul class="checklist">
+<li>Quadro de "gripe exuberante": <b>midríase</b>, lacrimejamento, rinorreia, piloereção, bocejos, mialgia, dor abdominal, diarreia, ansiedade</li>
+<li>Desconfortável e dramática, mas <b>raramente fatal</b> — ao contrário da alcoólica</li>
+<li>Quantificada pela <b>COWS</b> (Clinical Opiate Withdrawal Scale)</li>
+<li><b>Sintomático:</b> clonidina 0,1–0,2mg VO 6/6h (sintomas autonômicos), loperamida (diarreia), ibuprofeno (dor), ondansetrona (náusea), hidroxizina (ansiedade e insônia)</li>
+<li><b>Substitutivo:</b> metadona ou buprenorfina, em serviço habilitado</li>
+<li><b>Naltrexona só após 7–10 dias livre de opioide</b> — antes disso precipita abstinência aguda</li>
+</ul>
+
+<h3>Abstinência de estimulantes e de benzodiazepínicos</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Substância</th><th>Quadro</th><th>Conduta</th></tr></thead>
+<tbody>
+<tr><td data-label="Substância">Cocaína / crack</td><td data-label="Quadro">Sem síndrome física grave. Predomina o <b>"crash"</b>: disforia intensa, fadiga, hipersonia, fissura</td><td data-label="Conduta"><b>O risco é comportamental</b> — ideação suicida e recaída. Ambiente protegido, avaliação de risco, tratar comorbidade</td></tr>
+<tr><td data-label="Substância">Benzodiazepínicos</td><td data-label="Quadro">Início tardio conforme a meia-vida (dias a semanas). <b>Convulsão e delirium</b> — perigosa como a alcoólica</td><td data-label="Conduta">Converter para BZD de meia-vida longa (diazepam) e desmamar <b>5–10% a cada 2 semanas</b>, podendo levar meses. Nunca suspender abruptamente</td></tr>
+<tr><td data-label="Substância">Nicotina</td><td data-label="Quadro">Irritabilidade, ansiedade, fissura, aumento de apetite</td><td data-label="Conduta">Reposição de nicotina, bupropiona ou vareniclina; atenção à interação — parar de fumar <b>eleva o nível de clozapina e olanzapina</b></td></tr>
+</tbody>
+</table></div>
+</div>
+</details>
+</section>
+
+<!-- ============ EMERGÊNCIAS ============ -->
+<section class="block emerg" id="emergencias">
+<details class="sec-fold" data-sec="emergencias">
+<summary class="block-head"><span class="idx emerg-bg">07</span><h2>Emergências Neuropsiquiátricas</h2><span class="tag">SNM · EPS · Wernicke</span><span class="fold-ind" aria-hidden="true"></span></summary>
+<div class="sec-body">
+<h3>Espectro dos efeitos extrapiramidais</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Quadro</th><th>Quando aparece</th><th>Como se apresenta</th><th>Tratamento</th></tr></thead>
+<tbody>
+<tr><td data-label="Quadro"><b>Distonia aguda</b></td><td data-label="Quando">Horas a dias</td><td data-label="Apresentação">Torcicolo, crise oculógira, trismo, protrusão de língua; <b>laringoespasmo é emergência</b></td><td data-label="Tratamento"><b>Biperideno 5mg IM/EV</b> (1 amp), repetir em 30min se necessário — resposta em 15–30min. Formas leves: 2mg VO 2–3×/dia. Sem biperideno: prometazina 25–50mg IM</td></tr>
+<tr><td data-label="Quadro"><b>Acatisia</b></td><td data-label="Quando">Dias a semanas</td><td data-label="Apresentação">Inquietação interna insuportável, incapacidade de ficar parado. <b>Confundida com piora da agitação</b> — e aí se aumenta o antipsicótico, piorando tudo</td><td data-label="Tratamento">Reduzir a dose; propranolol 20–40mg 12/12h; benzodiazepínico; mirtazapina. <b>Anticolinérgico não resolve</b></td></tr>
+<tr><td data-label="Quadro"><b>Parkinsonismo</b></td><td data-label="Quando">Semanas a meses</td><td data-label="Apresentação">Tremor, rigidez, bradicinesia, fácies em máscara</td><td data-label="Tratamento">Reduzir dose, trocar por atípico, anticolinérgico</td></tr>
+<tr><td data-label="Quadro"><b>Discinesia tardia</b></td><td data-label="Quando">Meses a anos</td><td data-label="Apresentação">Movimentos involuntários orofaciais e de tronco</td><td data-label="Tratamento">Suspender ou trocar (clozapina); valbenazina/tetrabenazina. <b>Anticolinérgico piora</b></td></tr>
+</tbody>
+</table></div>
+<div class="callout emerg"><b>A distinção que muda a conduta:</b> acatisia e agitação psicótica parecem iguais à distância. Pergunte se a inquietação é <b>interna</b> ("não consigo ficar parado, é uma aflição nas pernas") — se for, aumentar o antipsicótico piora. Anticolinérgico resolve distonia e parkinsonismo, não resolve acatisia e agrava discinesia tardia.</div>
+
+<h3>Síndrome neuroléptica maligna × serotoninérgica</h3>
+<div class="table-wrap"><table>
+<thead><tr><th></th><th>Neuroléptica maligna</th><th>Serotoninérgica</th></tr></thead>
+<tbody>
+<tr><td data-label="—">Gatilho</td><td data-label="SNM">Antipsicótico (início ou aumento); retirada de dopaminérgico</td><td data-label="Serotoninérgica">Serotoninérgico associado a outro (ISRS + tramadol, triptano, IMAO, linezolida)</td></tr>
+<tr><td data-label="—">Instalação</td><td data-label="SNM"><b>Dias</b> — lenta</td><td data-label="Serotoninérgica"><b>Horas</b> — rápida</td></tr>
+<tr><td data-label="—">Neuromuscular</td><td data-label="SNM"><b>Rigidez "em cano de chumbo"</b>, generalizada, com hiporreflexia</td><td data-label="Serotoninérgica"><b>Hiperreflexia e clônus</b>, predomínio em membros inferiores; tremor</td></tr>
+<tr><td data-label="—">Outros</td><td data-label="SNM">Febre alta, disautonomia, <b>CPK muito elevada</b>, leucocitose</td><td data-label="Serotoninérgica">Midríase, diarreia, hiperatividade autonômica</td></tr>
+<tr><td data-label="—">Conduta</td><td data-label="SNM">Suspender antipsicótico, resfriar, hidratar (risco de rabdomiólise e IRA); dantroleno, bromocriptina; UTI</td><td data-label="Serotoninérgica">Suspender o agente, benzodiazepínico, resfriar; ciproeptadina 12mg de ataque, depois 2mg 2/2h</td></tr>
+</tbody>
+</table></div>
+<div class="callout warn"><b>O clônus é o sinal que separa as duas</b> e deve ser procurado ativamente na dorsiflexão do pé. Rigidez lenta e rígida com CPK alta é SNM; clônus rápido com hiperreflexia é serotoninérgica.</div>
+
+<h3>Encefalopatia de Wernicke</h3>
+<ul class="checklist">
+<li>Deficiência de tiamina no etilista e no desnutrido. <b>Emergência</b> e subdiagnosticada</li>
+<li>Tríade clássica (confusão + ataxia + oftalmoplegia/nistagmo) presente em <b>menos de 20%</b> — não esperar por ela</li>
+<li>Tiamina no tratamento da encefalopatia de Wernicke: <b>500mg EV 8/8h por 2–3 dias</b> (diluída em 100–250mL de SF 0,9%, correr em 30min) → <b>250mg/dia EV/IM por mais 3–5 dias</b> → manutenção <b>100mg/dia VO</b>. <b>Profilaxia</b> no etilista sem sinais de Wernicke: <b>250–300mg/dia</b>. Em ambos os casos, <b>antes de qualquer carga de glicose</b></li>
+<li><b>Sempre antes ou junto da glicose</b> — carga glicídica sem tiamina precipita o quadro</li>
+<li>Não tratada evolui para <b>síndrome de Korsakoff</b>: amnésia anterógrada irreversível com confabulação</li>
+</ul>
+
+<h3>Outras urgências</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Quadro</th><th>Reconhecimento</th><th>Conduta</th></tr></thead>
+<tbody>
+<tr><td data-label="Quadro">Intoxicação por lítio</td><td data-label="Reconhecimento">Tremor grosseiro, ataxia, confusão em paciente estável que iniciou AINE ou desidratou</td><td data-label="Conduta">Ver seção 03</td></tr>
+<tr><td data-label="Quadro">Agranulocitose por clozapina</td><td data-label="Reconhecimento">Febre, odinofagia, infecção em usuário de clozapina</td><td data-label="Conduta">Hemograma urgente, suspender, não reintroduzir</td></tr>
+<tr><td data-label="Quadro">Íleo por clozapina</td><td data-label="Reconhecimento">Constipação progressiva, distensão, parada de eliminação</td><td data-label="Conduta">Avaliação cirúrgica — complicação fatal mais frequente da droga</td></tr>
+<tr><td data-label="Quadro">Rash por lamotrigina</td><td data-label="Reconhecimento">Qualquer exantema nas primeiras 8 semanas, sobretudo com acometimento de mucosa</td><td data-label="Conduta"><b>Suspender imediatamente</b>; avaliar Stevens-Johnson</td></tr>
+<tr><td data-label="Quadro">Hiponatremia por carbamazepina/oxcarbazepina</td><td data-label="Reconhecimento">Confusão, cefaleia, convulsão; mais comum no idoso</td><td data-label="Conduta">Dosar sódio, suspender, corrigir com cautela</td></tr>
+<tr><td data-label="Quadro">Priapismo por trazodona</td><td data-label="Reconhecimento">Ereção dolorosa e prolongada</td><td data-label="Conduta">Urgência urológica — risco de disfunção permanente</td></tr>
+</tbody>
+</table></div>
+<p class="lede">Intoxicações exógenas em geral, toxíndromes e antídotos → <a href="guia_bolso_paciente_critico.html#tox" style="color:inherit;font-weight:600;">Guia de Paciente Crítico, seção 10 — Toxicologia →</a></p>
+</div>
+</details>
+</section>
+<!-- ============ TROCA E DESMAME ============ -->
+<section class="block troca" id="troca">
+<details class="sec-fold" data-sec="troca">
+<summary class="block-head"><span class="idx troca-bg">08</span><h2>Decisão Terapêutica</h2><span class="tag">esperar · trocar · manter</span><span class="fold-ind" aria-hidden="true"></span></summary>
+<div class="sec-body">
+<div class="callout troca"><b>Quatro decisões, nesta ordem:</b> iniciar, esperar, ajustar ou não mexer. <b>Iniciar</b> quando há sofrimento significativo, risco ou diagnóstico estabelecido. <b>Esperar</b> quando o tempo mínimo de resposta ainda não passou. <b>Ajustar</b> diante de resposta parcial após tempo adequado, efeito intolerável ou nova fase. <b>Não mexer</b> em quem está estável há meses ou em esquema de especialista.</div>
+
+<h3>Quanto tempo esperar antes de concluir que falhou</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Classe</th><th>Resposta inicial</th><th>Resposta plena</th><th>Só troque depois de</th></tr></thead>
+<tbody>
+<tr><td data-label="Classe">Antidepressivo</td><td data-label="Inicial">3–4 semanas</td><td data-label="Plena">6–8 semanas</td><td data-label="Trocar">4–6 semanas <b>em dose otimizada</b>, com adesão confirmada</td></tr>
+<tr><td data-label="Classe">Antidepressivo no TOC</td><td data-label="Inicial">4–6 semanas</td><td data-label="Plena">10–12 semanas</td><td data-label="Trocar">12 semanas em dose alta</td></tr>
+<tr><td data-label="Classe">Antipsicótico</td><td data-label="Inicial">1–2 semanas (agitação responde antes)</td><td data-label="Plena">4–6 semanas</td><td data-label="Trocar">4–6 semanas em dose adequada</td></tr>
+<tr><td data-label="Classe">Lítio</td><td data-label="Inicial">1–2 semanas em mania</td><td data-label="Plena">Profilaxia: meses</td><td data-label="Trocar">Nível terapêutico confirmado por litemia</td></tr>
+<tr><td data-label="Classe">Lamotrigina</td><td data-label="Inicial">—</td><td data-label="Plena">Após atingir 200mg</td><td data-label="Trocar">Titulação completa</td></tr>
+</tbody>
+</table></div>
+<div class="callout warn"><b>Antes de trocar qualquer coisa, cheque as quatro:</b> ① adesão real, não a declarada; ② dose otimizada até o teto tolerado; ③ diagnóstico correto — descartar bipolaridade, uso de substância, hipotireoidismo, anemia, apneia; ④ contexto — nenhuma medicação trata desemprego, violência doméstica ou situação de rua.</div>
+
+<h3>Métodos de troca — vale para qualquer classe</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Método</th><th>Como fazer</th><th>Quando usar</th></tr></thead>
+<tbody>
+<tr><td data-label="Método"><b>Cruzada</b> (padrão)</td><td data-label="Como">Reduzir o primeiro enquanto sobe o segundo</td><td data-label="Quando">Maioria das trocas</td></tr>
+<tr><td data-label="Método">Direta</td><td data-label="Como">Parar um e começar o outro no dia seguinte</td><td data-label="Quando">Só entre fármacos muito semelhantes, em dose baixa</td></tr>
+<tr><td data-label="Método">Sobreposição com retirada lenta</td><td data-label="Como">Levar o novo à dose plena e só então retirar o antigo</td><td data-label="Quando">Paciente <b>instável</b>, ou saindo de droga com rebote (clozapina, olanzapina, lítio)</td></tr>
+<tr><td data-label="Método">Com intervalo (<i>washout</i>)</td><td data-label="Como">Suspender e aguardar antes de iniciar</td><td data-label="Quando"><b>Só é obrigatório com IMAO</b> — 14 dias, ou 5 semanas ao sair da fluoxetina</td></tr>
+</tbody>
+</table></div>
+<div class="callout troca"><b>Onde está o detalhe de cada classe:</b> troca e desmame de <a href="#antidepressivos" style="color:inherit;font-weight:600;">antidepressivo (seção 01)</a> · <a href="#antipsicoticos" style="color:inherit;font-weight:600;">antipsicótico (seção 02)</a> · <a href="#estabilizadores" style="color:inherit;font-weight:600;">estabilizador (seção 03)</a> · <a href="#benzodiazepinicos" style="color:inherit;font-weight:600;">benzodiazepínico (seção 04)</a>. Cada uma tem as armadilhas próprias do mecanismo.</div>
+
+<h3>O que muda conforme a droga que sai</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Ao retirar</th><th>Fenômeno esperado</th><th>Não confundir com</th></tr></thead>
+<tbody>
+<tr><td data-label="Ao retirar">ISRS/IRSN de meia-vida curta</td><td data-label="Fenômeno">Síndrome de descontinuação (FINISH), em dias</td><td data-label="Não confundir">Recaída depressiva — esta leva semanas</td></tr>
+<tr><td data-label="Ao retirar">Tricíclico</td><td data-label="Fenômeno">Rebote colinérgico: náusea, cólica, sudorese, insônia</td><td data-label="Não confundir">Gastroenterite, ansiedade</td></tr>
+<tr><td data-label="Ao retirar">Olanzapina, quetiapina, clozapina</td><td data-label="Fenômeno">Rebote colinérgico e insônia intensa</td><td data-label="Não confundir">Recaída psicótica — leva a reintroduzir sem necessidade</td></tr>
+<tr><td data-label="Ao retirar">Clozapina abruptamente</td><td data-label="Fenômeno"><b>Psicose de rebote grave</b></td><td data-label="Não confundir">"Piora natural da doença"</td></tr>
+<tr><td data-label="Ao retirar">Antipsicótico de uso longo</td><td data-label="Fenômeno">Discinesia de retirada; psicose de supersensibilidade</td><td data-label="Não confundir">Discinesia tardia nova</td></tr>
+<tr><td data-label="Ao retirar">Lítio</td><td data-label="Fenômeno"><b>Mania de rebote precoce</b></td><td data-label="Não confundir">Ciclagem natural do transtorno</td></tr>
+<tr><td data-label="Ao retirar">Benzodiazepínico</td><td data-label="Fenômeno">Ansiedade de rebote, insônia; convulsão se abrupto</td><td data-label="Não confundir">Retorno do transtorno de base</td></tr>
+<tr><td data-label="Ao retirar">Carbamazepina</td><td data-label="Fenômeno">Fim da indução em 2–4 semanas — <b>outros fármacos sobem</b></td><td data-label="Não confundir">Efeito adverso do fármaco novo</td></tr>
+</tbody>
+</table></div>
+
+<h3>Por quanto tempo manter</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Situação</th><th>Duração após remissão</th></tr></thead>
+<tbody>
+<tr><td data-label="Situação">1º episódio depressivo ou ansioso</td><td data-label="Duração">6–12 meses</td></tr>
+<tr><td data-label="Situação">2º episódio</td><td data-label="Duração">2 anos</td></tr>
+<tr><td data-label="Situação">≥3 episódios, episódio grave, risco suicida, sintomas residuais ou história familiar forte</td><td data-label="Duração"><b>Indefinida</b></td></tr>
+<tr><td data-label="Situação">Transtorno bipolar</td><td data-label="Duração">Estabilizador em geral <b>indefinido</b></td></tr>
+<tr><td data-label="Situação">Esquizofrenia — 1º episódio</td><td data-label="Duração">1–2 anos no mínimo</td></tr>
+<tr><td data-label="Situação">Esquizofrenia — múltiplos episódios</td><td data-label="Duração"><b>Indefinida</b></td></tr>
+<tr><td data-label="Situação">Benzodiazepínico</td><td data-label="Duração"><b>2–4 semanas</b> — com data de saída definida já na primeira receita</td></tr>
+</tbody>
+</table></div>
+<p class="lede"><b>Remissão não é cura.</b> A maior parte das recaídas evitáveis vem de suspensão precoce logo depois que o paciente melhora.</p>
+</div>
+</details>
+</section>
+
+<!-- ============ GESTAÇÃO ============ -->
+<section class="block gest" id="gestacao">
+<details class="sec-fold" data-sec="gestacao">
+<summary class="block-head"><span class="idx gest-bg">09</span><h2>Gestação e Lactação</h2><span class="tag">risco por classe</span><span class="fold-ind" aria-hidden="true"></span></summary>
+<div class="sec-body">
+<div class="callout gest"><b>O erro mais comum é suspender tudo ao descobrir a gestação.</b> Transtorno psiquiátrico não tratado na gestação tem risco próprio — prematuridade, baixo peso, pior vínculo, uso de substâncias, suicídio (causa importante de morte materna). A decisão é sempre <b>risco do fármaco × risco da doença não tratada</b>, e não "na dúvida, suspender".</div>
+
+<h3>Princípios</h3>
+<ul class="checklist">
+<li><b>Monoterapia sempre que possível</b>, na menor dose eficaz — melhor uma droga em dose plena que duas em dose baixa</li>
+<li>Se a gestação for descoberta com o paciente estável, <b>em geral se mantém o esquema</b> — trocar expõe o feto a duas drogas e arrisca recaída. <b>Exceções: valproato e carbamazepina</b>, que devem ser reavaliados com urgência</li>
+<li>Preferir droga com maior histórico de uso, e não a mais nova</li>
+<li><b>Volume plasmático sobe ~30% no 3º trimestre</b> — níveis séricos caem e a dose frequentemente precisa subir; reavaliar no pós-parto para evitar intoxicação</li>
+<li>Ácido fólico em toda mulher em idade fértil em uso de anticonvulsivante</li>
+<li><b>Puerpério é o período de maior risco de recaída</b> no bipolar — planejar antes do parto</li>
+</ul>
+
+<h3>Antidepressivos</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Fármaco</th><th>Gestação</th><th>Lactação</th></tr></thead>
+<tbody>
+<tr><td data-label="Fármaco"><b>Sertralina</b></td><td data-label="Gestação"><b>1ª escolha</b> — maior volume de dados, sem sinal consistente de malformação</td><td data-label="Lactação"><b>Preferida</b> — das mais baixas transferências para o leite</td></tr>
+<tr><td data-label="Fármaco">Escitalopram / citalopram</td><td data-label="Gestação">Alternativa aceitável</td><td data-label="Lactação">Compatível</td></tr>
+<tr><td data-label="Fármaco">Fluoxetina</td><td data-label="Gestação">Aceitável; muitos dados</td><td data-label="Lactação">Meia-vida longa — maior acúmulo no lactente que a sertralina</td></tr>
+<tr><td data-label="Fármaco"><b>Paroxetina</b></td><td data-label="Gestação"><b>Evitar</b> — sinal de malformação cardíaca no 1º trimestre</td><td data-label="Lactação">Baixa transferência, mas evitar iniciar</td></tr>
+<tr><td data-label="Fármaco">Venlafaxina / duloxetina</td><td data-label="Gestação">Usar se houve resposta prévia; menos dados que os ISRS</td><td data-label="Lactação">Aceitável com monitorização do lactente</td></tr>
+<tr><td data-label="Fármaco">Tricíclicos</td><td data-label="Gestação">Nortriptilina é a preferida da classe</td><td data-label="Lactação">Compatível</td></tr>
+<tr><td data-label="Fármaco">Bupropiona</td><td data-label="Gestação">Reservar para indicação específica (tabagismo)</td><td data-label="Lactação">Relatos de convulsão no lactente — cautela</td></tr>
+</tbody>
+</table></div>
+<div class="callout gest">Uso de ISRS no 3º trimestre associa-se à <b>síndrome de má adaptação neonatal</b> — irritabilidade, tremor, taquipneia e dificuldade alimentar, autolimitada em poucos dias. Isso <b>não é indicação de suspender</b> o antidepressivo antes do parto: a retirada aumenta a recaída materna sem benefício neonatal demonstrado. Avisar a equipe da maternidade basta.</div>
+
+<h3>Estabilizadores — a decisão mais difícil</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Fármaco</th><th>Risco</th><th>Conduta</th></tr></thead>
+<tbody>
+<tr><td data-label="Fármaco"><b>Valproato</b></td><td data-label="Risco"><b>O mais teratogênico da psiquiatria</b>: defeitos de tubo neural, malformações múltiplas (~9–11%), redução de QI e maior risco de autismo e TDAH</td><td data-label="Conduta"><b>Contraindicado.</b> Não prescrever a mulher em idade fértil sem contracepção eficaz e discussão registrada</td></tr>
+<tr><td data-label="Fármaco"><b>Carbamazepina</b></td><td data-label="Risco">Espinha bífida, deficiência de vitamina K tardia; teratogenicidade próxima à do valproato</td><td data-label="Conduta">Evitar; se mantida, folato e vitamina K no fim da gestação</td></tr>
+<tr><td data-label="Fármaco"><b>Lítio</b></td><td data-label="Risco">Malformação cardíaca — risco <b>bem menor do que se pensava</b>. Cardiopatia em ~2,4% dos expostos contra 1,15% dos não expostos; anomalia de Ebstein em torno de 0,6% contra 0,18%. O risco é <b>dose-dependente</b> e não apareceu com doses ≤600mg/dia</td><td data-label="Conduta">Pode ser mantido quando o benefício é claro (bipolar grave, boa resposta prévia, risco suicida). Menor dose eficaz, litemia frequente, <b>ecocardiograma fetal</b> e ultrassom morfológico. Hidratação no periparto; suspender 24–48h antes do parto</td></tr>
+<tr><td data-label="Fármaco"><b>Lamotrigina</b></td><td data-label="Risco">Perfil favorável — <b>sem aumento consistente de malformação</b></td><td data-label="Conduta">Preferida na prevenção de depressão bipolar. O <b>clearance sobe muito na gestação</b>: monitorar e ajustar, reduzindo rápido no pós-parto</td></tr>
+<tr><td data-label="Fármaco"><b>Quetiapina</b></td><td data-label="Risco">Boa alternativa ao valproato em mulher em idade fértil</td><td data-label="Conduta">Considerada primeira escolha entre os antipsicóticos nesse cenário</td></tr>
+</tbody>
+</table></div>
+<div class="callout warn"><b>A conversa que precisa acontecer antes:</b> toda mulher em idade fértil que recebe valproato ou carbamazepina precisa de contracepção eficaz e de registro da discussão em prontuário. Lembrar que a <b>carbamazepina reduz a eficácia do anticoncepcional hormonal</b> por indução enzimática — a combinação "carbamazepina + pílula" é uma armadilha frequente.</div>
+
+<h3>Antipsicóticos e benzodiazepínicos</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Classe</th><th>Gestação</th><th>Lactação</th></tr></thead>
+<tbody>
+<tr><td data-label="Classe">Haloperidol</td><td data-label="Gestação">Longa experiência de uso; opção em agitação aguda na gestante</td><td data-label="Lactação">Compatível com monitorização</td></tr>
+<tr><td data-label="Classe">Quetiapina / olanzapina</td><td data-label="Gestação">Boa base de dados; olanzapina soma risco metabólico e de <b>diabetes gestacional</b></td><td data-label="Lactação">Quetiapina tem das menores transferências</td></tr>
+<tr><td data-label="Classe">Risperidona</td><td data-label="Gestação">Aceitável; hiperprolactinemia pode dificultar a concepção</td><td data-label="Lactação">Aceitável</td></tr>
+<tr><td data-label="Classe">Clozapina</td><td data-label="Gestação">Manter apenas se refratariedade justificar; risco de agranulocitose neonatal</td><td data-label="Lactação"><b>Evitar</b></td></tr>
+<tr><td data-label="Classe">Benzodiazepínicos</td><td data-label="Gestação">Cautela. Perto do parto: <b>hipotonia neonatal e abstinência no recém-nascido</b>. Uso pontual é diferente de uso contínuo</td><td data-label="Lactação">Preferir meia-vida curta e dose única; vigiar sedação e ganho de peso do lactente</td></tr>
+<tr><td data-label="Classe">Lítio</td><td data-label="Gestação">Ver acima</td><td data-label="Lactação">Passagem significativa ao leite — se amamentar, monitorar o lactente e manter hidratação</td></tr>
+</tbody>
+</table></div>
+<div class="callout gest"><b>Agitação aguda na gestante:</b> haloperidol ± prometazina é o esquema de escolha. <b>Valproato está fora.</b> Preferir via oral, decúbito lateral esquerdo a partir do 2º trimestre e monitorização materna e fetal. Convulsão em gestante ≥20 semanas é eclâmpsia até prova em contrário.</div>
+</div>
+</details>
+</section>
+
+<!-- ============ MONITORIZAÇÃO ============ -->
+<section class="block monit" id="monitorizacao">
+<details class="sec-fold" data-sec="monitorizacao">
+<summary class="block-head"><span class="idx monit-bg">10</span><h2>Monitorização e Interações</h2><span class="tag">exames · interações</span><span class="fold-ind" aria-hidden="true"></span></summary>
+<div class="sec-body">
+<h3>Exames por medicação</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Medicação</th><th>Exames</th><th>Frequência</th></tr></thead>
+<tbody>
+<tr><td data-label="Medicação"><b>Lítio</b></td><td data-label="Exames">Litemia (12h após a dose), creatinina e TFG, TSH, cálcio; basal com hemograma, glicemia e urina; ECG no idoso</td><td data-label="Frequência">Basal, após cada ajuste, a cada 3 meses no 1º ano, depois 6/6 meses se estável</td></tr>
+<tr><td data-label="Medicação"><b>Valproato</b></td><td data-label="Exames">Nível sérico, hemograma (plaquetas), TGO/TGP, amônia se sintomas, peso</td><td data-label="Frequência">Basal e a cada 3 meses no 1º ano</td></tr>
+<tr><td data-label="Medicação"><b>Carbamazepina</b></td><td data-label="Exames">Hemograma, TGO/TGP, <b>sódio</b>, nível sérico</td><td data-label="Frequência">Basal e a cada 3 meses no 1º ano</td></tr>
+<tr><td data-label="Medicação"><b>Clozapina</b></td><td data-label="Exames"><b>Neutrófilos</b>; troponina e CK-MB se suspeita de miocardite; perfil metabólico; avaliação de constipação a cada consulta</td><td data-label="Frequência">Semanal nas primeiras 18 semanas, depois mensal — ver nota abaixo</td></tr>
+<tr><td data-label="Medicação">Antipsicóticos atípicos</td><td data-label="Exames">Peso e IMC, circunferência abdominal, PA, glicemia ou HbA1c, perfil lipídico</td><td data-label="Frequência">Basal, 3 meses, 6 meses, depois anual</td></tr>
+<tr><td data-label="Medicação">Citalopram, escitalopram, ziprasidona, haloperidol</td><td data-label="Exames">ECG com QTc; K⁺ e Mg²⁺</td><td data-label="Frequência">Basal se cardiopatia, idade avançada ou polifarmácia com QT</td></tr>
+<tr><td data-label="Medicação">Venlafaxina / desvenlafaxina</td><td data-label="Exames">Pressão arterial</td><td data-label="Frequência">A cada consulta, sobretudo acima de 150mg</td></tr>
+</tbody>
+</table></div>
+<div class="callout monit"><b>Nota sobre a clozapina — mudou recentemente.</b> O programa restritivo de dispensação foi eliminado em 2025, mantendo-se a recomendação de monitorar neutrófilos; o consenso internacional seguinte propôs manter semanal por 18 semanas, depois a cada 4 semanas, e <b>após 2 anos</b> encerrar a contagem rotineira, substituindo-a por hemograma anual. Isso não altera automaticamente as exigências de dispensação no Brasil — confirmar o protocolo vigente da farmácia antes de espaçar exames.</div>
+
+<h3>Interações que causam dano</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Combinação</th><th>O que acontece</th></tr></thead>
+<tbody>
+<tr><td data-label="Combinação"><b>Lítio + AINE, tiazídico ou IECA/BRA</b></td><td data-label="Efeito">Elevam a litemia → intoxicação. A causa mais frequente de intoxicação em paciente antes estável</td></tr>
+<tr><td data-label="Combinação"><b>Valproato + lamotrigina</b></td><td data-label="Efeito">Dobra o nível da lamotrigina → Stevens-Johnson. Titular com metade da dose</td></tr>
+<tr><td data-label="Combinação"><b>Carbamazepina + praticamente tudo</b></td><td data-label="Efeito">Indução do CYP3A4 derruba níveis — inclusive de anticoncepcional, antirretroviral e da própria lamotrigina</td></tr>
+<tr><td data-label="Combinação"><b>Fluvoxamina + clozapina</b></td><td data-label="Efeito">Inibição do CYP1A2 eleva muito o nível da clozapina → toxicidade</td></tr>
+<tr><td data-label="Combinação"><b>Parar de fumar</b> em uso de clozapina ou olanzapina</td><td data-label="Efeito">A fumaça induz o CYP1A2; cessar <b>eleva o nível da droga</b> e pode causar toxicidade em dias</td></tr>
+<tr><td data-label="Combinação"><b>ISRS + tramadol, triptano, linezolida ou IMAO</b></td><td data-label="Efeito">Síndrome serotoninérgica</td></tr>
+<tr><td data-label="Combinação"><b>Olanzapina IM + BZD parenteral</b></td><td data-label="Efeito">Depressão cardiorrespiratória grave</td></tr>
+<tr><td data-label="Combinação"><b>BZD + opioide + álcool</b></td><td data-label="Efeito">Sinergia depressora respiratória — combinação frequente e letal nesta população</td></tr>
+<tr><td data-label="Combinação"><b>Múltiplos prolongadores de QT</b></td><td data-label="Efeito">Haloperidol, ziprasidona, metadona, ondansetrona, citalopram, macrolídeo → Torsades</td></tr>
+<tr><td data-label="Combinação">Fluoxetina ou paroxetina + tricíclico</td><td data-label="Efeito">Inibição do CYP2D6 eleva o nível do tricíclico → cardiotoxicidade</td></tr>
+</tbody>
+</table></div>
+
+<h3>Princípios de prescrição segura</h3>
+<ul class="checklist">
+<li><b>Antes:</b> diagnóstico, idade, comorbidades, substâncias em uso, alergias, gestação e interações</li>
+<li><b>Durante:</b> menor dose eficaz, <b>uma mudança por vez</b>, e orientar o tempo esperado de resposta — paciente que não sabe que vai demorar abandona na segunda semana</li>
+<li><b>Depois:</b> reavaliar em prazo definido, orientar sinais de alerta, registrar e discutir em equipe</li>
+<li>Em etilista: risco maior de rebaixamento com BZD, sempre repor tiamina, monitorar SSVV com mais frequência</li>
+<li><b>Não existe medicação que trate um contexto ruim</b> — moradia, renda, vínculo e rede entram no plano junto com a receita</li>
+</ul>
+</div>
+</details>
+</section>
+<!-- ============ PSICOESTIMULANTES ============ -->
+<section class="block est" id="psicoestimulantes">
+<details class="sec-fold" data-sec="psicoestimulantes">
+<summary class="block-head"><span class="idx est-bg">11</span><h2>Psicoestimulantes</h2><span class="tag">conversão · troca · suspensão</span><span class="fold-ind" aria-hidden="true"></span></summary>
+<div class="sec-body">
+<div class="callout est"><b>Aqui a conversão entre apresentações do mesmo fármaco é confiável; entre fármacos diferentes, não é.</b> Metilfenidato e anfetamina têm potências e curvas distintas, e a resposta individual varia muito. Trocar de classe exige <b>retitular do início</b>, não aplicar um fator de conversão.</div>
+
+<h3>Apresentações e faixas</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Fármaco</th><th>Apresentação</th><th>Faixa usual</th><th>Duração de efeito</th></tr></thead>
+<tbody>
+<tr><td data-label="Fármaco"><b>Metilfenidato IR</b></td><td data-label="Apresentação">Comprimido 10mg</td><td class="dose" data-label="Faixa">5–20mg, 2–3×/dia (máx ~60mg/dia)</td><td data-label="Duração">3–4h</td></tr>
+<tr><td data-label="Fármaco"><b>Metilfenidato LA</b></td><td data-label="Apresentação">Cápsula 10 / 20 / 30 / 40mg</td><td class="dose" data-label="Faixa">Dose diária total em <b>1 tomada matinal</b></td><td data-label="Duração">6–8h (liberação bifásica 50/50)</td></tr>
+<tr><td data-label="Fármaco"><b>Metilfenidato OROS</b></td><td data-label="Apresentação">Comprimido 18 / 27 / 36 / 54mg</td><td class="dose" data-label="Faixa">18–72mg/dia, 1 tomada matinal</td><td data-label="Duração">10–12h (22% imediato + 78% progressivo)</td></tr>
+<tr><td data-label="Fármaco"><b>Lisdexanfetamina</b></td><td data-label="Apresentação">Cápsula 30 / 50 / 70mg</td><td class="dose" data-label="Faixa">30–70mg/dia, 1 tomada matinal</td><td data-label="Duração">10–13h — pró-fármaco, precisa de conversão enzimática</td></tr>
+</tbody>
+</table></div>
+
+<h3>Conversão entre apresentações de metilfenidato</h3>
+<p class="lede">Dentro do mesmo fármaco, a <b>dose diária total se mantém</b> — muda a curva de liberação, não a quantidade.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Esquema com IR</th><th>Equivale a LA</th><th>Equivale a OROS</th></tr></thead>
+<tbody>
+<tr><td data-label="IR">5mg 3×/dia (15mg/dia)</td><td class="dose" data-label="LA">20mg 1×/dia</td><td class="dose" data-label="OROS">18mg 1×/dia</td></tr>
+<tr><td data-label="IR">10mg 3×/dia (30mg/dia)</td><td class="dose" data-label="LA">30–40mg 1×/dia</td><td class="dose" data-label="OROS">36mg 1×/dia</td></tr>
+<tr><td data-label="IR">15mg 3×/dia (45mg/dia)</td><td class="dose" data-label="LA">40mg + complemento</td><td class="dose" data-label="OROS">54mg 1×/dia</td></tr>
+<tr><td data-label="IR">20mg 3×/dia (60mg/dia)</td><td class="dose" data-label="LA">—</td><td class="dose" data-label="OROS">72mg 1×/dia</td></tr>
+</tbody>
+</table></div>
+<div class="callout est">O OROS entrega cerca de <b>22% da dose de forma imediata</b>; por isso 18mg "parecem menos" que 5mg de IR na primeira hora, e alguns pacientes precisam de um degrau acima ao migrar. Não parta o comprimido OROS — a partição destrói o sistema de liberação e entrega a dose de uma vez.</div>
+
+<h3>Troca entre metilfenidato e lisdexanfetamina</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Situação</th><th>Conduta</th></tr></thead>
+<tbody>
+<tr><td data-label="Situação">Ponto de partida na troca</td><td data-label="Conduta">Iniciar lisdexanfetamina <b>30mg</b> independentemente da dose prévia de metilfenidato, e titular a cada 1–2 semanas</td></tr>
+<tr><td data-label="Situação">Caminho inverso</td><td data-label="Conduta">Iniciar OROS 18–36mg conforme porte e resposta prévia, e titular</td></tr>
+<tr><td data-label="Situação">Como trocar</td><td data-label="Conduta">Troca <b>direta</b> — não há necessidade de desmame nem de intervalo entre as duas</td></tr>
+<tr><td data-label="Situação">Referência de potência</td><td data-label="Conduta">Aproximadamente <b>2:1</b> (metilfenidato : anfetamina) — serve para não errar a ordem de grandeza, <b>não</b> para calcular a dose</td></tr>
+</tbody>
+</table></div>
+<div class="callout warn"><b>Não existe tabela de conversão validada entre metilfenidato e anfetamina.</b> Quem responde mal a um pode responder bem ao outro, e a dose eficaz não é previsível pela dose anterior. Retitule.</div>
+
+<h3>Suspensão e desmame</h3>
+<ul class="checklist">
+<li><b>Em dose terapêutica, psicoestimulante não exige desmame</b> — não há síndrome de abstinência fisiológica e a suspensão pode ser abrupta</li>
+<li>O que ocorre é <b>rebote dos sintomas</b> de base (desatenção, impulsividade) e, ao fim do dia, o <i>rebound</i> vespertino de irritabilidade — este último se maneja mudando a formulação ou o horário, não suspendendo</li>
+<li><b>Pausas planejadas</b> (fins de semana, férias) são possíveis quando o prejuízo é predominantemente escolar ou laboral; avaliar caso a caso e nunca como imposição</li>
+<li><b>Dose alta ou uso não prescrito é outra história:</b> a retirada abrupta produz <i>crash</i> — fadiga intensa, hipersonia, hiperfagia, <b>disforia marcada com risco de ideação suicida</b> e fissura. Aqui reduzir gradualmente e vigiar o humor</li>
+<li>Reavaliar a necessidade periodicamente: interrupção programada e monitorada é a forma de saber se ainda há indicação</li>
+</ul>
+
+<h3>Cuidados específicos no paciente com uso de substâncias</h3>
+<ul class="checklist">
+<li><b>TDAH e transtorno por uso de substâncias coexistem com frequência</b>, e tratar o TDAH não piora o TUS — mas a escolha da formulação muda</li>
+<li>Preferir <b>OROS ou lisdexanfetamina</b>: liberação prolongada e, no caso do pró-fármaco, necessidade de conversão enzimática dificultam o uso desviado e a via inalatória ou injetável</li>
+<li><b>Evitar metilfenidato IR</b> nesse cenário — é a apresentação mais desviada e a de pico mais abrupto</li>
+<li>Alternativas <b>não estimulantes</b> quando o risco de desvio é alto: atomoxetina, bupropiona (atenção ao limiar convulsivo)</li>
+<li>Estabilizar o uso de substância <b>antes</b> ou em paralelo, e pactuar receita com prazo, contagem e retorno próximo</li>
+</ul>
+
+<h3>Monitorização e contraindicações</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Eixo</th><th>O que acompanhar</th></tr></thead>
+<tbody>
+<tr><td data-label="Eixo">Cardiovascular</td><td data-label="Acompanhar"><b>PA e FC a cada consulta.</b> Investigar antes: cardiopatia estrutural, arritmia, síncope de esforço, morte súbita familiar precoce</td></tr>
+<tr><td data-label="Eixo">Peso e crescimento</td><td data-label="Acompanhar">Peso e apetite; em criança e adolescente, curva de crescimento</td></tr>
+<tr><td data-label="Eixo">Sono</td><td data-label="Acompanhar">Insônia é o efeito adverso mais comum — antecipar o horário da dose antes de reduzir</td></tr>
+<tr><td data-label="Eixo">Psiquiátrico</td><td data-label="Acompanhar">Ansiedade, irritabilidade, tiques; <b>virada maníaca</b> em bipolar não estabilizado; sintomas psicóticos em dose alta</td></tr>
+<tr><td data-label="Eixo">Contraindicações</td><td data-label="Acompanhar">Uso de IMAO (intervalo de 14 dias), glaucoma de ângulo fechado, cardiopatia grave, <b>mania ou psicose ativa não tratada</b></td></tr>
+<tr><td data-label="Eixo">Receituário</td><td data-label="Acompanhar">Notificação especial (receita A no Brasil) — planejar quantidade e data de retorno</td></tr>
+</tbody>
+</table></div>
+</div>
+</details>
+</section>
+<!-- ============ REFERÊNCIAS ============ -->
+<section class="block bib" id="referencias">
+<details class="sec-fold" data-sec="referencias">
+<summary class="block-head"><span class="idx bib-bg">12</span><h2>Referências</h2><span class="tag">fontes · rastreabilidade</span><span class="fold-ind" aria-hidden="true"></span></summary>
+<div class="sec-body">
+<h3>Como usar esta lista</h3>
+<div class="callout bib">Os três guias — <b>Paciente Crítico</b>, <b>Plantão</b> e <b>Psicofarmacologia</b> — compartilham esta mesma lista, de modo que qualquer conduta consultada em qualquer um deles possa ser rastreada até a fonte. Onde diretriz brasileira e internacional divergem, os guias seguem a <b>conduta praticável na rede local</b> e sinalizam a diferença no próprio card. Diretrizes mudam: confirme a versão vigente antes de usar como respaldo formal.</div>
+
+<h3>Ressuscitação, parada e via aérea</h3>
+<ul class="biblist">
+<li>American Heart Association. <b>Guidelines for CPR and Emergency Cardiovascular Care</b> — algoritmos de PCR, ritmos chocáveis e não chocáveis, cuidados pós-RCE, bradi e taquiarritmias, energias de cardioversão e desfibrilação</li>
+<li>American College of Surgeons. <b>ATLS — Advanced Trauma Life Support</b> — avaliação XABCDE, classes de choque hemorrágico</li>
+<li><b>CRASH-2</b> e <b>CRASH-3</b> — ácido tranexâmico no trauma</li>
+<li>Sociedade Brasileira de Cardiologia. <b>Diretriz de Ressuscitação Cardiopulmonar e Cuidados de Emergência</b></li>
+<li>Literatura de via aérea difícil e sequência rápida de intubação (7 P's, LEMON, SOAP-ME); <b>Difficult Airway Society</b> — algoritmos de via aérea não intubável</li>
+</ul>
+
+<h3>Choque e sepse</h3>
+<ul class="biblist">
+<li><b>Surviving Sepsis Campaign — diretriz internacional de sepse e choque séptico</b> (edição de 2026): rastreio com NEWS/NEWS2/MEWS/SIRS em vez de qSOFA, volume inicial, cristaloide balanceado, vasopressor periférico, alvo de PAM por faixa etária, corticoide, antimicrobiano na 1ª hora</li>
+<li><b>ANDROMEDA-SHOCK</b> e <b>ANDROMEDA-SHOCK-2</b> — tempo de enchimento capilar como alvo de ressuscitação</li>
+<li>American College of Cardiology. <b>Consenso de choque cardiogênico</b> (2025) e <b>classificação SCAI SHOCK</b> (estágios A–E)</li>
+<li><b>ECLS-SHOCK</b>, <b>IABP-SHOCK II</b> e <b>DanGer Shock</b> — suporte circulatório mecânico no choque pós-IAM</li>
+<li>Protocolo <b>RUSH</b> para POCUS no choque indiferenciado; literatura de fluidorresponsividade (elevação passiva de pernas, variação de pressão de pulso)</li>
+</ul>
+
+<h3>Síndrome coronariana aguda e arritmias</h3>
+<ul class="biblist">
+<li><b>ACC/AHA — Guideline for the Management of Acute Coronary Syndromes</b> (2025): critérios de IAM com supra, escolha e tempos de reperfusão, terapia antitrombótica, dispositivos no choque</li>
+<li><b>Quarta Definição Universal de Infarto do Miocárdio</b></li>
+<li>Sociedade Brasileira de Cardiologia. <b>Diretrizes de IAM com e sem supra de ST</b> e <b>Diretriz de Fibrilação Atrial</b></li>
+<li><b>Critérios de Sgarbossa</b> e <b>Sgarbossa modificado por Smith</b> — IAM no BRE e no ritmo de marca-passo</li>
+<li>Padrões de oclusão sem supra clássico: <b>de Winter</b>, <b>Wellens</b>, T hiperaguda, supra em aVR; <b>critérios de Brugada</b> para TV × TSV com aberrância</li>
+<li>Classificação de <b>Killip-Kimball</b>; escores <b>GRACE</b> e <b>CHA₂DS₂-VA</b></li>
+</ul>
+
+<h3>Neurologia vascular</h3>
+<ul class="biblist">
+<li>American Heart Association / American Stroke Association. <b>Guidelines for the Early Management of Patients With Acute Ischemic Stroke</b> — janelas, critérios e contraindicações de trombólise, alvos pressóricos, trombectomia</li>
+<li><b>Guideline for the Management of Spontaneous Intracerebral Hemorrhage</b> — alvo pressórico, reversão de anticoagulação, <b>ICH Score</b></li>
+<li><b>NIHSS</b> — National Institutes of Health Stroke Scale; escalas <b>Hunt-Hess</b> e <b>Fisher</b> na hemorragia subaracnóidea</li>
+<li>Ministério da Saúde. <b>Protocolo Clínico e Diretrizes Terapêuticas — Acidente Vascular Cerebral</b> e Linha de Cuidado do AVC</li>
+</ul>
+
+<h3>Ventilação mecânica e sedoanalgesia</h3>
+<ul class="biblist">
+<li><b>ARDSnet</b> e diretrizes de ventilação protetora — volume corrente por peso predito, pressão de platô, driving pressure, tabela de PEEP/FiO₂</li>
+<li>Diretrizes brasileiras de ventilação mecânica (AMIB/SBPT)</li>
+<li>Society of Critical Care Medicine. <b>PADIS Guidelines</b> — dor, agitação, delirium, imobilidade e sono; princípio de analgesia primeiro; escalas <b>RASS</b> e <b>CAM-ICU</b></li>
+</ul>
+
+<h3>Toxicologia</h3>
+<ul class="biblist">
+<li><b>EXTRIP Workgroup</b> — recomendações de terapia extracorpórea nas intoxicações, incluindo lítio</li>
+<li>Regimes de <b>N-acetilcisteína</b> no paracetamol: esquema clássico de 21h e esquemas encurtados de 12h; <b>nomograma de Rumack-Matthew</b></li>
+<li>Manejo de intoxicação por organofosforado: atropinização titulada pelo secamento da secreção brônquica e uso de pralidoxima</li>
+<li>Antídotos e toxíndromes: literatura de toxicologia clínica de emergência</li>
+<li><b>CIATox</b> — Centros de Informação e Assistência Toxicológica, <b>0800 722 6001</b>, 24h</li>
+</ul>
+
+<h3>Psicofarmacologia e psiquiatria</h3>
+<ul class="biblist">
+<li>TAYLOR, D.; BARNES, T.; YOUNG, A. <b>The Maudsley Prescribing Guidelines in Psychiatry</b> — doses, trocas, equivalências e desmame</li>
+<li>STAHL, S. M. <b>Psicofarmacologia: Bases Neurocientíficas e Aplicações Práticas</b> e <b>Prescriber's Guide</b></li>
+<li>CORDIOLI, A. V. <b>Psicofármacos: Consulta Rápida</b></li>
+<li>American Psychiatric Association. <b>DSM-5-TR</b>; Organização Mundial da Saúde. <b>CID-11</b></li>
+<li>DALGALARRONDO, P. <b>Psicopatologia e Semiologia dos Transtornos Mentais</b></li>
+<li>Associação Brasileira de Psiquiatria. <b>Emergências Psiquiátricas</b> e diretrizes de manejo da agitação psicomotora</li>
+<li><b>CIWA-Ar</b> (Sullivan et al., 1989) e <b>COWS</b> — escalas de abstinência alcoólica e de opioides</li>
+<li><b>The Ashton Manual</b> — <i>Benzodiazepines: How They Work and How to Withdraw</i>: tabela de equivalências e esquemas de desmame</li>
+<li>NHS Specialist Pharmacy Service — <b>equivalências de benzodiazepínicos orais</b> e conversão de drogas Z (as fontes divergem; ver a ressalva no card)</li>
+<li>Diretrizes de TDAH no adulto e no adolescente (NICE, CADDRA, ABDA) — escolha de formulação, titulação e conversão entre apresentações de metilfenidato</li>
+<li>Literatura sobre <b>TDAH e transtorno por uso de substâncias</b> — preferência por formulações de liberação prolongada e por pró-fármaco</li>
+<li>ANVISA — <b>Portaria SVS/MS nº 344/1998</b> e regras de notificação de receita para psicotrópicos</li>
+<li>Consenso internacional de monitorização da <b>clozapina</b> após a retirada do programa restritivo de dispensação (2025)</li>
+<li>Estudos de coorte sobre <b>lítio na gestação</b> e risco de malformação cardíaca; literatura de segurança de psicofármacos na gestação e lactação</li>
+<li>Ministério da Saúde. <b>Guia Estratégico para o Cuidado de Pessoas com Necessidades Relacionadas ao Consumo de Álcool e Outras Drogas</b></li>
+</ul>
+
+<h3>Rede, legislação e organização do cuidado</h3>
+<ul class="biblist">
+<li>BRASIL. <b>Lei nº 10.216/2001</b> — proteção e direitos das pessoas com transtornos mentais</li>
+<li>BRASIL. Ministério da Saúde. <b>Portaria nº 3.088/2011</b> — Rede de Atenção Psicossocial (RAPS)</li>
+<li>BRASIL. <b>Lei nº 13.840/2019</b> — internação involuntária</li>
+<li>Prefeitura de Belo Horizonte (SMSA-BH). <b>Protocolos da Coordenação de Saúde Mental</b> — fluxos locais (SUP, retaguarda, CERSAM, HMDCC)</li>
+<li>Conselho Federal de Medicina. <b>Código de Ética Médica</b> e resoluções sobre sigilo e prontuário</li>
+<li>Ministério da Saúde. <b>Política Nacional de Humanização</b> — base do Projeto Terapêutico Singular</li>
+</ul>
+
+<h3>Clínica geral, infectologia e demais condutas</h3>
+<ul class="biblist">
+<li>Diretrizes brasileiras e internacionais por sistema: sepse, pneumonia adquirida na comunidade e hospitalar, infecção do trato urinário, celulite e infecções de pele, meningite</li>
+<li><b>Surviving Sepsis</b> e protocolos institucionais de antibioticoterapia empírica — ajustar sempre ao perfil de resistência local</li>
+<li>Diretrizes de tromboembolismo venoso e de reversão de anticoagulação; escores <b>Wells</b> e <b>PERC</b></li>
+<li>Diretrizes de cetoacidose diabética, estado hiperosmolar, distúrbios hidroeletrolíticos e ácido-base</li>
+<li>Diretrizes de <b>distúrbios hidroeletrolíticos e ácido-base</b> — hiponatremia, hiper e hipocalemia, hipocalcemia, hipomagnesemia e gasometria</li>
+<li>Fórmulas de uso corrente: <b>Cockcroft-Gault</b> e <b>CKD-EPI</b> (função renal), peso predito, correção de sódio e de cálcio, déficit hídrico</li>
+<li>Bulas e rótulos dos fabricantes registrados na <b>ANVISA</b> — apresentações e concentrações das ampolas; a apresentação varia entre fabricante e entre hospitais, conferir sempre o rótulo</li>
+<li>Federação Brasileira das Associações de Ginecologia e Obstetrícia e Ministério da Saúde — <b>pré-eclâmpsia e eclâmpsia</b></li>
+<li>Ministério da Saúde. <b>Manejo Clínico da Dengue</b></li>
+<li>Diretrizes de cuidados paliativos (ANCP) — controle de sintomas e sedação paliativa</li>
+</ul>
+
+<div class="callout warn"><b>Limite de uso.</b> Estes guias são material de consulta rápida de uso pessoal, construídos a partir das fontes acima e submetidos a conferência pontual contra a literatura vigente. Não substituem a diretriz original, o protocolo da instituição onde você trabalha nem o julgamento clínico diante do paciente. Em divergência, prevalecem o protocolo institucional e a diretriz oficial.</div>
+</div>
+</details>
+</section>
+</main>
+<div class="palette" hidden="" id="palette">
+<div class="palette-panel">
+<div class="palette-head">
+<svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-width="2.2" viewBox="0 0 24 24" width="18"><circle cx="11" cy="11" r="7"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line></svg>
+<input autocomplete="off" id="palInput" placeholder="Buscar… (ex: lamotrigina, CIWA, acatisia, gestação)" type="text"/>
+<button class="pal-close" id="palClose" title="Fechar (Esc)" type="button">✕</button>
+</div>
+<div class="palette-results" id="palResults"></div>
+<div class="pal-hint">↑ ↓ navegar · Enter abre · Esc fecha — o resultado leva ao tópico e destaca o termo</div>
+</div>
+</div>
+<div class="fabs">
+<button class="fab" id="fabSearch" title="Buscar (/)" type="button"><svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-width="2.2" viewBox="0 0 24 24" width="18"><circle cx="11" cy="11" r="7"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line></svg></button>
+<button class="fab" id="fabTop" title="Voltar ao topo" type="button">↑</button>
+</div>
+<footer>
+  Guia de bolso de uso pessoal — consulte sempre protocolos institucionais vigentes e julgamento clínico individualizado. As colunas de referência recalculam pelo peso informado no topo; confira sempre pelo peso real do paciente — o campo ⚖ no topo faz isso pelas células marcadas.<br/><span class="rev">Última revisão: 01/09/2026 · v1.8 — ícone próprio embutido; apresentação da ampola completada. v1.7 — apresentação da ampola ao lado da dose onde ainda faltava. v1.6 — referências alinhadas às dos outros dois guias. v1.5 — nova seção 11 (Psicoestimulantes: apresentações, conversão entre formulações de metilfenidato, troca com lisdexanfetamina, suspensão e cuidados no paciente com uso de substâncias); seção de benzodiazepínicos ampliada com tabela de equivalências, conversão das drogas Z e esquema prático de desmame. v1.4 — nova seção de Referências comum aos três guias; citações retiradas do corpo do texto; tiamina, alvo da CIWA-Ar, propranolol na acatisia e biperideno alinhados entre os guias; correções de layout (barra de utilidades em uma linha, alvos de toque, quebra de título). v1.3 — barra de seções de volta no topo, agora com uma 2ª linha que mostra os tópicos da seção em leitura e acompanha a rolagem; painel de índice removido; busca segue na lupa flutuante. v1.2 — barra de abas do topo e caixa de busca substituídas por um índice em painel inferior, com seções e tópicos navegáveis direto; busca segue na lupa flutuante. v1.1 — classes separadas corretamente por mecanismo (ISRS, IRSN, atípicos, tricíclicos e IMAO; típicos por potência, atípicos e agonistas parciais; lítio, anticonvulsivantes e antipsicóticos estabilizadores; benzodiazepínicos por meia-vida e via metabólica, com drogas Z), e cada classe passou a ter troca e desmame próprios. v1.0 — psicofarmacologia por classe, uso agudo, abstinências, emergências neuropsiquiátricas, troca e desmame, gestação e lactação, monitorização e interações.</span>
+</footer>
+<script>
+(function(){
+  'use strict';
+  var store = {
+    get:function(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } },
+    set:function(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+  };
+
+  /* ---------- TEMA ---------- */
+  var metaTheme = document.getElementById('metaTheme');
+  var themeBtn = document.getElementById('themeBtn');
+  function applyTheme(t){
+    document.documentElement.setAttribute('data-theme', t);
+    if(metaTheme) metaTheme.setAttribute('content', t==='dark' ? '#10161C' : '#F3F5F8');
+    if(themeBtn){ themeBtn.textContent = t==='dark' ? '☀' : '☾'; themeBtn.title = t==='dark' ? 'Tema claro' : 'Tema escuro'; }
+  }
+  var theme = store.get('gb-theme');
+  if(theme !== 'dark' && theme !== 'light'){
+    theme = (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+  }
+  applyTheme(theme);
+  if(themeBtn) themeBtn.addEventListener('click', function(){
+    theme = (theme==='dark') ? 'light' : 'dark';
+    store.set('gb-theme', theme); applyTheme(theme);
+  });
+
+  /* ---------- PESO ---------- */
+  var pesoInput = document.getElementById('pesoInput');
+  function fmt(v,d){
+    return v.toLocaleString('pt-BR',{minimumFractionDigits:0, maximumFractionDigits:d});
+  }
+  function applyPeso(w){
+    var i, els;
+    els = document.querySelectorAll('.wkg');
+    for(i=0;i<els.length;i++) els[i].textContent = fmt(w,0);
+    els = document.querySelectorAll('.wv');
+    for(i=0;i<els.length;i++){
+      var e = els[i];
+      var k1 = parseFloat(e.getAttribute('data-k1'));
+      if(isNaN(k1)) continue;
+      var k2a = e.getAttribute('data-k2');
+      var k2 = k2a ? parseFloat(k2a) : null;
+      var d = e.getAttribute('data-d') ? parseInt(e.getAttribute('data-d'),10) : 1;
+      var u = e.getAttribute('data-u') || '';
+      var maxA = e.getAttribute('data-max');
+      var mx = maxA ? parseFloat(maxA) : null;
+      var cap = function(v){ return (mx!==null && v>mx) ? mx : v; };
+      var txt = fmt(cap(k1*w), d);
+      if(k2!==null) txt += '–' + fmt(cap(k2*w), d);
+      e.textContent = txt + u;
+    }
+  }
+  var peso = parseFloat(store.get('gb-peso'));
+  if(!(peso>=30 && peso<=250)) peso = 70;
+  if(pesoInput){
+    pesoInput.value = peso;
+    pesoInput.addEventListener('input', function(){
+      var w = parseFloat(pesoInput.value);
+      if(w>=30 && w<=250){ peso=w; store.set('gb-peso', String(w)); applyPeso(w); }
+    });
+  }
+  applyPeso(peso);
+
+  /* ---------- TABS ---------- */
+  var tabs = document.querySelectorAll('.tab');
+  var sections = document.querySelectorAll('section.block');
+  var map = {psicoestimulantes:document.querySelector('.tab.est'), referencias:document.querySelector('.tab.bib'), antidepressivos:document.querySelector('.tab.ad'), antipsicoticos:document.querySelector('.tab.ap'), estabilizadores:document.querySelector('.tab.eh'), benzodiazepinicos:document.querySelector('.tab.bzd'), agitacao:document.querySelector('.tab.agit'), abstinencias:document.querySelector('.tab.abst'), emergencias:document.querySelector('.tab.emerg'), troca:document.querySelector('.tab.troca'), gestacao:document.querySelector('.tab.gest'), monitorizacao:document.querySelector('.tab.monit')};
+
+  /* ---------- BARRA DE ABAS: centralizar a aba ativa ---------- */
+  var tabsInner = document.querySelector('.tabs-inner');
+  var reduceMotion = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var userScrollingTabs = 0;
+  var progUntil = 0;
+  if(tabsInner){
+    /* se o usuário está arrastando a barra, não brigar com ele */
+    /* só conta como gesto do usuário se a barra realmente rolou por conta
+       dele — um toque na barra sticky durante a rolagem da página não deve
+       bloquear o recentramento */
+    tabsInner.addEventListener('scroll', function(){
+      if(Date.now() > progUntil){ userScrollingTabs = Date.now(); wantedLeft = null; }
+    }, {passive:true});
+  }
+  var wantedLeft = null;
+  function centerTab(el, instant){
+    if(!tabsInner || !el) return;
+    if(!instant && Date.now() - userScrollingTabs < 1200) return;
+    var max = tabsInner.scrollWidth - tabsInner.clientWidth;
+    if(max <= 0) return;                       /* cabe tudo na tela: nada a rolar */
+    /* offsetLeft é medido dentro do conteúdo da barra e NÃO muda durante a
+       animação — usar rects aqui faria o alvo se mover a cada recálculo */
+    var target = el.offsetLeft + el.offsetWidth / 2 - tabsInner.clientWidth / 2;
+    if(target < 0) target = 0;
+    if(target > max) target = max;
+    /* sem atalho por proximidade: se uma animação anterior estiver em curso,
+       sair cedo a deixaria terminar no destino antigo */
+    if(wantedLeft !== null && Math.abs(target - wantedLeft) < 1) return;
+    wantedLeft = target;
+    progUntil = Date.now() + 900;          /* rolagem nossa, não do usuário */
+    if(instant || reduceMotion || !tabsInner.scrollTo){ tabsInner.scrollLeft = target; }
+    else { tabsInner.scrollTo({left: target, behavior: 'smooth'}); }
+  }
+
+  /* Seção atual calculada a cada quadro de rolagem.
+     O IntersectionObserver falhava com as seções colapsadas: a faixa de
+     observação tinha ~10% da tela e as seções fechadas (~130px) a
+     atravessavam rápido demais, pulando abas e deixando o topo sem aba ativa. */
+  var folds0 = document.querySelectorAll('details.sec-fold');
+  function currentSection(){
+    var line = window.innerHeight * 0.28;
+    var doc = document.documentElement;
+    if(window.innerHeight + window.pageYOffset >= (doc.scrollHeight - 4)){
+      return sections[sections.length - 1];          /* fim da página */
+    }
+    var cur = sections[0];
+    for(var i = 0; i < sections.length; i++){
+      if(sections[i].getBoundingClientRect().top <= line) cur = sections[i];
+      else break;
+    }
+    return cur;
+  }
+  function updateActive(){
+    ticking = false;
+    var sec = currentSection();
+    if(!sec) return;
+    var el = map[sec.id];
+    if(!el || el.classList.contains('active')) return;
+    for(var i = 0; i < tabs.length; i++) tabs[i].classList.remove('active');
+    el.classList.add('active');
+    centerTab(el);
+  }
+  var ticking = false;
+  function onScroll(){
+    if(ticking) return;
+    ticking = true;
+    (window.requestAnimationFrame || setTimeout)(updateActive);
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll, {passive:true});
+  for(var fi = 0; fi < folds0.length; fi++) folds0[fi].addEventListener('toggle', onScroll);
+  updateActive();
+
+  /* ---------- SEÇÕES COLAPSÁVEIS ---------- */
+  var folds = folds0;
+  var printing = false;
+  function saveFolds(){
+    if(printing) return;           /* não gravar o estado forçado da impressão */
+    var open = [];
+    for(var i=0;i<folds.length;i++){ if(folds[i].open) open.push(folds[i].getAttribute('data-sec')); }
+    store.set('gb-folds', open.join(','));
+  }
+  var saved = store.get('gb-folds');
+  if(saved !== null){
+    var want = saved ? saved.split(',') : [];
+    for(var i=0;i<folds.length;i++){
+      folds[i].open = want.indexOf(folds[i].getAttribute('data-sec')) !== -1;
+    }
+  }
+  for(var i=0;i<folds.length;i++) folds[i].addEventListener('toggle', saveFolds);
+
+  /* impressão: abrir tudo e restaurar depois */
+  var printState = null;
+  function beforePrint(){
+    if(printState) return;         /* beforeprint e matchMedia podem disparar juntos */
+    printing = true;
+    printState = [];
+    for(var i=0;i<folds.length;i++){ printState.push(folds[i].open); folds[i].open = true; }
+  }
+  function afterPrint(){
+    if(!printState) return;
+    for(var i=0;i<folds.length;i++) folds[i].open = printState[i];
+    printState = null;
+    printing = false;
+  }
+  window.addEventListener('beforeprint', beforePrint);
+  window.addEventListener('afterprint', afterPrint);
+  if(window.matchMedia){
+    var mq = matchMedia('print');
+    var onMq = function(e){ if(e.matches) beforePrint(); else afterPrint(); };
+    if(mq.addEventListener) mq.addEventListener('change', onMq);
+    else if(mq.addListener) mq.addListener(onMq);
+  }
+
+  function openSection(id){
+    var sec = document.getElementById(id);
+    if(!sec) return null;
+    var d = sec.querySelector('details.sec-fold');
+    if(d && !d.open){ d.open = true; saveFolds(); }
+    return sec;
+  }
+  for(var i=0;i<tabs.length;i++){
+    tabs[i].addEventListener('click', function(ev){
+      var id = this.getAttribute('data-target');
+      var sec = openSection(id);
+      if(sec){
+        ev.preventDefault();
+        tabs.forEach(function(t){ t.classList.remove('active'); });
+        this.classList.add('active');
+        userScrollingTabs = 0;
+        centerTab(this);
+        setTimeout(function(){ sec.scrollIntoView({behavior:'smooth', block:'start'}); }, 20);
+      }
+    });
+  }
+  /* link interno (#sca, #choque…) também abre */
+  document.addEventListener('click', function(ev){
+    var a = ev.target && ev.target.closest ? ev.target.closest('a[href^="#"]') : null;
+    if(!a) return;
+    var id = a.getAttribute('href').slice(1);
+    if(id) openSection(id);
+  });
+  if(location.hash.length > 1 && location.hash.indexOf('#q=') !== 0){
+    var tgt = openSection(location.hash.slice(1));
+    if(tgt){
+      if(map[tgt.id]){
+        tabs.forEach(function(t){ t.classList.remove('active'); });
+        map[tgt.id].classList.add('active');
+        centerTab(map[tgt.id], true);
+      }
+      setTimeout(function(){ tgt.scrollIntoView({block:'start'}); }, 60);
+    }
+  }
+  setTimeout(function(){
+    var act = document.querySelector('.tab.active');
+    if(act) centerTab(act, true);
+  }, 120);
+
+  /* ---------- EXPANDIR/FECHAR (se houver) ---------- */
+  var exAll = document.getElementById('expandAll'), coAll = document.getElementById('collapseAll');
+  if(exAll) exAll.addEventListener('click', function(){
+    var ds = document.querySelectorAll('main details'); for(var i=0;i<ds.length;i++) ds[i].open = true;
+  });
+  if(coAll) coAll.addEventListener('click', function(){
+    var ds = document.querySelectorAll('main details'); for(var i=0;i<ds.length;i++) ds[i].open = false;
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+
+  /* ---------- BUSCA (paleta) ---------- */
+  var pal = document.getElementById('palette');
+  var palInput = document.getElementById('palInput');
+  var palResults = document.getElementById('palResults');
+  var palClose = document.getElementById('palClose');
+  var searchOpen = document.getElementById('searchOpen');
+  var fabSearch = document.getElementById('fabSearch');
+  var fabTop = document.getElementById('fabTop');
+  var OTHER_FILE = 'guia_bolso_plantao.html';
+  var OTHER_LABEL = 'Guia de Plantão';
+
+  function fold(s){
+    var out='', a=Array.from(s), i, n;
+    for(i=0;i<a.length;i++){ n=a[i].normalize('NFD'); out += (n.charAt(0)||a[i]).toLowerCase(); }
+    return out;
+  }
+
+  /* índice de cards/tópicos */
+  var index = [];
+  (function(){
+    var n = 0;
+    var CL = ['ad', 'ap', 'eh', 'bzd', 'agit', 'abst', 'emerg', 'troca', 'gest', 'monit', 'est', 'bib'];
+    document.querySelectorAll('section.block').forEach(function(sec){
+      var h2 = sec.querySelector('h2');
+      var secName = h2 ? h2.textContent.trim() : '';
+      var cls = null;
+      for(var i=0;i<CL.length;i++){ if(sec.classList.contains(CL[i])){ cls = CL[i]; break; } }
+      var accent = cls ? ('var(--' + cls + ')') : '#666';
+      sec.querySelectorAll('h3').forEach(function(h3){
+        if(!h3.id) h3.id = 'h3-' + (++n);
+        var roots = [h3];
+        var content = h3.textContent + ' ';
+        var sib = h3.nextElementSibling;
+        while(sib && sib.tagName !== 'H3'){
+          roots.push(sib);
+          content += sib.textContent + ' ';
+          sib = sib.nextElementSibling;
+        }
+        content = content.replace(/\s+/g,' ').trim();
+        index.push({
+          el: h3, title: h3.textContent.trim(), section: secName, accent: accent,
+          foldTitle: fold(h3.textContent.trim()), foldContent: fold(content),
+          contentArr: Array.from(content),
+          hlRoots: function(){ return roots; },
+          flashEl: function(){ return h3; }
+        });
+      });
+    });
+  })();
+
+  var marks = [];
+  function clearMarks(){
+    for(var i=0;i<marks.length;i++){
+      var m = marks[i], p = m.parentNode;
+      if(p){ p.replaceChild(document.createTextNode(m.textContent), m); p.normalize(); }
+    }
+    marks = [];
+  }
+  function markTermsIn(rootEls, terms){
+    var total = 0;
+    rootEls.forEach(function(root){
+      var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+        acceptNode:function(node){
+          if(!node.data || !node.data.trim()) return NodeFilter.FILTER_REJECT;
+          var p = node.parentElement;
+          if(!p || p.tagName==='SCRIPT' || p.tagName==='STYLE' || p.tagName==='MARK') return NodeFilter.FILTER_REJECT;
+          return NodeFilter.FILTER_ACCEPT;
+        }
+      });
+      var nodes=[], n;
+      while((n=walker.nextNode())) nodes.push(n);
+      nodes.forEach(function(node){
+        if(total>250) return;
+        var arr = Array.from(node.data), folded = fold(node.data);
+        var ranges = [];
+        terms.forEach(function(t){
+          var idx = 0, f;
+          while((f = folded.indexOf(t, idx)) !== -1){ ranges.push([f, f+t.length]); idx = f+t.length; }
+        });
+        if(!ranges.length) return;
+        ranges.sort(function(a,b){ return a[0]-b[0]; });
+        var merged=[]; ranges.forEach(function(r){
+          if(merged.length && r[0] <= merged[merged.length-1][1]) merged[merged.length-1][1] = Math.max(merged[merged.length-1][1], r[1]);
+          else merged.push(r.slice());
+        });
+        var frag = document.createDocumentFragment(), last = 0;
+        merged.forEach(function(r){
+          if(r[0]>last) frag.appendChild(document.createTextNode(arr.slice(last, r[0]).join('')));
+          var mk = document.createElement('mark'); mk.className='search-hit';
+          mk.textContent = arr.slice(r[0], r[1]).join('');
+          frag.appendChild(mk); marks.push(mk); total++;
+          last = r[1];
+        });
+        if(last<arr.length) frag.appendChild(document.createTextNode(arr.slice(last).join('')));
+        node.parentNode.replaceChild(frag, node);
+      });
+    });
+  }
+
+  function snippetNode(item, terms){
+    var span = document.createElement('span'); span.className='pal-snip';
+    var fc = item.foldContent, first = -1, tlen = 0;
+    for(var i=0;i<terms.length;i++){
+      var f = fc.indexOf(terms[i]);
+      if(f!==-1 && (first===-1 || f<first)){ first=f; tlen=terms[i].length; }
+    }
+    if(first===-1){ span.textContent = item.contentArr.slice(0,110).join('') + '…'; return span; }
+    var start = Math.max(0, first-45), end = Math.min(item.contentArr.length, first+tlen+65);
+    if(start>0) span.appendChild(document.createTextNode('…'));
+    span.appendChild(document.createTextNode(item.contentArr.slice(start, first).join('')));
+    var mk = document.createElement('mark');
+    mk.textContent = item.contentArr.slice(first, first+tlen).join('');
+    span.appendChild(mk);
+    span.appendChild(document.createTextNode(item.contentArr.slice(first+tlen, end).join('')));
+    if(end<item.contentArr.length) span.appendChild(document.createTextNode('…'));
+    return span;
+  }
+
+  var sel = 0, rows = [];
+  function render(){
+    var q = palInput.value.trim();
+    palResults.textContent = '';
+    rows = []; sel = 0;
+    var cross = document.createElement('a');
+    cross.className = 'pal-cross';
+    cross.href = OTHER_FILE + (q ? ('?q=' + encodeURIComponent(q)) : '');
+    cross.textContent = q ? ('Buscar “'+q+'” no '+OTHER_LABEL+' →') : ('Abrir '+OTHER_LABEL+' →');
+    if(!q){
+      var e = document.createElement('div'); e.className='pal-empty';
+      e.textContent = 'Digite para buscar em títulos e conteúdo — ex.: adrenalina, hipercalemia, CIWA.';
+      palResults.appendChild(e); palResults.appendChild(cross); return;
+    }
+    var fq = fold(q), terms = fq.split(/\s+/).filter(Boolean);
+    var scored = [];
+    index.forEach(function(item){
+      var hay = item.foldTitle + ' ' + item.foldContent;
+      for(var i=0;i<terms.length;i++){ if(hay.indexOf(terms[i])===-1) return; }
+      var score = 0;
+      if(item.foldTitle.indexOf(fq)!==-1) score += 120;
+      var inTitle = terms.every(function(t){ return item.foldTitle.indexOf(t)!==-1; });
+      if(inTitle) score += 60;
+      terms.forEach(function(t){
+        var c=0, idx=0, f;
+        while((f=item.foldContent.indexOf(t,idx))!==-1 && c<20){ c++; idx=f+t.length; }
+        score += c;
+      });
+      scored.push([score, item]);
+    });
+    scored.sort(function(a,b){ return b[0]-a[0]; });
+    scored = scored.slice(0, 22);
+    if(!scored.length){
+      var ne = document.createElement('div'); ne.className='pal-empty';
+      ne.textContent = 'Nenhum resultado aqui.';
+      palResults.appendChild(ne);
+    }
+    scored.forEach(function(pair, i){
+      var item = pair[1];
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'pal-row' + (i===0 ? ' sel' : '');
+      b.style.setProperty('--a', item.accent);
+      var s1 = document.createElement('span'); s1.className='pal-sec'; s1.textContent = item.section;
+      var s2 = document.createElement('span'); s2.className='pal-title'; s2.textContent = item.title;
+      b.appendChild(s1); b.appendChild(s2);
+      b.appendChild(snippetNode(item, terms));
+      b.addEventListener('click', function(){ activate(item, terms); });
+      palResults.appendChild(b); rows.push(b);
+    });
+    palResults.appendChild(cross);
+  }
+
+  function setSel(i){
+    if(!rows.length) return;
+    rows[sel] && rows[sel].classList.remove('sel');
+    sel = (i+rows.length) % rows.length;
+    rows[sel].classList.add('sel');
+    rows[sel].scrollIntoView({block:'nearest'});
+  }
+
+  function activate(item, terms){
+    closePal();
+    clearMarks();
+    var fold = item.el.closest ? item.el.closest('details.sec-fold') : null;
+    if(fold && !fold.open){ fold.open = true; saveFolds(); }
+    var secEl = item.el.closest ? item.el.closest('section.block') : null;
+    if(secEl && map[secEl.id]){ userScrollingTabs = 0; centerTab(map[secEl.id]); }
+    markTermsIn(item.hlRoots(), terms);
+    item.flashEl().classList.remove('flash');
+    void item.flashEl().offsetWidth;
+    item.flashEl().classList.add('flash');
+    setTimeout(function(){ item.el.scrollIntoView({behavior:'smooth', block:'start'}); }, 30);
+  }
+
+  function openPal(prefill){
+    clearMarks();
+    pal.hidden = false;
+    document.body.classList.add('pal-open');
+    palInput.value = prefill || '';
+    render();
+    setTimeout(function(){ palInput.focus(); }, 20);
+  }
+  function closePal(){
+    pal.hidden = true;
+    document.body.classList.remove('pal-open');
+  }
+
+  if(searchOpen) searchOpen.addEventListener('click', function(){ openPal(''); });
+  if(fabSearch) fabSearch.addEventListener('click', function(){ openPal(''); });
+  if(palClose) palClose.addEventListener('click', closePal);
+  if(pal) pal.addEventListener('click', function(ev){ if(ev.target===pal) closePal(); });
+  if(palInput){
+    palInput.addEventListener('input', render);
+    palInput.addEventListener('keydown', function(ev){
+      if(ev.key==='ArrowDown'){ ev.preventDefault(); setSel(sel+1); }
+      else if(ev.key==='ArrowUp'){ ev.preventDefault(); setSel(sel-1); }
+      else if(ev.key==='Enter'){ ev.preventDefault(); if(rows[sel]) rows[sel].click(); }
+    });
+  }
+  document.addEventListener('keydown', function(ev){
+    var tag = (document.activeElement && document.activeElement.tagName) || '';
+    if(ev.key==='/' && tag!=='INPUT' && tag!=='TEXTAREA'){ ev.preventDefault(); openPal(''); }
+    else if(ev.key==='Escape'){ if(!pal.hidden){ closePal(); } else { clearMarks(); } }
+  });
+
+
+  var SUB_SEL = '.sec-body > h3';
+  function accentOf(sec){ var m=(sec.className.match(/block\s+(\w+)/)); return m ? getComputedStyle(document.documentElement).getPropertyValue('--'+m[1]).trim() || '' : ''; }
+
+
+
+  /* ---------- SEGUNDA LINHA: TÓPICOS DA SEÇÃO ATUAL ---------- */
+  var subBar = document.querySelector('.subtabs');
+  var subInner = document.getElementById('subTabsInner');
+  var subAtual = null, subAlvos = [], subBotoes = [];
+
+  function alturaDasAbas(){
+    var t = document.querySelector('nav.tabs');
+    if(t) document.documentElement.style.setProperty('--tabs-h', t.offsetHeight + 'px');
+  }
+
+  function secAberta(sec){
+    if(!sec) return false;
+    var d = sec.querySelector('details.sec-fold');
+    return d ? d.open : true;   /* seções não colapsáveis contam como abertas */
+  }
+
+  function montaSubBar(sec){
+    if(!subInner || !subBar) return;
+    if(sec === subAtual) return;
+    subAtual = sec;
+    subInner.innerHTML = '';
+    subAlvos = []; subBotoes = [];
+    if(!sec || !secAberta(sec)){ subBar.classList.remove('on'); return; }
+    var itens = sec.querySelectorAll(SUB_SEL);
+    if(itens.length < 2){ subBar.classList.remove('on'); return; }
+    subBar.style.setProperty('--sub-ac', accentOf(sec));
+    for(var i=0;i<itens.length;i++){
+      (function(el){
+        var b = document.createElement('button');
+        b.type = 'button'; b.className = 'subtab';
+        var txt = el.textContent.replace(/\s+/g,' ').trim();
+        b.textContent = txt.length > 34 ? txt.slice(0,32) + '…' : txt;
+        b.title = txt;
+        b.addEventListener('click', function(){
+          if(el.tagName === 'SUMMARY' && el.parentNode) el.parentNode.open = true;
+          el.scrollIntoView({behavior:'smooth', block:'start'});
+        });
+        subInner.appendChild(b);
+        subAlvos.push(el); subBotoes.push(b);
+      })(itens[i]);
+    }
+    subBar.classList.add('on');
+    alturaDasAbas();
+  }
+
+  function marcaSubAtual(){
+    if(!subAlvos.length) return;
+    var linha = window.innerHeight * 0.30;
+    var k = 0;
+    for(var i=0;i<subAlvos.length;i++){
+      if(subAlvos[i].getBoundingClientRect().top <= linha) k = i; else break;
+    }
+    for(var j=0;j<subBotoes.length;j++) subBotoes[j].classList.toggle('active', j === k);
+    var b = subBotoes[k];
+    if(b && subInner){
+      var alvo = b.offsetLeft + b.offsetWidth/2 - subInner.clientWidth/2;
+      var max = subInner.scrollWidth - subInner.clientWidth;
+      alvo = Math.max(0, Math.min(alvo, max));
+      if(Math.abs(alvo - subInner.scrollLeft) > 6) subInner.scrollTo({left:alvo, behavior:'smooth'});
+    }
+  }
+
+  function atualizaSubBar(){
+    var sec = (typeof currentSection === 'function') ? currentSection() : null;
+    montaSubBar(sec);
+    marcaSubAtual();
+  }
+  window.addEventListener('scroll', atualizaSubBar, {passive:true});
+  window.addEventListener('resize', function(){ alturaDasAbas(); atualizaSubBar(); }, {passive:true});
+  document.addEventListener('toggle', function(){ subAtual = null; atualizaSubBar(); }, true);
+  alturaDasAbas();
+  atualizaSubBar();
+
+
+  /* ---------- botão único: expandir / fechar tudo ---------- */
+  var togAll = document.getElementById('toggleAll');
+  function estadoToggle(){
+    if(!togAll) return;
+    var ds = document.querySelectorAll('main details');
+    if(!ds.length){ togAll.style.display = 'none'; return; }
+    var abertos = 0;
+    for(var i=0;i<ds.length;i++) if(ds[i].open) abertos++;
+    var todosAbertos = abertos === ds.length;
+    togAll.textContent = todosAbertos ? 'Fechar tudo' : 'Expandir tudo';
+    togAll.setAttribute('data-modo', todosAbertos ? 'fechar' : 'abrir');
+  }
+  if(togAll){
+    togAll.addEventListener('click', function(){
+      var abrir = this.getAttribute('data-modo') !== 'fechar';
+      var ds = document.querySelectorAll('main details');
+      for(var i=0;i<ds.length;i++) ds[i].open = abrir;
+      if(!abrir) window.scrollTo({top:0, behavior:'smooth'});
+      estadoToggle();
+    });
+    document.addEventListener('toggle', estadoToggle, true);
+    estadoToggle();
+  }
+
+  if(fabTop){
+    fabTop.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+    window.addEventListener('scroll', function(){
+      fabTop.classList.toggle('show', window.scrollY > 600);
+    }, {passive:true});
+  }
+
+  /* busca vinda do outro guia: ?q= ou #q= */
+  var q0 = null;
+  try{ q0 = new URLSearchParams(location.search).get('q'); }catch(e){}
+  if(!q0 && location.hash.indexOf('#q=')===0){
+    try{ q0 = decodeURIComponent(location.hash.slice(3)); }catch(e){}
+  }
+  if(q0) openPal(q0);
+})();
+
+</script>
+<script>
+if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+  navigator.serviceWorker.register('./sw.js').catch(function(){});
+}
+</script>
+</body>
+</html>

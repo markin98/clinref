@@ -1,0 +1,30 @@
+{
+ "name": "ClinRef · Psicofarmacologia e Manejo Psiquiátrico",
+ "short_name": "ClinRef Psiq",
+ "start_url": "./guia_bolso_psiquiatria.html",
+ "scope": "./",
+ "display": "standalone",
+ "orientation": "portrait",
+ "background_color": "#F3F5F8",
+ "theme_color": "#7A3FC4",
+ "icons": [
+  {
+   "src": "icones/psiquiatria-192.png",
+   "sizes": "192x192",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "icones/psiquiatria-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "icones/psiquiatria-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}
