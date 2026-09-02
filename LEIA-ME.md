@@ -43,3 +43,19 @@ Netlify (com proteção por senha) ou manter os arquivos apenas no aparelho.
 - `manifest-*.webmanifest` — define nome e ícone de cada atalho
 - `sw.js` — faz funcionar sem internet
 - `icones/` — ícones nos tamanhos usados pelo Android e iOS
+
+## Se os ícones não aparecerem
+
+Significa que a pasta `icones` não subiu junto. O upload pela web do GitHub às vezes
+ignora subpastas quando se arrasta o conteúdo solto. Duas saídas:
+
+- Arraste a **pasta `icones` inteira** numa segunda operação de *Add file → Upload files*, ou
+- Descompacte o `clinref.zip` e arraste a **pasta toda** de uma vez.
+
+A página inicial funciona mesmo sem a pasta (os ícones dela estão embutidos no HTML),
+mas os atalhos na tela inicial precisam dos arquivos em `icones/` para ganhar o ícone certo.
+
+## Atualizar depois
+
+Suba os arquivos novos por cima (*Add file → Upload files* e confirme a substituição).
+No celular, abra com rede, feche e reabra o atalho — o service worker troca a versão sozinho.

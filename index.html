@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
 <title>ClinRef · Guias de Bolso</title>
 <meta name="theme-color" content="#F3F5F8"/>
-<link rel="icon" href="icones/critico.svg"/>
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjExMiIgZmlsbD0iIzE2MjAyQiIvPjxwYXRoIGQ9Ik03NiAyNjIgSDE2MCBMMTk2IDE2OCBMMjQyIDM0OCBMMjg4IDIzNiBMMzE4IDI2MiBINDM2IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMzAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjxyZWN0IHg9IjExMiIgeT0iMzc4IiB3aWR0aD0iOTYiIGhlaWdodD0iMjAiIHJ4PSIxMCIgZmlsbD0iI0U0NTc0QSIvPjxyZWN0IHg9IjIwOCIgeT0iMzc4IiB3aWR0aD0iOTYiIGhlaWdodD0iMjAiIHJ4PSIxMCIgZmlsbD0iIzVCOTNFOCIvPjxyZWN0IHg9IjMwNCIgeT0iMzc4IiB3aWR0aD0iOTYiIGhlaWdodD0iMjAiIHJ4PSIxMCIgZmlsbD0iI0E5OEJFOCIvPjwvc3ZnPg=="/>
 <link rel="manifest" href="manifest-clinref.webmanifest"/>
 <link rel="apple-touch-icon" href="icones/clinref-512.png"/>
 <meta name="apple-mobile-web-app-capable" content="yes"/>
@@ -26,9 +26,10 @@
     background:var(--surface);border:1px solid var(--line);border-radius:14px;
     padding:15px 16px;margin-bottom:12px;transition:.15s ease;}
   a.card:hover{border-color:var(--soft);}
-  a.card img{width:48px;height:48px;border-radius:11px;flex-shrink:0;}
-  .t{font-weight:600;font-size:15.5px;letter-spacing:-.01em;}
-  .d{color:var(--soft);font-size:13px;margin-top:3px;line-height:1.4;}
+  a.card img{width:48px;height:48px;border-radius:11px;flex-shrink:0;display:block;}
+  a.card > span{min-width:0;}
+  .t{display:block;font-weight:600;font-size:15.5px;letter-spacing:-.01em;}
+  .d{display:block;color:var(--soft);font-size:13px;margin-top:4px;line-height:1.45;}
   .nota{margin-top:26px;color:var(--soft);font-size:12.5px;line-height:1.6;
     border-top:1px solid var(--line);padding-top:16px;}
 </style>
@@ -39,15 +40,15 @@
 <p class="sub">Referência clínica rápida — hospital, plantão e ambulatório. Abra um guia e use o menu do navegador em <b>Adicionar à tela inicial</b> para deixá-lo como atalho com ícone próprio.</p>
 
 <a class="card" href="guia_bolso_paciente_critico.html">
-<img src="icones/critico-192.png" alt=""/>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjExMiIgZmlsbD0iI0M1MzIxRiIvPjxwYXRoIGQ9Ik02NCAyODggSDE1MCBMMTg0IDE5NiBMMjI2IDM1NiBMMjY4IDI0NiBMMjk2IDI4OCBINDQ4IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMzAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvc3ZnPg==" alt=""/>
 <span><span class="t">Paciente Crítico</span><span class="d">XABCDE, choque, IOT, ventilação, PCR, arritmias, SCA, AVE, toxicologia, escalas</span></span></a>
 
 <a class="card" href="guia_bolso_plantao.html">
-<img src="icones/plantao-192.png" alt=""/>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjExMiIgZmlsbD0iIzFENUZCRiIvPjxwYXRoIGQ9Ik0yMTIgOTYgaDg4IHYxMTYgaDExNiB2ODggSDMwMCB2MTE2IGgtODggVjMwMCBIOTYgdi04OCBoMTE2IHoiIGZpbGw9IiNmZmYiLz48L3N2Zz4=" alt=""/>
 <span><span class="t">Plantão</span><span class="d">Condutas e prescrições por sistema, calculadoras e apresentações</span></span></a>
 
 <a class="card" href="guia_bolso_psiquiatria.html">
-<img src="icones/psiquiatria-192.png" alt=""/>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjExMiIgZmlsbD0iIzdBM0ZDNCIvPjxwYXRoIGQ9Ik0zMzYgMTIwYy01OC0zNC0xMzQtMjItMTc2IDMwLTMwIDM3LTMyIDc0LTE4IDEwNCA4IDE3IDYgMjgtNiA0Mi04IDktNiAyMCA2IDI0bDI2IDljMCAwLTQgMzQgNCA0OCA5IDE1IDI2IDE5IDQ0IDE1bDQwLTl2NDVoMzR2LTcwYzAtMTQgOC0yMiAyMi0zMCA0Ni0yNiA2OC03MCA2Mi0xMTgtNS00Mi0zMC03MC0zOC05MHoiIGZpbGw9IiNmZmYiLz48cGF0aCBkPSJNMTk2IDIzMiBoMzAgbDE4LTM0IDI0IDY2IDIwLTQwIDE2IDI0IGgzNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjN0EzRkM0IiBzdHJva2Utd2lkdGg9IjE3IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48L3N2Zz4=" alt=""/>
 <span><span class="t">Psicofarmacologia</span><span class="d">Classes, uso agudo, abstinências, troca e desmame, gestação, monitorização</span></span></a>
 
 <p class="nota">Material de consulta de uso pessoal. Não substitui a diretriz original, o protocolo da instituição nem o julgamento clínico. Cada guia traz a lista de referências e o limite de uso na última seção.</p>

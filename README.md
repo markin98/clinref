@@ -1,2 +1,0 @@
-# clinref
-referência rápida unificada
