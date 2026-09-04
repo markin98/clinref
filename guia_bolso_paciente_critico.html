@@ -6,7 +6,7 @@
 <meta content="#F3F5F8" id="metaTheme" name="theme-color"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="yes" name="mobile-web-app-capable"/>
-<title>Guia de Bolso · Manejo de Paciente Crítico</title>
+<title>ClinRef · Manejo de Paciente Crítico</title>
 <link rel="manifest" href="manifest-critico.webmanifest"/>
 <link rel="icon" type="image/png" sizes="192x192" href="icones/critico-192.png"/>
 <link rel="icon" type="image/svg+xml" href="icones/critico.svg"/>
@@ -417,14 +417,23 @@
   html[data-theme="dark"] .callout.apr{color:#B6E5DF;}
   @media (max-width:640px){ .apr td:first-child{color:var(--apr);} }
   .amp{font-family:var(--mono);font-size:.82em;color:var(--ink-soft);}
+
+  .voltar{display:inline-flex;align-items:center;gap:7px;text-decoration:none;
+    font-family:var(--mono);font-size:12.5px;font-weight:600;color:var(--ink-soft);
+    background:var(--surface);border:1px solid var(--line);border-radius:999px;
+    padding:9px 15px 9px 12px;margin-bottom:14px;min-height:40px;transition:.15s ease;}
+  .voltar:hover{color:var(--ink);border-color:#9AA7B2;}
+  .voltar svg{flex-shrink:0;}
+  @media print{ .voltar{display:none !important;} }
 </style>
 </head>
 <body>
 <div class="masthead">
 <div class="pulse-line"></div>
+<a class="voltar" href="index.html"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>ClinRef</a>
 <div class="eyebrow"><span class="dot"></span> Referência rápida · beira-leito</div>
 <h1 class="title">Manejo de Paciente Crítico</h1>
-<p class="subtitle">Avaliação inicial (XABCDE), reconhecimento e ressuscitação do choque, intubação, sedoanalgesia contínua, ventilação mecânica inicial, parada cardiorrespiratória, arritmias e ECG, síndrome coronariana aguda, acidente vascular encefálico, toxicologia e escalas clínicas — com doses práticas recalculadas pelo peso do paciente (⚖ no topo) em cada tabela. Prescrições gerais por sistema estão no <a href="guia_bolso_plantao.html" style="color:inherit;font-weight:600;">Guia de Plantão →</a>.</p>
+<p class="subtitle">Avaliação inicial (XABCDE), reconhecimento e ressuscitação do choque, intubação, sedoanalgesia contínua, ventilação mecânica inicial, parada cardiorrespiratória, arritmias e ECG, síndrome coronariana aguda, acidente vascular encefálico, toxicologia e escalas clínicas — com doses práticas recalculadas pelo peso do paciente (⚖ no topo) em cada tabela. Prescrições gerais por sistema no <a href="guia_bolso_plantao.html" style="color:inherit;font-weight:600;">Guia de Plantão →</a> e psicofármacos em detalhe no <a href="guia_bolso_psiquiatria.html" style="color:inherit;font-weight:600;">Guia de Psicofarmacologia →</a>.</p>
 </div>
 <nav class="tabs">
 <div class="tabs-inner" id="tabsInner">
@@ -439,8 +448,7 @@
 <a class="tab ave" data-target="ave" href="#ave">09 · AVE</a>
 <a class="tab tox" data-target="tox" href="#tox">10 · Toxicologia</a>
 <a class="tab esc" data-target="escalas" href="#escalas">11 · Escalas</a>
-<a class="tab apr" data-target="apresentacoes" href="#apresentacoes">12 · Apresentações</a>
-<a class="tab bib" data-target="referencias" href="#referencias">13 · Referências</a>
+<a class="tab bib" data-target="referencias" href="#referencias">12 · Referências</a>
 </div>
 </nav>
 <div class="subtabs"><div class="subtabs-inner" id="subTabsInner"></div></div>
@@ -543,7 +551,7 @@
 <thead><tr><th>Tipo</th><th>Pistas</th><th>Conduta</th></tr></thead>
 <tbody>
 <tr><td data-label="Tipo"><b>Hipovolêmico / hemorrágico</b></td><td data-label="Pistas">Contexto (perda, trauma), jugulares colabadas, USG: VCI colabada</td><td data-label="Conduta">Volume/hemocomponentes; vasopressor só como ponte</td></tr>
-<tr><td data-label="Tipo"><b>Cardiogênico</b></td><td data-label="Pistas">Congestão, B3, ECO: disfunção de VE</td><td data-label="Conduta">Noradrenalina (PAM≥65) + Dobutamina <span class="dose">2–20mcg/kg/min</span>; tratar a causa (IAM → CATE)</td></tr>
+<tr><td data-label="Tipo"><b>Cardiogênico</b></td><td data-label="Pistas">Congestão, B3, ECO: disfunção de VE</td><td data-label="Conduta">Noradrenalina <span class="amp">(2mg/mL, amp 4mL = 8mg)</span> (PAM≥65) + Dobutamina <span class="amp">(12,5mg/mL, amp 20mL = 250mg)</span> <span class="dose">2–20mcg/kg/min</span>; tratar a causa (IAM → CATE)</td></tr>
 <tr><td data-label="Tipo"><b>Obstrutivo</b></td><td data-label="Pistas">TEP maciço, tamponamento, pneumotórax hipertensivo</td><td data-label="Conduta">Tratar o mecanismo: trombólise / pericardiocentese / descompressão</td></tr>
 <tr><td data-label="Tipo"><b>Distributivo</b></td><td data-label="Pistas">Extremidades quentes, vasodilatação</td><td data-label="Conduta">Séptico: 30mL/kg + Noradrenalina <span class="amp">(2mg/mL, amp 4mL = 8mg)</span> 1ª linha ± Vasopressina 0,03U/min <span class="amp">(20U/mL, amp 1mL)</span> · Anafilático: Adrenalina IM · Neurogênico: volume + noradrenalina</td></tr>
 </tbody>
@@ -641,10 +649,10 @@
 <div class="table-wrap"><table>
 <thead><tr><th>Situação</th><th>Droga</th><th>Observação</th></tr></thead>
 <tbody>
-<tr><td data-label="Situação">1ª linha em praticamente todo choque</td><td data-label="Droga"><b>Noradrenalina</b> — iniciar <span class="dose">0,05–0,1mcg/kg/min</span> e titular</td><td data-label="Observação">Faixa usual <span class="wv" data-d="0" data-k1="0.05" data-k2="1" data-u="mcg/min">3,5–70mcg/min</span>. Primeira escolha no séptico, no cardiogênico e no obstrutivo</td></tr>
+<tr><td data-label="Situação">1ª linha em praticamente todo choque</td><td data-label="Droga"><b>Noradrenalina</b> <span class="amp">(2mg/mL, amp 4mL = 8mg)</span> — iniciar <span class="dose">0,05–0,1mcg/kg/min</span> e titular</td><td data-label="Observação">Faixa usual <span class="wv" data-d="0" data-k1="0.05" data-k2="1" data-u="mcg/min">3,5–70mcg/min</span>. Primeira escolha no séptico, no cardiogênico e no obstrutivo</td></tr>
 <tr><td data-label="Situação">Séptico com dose crescente de nora</td><td data-label="Droga">Associar <b>vasopressina</b> 0,03U/min (fixa)</td><td data-label="Observação">Sugerida quando a noradrenalina passa de ~0,25–0,5mcg/kg/min; poupa catecolamina</td></tr>
 <tr><td data-label="Situação">PA inadequada com nora + vasopressina</td><td data-label="Droga">Acrescentar <b>adrenalina</b> <span class="dose">0,01–0,5mcg/kg/min</span> = <span class="wv" data-d="1" data-k1="0.01" data-k2="0.5" data-u="mcg/min">0,7–35mcg/min</span></td><td data-label="Observação">Onde não há vasopressina, adrenalina pode ser a associada à noradrenalina</td></tr>
-<tr><td data-label="Situação">Disfunção cardíaca com hipoperfusão persistente apesar de volume e PA adequados</td><td data-label="Droga"><b>Dobutamina</b> <span class="dose">2,5–20mcg/kg/min</span> = <span class="wv" data-d="0" data-k1="2.5" data-k2="20" data-u="mcg/min">175–1.400mcg/min</span>, associada à noradrenalina — ou adrenalina isolada</td><td data-label="Observação">Não há dado suficiente para preferir dobutamina ou milrinona; <b>levosimendana não recomendada</b> nesse cenário</td></tr>
+<tr><td data-label="Situação">Disfunção cardíaca com hipoperfusão persistente apesar de volume e PA adequados</td><td data-label="Droga"><b>Dobutamina</b> <span class="amp">(12,5mg/mL, amp 20mL = 250mg)</span> <span class="dose">2,5–20mcg/kg/min</span> = <span class="wv" data-d="0" data-k1="2.5" data-k2="20" data-u="mcg/min">175–1.400mcg/min</span>, associada à noradrenalina — ou adrenalina isolada</td><td data-label="Observação">Não há dado suficiente para preferir dobutamina ou milrinona; <b>levosimendana não recomendada</b> nesse cenário</td></tr>
 <tr><td data-label="Situação">Anafilaxia</td><td data-label="Droga"><b>Adrenalina IM 0,3–0,5mg <span class="amp">(1mg/mL, amp 1mL = 1mg)</span></b> na face lateral da coxa</td><td data-label="Observação">Primeira droga, antes de qualquer outra; repetir a cada 5–15min</td></tr>
 <tr><td data-label="Situação">Bradicardia como mecanismo</td><td data-label="Droga">Atropina, depois marca-passo</td><td data-label="Observação"><b>Dopamina caiu em desuso</b> — mais taquiarritmia e sinal de maior mortalidade</td></tr>
 </tbody>
@@ -1078,8 +1086,8 @@
 <tbody>
 <tr><td data-label="Indicação">Suporte hemodinâmico (1ª escolha)</td><td data-label="Droga e dose">Noradrenalina 0,1–1mcg/kg/min <span class="amp">(2mg/mL, amp 4mL = 8mg)</span> (~<span class="wv" data-d="0" data-k1="0.1" data-k2="1" data-u="mcg/min">7–70mcg/min</span>)</td></tr>
 <tr><td data-label="Indicação">Disfunção de VE</td><td data-label="Droga e dose">Dobutamina 2–20mcg/kg/min <span class="amp">(12,5mg/mL, amp 20mL = 250mg)</span></td></tr>
-<tr><td data-label="Indicação">Vasopressor adjuvante</td><td data-label="Droga e dose">Vasopressina 0,03U/min</td></tr>
-<tr><td data-label="Indicação">FV/TV recorrente pós-RCE</td><td data-label="Droga e dose">Amiodarona em infusão: <span class="dose">900mg/24h</span> — 1mg/min por 6h, depois 0,5mg/min</td></tr>
+<tr><td data-label="Indicação">Vasopressor adjuvante</td><td data-label="Droga e dose">Vasopressina 0,03U/min <span class="amp">(20U/mL, amp 1mL)</span></td></tr>
+<tr><td data-label="Indicação">FV/TV recorrente pós-RCE</td><td data-label="Droga e dose">Amiodarona <span class="amp">(50mg/mL, amp 3mL = 150mg)</span> em infusão: <span class="dose">900mg/24h</span> — 1mg/min por 6h, depois 0,5mg/min</td></tr>
 <tr><td data-label="Indicação">SCA como causa (IAMCSST)</td><td data-label="Droga e dose">AAS 300mg VO/SNG + Clopidogrel 300–600mg + heparina se indicado</td></tr>
 <tr><td data-label="Indicação">Convulsão pós-RCE</td><td data-label="Droga e dose">Midazolam 0,1–0,2mg/kg <span class="amp">(5mg/mL, amp 3mL = 15mg)</span> IV (1ª linha) → Fenitoína 15–20mg/kg <span class="amp">(50mg/mL, amp 5mL = 250mg)</span> IV (2ª linha)</td></tr>
 </tbody>
@@ -1155,7 +1163,7 @@
 <div class="table-wrap"><table>
 <thead><tr><th>Ritmo</th><th>Estável</th><th>Instável</th></tr></thead>
 <tbody>
-<tr><td data-label="Ritmo">Fibrilação atrial</td><td data-label="Estável"><b>FC:</b> Metoprolol 5mg (1 amp de 5mg/5mL) EV em 5min, repetir a cada 5min até <b>máx 15mg</b> · alt. Deslanosídeo 0,4mg (1 amp de 0,4mg/2mL) EV lento.<br/><b>Ritmo:</b> Amiodarona 150–300mg (1–2 amp de 150mg/3mL) EV em 10min. Anticoagulação pelo CHA₂DS₂-VA abaixo</td><td data-label="Instável">Heparina não fracionada em bolus 60–80U/kg = <span class="wv" data-d="0" data-k1="60" data-k2="80" data-u="U">4.200–5.600U</span> + <b>CVE sincronizada 120–200J</b> bifásico</td></tr>
+<tr><td data-label="Ritmo">Fibrilação atrial</td><td data-label="Estável"><b>FC:</b> Metoprolol 5mg (1 amp de 5mg/5mL) EV em 5min, repetir a cada 5min até <b>máx 15mg</b> · alt. Deslanosídeo 0,4mg (1 amp de 0,4mg/2mL) EV lento.<br/><b>Ritmo:</b> Amiodarona 150–300mg (1–2 amp de 150mg/3mL) EV em 10min. Anticoagulação pelo CHA₂DS₂-VA abaixo</td><td data-label="Instável">Heparina não fracionada <span class="amp">(5.000UI/mL, FA 5mL = 25.000UI)</span> em bolus 60–80U/kg = <span class="wv" data-d="0" data-k1="60" data-k2="80" data-u="U">4.200–5.600U</span> + <b>CVE sincronizada 120–200J</b> bifásico</td></tr>
 <tr><td data-label="Ritmo">Flutter atrial</td><td data-label="Estável">Controle de FC — mesmas drogas e doses da FA (Metoprolol 5mg EV, repetir até máx 15mg)</td><td data-label="Instável"><b>CVE sincronizada 50–100J</b> bifásico (reverte com energia menor que a FA); anticoagulação como na FA</td></tr>
 <tr><td data-label="Ritmo">TSV paroxística</td><td data-label="Estável">Manobra vagal (Valsalva modificada) → <b>Adenosina 6mg</b> = 2mL da amp 6mg/2mL, em bolus rápido com flush de 20mL SF0,9% e braço elevado; sem resposta em 1–2min, <b>12mg</b> (4mL) e repetir 12mg se preciso</td><td data-label="Instável"><b>CVE sincronizada 50–100J</b> bifásico</td></tr>
 <tr><td data-label="Ritmo">TV monomórfica sustentada</td><td data-label="Estável"><b>Amiodarona 150–300mg</b> (1–2 amp de 150mg/3mL) EV em 10min, depois 900mg/24h · alt. Sotalol 1–1,5mg/kg = <span class="wv" data-d="1" data-k1="1" data-k2="1.5" data-u="mg">70–105mg</span> EV em 5min · Procainamida 20–50mg/min até máx 17mg/kg (<span class="wv" data-d="0" data-k1="17" data-u="mg">1.190mg</span>) · Lidocaína 1–1,5mg/kg = <span class="wv" data-d="1" data-k1="1" data-k2="1.5" data-u="mg">70–105mg</span></td><td data-label="Instável"><b>CVE sincronizada 100J</b> bifásico</td></tr>
@@ -1201,7 +1209,7 @@
 <tr><td data-label="Ritmo">TV polimórfica/Torsades ou sem pulso</td><td data-label="Energia"><span class="dose">200J</span> bifásico / <span class="dose">360J</span> monofásico</td><td data-label="Modo">Não sincronizada (desfibrilação)</td></tr>
 </tbody>
 </table></div>
-<div class="callout teal"><b>TV monomórfica por intoxicação por cocaína:</b> bicarbonato de sódio 1–2mEq/kg = <span class="wv" data-d="0" data-k1="1" data-k2="2" data-u="mEq">70–140mEq</span> (8,4% → 1mL = 1mEq) — não fazer betabloqueador.</div>
+<div class="callout teal"><b>TV monomórfica por intoxicação por cocaína:</b> bicarbonato de sódio <span class="amp">(8,4% — 1mL = 1mEq)</span> 1–2mEq/kg = <span class="wv" data-d="0" data-k1="1" data-k2="2" data-u="mEq">70–140mEq</span> (8,4% → 1mL = 1mEq) — não fazer betabloqueador.</div>
 <div class="callout teal"><b>Torsades de pointes — causas:</b> QT longo congênito/adquirido (haloperidol, tricíclicos, cloroquina, cocaína), hipoK, hipoMg, hipocalcemia, bradiarritmias malignas.</div>
 <h3>Critérios de Brugada (TV monomórfica × TSV com aberrância)</h3>
 <ul class="checklist">
@@ -1379,7 +1387,7 @@
 <tbody>
 <tr><td data-label="Droga">Tenecteplase (TNK)</td><td data-label="Esquema">Bolus único em 5s, por faixa de peso: &lt;60kg 30mg · 60–69 35mg · 70–79 40mg · 80–89 45mg · ≥90kg 50mg. <b>Metade da dose se ≥75 anos</b></td><td class="ref" data-label="Referência p/ peso">Preferível — bolus único, menor risco de erro</td></tr>
 <tr><td data-label="Droga">Alteplase (rt-PA) — acelerado</td><td data-label="Esquema">Bolus <span class="dose">15mg</span> + <span class="dose">0,75mg/kg em 30min</span> (máx 50mg) + <span class="dose">0,50mg/kg em 60min</span> (máx 35mg) — total máx 100mg</td><td class="ref" data-label="Referência p/ peso">15mg + <span class="wv" data-d="1" data-k1="0.75" data-max="50" data-u="mg">50mg</span> + <span class="wv" data-d="1" data-k1="0.5" data-max="35" data-u="mg">35mg</span></td></tr>
-<tr><td data-label="Droga">Anticoagulação associada</td><td data-label="Esquema">Enoxaparina <span class="dose">30mg EV</span> em bolus + <span class="dose">1mg/kg SC 12/12h</span>. Se ≥75 anos: <b>sem bolus</b> e 0,75mg/kg SC 12/12h. ClCr&lt;30: 1mg/kg SC 1×/dia</td><td class="ref" data-label="Referência p/ peso"><span class="wv" data-d="0" data-k1="1" data-u="mg">70mg</span> SC 12/12h</td></tr>
+<tr><td data-label="Droga">Anticoagulação associada</td><td data-label="Esquema">Enoxaparina <span class="dose">30mg EV</span> <span class="amp">(seringas de 20/40/60/80mg)</span> em bolus + <span class="dose">1mg/kg SC 12/12h</span>. Se ≥75 anos: <b>sem bolus</b> e 0,75mg/kg SC 12/12h. ClCr&lt;30: 1mg/kg SC 1×/dia</td><td class="ref" data-label="Referência p/ peso"><span class="wv" data-d="0" data-k1="1" data-u="mg">70mg</span> SC 12/12h</td></tr>
 </tbody>
 </table></div>
 <div class="callout warn"><b>Contraindicações absolutas à trombólise:</b> qualquer AVE hemorrágico prévio · AVE isquêmico &lt;3 meses · neoplasia ou malformação vascular intracraniana conhecida · suspeita de dissecção de aorta · sangramento ativo (exceto menstruação) · TCE ou trauma facial significativo &lt;3 meses · cirurgia intracraniana/medular &lt;2 meses · hipertensão grave não controlada e não responsiva.</div>
@@ -1597,7 +1605,7 @@
 <ul class="checklist">
 <li><b>Cefaleia em trovoada</b> — intensidade máxima em menos de 1 minuto. Descrição de "a pior dor de cabeça da vida" é sinal de alarme até prova em contrário</li>
 <li>TC sem contraste tem sensibilidade próxima de 100% nas primeiras 6h; <b>depois disso, TC normal não exclui</b> → punção lombar em busca de xantocromia</li>
-<li><b>Nimodipina 60mg VO/SNG 4/4h por 21 dias</b> — reduz isquemia tardia por vasoespasmo. Suspender/reduzir se hipotensão. Não se aplica a HIC comum</li>
+<li><b>Nimodipina 60mg VO/SNG 4/4h <span class="amp">(cp 30mg)</span> por 21 dias</b> — reduz isquemia tardia por vasoespasmo. Suspender/reduzir se hipotensão. Não se aplica a HIC comum</li>
 <li>Controle rigoroso de PA, analgesia potente, repouso, laxante; angiografia para localizar e tratar o aneurisma</li>
 <li>Complicações a vigiar: ressangramento (primeiras 24h), hidrocefalia aguda, vasoespasmo (dias 4–14), hiponatremia</li>
 </ul>
@@ -1685,14 +1693,14 @@
 <tr><td data-label="Agente"><b>Tricíclico</b></td><td data-label="Antídoto">Bicarbonato de sódio</td><td data-label="Dose">Indicado se <b>QRS &gt;100ms</b>, arritmia ventricular ou hipotensão: <span class="dose">1–2mEq/kg</span> em bolus, repetir até estreitar o QRS; alvo de pH 7,45–7,55. <b>Evitar fenitoína e antiarrítmicos IA/IC.</b> Convulsão → benzodiazepínico</td></tr>
 <tr><td data-label="Agente"><b>Anticolinérgico</b></td><td data-label="Antídoto">Benzodiazepínico + resfriamento</td><td data-label="Dose">Base do tratamento é sintomática. Fisostigmina apenas em delírio anticolinérgico puro e grave, com <b>ECG sem alargamento de QRS</b> — contraindicada se houver suspeita de tricíclico (risco de assistolia). <b>Bicarbonato não é antídoto de anticolinérgico</b>, e sim do bloqueio de canal de sódio</td></tr>
 <tr><td data-label="Agente"><b>Simpatomimético / cocaína</b></td><td data-label="Antídoto">Benzodiazepínico</td><td data-label="Dose">Diazepam 5–10mg <span class="amp">(amp 2mL = 10mg)</span> EV ou midazolam 2,5–5mg EV, <b>repetidos e titulados</b> até sedação leve — controlam agitação, HAS, taquicardia e hipertermia de uma vez. <b>Não usar betabloqueador</b> (estímulo alfa sem oposição). Dor torácica: nitrato e benzodiazepínico; se QRS largo, bicarbonato</td></tr>
-<tr><td data-label="Agente"><b>Organofosforado / carbamato</b></td><td data-label="Antídoto">Atropina ± pralidoxima</td><td data-label="Dose">Atropina <span class="dose">1–3mg EV</span>, <b>dobrando a dose a cada 3–5min</b> até secar a secreção brônquica; depois manutenção. <b>O alvo é o pulmão seco</b> — não a pupila, não a FC. Pralidoxima (30mg/kg em 30min, depois 8mg/kg/h) para sinais nicotínicos no organofosforado; no carbamato costuma ser dispensável. EPI para a equipe; retirar roupas contaminadas</td></tr>
+<tr><td data-label="Agente"><b>Organofosforado / carbamato</b></td><td data-label="Antídoto">Atropina ± pralidoxima</td><td data-label="Dose">Atropina <span class="dose">1–3mg EV</span> <span class="amp">(amp 1mL = 0,25 ou 0,5mg)</span>, <b>dobrando a dose a cada 3–5min</b> até secar a secreção brônquica; depois manutenção. <b>O alvo é o pulmão seco</b> — não a pupila, não a FC. Pralidoxima <span class="amp">(FA 200mg ou 1g)</span> — 30mg/kg em 30min, depois 8mg/kg/h para sinais nicotínicos no organofosforado; no carbamato costuma ser dispensável. EPI para a equipe; retirar roupas contaminadas</td></tr>
 <tr><td data-label="Agente"><b>Lítio</b></td><td data-label="Antídoto">Hidratação + hemodiálise</td><td data-label="Dose">SF 0,9% e correção de hipovolemia (que perpetua a intoxicação). <b>Carvão ativado não adsorve lítio.</b> Diálise recomendada se nível &gt;4,0mEq/L com disfunção renal, ou se houver <b>rebaixamento, convulsão ou arritmia grave — independentemente do nível</b>; sugerida se &gt;5,0mEq/L ou confusão. Revisar AINE, IECA/BRA, tiazídico e desidratação como gatilhos</td></tr>
 <tr><td data-label="Agente"><b>Metanol / etilenoglicol</b></td><td data-label="Antídoto">Fomepizol (ou etanol) + diálise</td><td data-label="Dose">Suspeitar de <b>acidose metabólica com ânion-gap alto</b> + <i>gap</i> osmolar elevado; metanol dá alteração visual, etilenoglicol dá cristalúria de oxalato e IRA. Fomepizol 15mg/kg de ataque; onde não houver, <b>etanol EV</b>. Bicarbonato para a acidose; hemodiálise nos casos graves</td></tr>
 <tr><td data-label="Agente"><b>Álcool etílico</b></td><td data-label="Antídoto">Suporte — <b>não há antídoto</b></td><td data-label="Dose">Proteção de via aérea, glicemia, <b>tiamina 250–300mg EV antes de glicose</b> em desnutrido ou etilista crônico (se houver sinal de Wernicke: 500mg EV 8/8h). <b>Etanol EV não trata intoxicação alcoólica</b> — é antídoto de metanol/etilenoglicol. Rebaixamento desproporcional ao nível: investigar TCE, hipoglicemia, co-ingestão, infecção</td></tr>
-<tr><td data-label="Agente"><b>Betabloqueador</b></td><td data-label="Antídoto">Glucagon + insulina em alta dose</td><td data-label="Dose">Glucagon 3–5mg EV (pode repetir); cálcio; <b>insulina regular 1U/kg em bolus + 0,5–1U/kg/h</b> com glicose e controle de K⁺; vasopressor; marca-passo. Emulsão lipídica como resgate</td></tr>
-<tr><td data-label="Agente"><b>Bloqueador de canal de cálcio</b></td><td data-label="Antídoto">Cálcio + insulina em alta dose</td><td data-label="Dose">Gluconato de cálcio 10% 30–60mL EV (ou cloreto em acesso central); mesma insulinoterapia em alta dose do betabloqueador — é o pilar do suporte inotrópico aqui; noradrenalina; considerar ECMO no refratário</td></tr>
+<tr><td data-label="Agente"><b>Betabloqueador</b></td><td data-label="Antídoto">Glucagon + insulina em alta dose</td><td data-label="Dose">Glucagon 3–5mg EV <span class="amp">(FA 1mg)</span> (pode repetir); cálcio; <b>insulina regular 1U/kg em bolus + 0,5–1U/kg/h</b> com glicose e controle de K⁺; vasopressor; marca-passo. Emulsão lipídica como resgate</td></tr>
+<tr><td data-label="Agente"><b>Bloqueador de canal de cálcio</b></td><td data-label="Antídoto">Cálcio + insulina em alta dose</td><td data-label="Dose">Gluconato de cálcio 10% 30–60mL EV <span class="amp">(amp 10mL = 1g)</span> (ou cloreto em acesso central); mesma insulinoterapia em alta dose do betabloqueador — é o pilar do suporte inotrópico aqui; noradrenalina; considerar ECMO no refratário</td></tr>
 <tr><td data-label="Agente"><b>Monóxido de carbono</b></td><td data-label="Antídoto">O₂ a 100%</td><td data-label="Dose">Máscara não reinalante desde a suspeita; <b>oximetria de pulso é falsamente normal</b> — pedir carboxi-hemoglobina. Câmara hiperbárica se COHb alta, perda de consciência, déficit neurológico, isquemia miocárdica ou gestação</td></tr>
-<tr><td data-label="Agente"><b>Metemoglobinemia</b></td><td data-label="Antídoto">Azul de metileno</td><td data-label="Dose">Cianose que <b>não melhora com O₂</b>, sangue achocolatado, SpO₂ travada em ~85%. Azul de metileno 1–2mg/kg EV em 5min. Cuidado se deficiência de G6PD ou uso de serotoninérgico</td></tr>
+<tr><td data-label="Agente"><b>Metemoglobinemia</b></td><td data-label="Antídoto">Azul de metileno</td><td data-label="Dose">Cianose que <b>não melhora com O₂</b>, sangue achocolatado, SpO₂ travada em ~85%. Azul de metileno 1–2mg/kg EV em 5min <span class="amp">(1%, amp 10mL = 100mg)</span>. Cuidado se deficiência de G6PD ou uso de serotoninérgico</td></tr>
 <tr><td data-label="Agente"><b>Síndrome serotoninérgica</b></td><td data-label="Antídoto">Suspender + benzodiazepínico</td><td data-label="Dose">Tríade: alteração mental, hiperatividade autonômica e <b>hiperreflexia com clônus de predomínio em membros inferiores</b> — o clônus é o que a separa da síndrome neuroléptica maligna (que é rígida e de instalação lenta). Resfriamento; ciproeptadina 12mg VO de ataque, depois 2mg 2/2h nos casos moderados; casos graves podem exigir bloqueio neuromuscular</td></tr>
 </tbody>
 </table></div>
@@ -1855,90 +1863,10 @@
 </div>
 </details>
 </section>
-<!-- ============ APRESENTAÇÕES ============ -->
-<section class="block apr" id="apresentacoes">
-<details class="sec-fold" data-sec="apresentacoes">
-<summary class="block-head"><span class="idx apr-bg">12</span><h2>Apresentações</h2><span class="tag">o que vem em 1 ampola</span><span class="fold-ind" aria-hidden="true"></span></summary>
-<div class="sec-body">
-<div class="callout warn"><b>Apresentações variam entre fabricante e entre hospitais.</b> Esta tabela traz o que é mais encontrado na rede brasileira e serve para converter dose em volume rapidamente — <b>confira sempre o rótulo da ampola antes de aspirar</b>. Onde há mais de uma apresentação corrente, as duas estão listadas.</div>
-
-<h3>Parada e emergência cardiovascular</h3>
-<div class="table-wrap"><table>
-<thead><tr><th>Droga</th><th>Concentração</th><th>1 ampola =</th></tr></thead>
-<tbody>
-<tr><td data-label="Droga">Adrenalina</td><td data-label="Concentração">1mg/mL</td><td class="dose" data-label="1 amp">1mL = <b>1mg</b></td></tr>
-<tr><td data-label="Droga">Noradrenalina</td><td data-label="Concentração">2mg/mL</td><td class="dose" data-label="1 amp">4mL = <b>8mg</b></td></tr>
-<tr><td data-label="Droga">Dobutamina</td><td data-label="Concentração">12,5mg/mL</td><td class="dose" data-label="1 amp">20mL = <b>250mg</b></td></tr>
-<tr><td data-label="Droga">Dopamina</td><td data-label="Concentração">5mg/mL</td><td class="dose" data-label="1 amp">10mL = <b>50mg</b></td></tr>
-<tr><td data-label="Droga">Amiodarona</td><td data-label="Concentração">50mg/mL</td><td class="dose" data-label="1 amp">3mL = <b>150mg</b></td></tr>
-<tr><td data-label="Droga">Lidocaína 2% s/ vaso</td><td data-label="Concentração">20mg/mL</td><td class="dose" data-label="1 amp">20mL = <b>400mg</b></td></tr>
-<tr><td data-label="Droga">Atropina</td><td data-label="Concentração">0,25mg/mL <b>ou</b> 0,5mg/mL</td><td class="dose" data-label="1 amp">1mL = <b>0,25mg</b> · 1mL = <b>0,5mg</b></td></tr>
-<tr><td data-label="Droga">Deslanosídeo</td><td data-label="Concentração">0,2mg/mL</td><td class="dose" data-label="1 amp">2mL = <b>0,4mg</b></td></tr>
-<tr><td data-label="Droga">Metoprolol</td><td data-label="Concentração">1mg/mL</td><td class="dose" data-label="1 amp">5mL = <b>5mg</b></td></tr>
-<tr><td data-label="Droga">Adenosina</td><td data-label="Concentração">3mg/mL</td><td class="dose" data-label="1 amp">2mL = <b>6mg</b></td></tr>
-<tr><td data-label="Droga">Nitroglicerina</td><td data-label="Concentração">5mg/mL</td><td class="dose" data-label="1 amp">10mL = <b>50mg</b></td></tr>
-<tr><td data-label="Droga">Nitroprussiato</td><td data-label="Concentração">25mg/mL</td><td class="dose" data-label="1 amp">2mL = <b>50mg</b></td></tr>
-<tr><td data-label="Droga">Hidralazina</td><td data-label="Concentração">20mg/mL</td><td class="dose" data-label="1 amp">1mL = <b>20mg</b></td></tr>
-<tr><td data-label="Droga">Furosemida</td><td data-label="Concentração">10mg/mL</td><td class="dose" data-label="1 amp">2mL = <b>20mg</b></td></tr>
-</tbody>
-</table></div>
-
-<h3>Sedoanalgesia, indução e bloqueio</h3>
-<div class="table-wrap"><table>
-<thead><tr><th>Droga</th><th>Concentração</th><th>1 ampola / frasco =</th></tr></thead>
-<tbody>
-<tr><td data-label="Droga">Etomidato</td><td data-label="Concentração">2mg/mL</td><td class="dose" data-label="1 amp">10mL = <b>20mg</b></td></tr>
-<tr><td data-label="Droga">Cetamina</td><td data-label="Concentração">50mg/mL</td><td class="dose" data-label="1 amp">10mL = <b>500mg</b> (há amp de 2mL = 100mg)</td></tr>
-<tr><td data-label="Droga">Propofol 1%</td><td data-label="Concentração">10mg/mL</td><td class="dose" data-label="1 amp">20mL = <b>200mg</b></td></tr>
-<tr><td data-label="Droga">Midazolam</td><td data-label="Concentração">5mg/mL <b>ou</b> 1mg/mL</td><td class="dose" data-label="1 amp">3mL = <b>15mg</b> · 5mL = <b>5mg</b></td></tr>
-<tr><td data-label="Droga">Fentanil</td><td data-label="Concentração">50mcg/mL</td><td class="dose" data-label="1 amp">10mL = <b>500mcg</b> (há amp de 2mL = 100mcg)</td></tr>
-<tr><td data-label="Droga">Morfina</td><td data-label="Concentração">10mg/mL</td><td class="dose" data-label="1 amp">1mL = <b>10mg</b></td></tr>
-<tr><td data-label="Droga">Succinilcolina</td><td data-label="Concentração">Pó liofilizado</td><td class="dose" data-label="1 amp">1 FA = <b>100mg</b> → +10mL AD = 10mg/mL</td></tr>
-<tr><td data-label="Droga">Rocurônio</td><td data-label="Concentração">10mg/mL</td><td class="dose" data-label="1 amp">5mL = <b>50mg</b></td></tr>
-<tr><td data-label="Droga">Cisatracúrio</td><td data-label="Concentração">2mg/mL</td><td class="dose" data-label="1 amp">5mL = <b>10mg</b></td></tr>
-<tr><td data-label="Droga">Dexmedetomidina</td><td data-label="Concentração">100mcg/mL</td><td class="dose" data-label="1 amp">2mL = <b>200mcg</b></td></tr>
-</tbody>
-</table></div>
-
-<h3>Neuro, psiquiatria e antídotos</h3>
-<div class="table-wrap"><table>
-<thead><tr><th>Droga</th><th>Concentração</th><th>1 ampola / frasco =</th></tr></thead>
-<tbody>
-<tr><td data-label="Droga">Haloperidol</td><td data-label="Concentração">5mg/mL</td><td class="dose" data-label="1 amp">1mL = <b>5mg</b></td></tr>
-<tr><td data-label="Droga">Prometazina</td><td data-label="Concentração">25mg/mL</td><td class="dose" data-label="1 amp">2mL = <b>50mg</b></td></tr>
-<tr><td data-label="Droga">Diazepam</td><td data-label="Concentração">5mg/mL</td><td class="dose" data-label="1 amp">2mL = <b>10mg</b></td></tr>
-<tr><td data-label="Droga">Fenitoína</td><td data-label="Concentração">50mg/mL</td><td class="dose" data-label="1 amp">5mL = <b>250mg</b></td></tr>
-<tr><td data-label="Droga">Fenobarbital</td><td data-label="Concentração">100mg/mL</td><td class="dose" data-label="1 amp">2mL = <b>200mg</b></td></tr>
-<tr><td data-label="Droga">Biperideno</td><td data-label="Concentração">5mg/mL</td><td class="dose" data-label="1 amp">1mL = <b>5mg</b></td></tr>
-<tr><td data-label="Droga">Tiamina (B1)</td><td data-label="Concentração">100mg/mL</td><td class="dose" data-label="1 amp">1mL = <b>100mg</b></td></tr>
-<tr><td data-label="Droga">Naloxona</td><td data-label="Concentração">0,4mg/mL</td><td class="dose" data-label="1 amp">1mL = <b>0,4mg</b></td></tr>
-<tr><td data-label="Droga">Flumazenil</td><td data-label="Concentração">0,1mg/mL</td><td class="dose" data-label="1 amp">5mL = <b>0,5mg</b></td></tr>
-</tbody>
-</table></div>
-
-<h3>Eletrólitos, soluções e diversos</h3>
-<div class="table-wrap"><table>
-<thead><tr><th>Solução</th><th>Concentração</th><th>1 ampola / frasco =</th></tr></thead>
-<tbody>
-<tr><td data-label="Solução">Bicarbonato de sódio 8,4%</td><td data-label="Concentração">1mEq/mL</td><td class="dose" data-label="1 amp">10mL = <b>10mEq</b> · frasco 250mL = <b>250mEq</b></td></tr>
-<tr><td data-label="Solução">Gluconato de cálcio 10%</td><td data-label="Concentração">100mg/mL</td><td class="dose" data-label="1 amp">10mL = <b>1g</b> (≈4,5mEq de Ca²⁺)</td></tr>
-<tr><td data-label="Solução">Sulfato de magnésio 50%</td><td data-label="Concentração">500mg/mL</td><td class="dose" data-label="1 amp">10mL = <b>5g</b></td></tr>
-<tr><td data-label="Solução">Glicose 50%</td><td data-label="Concentração">500mg/mL</td><td class="dose" data-label="1 amp">10mL = <b>5g</b></td></tr>
-<tr><td data-label="Solução">Cloreto de potássio 19,1%</td><td data-label="Concentração">2,56mEq/mL</td><td class="dose" data-label="1 amp">10mL = <b>25,6mEq</b></td></tr>
-<tr><td data-label="Solução">Cloreto de sódio 20%</td><td data-label="Concentração">3,4mEq/mL</td><td class="dose" data-label="1 amp">10mL = <b>34mEq</b></td></tr>
-<tr><td data-label="Solução">Dipirona</td><td data-label="Concentração">500mg/mL</td><td class="dose" data-label="1 amp">2mL = <b>1g</b></td></tr>
-<tr><td data-label="Solução">Ondansetrona</td><td data-label="Concentração">2mg/mL</td><td class="dose" data-label="1 amp">4mL = <b>8mg</b></td></tr>
-<tr><td data-label="Solução">Metoclopramida</td><td data-label="Concentração">5mg/mL</td><td class="dose" data-label="1 amp">2mL = <b>10mg</b></td></tr>
-<tr><td data-label="Solução">Hidrocortisona</td><td data-label="Concentração">Pó liofilizado</td><td class="dose" data-label="1 amp">1 FA = <b>100mg</b> ou <b>500mg</b></td></tr>
-</tbody>
-</table></div>
-</div>
-</details>
-</section>
 <!-- ============ REFERÊNCIAS ============ -->
 <section class="block bib" id="referencias">
 <details class="sec-fold" data-sec="referencias">
-<summary class="block-head"><span class="idx bib-bg">13</span><h2>Referências</h2><span class="tag">fontes · rastreabilidade</span><span class="fold-ind" aria-hidden="true"></span></summary>
+<summary class="block-head"><span class="idx bib-bg">12</span><h2>Referências</h2><span class="tag">fontes · rastreabilidade</span><span class="fold-ind" aria-hidden="true"></span></summary>
 <div class="sec-body">
 <h3>Como usar esta lista</h3>
 <div class="callout bib">Os três guias — <b>Paciente Crítico</b>, <b>Plantão</b> e <b>Psicofarmacologia</b> — compartilham esta mesma lista, de modo que qualquer conduta consultada em qualquer um deles possa ser rastreada até a fonte. Onde diretriz brasileira e internacional divergem, os guias seguem a <b>conduta praticável na rede local</b> e sinalizam a diferença no próprio card. Diretrizes mudam: confirme a versão vigente antes de usar como respaldo formal.</div>
@@ -2059,7 +1987,7 @@
 <button class="fab" id="fabTop" title="Voltar ao topo" type="button">↑</button>
 </div>
 <footer>
-  Guia de bolso de uso pessoal — consulte sempre protocolos institucionais vigentes e julgamento clínico individualizado. As colunas de referência recalculam pelo peso informado no topo; confira sempre pelo peso real do paciente — o campo ⚖ no topo faz isso pelas células marcadas.<br/><span class="rev">Última revisão: 01/09/2026 · v3.6 — ícone próprio embutido; citações remanescentes removidas do corpo; apresentação da ampola completada. v3.5 — apresentação da ampola agora aparece ao lado da dose nas demais seções, não só na seção 12. v3.4 — nova seção 12 (Apresentações: o que vem em 1 ampola, com concentração e equivalência em mg); fatores de infusão contínua corrigidos para exibir a faixa de dose declarada, e não um ponto único. v3.3 — nova seção de Referências comum aos três guias; citações retiradas do corpo do texto; esquema de tiamina alinhado entre os guias; correções de layout (barra de utilidades em uma linha, alvos de toque, quebra de título). v3.2 — barra de seções de volta no topo, agora com uma 2ª linha que mostra os tópicos da seção em leitura e acompanha a rolagem; painel de índice removido; busca segue na lupa flutuante. v3.1 — barra de abas do topo e caixa de busca substituídas por um índice em painel inferior, com seções e tópicos navegáveis direto; busca segue na lupa flutuante. v3.0 — link para o novo Guia de Psicofarmacologia e Manejo Psiquiátrico; v2.9 — condutas por ritmo, bradicardia, choque, SCA e toxicologia agora trazem a dose junto da droga (auditoria de todas as seções); energia de cardioversão da FA corrigida para 120–200J bifásico e unificada em todo o guia; v2.8 — doses e equivalência em ampolas agora aparecem dentro dos fluxogramas (PCR, 7 P's da SRI, OSACO), não só nas tabelas; referências fixas de "70kg" substituídas por valores que recalculam pelo peso informado; v2.7 — nova seção 10 (Toxicologia: toxíndromes, antídotos por agente e pistas de ECG/laboratório), com critérios EXTRIP para diálise no lítio e regimes clássico e SNAP de N-acetilcisteína; v2.6 — corrigida a quebra dos itens de checklist em colunas quando há destaque no meio da frase; v2.5 — barra de seções acompanha automaticamente a seção em leitura (a aba ativa passou a ser calculada por rolagem, corrigindo abas puladas e sem destaque com as seções fechadas); v2.4 — seções colapsáveis (fechadas por padrão, estado lembrado entre acessos; abas e busca abrem a seção automaticamente); v2.3 — nova seção 02 (Choque: janelas de perfusão, TEC como alvo, diferenciação dos quatro tipos, RUSH, fluidorresponsividade, vasopressores, SCAI e choque refratário), alinhada à Surviving Sepsis Campaign 2026, ao ANDROMEDA-SHOCK-2 (JAMA 2025) e ao consenso de choque cardiogênico do ACC 2025; seções 08 (SCA) e 09 (AVE) acrescentadas na revisão anterior.</span>
+  Guia de bolso de uso pessoal — consulte sempre protocolos institucionais vigentes e julgamento clínico individualizado. As colunas de referência recalculam pelo peso informado no topo; confira sempre pelo peso real do paciente — o campo ⚖ no topo faz isso pelas células marcadas.<br/><span class="rev">Última revisão: 02/09/2026 · v3.7. Histórico resumido: seções de Choque, SCA, AVE e Toxicologia acrescentadas; doses e apresentação da ampola junto de cada medicação; conferência de todos os fatores de cálculo por peso; seção de Referências comum aos três guias.</span>
 </footer>
 <script>
 (function(){
@@ -2127,7 +2055,7 @@
   /* ---------- TABS ---------- */
   var tabs = document.querySelectorAll('.tab');
   var sections = document.querySelectorAll('section.block');
-  var map = {apresentacoes:document.querySelector('.tab.apr'), referencias:document.querySelector('.tab.bib'), xabcde:document.querySelector('.tab.abc'), choque:document.querySelector('.tab.cho'), iot:document.querySelector('.tab.iot'), sedacao:document.querySelector('.tab.sed'), vm:document.querySelector('.tab.vm'), pcr:document.querySelector('.tab.pcr'), ecg:document.querySelector('.tab.ecg'), sca:document.querySelector('.tab.sca'), ave:document.querySelector('.tab.ave'), tox:document.querySelector('.tab.tox'), escalas:document.querySelector('.tab.esc')};
+  var map = {referencias:document.querySelector('.tab.bib'), xabcde:document.querySelector('.tab.abc'), choque:document.querySelector('.tab.cho'), iot:document.querySelector('.tab.iot'), sedacao:document.querySelector('.tab.sed'), vm:document.querySelector('.tab.vm'), pcr:document.querySelector('.tab.pcr'), ecg:document.querySelector('.tab.ecg'), sca:document.querySelector('.tab.sca'), ave:document.querySelector('.tab.ave'), tox:document.querySelector('.tab.tox'), escalas:document.querySelector('.tab.esc')};
 
   /* ---------- BARRA DE ABAS: centralizar a aba ativa ---------- */
   var tabsInner = document.querySelector('.tabs-inner');
@@ -2318,7 +2246,7 @@
   var index = [];
   (function(){
     var n = 0;
-    var CL = ['abc','cho','iot','sed','vm','pcr','ecg','sca','ave','tox','esc','apr','bib'];
+    var CL = ['abc','cho','iot','sed','vm','pcr','ecg','sca','ave','tox','esc','bib'];
     document.querySelectorAll('section.block').forEach(function(sec){
       var h2 = sec.querySelector('h2');
       var secName = h2 ? h2.textContent.trim() : '';

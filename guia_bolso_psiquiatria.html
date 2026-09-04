@@ -6,7 +6,7 @@
 <meta content="#F3F5F8" id="metaTheme" name="theme-color"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="yes" name="mobile-web-app-capable"/>
-<title>Guia de Bolso · Psicofarmacologia e Manejo Psiquiátrico</title>
+<title>ClinRef · Psicofarmacologia e Manejo Psiquiátrico</title>
 <link rel="manifest" href="manifest-psiquiatria.webmanifest"/>
 <link rel="icon" type="image/png" sizes="192x192" href="icones/psiquiatria-192.png"/>
 <link rel="icon" type="image/svg+xml" href="icones/psiquiatria.svg"/>
@@ -444,11 +444,31 @@
   html[data-theme="dark"] .callout.est{color:#CFC0F5;}
   @media (max-width:640px){ .est td:first-child{color:var(--est);} }
   .amp{font-family:var(--mono);font-size:.82em;color:var(--ink-soft);}
+
+  .voltar{display:inline-flex;align-items:center;gap:7px;text-decoration:none;
+    font-family:var(--mono);font-size:12.5px;font-weight:600;color:var(--ink-soft);
+    background:var(--surface);border:1px solid var(--line);border-radius:999px;
+    padding:9px 15px 9px 12px;margin-bottom:14px;min-height:40px;transition:.15s ease;}
+  .voltar:hover{color:var(--ink);border-color:#9AA7B2;}
+  .voltar svg{flex-shrink:0;}
+  @media print{ .voltar{display:none !important;} }
+
+  :root{--cri:#B4304A; --cri-soft:#FBE8EC;}
+  html[data-theme="dark"] body{--cri:#F08098; --cri-soft:#38151E;}
+  .tab.cri{color:var(--cri);} .tab.active.cri{background:var(--cri);color:#fff;}
+  .cri-bg{background:var(--cri);} .cri h3{color:var(--cri);}
+  .cri .dose{background:var(--cri-soft);color:var(--cri);}
+  .cri .checklist li::before{border-color:var(--cri);}
+  .cri .seq .step .n{background:var(--cri);}
+  .callout.cri{border-color:var(--cri);background:var(--cri-soft);color:#7E1F33;}
+  html[data-theme="dark"] .callout.cri{color:#F6C3CE;}
+  @media (max-width:640px){ .cri td:first-child{color:var(--cri);} }
 </style>
 </head>
 <body>
 <div class="masthead">
 <div class="pulse-line"></div>
+<a class="voltar" href="index.html"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>ClinRef</a>
 <div class="eyebrow"><span class="dot"></span> Referência rápida · beira-leito</div>
 <h1 class="title">Psicofarmacologia e Manejo Psiquiátrico</h1>
 <p class="subtitle">Escolha da medicação dentro de cada classe, doses e faixas terapêuticas, uso agudo, combinações, escalonamento, troca e desmame por classe, efeitos adversos, gestação e lactação, monitorização laboratorial e interações. Material clínico de referência rápida — emergências clínicas gerais no <a href="guia_bolso_paciente_critico.html" style="color:inherit;font-weight:600;">Guia de Paciente Crítico →</a> e prescrições por sistema no <a href="guia_bolso_plantao.html" style="color:inherit;font-weight:600;">Guia de Plantão →</a>.</p>
@@ -459,14 +479,15 @@
 <a class="tab ap" data-target="antipsicoticos" href="#antipsicoticos">02 · Antipsicóticos</a>
 <a class="tab eh" data-target="estabilizadores" href="#estabilizadores">03 · Estabilizadores de Humor</a>
 <a class="tab bzd" data-target="benzodiazepinicos" href="#benzodiazepinicos">04 · Benzodiazepínicos</a>
-<a class="tab agit" data-target="agitacao" href="#agitacao">05 · Agitação Aguda</a>
-<a class="tab abst" data-target="abstinencias" href="#abstinencias">06 · Abstinências</a>
-<a class="tab emerg" data-target="emergencias" href="#emergencias">07 · Emergências</a>
-<a class="tab troca" data-target="troca" href="#troca">08 · Decisão Terapêutica</a>
-<a class="tab gest" data-target="gestacao" href="#gestacao">09 · Gestação e Lactação</a>
-<a class="tab monit" data-target="monitorizacao" href="#monitorizacao">10 · Monitorização</a>
-<a class="tab est" data-target="psicoestimulantes" href="#psicoestimulantes">11 · Psicoestimulantes</a>
-<a class="tab bib" data-target="referencias" href="#referencias">12 · Referências</a>
+<a class="tab est" data-target="psicoestimulantes" href="#psicoestimulantes">05 · Psicoestimulantes</a>
+<a class="tab agit" data-target="agitacao" href="#agitacao">06 · Agitação Aguda</a>
+<a class="tab cri" data-target="crises" href="#crises">07 · Risco e Crises</a>
+<a class="tab abst" data-target="abstinencias" href="#abstinencias">08 · Abstinências</a>
+<a class="tab emerg" data-target="emergencias" href="#emergencias">09 · Emergências</a>
+<a class="tab troca" data-target="troca" href="#troca">10 · Decisão Terapêutica</a>
+<a class="tab gest" data-target="gestacao" href="#gestacao">11 · Gestação e Lactação</a>
+<a class="tab monit" data-target="monitorizacao" href="#monitorizacao">12 · Monitorização</a>
+<a class="tab bib" data-target="referencias" href="#referencias">13 · Referências</a>
 </div>
 </nav>
 <div class="subtabs"><div class="subtabs-inner" id="subTabsInner"></div></div>
@@ -478,6 +499,24 @@
 <p class="fold-hint">Toque no título para abrir a seção · a 2ª linha mostra os tópicos dela</p>
 <main>
 <!-- ============ ANTIDEPRESSIVOS ============ -->
+
+<!-- ============ ANTIPSICÓTICOS ============ -->
+
+<!-- ============ ESTABILIZADORES ============ -->
+<!-- ============ BENZODIAZEPÍNICOS ============ -->
+
+<!-- ============ AGITAÇÃO ============ -->
+
+<!-- ============ ABSTINÊNCIAS ============ -->
+
+<!-- ============ EMERGÊNCIAS ============ -->
+<!-- ============ TROCA E DESMAME ============ -->
+
+<!-- ============ GESTAÇÃO ============ -->
+
+<!-- ============ MONITORIZAÇÃO ============ -->
+<!-- ============ PSICOESTIMULANTES ============ -->
+<!-- ============ REFERÊNCIAS ============ -->
 <section class="block ad" id="antidepressivos">
 <details class="sec-fold" data-sec="antidepressivos">
 <summary class="block-head"><span class="idx ad-bg">01</span><h2>Antidepressivos</h2><span class="tag">escolha por perfil</span><span class="fold-ind" aria-hidden="true"></span></summary>
@@ -554,7 +593,7 @@
 <tr><td data-label="Situação">Disfunção sexual limitante</td><td data-label="1ª escolha">Bupropiona, mirtazapina, vortioxetina, agomelatina</td><td data-label="Classe">Atípicos</td></tr>
 <tr><td data-label="Situação">Tabagismo concomitante</td><td data-label="1ª escolha">Bupropiona</td><td data-label="Classe">IRDN</td></tr>
 <tr><td data-label="Situação">Idoso, polifarmácia, cardiopata</td><td data-label="1ª escolha">Sertralina ou escitalopram</td><td data-label="Classe">ISRS</td></tr>
-<tr><td data-label="Situação">Gestação e lactação</td><td data-label="1ª escolha">Sertralina — seção 09</td><td data-label="Classe">ISRS</td></tr>
+<tr><td data-label="Situação">Gestação e lactação</td><td data-label="1ª escolha">Sertralina — seção 11</td><td data-label="Classe">ISRS</td></tr>
 <tr><td data-label="Situação">TOC</td><td data-label="1ª escolha">ISRS em dose alta; clomipramina se refratário</td><td data-label="Classe">ISRS ou tricíclico</td></tr>
 <tr><td data-label="Situação">Queixa cognitiva marcante</td><td data-label="1ª escolha">Vortioxetina</td><td data-label="Classe">Atípico multimodal</td></tr>
 <tr><td data-label="Situação">Ansiedade com insônia inicial</td><td data-label="1ª escolha">ISRS + trazodona à noite</td><td data-label="Classe">ISRS + SARI</td></tr>
@@ -592,8 +631,6 @@
 </div>
 </details>
 </section>
-
-<!-- ============ ANTIPSICÓTICOS ============ -->
 <section class="block ap" id="antipsicoticos">
 <details class="sec-fold" data-sec="antipsicoticos">
 <summary class="block-head"><span class="idx ap-bg">02</span><h2>Antipsicóticos</h2><span class="tag">metabólico · EPS</span><span class="fold-ind" aria-hidden="true"></span></summary>
@@ -643,7 +680,7 @@
 <div class="table-wrap"><table>
 <thead><tr><th>Situação</th><th>Escolha</th></tr></thead>
 <tbody>
-<tr><td data-label="Situação">Agitação aguda</td><td data-label="Escolha">Haloperidol ± prometazina, ou olanzapina — seção 05</td></tr>
+<tr><td data-label="Situação">Agitação aguda</td><td data-label="Escolha">Haloperidol ± prometazina, ou olanzapina — seção 06</td></tr>
 <tr><td data-label="Situação">Diabetes, obesidade, dislipidemia</td><td data-label="Escolha">Aripiprazol, ziprasidona ou lurasidona</td></tr>
 <tr><td data-label="Situação">Paciente desnutrido</td><td data-label="Escolha">Olanzapina — o ganho de peso vira aliado</td></tr>
 <tr><td data-label="Situação">Insônia grave associada</td><td data-label="Escolha">Quetiapina em dose baixa</td></tr>
@@ -671,8 +708,6 @@
 </div>
 </details>
 </section>
-
-<!-- ============ ESTABILIZADORES ============ -->
 <section class="block eh" id="estabilizadores">
 <details class="sec-fold" data-sec="estabilizadores">
 <summary class="block-head"><span class="idx eh-bg">03</span><h2>Estabilizadores de Humor</h2><span class="tag">polaridade · litemia</span><span class="fold-ind" aria-hidden="true"></span></summary>
@@ -752,7 +787,6 @@
 </div>
 </details>
 </section>
-<!-- ============ BENZODIAZEPÍNICOS ============ -->
 <section class="block bzd" id="benzodiazepinicos">
 <details class="sec-fold" data-sec="benzodiazepinicos">
 <summary class="block-head"><span class="idx bzd-bg">04</span><h2>Benzodiazepínicos</h2><span class="tag">meia-vida · dependência</span><span class="fold-ind" aria-hidden="true"></span></summary>
@@ -874,378 +908,9 @@
 </div>
 </details>
 </section>
-
-<!-- ============ AGITAÇÃO ============ -->
-<section class="block agit" id="agitacao">
-<details class="sec-fold" data-sec="agitacao">
-<summary class="block-head"><span class="idx agit-bg">05</span><h2>Agitação Aguda</h2><span class="tag">VO · IM · combinações</span><span class="fold-ind" aria-hidden="true"></span></summary>
-<div class="sec-body">
-<div class="callout warn"><b>Contenção química é conforto e segurança, nunca punição.</b> O objetivo é acalmar o paciente a ponto de permitir avaliação e diálogo — não derrubá-lo. Sedação excessiva mascara o exame neurológico, e é justamente o exame que vai revelar a causa orgânica que você ainda não descartou.</div>
-
-<h3>Antes de medicar</h3>
-<div class="seq">
-<div class="step"><div class="n">1</div><div class="t">Causa provável</div><div class="d">psicose, mania, intoxicação, abstinência, delirium, dor</div></div>
-<div class="step"><div class="n">2</div><div class="t">Glicemia e SSVV</div><div class="d">+ oximetria — hipoglicemia imita agitação psiquiátrica</div></div>
-<div class="step"><div class="n">3</div><div class="t">Desescalada verbal</div><div class="d">ambiente calmo, distância segura, voz firme não confrontativa</div></div>
-<div class="step"><div class="n">4</div><div class="t">VO se aceitar</div><div class="d">resposta em 30–60min · mais digno e mais seguro</div></div>
-<div class="step"><div class="n">5</div><div class="t">IM se recusa</div><div class="d">ou risco iminente · início em 15–30min</div></div>
-<div class="step"><div class="n">6</div><div class="t">Monitorar</div><div class="d">SSVV e nível de consciência a cada 15min</div></div>
-</div>
-<div class="callout agit"><b>Regra prática que organiza a escolha:</b> se a agitação vem de <b>abstinência</b>, a base é benzodiazepínico. Se vem de <b>psicose ou mania</b>, a base é antipsicótico. Se vem de <b>intoxicação por estimulante</b>, a base é benzodiazepínico. Se vem de <b>intoxicação por depressor</b>, evite sedar mais — trate o suporte.</div>
-
-<h3>Medicações isoladas</h3>
-<div class="table-wrap"><table>
-<thead><tr><th>Medicação</th><th>Dose</th><th>Indicação</th><th>Atenção</th></tr></thead>
-<tbody>
-<tr><td data-label="Medicação">Haloperidol</td><td class="dose" data-label="Dose">IM 5mg (1 amp de 5mg/mL) · VO 25–50gts (2mg/mL)</td><td data-label="Indicação">Sintomas produtivos, agitação psicótica</td><td data-label="Atenção">EPS; repetir em 30–60min se necessário. Não fazer EV</td></tr>
-<tr><td data-label="Medicação">Prometazina</td><td class="dose" data-label="Dose">IM 25–50mg (amp 50mg/2mL) · VO 1–2cp de 25mg</td><td data-label="Indicação">Sedação e prevenção de distonia</td><td data-label="Atenção">Sedação importante, efeito anticolinérgico, hipotensão</td></tr>
-<tr><td data-label="Medicação">Clorpromazina</td><td class="dose" data-label="Dose">VO 25–50gts (40mg/mL)</td><td data-label="Indicação">Fissura, agitação, contenção</td><td data-label="Atenção"><b>Hipotensão</b>; cautela em etilista</td></tr>
-<tr><td data-label="Medicação">Midazolam</td><td class="dose" data-label="Dose">IM 7,5–15mg (amp 15mg/3mL → 1,5–3mL)</td><td data-label="Indicação">Sedação rápida; preferível em intoxicação por estimulante</td><td data-label="Atenção"><b>Depressão respiratória</b>; oximetria obrigatória; risco alto em etilista</td></tr>
-<tr><td data-label="Medicação">Olanzapina</td><td class="dose" data-label="Dose">IM 10mg</td><td data-label="Indicação">Agitação em mania e psicose</td><td data-label="Atenção"><b>Nunca com BZD parenteral</b> — depressão cardiorrespiratória</td></tr>
-<tr><td data-label="Medicação">Clonazepam</td><td class="dose" data-label="Dose">VO 5–20gts (2,5mg/mL)</td><td data-label="Indicação">Sedação e ansiedade</td><td data-label="Atenção">Rebaixamento em etilista</td></tr>
-<tr><td data-label="Medicação">Valproato</td><td class="dose" data-label="Dose">VO 5–10mL (50mg/mL)</td><td data-label="Indicação">Contenção e estabilização em mania</td><td data-label="Atenção"><b>Contraindicado em gestante</b></td></tr>
-<tr><td data-label="Medicação">Diazepam</td><td class="dose" data-label="Dose">VO 10mg</td><td data-label="Indicação">Abstinência alcoólica leve a moderada</td><td data-label="Atenção">Rebaixamento; não fazer IM</td></tr>
-</tbody>
-</table></div>
-
-<h3>Combinações</h3>
-<div class="table-wrap"><table>
-<thead><tr><th>Esquema</th><th>Composição</th><th>Indicação</th><th>Atenção</th></tr></thead>
-<tbody>
-<tr><td data-label="Esquema"><b>HF (Haldol + Fenergan)</b></td><td class="dose" data-label="Composição">Haloperidol 5mg <span class="amp">(5mg/mL, amp 1mL)</span> IM + Prometazina 50mg <span class="amp">(25mg/mL, amp 2mL = 50mg)</span> IM</td><td data-label="Indicação">Agitação psicótica ou maníaca grave — o esquema de referência</td><td data-label="Atenção">A prometazina mitiga a distonia do haloperidol e soma sedação</td></tr>
-<tr><td data-label="Esquema">Haloperidol + Midazolam</td><td class="dose" data-label="Composição">Haloperidol 5mg <span class="amp">(5mg/mL, amp 1mL)</span> IM + Midazolam 7,5–15mg <span class="amp">(5mg/mL, amp 3mL = 15mg)</span> IM</td><td data-label="Indicação">Agitação intensa, contenção potente</td><td data-label="Atenção"><b>Maior risco de depressão respiratória.</b> SSVV a cada 15min, oximetria e flumazenil acessível — mas ver a ressalva abaixo</td></tr>
-<tr><td data-label="Esquema">Haloperidol + Clonazepam</td><td class="dose" data-label="Composição">Haloperidol 25–50gts + Clonazepam 10–20gts VO</td><td data-label="Indicação">Contenção com sedação adicional, por via oral</td><td data-label="Atenção">Rebaixamento, sobretudo em etilista</td></tr>
-<tr><td data-label="Esquema">Haloperidol + Prometazina VO</td><td class="dose" data-label="Composição">Haloperidol 25–50gts + Prometazina 1–2cp</td><td data-label="Indicação">Equivalente oral do HF</td><td data-label="Atenção">Preferir sempre que o paciente aceitar</td></tr>
-<tr><td data-label="Esquema">Haloperidol + Clorpromazina</td><td class="dose" data-label="Composição">Haloperidol 25–50gts + Clorpromazina 20–50gts</td><td data-label="Indicação">Agitação muito grave</td><td data-label="Atenção">Hipotensão importante, rebaixamento</td></tr>
-<tr><td data-label="Esquema">Clorpromazina + Clonazepam</td><td class="dose" data-label="Composição">Clorpromazina 20–50gts + Clonazepam 10–20gts</td><td data-label="Indicação">Contenção sem haloperidol</td><td data-label="Atenção">Hipotensão e rebaixamento somados</td></tr>
-</tbody>
-</table></div>
-<div class="callout warn"><b>Sobre "ter flumazenil à mão":</b> tê-lo disponível é correto, mas ele <b>não é o plano</b>. Na depressão respiratória por midazolam, a conduta é suporte ventilatório; o flumazenil pode precipitar convulsão refratária em usuário crônico de BZD ou em co-ingestão de proconvulsivante — situação comum nesta população. O antídoto de verdade é a bolsa-válvula-máscara.</div>
-
-<h3>Situações que mudam a escolha</h3>
-<div class="table-wrap"><table>
-<thead><tr><th>Contexto</th><th>Fazer</th><th>Evitar</th></tr></thead>
-<tbody>
-<tr><td data-label="Contexto">Abstinência alcoólica</td><td data-label="Fazer">Benzodiazepínico como base</td><td data-label="Evitar"><b>Antipsicótico isolado</b> — reduz o limiar convulsivo</td></tr>
-<tr><td data-label="Contexto">Intoxicação alcoólica aguda</td><td data-label="Fazer">Haloperidol em dose baixa; contenção verbal; monitorização</td><td data-label="Evitar">BZD adicional — sinergia depressora</td></tr>
-<tr><td data-label="Contexto">Intoxicação por cocaína/crack</td><td data-label="Fazer">Benzodiazepínico</td><td data-label="Evitar"><b>Betabloqueador</b>; haloperidol se houver hipertermia (piora a termorregulação)</td></tr>
-<tr><td data-label="Contexto">Delirium</td><td data-label="Fazer">Tratar a causa; haloperidol em dose baixa se necessário</td><td data-label="Evitar">BZD (piora a confusão), salvo abstinência</td></tr>
-<tr><td data-label="Contexto">Idoso</td><td data-label="Fazer">Metade da dose; haloperidol baixa dose</td><td data-label="Evitar">BZD e anticolinérgicos</td></tr>
-<tr><td data-label="Contexto">Gestante</td><td data-label="Fazer">Haloperidol ± prometazina</td><td data-label="Evitar"><b>Valproato</b>; BZD com cautela — seção 09</td></tr>
-</tbody>
-</table></div>
-</div>
-</details>
-</section>
-
-<!-- ============ ABSTINÊNCIAS ============ -->
-<section class="block abst" id="abstinencias">
-<details class="sec-fold" data-sec="abstinencias">
-<summary class="block-head"><span class="idx abst-bg">06</span><h2>Abstinências</h2><span class="tag">álcool · opioide · BZD</span><span class="fold-ind" aria-hidden="true"></span></summary>
-<div class="sec-body">
-<h3>Abstinência alcoólica — linha do tempo</h3>
-<div class="table-wrap"><table>
-<thead><tr><th>Tempo</th><th>Quadro</th><th>Risco</th></tr></thead>
-<tbody>
-<tr><td data-label="Tempo">6–12h</td><td data-label="Quadro">Tremor, sudorese, ansiedade, náusea, taquicardia</td><td data-label="Risco">Baixo — tratável ambulatorialmente</td></tr>
-<tr><td data-label="Tempo">12–24h</td><td data-label="Quadro"><b>Alucinose alcoólica</b> — alucinações com sensório preservado</td><td data-label="Risco">Sinal de gravidade; sensório <b>preservado</b> a distingue do DT</td></tr>
-<tr><td data-label="Tempo">24–48h</td><td data-label="Quadro"><b>Convulsão</b> tônico-clônica generalizada</td><td data-label="Risco">Anuncia risco de DT</td></tr>
-<tr><td data-label="Tempo">48–96h</td><td data-label="Quadro"><b>Delirium tremens</b> — confusão, desorientação, flutuação, febre, disautonomia</td><td data-label="Risco"><b>Mortalidade 5–15% sem tratamento adequado</b></td></tr>
-</tbody>
-</table></div>
-
-<h3>Tratamento</h3>
-<ul class="checklist">
-<li><b>Base:</b> benzodiazepínico de meia-vida longa — diazepam 10mg VO/EV. O efeito "ataque e decrescendo" protege contra convulsão e DT</li>
-<li><b>Esquema guiado por sintomas</b> (CIWA-Ar) reduz dose total e tempo de tratamento em relação ao horário fixo</li>
-<li><b>Não medicar por horário se o paciente estiver sonolento</b> — medicar por sintoma, reavaliando a cada 1–4h</li>
-<li><b>Hepatopatia grave:</b> trocar para lorazepam ou oxazepam</li>
-<li><b>Tiamina no tratamento da encefalopatia de Wernicke: <b>500mg EV 8/8h por 2–3 dias</b> (diluída em 100–250mL de SF 0,9%, correr em 30min) → <b>250mg/dia EV/IM por mais 3–5 dias</b> → manutenção <b>100mg/dia VO</b>. <b>Profilaxia</b> no etilista sem sinais de Wernicke: <b>250–300mg/dia</b>. Em ambos os casos, <b>antes de qualquer carga de glicose</b></b></li>
-<li>Repor K⁺, Mg²⁺ e fósforo; hidratação cuidadosa; avaliar folato e complexo B</li>
-<li>Esquema misto (dose fixa + demanda) em quem tem convulsão prévia, CIWA inicial muito alto ou demência</li>
-</ul>
-<div class="callout warn"><b>Correção importante:</b> <b>fenitoína não é eficaz</b> na convulsão por abstinência alcoólica — a fisiopatologia é GABAérgica, não focal. A conduta é benzodiazepínico (diazepam 10mg EV, ou midazolam 10mg IM sem acesso) e, depois da crise, <b>aumentar o BZD profilático</b>. Hidantalização só se houver outra causa estrutural de convulsão.</div>
-
-<h3>CIWA-Ar — faixas e conduta</h3>
-<div class="table-wrap"><table>
-<thead><tr><th>Escore</th><th>Gravidade</th><th>Conduta</th></tr></thead>
-<tbody>
-<tr><td data-label="Escore">&lt;8</td><td data-label="Gravidade">Leve</td><td data-label="Conduta">Geralmente sem necessidade de BZD; suporte e observação</td></tr>
-<tr><td data-label="Escore">8–15</td><td data-label="Gravidade">Moderada</td><td data-label="Conduta">Diazepam 10mg <span class="amp">(amp 2mL = 10mg)</span> a cada 1–2h enquanto CIWA-Ar ≥8; reavaliar</td></tr>
-<tr><td data-label="Escore">&gt;15</td><td data-label="Gravidade">Grave</td><td data-label="Conduta">BZD agressivo, vigilância para DT, considerar internação</td></tr>
-</tbody>
-</table></div>
-<p class="lede">Avalia 10 domínios (náusea, tremor, sudorese, ansiedade, agitação, alterações tátil, auditiva e visual, cefaleia, orientação); escore máximo 67. <b>Meta única: manter abaixo de 8.</b></p>
-
-<h3>Quando internar</h3>
-<ul class="checklist">
-<li>CIWA-Ar &gt;15 ou em ascensão</li>
-<li>História de convulsão por abstinência ou de delirium tremens</li>
-<li>Sinais autonômicos graves: FC &gt;120, PA &gt;180/110, temperatura &gt;38,5°C</li>
-<li>Alucinações ativas, confusão ou sinais neurológicos focais</li>
-<li>Comorbidade clínica descompensada, gestação, idoso frágil</li>
-<li>Ausência de suporte social ou risco de recaída imediata</li>
-<li>Co-ingestão de outras substâncias de risco</li>
-</ul>
-<div class="callout warn"><b>Delirium tremens instalado:</b> BZD em dose alta (diazepam 10mg EV a cada 5–10min até sedação leve) com monitorização contínua. Refratário: fenobarbital ou propofol em ambiente de terapia intensiva. <b>Risco clínico precede risco psiquiátrico</b> — esse paciente vai para a urgência clínica.</div>
-
-<h3>Abstinência de opioides</h3>
-<ul class="checklist">
-<li>Quadro de "gripe exuberante": <b>midríase</b>, lacrimejamento, rinorreia, piloereção, bocejos, mialgia, dor abdominal, diarreia, ansiedade</li>
-<li>Desconfortável e dramática, mas <b>raramente fatal</b> — ao contrário da alcoólica</li>
-<li>Quantificada pela <b>COWS</b> (Clinical Opiate Withdrawal Scale)</li>
-<li><b>Sintomático:</b> clonidina 0,1–0,2mg VO 6/6h (sintomas autonômicos), loperamida (diarreia), ibuprofeno (dor), ondansetrona (náusea), hidroxizina (ansiedade e insônia)</li>
-<li><b>Substitutivo:</b> metadona ou buprenorfina, em serviço habilitado</li>
-<li><b>Naltrexona só após 7–10 dias livre de opioide</b> — antes disso precipita abstinência aguda</li>
-</ul>
-
-<h3>Abstinência de estimulantes e de benzodiazepínicos</h3>
-<div class="table-wrap"><table>
-<thead><tr><th>Substância</th><th>Quadro</th><th>Conduta</th></tr></thead>
-<tbody>
-<tr><td data-label="Substância">Cocaína / crack</td><td data-label="Quadro">Sem síndrome física grave. Predomina o <b>"crash"</b>: disforia intensa, fadiga, hipersonia, fissura</td><td data-label="Conduta"><b>O risco é comportamental</b> — ideação suicida e recaída. Ambiente protegido, avaliação de risco, tratar comorbidade</td></tr>
-<tr><td data-label="Substância">Benzodiazepínicos</td><td data-label="Quadro">Início tardio conforme a meia-vida (dias a semanas). <b>Convulsão e delirium</b> — perigosa como a alcoólica</td><td data-label="Conduta">Converter para BZD de meia-vida longa (diazepam) e desmamar <b>5–10% a cada 2 semanas</b>, podendo levar meses. Nunca suspender abruptamente</td></tr>
-<tr><td data-label="Substância">Nicotina</td><td data-label="Quadro">Irritabilidade, ansiedade, fissura, aumento de apetite</td><td data-label="Conduta">Reposição de nicotina, bupropiona ou vareniclina; atenção à interação — parar de fumar <b>eleva o nível de clozapina e olanzapina</b></td></tr>
-</tbody>
-</table></div>
-</div>
-</details>
-</section>
-
-<!-- ============ EMERGÊNCIAS ============ -->
-<section class="block emerg" id="emergencias">
-<details class="sec-fold" data-sec="emergencias">
-<summary class="block-head"><span class="idx emerg-bg">07</span><h2>Emergências Neuropsiquiátricas</h2><span class="tag">SNM · EPS · Wernicke</span><span class="fold-ind" aria-hidden="true"></span></summary>
-<div class="sec-body">
-<h3>Espectro dos efeitos extrapiramidais</h3>
-<div class="table-wrap"><table>
-<thead><tr><th>Quadro</th><th>Quando aparece</th><th>Como se apresenta</th><th>Tratamento</th></tr></thead>
-<tbody>
-<tr><td data-label="Quadro"><b>Distonia aguda</b></td><td data-label="Quando">Horas a dias</td><td data-label="Apresentação">Torcicolo, crise oculógira, trismo, protrusão de língua; <b>laringoespasmo é emergência</b></td><td data-label="Tratamento"><b>Biperideno 5mg IM/EV</b> (1 amp), repetir em 30min se necessário — resposta em 15–30min. Formas leves: 2mg VO 2–3×/dia. Sem biperideno: prometazina 25–50mg IM</td></tr>
-<tr><td data-label="Quadro"><b>Acatisia</b></td><td data-label="Quando">Dias a semanas</td><td data-label="Apresentação">Inquietação interna insuportável, incapacidade de ficar parado. <b>Confundida com piora da agitação</b> — e aí se aumenta o antipsicótico, piorando tudo</td><td data-label="Tratamento">Reduzir a dose; propranolol 20–40mg 12/12h; benzodiazepínico; mirtazapina. <b>Anticolinérgico não resolve</b></td></tr>
-<tr><td data-label="Quadro"><b>Parkinsonismo</b></td><td data-label="Quando">Semanas a meses</td><td data-label="Apresentação">Tremor, rigidez, bradicinesia, fácies em máscara</td><td data-label="Tratamento">Reduzir dose, trocar por atípico, anticolinérgico</td></tr>
-<tr><td data-label="Quadro"><b>Discinesia tardia</b></td><td data-label="Quando">Meses a anos</td><td data-label="Apresentação">Movimentos involuntários orofaciais e de tronco</td><td data-label="Tratamento">Suspender ou trocar (clozapina); valbenazina/tetrabenazina. <b>Anticolinérgico piora</b></td></tr>
-</tbody>
-</table></div>
-<div class="callout emerg"><b>A distinção que muda a conduta:</b> acatisia e agitação psicótica parecem iguais à distância. Pergunte se a inquietação é <b>interna</b> ("não consigo ficar parado, é uma aflição nas pernas") — se for, aumentar o antipsicótico piora. Anticolinérgico resolve distonia e parkinsonismo, não resolve acatisia e agrava discinesia tardia.</div>
-
-<h3>Síndrome neuroléptica maligna × serotoninérgica</h3>
-<div class="table-wrap"><table>
-<thead><tr><th></th><th>Neuroléptica maligna</th><th>Serotoninérgica</th></tr></thead>
-<tbody>
-<tr><td data-label="—">Gatilho</td><td data-label="SNM">Antipsicótico (início ou aumento); retirada de dopaminérgico</td><td data-label="Serotoninérgica">Serotoninérgico associado a outro (ISRS + tramadol, triptano, IMAO, linezolida)</td></tr>
-<tr><td data-label="—">Instalação</td><td data-label="SNM"><b>Dias</b> — lenta</td><td data-label="Serotoninérgica"><b>Horas</b> — rápida</td></tr>
-<tr><td data-label="—">Neuromuscular</td><td data-label="SNM"><b>Rigidez "em cano de chumbo"</b>, generalizada, com hiporreflexia</td><td data-label="Serotoninérgica"><b>Hiperreflexia e clônus</b>, predomínio em membros inferiores; tremor</td></tr>
-<tr><td data-label="—">Outros</td><td data-label="SNM">Febre alta, disautonomia, <b>CPK muito elevada</b>, leucocitose</td><td data-label="Serotoninérgica">Midríase, diarreia, hiperatividade autonômica</td></tr>
-<tr><td data-label="—">Conduta</td><td data-label="SNM">Suspender antipsicótico, resfriar, hidratar (risco de rabdomiólise e IRA); dantroleno, bromocriptina; UTI</td><td data-label="Serotoninérgica">Suspender o agente, benzodiazepínico, resfriar; ciproeptadina 12mg de ataque, depois 2mg 2/2h</td></tr>
-</tbody>
-</table></div>
-<div class="callout warn"><b>O clônus é o sinal que separa as duas</b> e deve ser procurado ativamente na dorsiflexão do pé. Rigidez lenta e rígida com CPK alta é SNM; clônus rápido com hiperreflexia é serotoninérgica.</div>
-
-<h3>Encefalopatia de Wernicke</h3>
-<ul class="checklist">
-<li>Deficiência de tiamina no etilista e no desnutrido. <b>Emergência</b> e subdiagnosticada</li>
-<li>Tríade clássica (confusão + ataxia + oftalmoplegia/nistagmo) presente em <b>menos de 20%</b> — não esperar por ela</li>
-<li>Tiamina no tratamento da encefalopatia de Wernicke: <b>500mg EV 8/8h por 2–3 dias</b> (diluída em 100–250mL de SF 0,9%, correr em 30min) → <b>250mg/dia EV/IM por mais 3–5 dias</b> → manutenção <b>100mg/dia VO</b>. <b>Profilaxia</b> no etilista sem sinais de Wernicke: <b>250–300mg/dia</b>. Em ambos os casos, <b>antes de qualquer carga de glicose</b></li>
-<li><b>Sempre antes ou junto da glicose</b> — carga glicídica sem tiamina precipita o quadro</li>
-<li>Não tratada evolui para <b>síndrome de Korsakoff</b>: amnésia anterógrada irreversível com confabulação</li>
-</ul>
-
-<h3>Outras urgências</h3>
-<div class="table-wrap"><table>
-<thead><tr><th>Quadro</th><th>Reconhecimento</th><th>Conduta</th></tr></thead>
-<tbody>
-<tr><td data-label="Quadro">Intoxicação por lítio</td><td data-label="Reconhecimento">Tremor grosseiro, ataxia, confusão em paciente estável que iniciou AINE ou desidratou</td><td data-label="Conduta">Ver seção 03</td></tr>
-<tr><td data-label="Quadro">Agranulocitose por clozapina</td><td data-label="Reconhecimento">Febre, odinofagia, infecção em usuário de clozapina</td><td data-label="Conduta">Hemograma urgente, suspender, não reintroduzir</td></tr>
-<tr><td data-label="Quadro">Íleo por clozapina</td><td data-label="Reconhecimento">Constipação progressiva, distensão, parada de eliminação</td><td data-label="Conduta">Avaliação cirúrgica — complicação fatal mais frequente da droga</td></tr>
-<tr><td data-label="Quadro">Rash por lamotrigina</td><td data-label="Reconhecimento">Qualquer exantema nas primeiras 8 semanas, sobretudo com acometimento de mucosa</td><td data-label="Conduta"><b>Suspender imediatamente</b>; avaliar Stevens-Johnson</td></tr>
-<tr><td data-label="Quadro">Hiponatremia por carbamazepina/oxcarbazepina</td><td data-label="Reconhecimento">Confusão, cefaleia, convulsão; mais comum no idoso</td><td data-label="Conduta">Dosar sódio, suspender, corrigir com cautela</td></tr>
-<tr><td data-label="Quadro">Priapismo por trazodona</td><td data-label="Reconhecimento">Ereção dolorosa e prolongada</td><td data-label="Conduta">Urgência urológica — risco de disfunção permanente</td></tr>
-</tbody>
-</table></div>
-<p class="lede">Intoxicações exógenas em geral, toxíndromes e antídotos → <a href="guia_bolso_paciente_critico.html#tox" style="color:inherit;font-weight:600;">Guia de Paciente Crítico, seção 10 — Toxicologia →</a></p>
-</div>
-</details>
-</section>
-<!-- ============ TROCA E DESMAME ============ -->
-<section class="block troca" id="troca">
-<details class="sec-fold" data-sec="troca">
-<summary class="block-head"><span class="idx troca-bg">08</span><h2>Decisão Terapêutica</h2><span class="tag">esperar · trocar · manter</span><span class="fold-ind" aria-hidden="true"></span></summary>
-<div class="sec-body">
-<div class="callout troca"><b>Quatro decisões, nesta ordem:</b> iniciar, esperar, ajustar ou não mexer. <b>Iniciar</b> quando há sofrimento significativo, risco ou diagnóstico estabelecido. <b>Esperar</b> quando o tempo mínimo de resposta ainda não passou. <b>Ajustar</b> diante de resposta parcial após tempo adequado, efeito intolerável ou nova fase. <b>Não mexer</b> em quem está estável há meses ou em esquema de especialista.</div>
-
-<h3>Quanto tempo esperar antes de concluir que falhou</h3>
-<div class="table-wrap"><table>
-<thead><tr><th>Classe</th><th>Resposta inicial</th><th>Resposta plena</th><th>Só troque depois de</th></tr></thead>
-<tbody>
-<tr><td data-label="Classe">Antidepressivo</td><td data-label="Inicial">3–4 semanas</td><td data-label="Plena">6–8 semanas</td><td data-label="Trocar">4–6 semanas <b>em dose otimizada</b>, com adesão confirmada</td></tr>
-<tr><td data-label="Classe">Antidepressivo no TOC</td><td data-label="Inicial">4–6 semanas</td><td data-label="Plena">10–12 semanas</td><td data-label="Trocar">12 semanas em dose alta</td></tr>
-<tr><td data-label="Classe">Antipsicótico</td><td data-label="Inicial">1–2 semanas (agitação responde antes)</td><td data-label="Plena">4–6 semanas</td><td data-label="Trocar">4–6 semanas em dose adequada</td></tr>
-<tr><td data-label="Classe">Lítio</td><td data-label="Inicial">1–2 semanas em mania</td><td data-label="Plena">Profilaxia: meses</td><td data-label="Trocar">Nível terapêutico confirmado por litemia</td></tr>
-<tr><td data-label="Classe">Lamotrigina</td><td data-label="Inicial">—</td><td data-label="Plena">Após atingir 200mg</td><td data-label="Trocar">Titulação completa</td></tr>
-</tbody>
-</table></div>
-<div class="callout warn"><b>Antes de trocar qualquer coisa, cheque as quatro:</b> ① adesão real, não a declarada; ② dose otimizada até o teto tolerado; ③ diagnóstico correto — descartar bipolaridade, uso de substância, hipotireoidismo, anemia, apneia; ④ contexto — nenhuma medicação trata desemprego, violência doméstica ou situação de rua.</div>
-
-<h3>Métodos de troca — vale para qualquer classe</h3>
-<div class="table-wrap"><table>
-<thead><tr><th>Método</th><th>Como fazer</th><th>Quando usar</th></tr></thead>
-<tbody>
-<tr><td data-label="Método"><b>Cruzada</b> (padrão)</td><td data-label="Como">Reduzir o primeiro enquanto sobe o segundo</td><td data-label="Quando">Maioria das trocas</td></tr>
-<tr><td data-label="Método">Direta</td><td data-label="Como">Parar um e começar o outro no dia seguinte</td><td data-label="Quando">Só entre fármacos muito semelhantes, em dose baixa</td></tr>
-<tr><td data-label="Método">Sobreposição com retirada lenta</td><td data-label="Como">Levar o novo à dose plena e só então retirar o antigo</td><td data-label="Quando">Paciente <b>instável</b>, ou saindo de droga com rebote (clozapina, olanzapina, lítio)</td></tr>
-<tr><td data-label="Método">Com intervalo (<i>washout</i>)</td><td data-label="Como">Suspender e aguardar antes de iniciar</td><td data-label="Quando"><b>Só é obrigatório com IMAO</b> — 14 dias, ou 5 semanas ao sair da fluoxetina</td></tr>
-</tbody>
-</table></div>
-<div class="callout troca"><b>Onde está o detalhe de cada classe:</b> troca e desmame de <a href="#antidepressivos" style="color:inherit;font-weight:600;">antidepressivo (seção 01)</a> · <a href="#antipsicoticos" style="color:inherit;font-weight:600;">antipsicótico (seção 02)</a> · <a href="#estabilizadores" style="color:inherit;font-weight:600;">estabilizador (seção 03)</a> · <a href="#benzodiazepinicos" style="color:inherit;font-weight:600;">benzodiazepínico (seção 04)</a>. Cada uma tem as armadilhas próprias do mecanismo.</div>
-
-<h3>O que muda conforme a droga que sai</h3>
-<div class="table-wrap"><table>
-<thead><tr><th>Ao retirar</th><th>Fenômeno esperado</th><th>Não confundir com</th></tr></thead>
-<tbody>
-<tr><td data-label="Ao retirar">ISRS/IRSN de meia-vida curta</td><td data-label="Fenômeno">Síndrome de descontinuação (FINISH), em dias</td><td data-label="Não confundir">Recaída depressiva — esta leva semanas</td></tr>
-<tr><td data-label="Ao retirar">Tricíclico</td><td data-label="Fenômeno">Rebote colinérgico: náusea, cólica, sudorese, insônia</td><td data-label="Não confundir">Gastroenterite, ansiedade</td></tr>
-<tr><td data-label="Ao retirar">Olanzapina, quetiapina, clozapina</td><td data-label="Fenômeno">Rebote colinérgico e insônia intensa</td><td data-label="Não confundir">Recaída psicótica — leva a reintroduzir sem necessidade</td></tr>
-<tr><td data-label="Ao retirar">Clozapina abruptamente</td><td data-label="Fenômeno"><b>Psicose de rebote grave</b></td><td data-label="Não confundir">"Piora natural da doença"</td></tr>
-<tr><td data-label="Ao retirar">Antipsicótico de uso longo</td><td data-label="Fenômeno">Discinesia de retirada; psicose de supersensibilidade</td><td data-label="Não confundir">Discinesia tardia nova</td></tr>
-<tr><td data-label="Ao retirar">Lítio</td><td data-label="Fenômeno"><b>Mania de rebote precoce</b></td><td data-label="Não confundir">Ciclagem natural do transtorno</td></tr>
-<tr><td data-label="Ao retirar">Benzodiazepínico</td><td data-label="Fenômeno">Ansiedade de rebote, insônia; convulsão se abrupto</td><td data-label="Não confundir">Retorno do transtorno de base</td></tr>
-<tr><td data-label="Ao retirar">Carbamazepina</td><td data-label="Fenômeno">Fim da indução em 2–4 semanas — <b>outros fármacos sobem</b></td><td data-label="Não confundir">Efeito adverso do fármaco novo</td></tr>
-</tbody>
-</table></div>
-
-<h3>Por quanto tempo manter</h3>
-<div class="table-wrap"><table>
-<thead><tr><th>Situação</th><th>Duração após remissão</th></tr></thead>
-<tbody>
-<tr><td data-label="Situação">1º episódio depressivo ou ansioso</td><td data-label="Duração">6–12 meses</td></tr>
-<tr><td data-label="Situação">2º episódio</td><td data-label="Duração">2 anos</td></tr>
-<tr><td data-label="Situação">≥3 episódios, episódio grave, risco suicida, sintomas residuais ou história familiar forte</td><td data-label="Duração"><b>Indefinida</b></td></tr>
-<tr><td data-label="Situação">Transtorno bipolar</td><td data-label="Duração">Estabilizador em geral <b>indefinido</b></td></tr>
-<tr><td data-label="Situação">Esquizofrenia — 1º episódio</td><td data-label="Duração">1–2 anos no mínimo</td></tr>
-<tr><td data-label="Situação">Esquizofrenia — múltiplos episódios</td><td data-label="Duração"><b>Indefinida</b></td></tr>
-<tr><td data-label="Situação">Benzodiazepínico</td><td data-label="Duração"><b>2–4 semanas</b> — com data de saída definida já na primeira receita</td></tr>
-</tbody>
-</table></div>
-<p class="lede"><b>Remissão não é cura.</b> A maior parte das recaídas evitáveis vem de suspensão precoce logo depois que o paciente melhora.</p>
-</div>
-</details>
-</section>
-
-<!-- ============ GESTAÇÃO ============ -->
-<section class="block gest" id="gestacao">
-<details class="sec-fold" data-sec="gestacao">
-<summary class="block-head"><span class="idx gest-bg">09</span><h2>Gestação e Lactação</h2><span class="tag">risco por classe</span><span class="fold-ind" aria-hidden="true"></span></summary>
-<div class="sec-body">
-<div class="callout gest"><b>O erro mais comum é suspender tudo ao descobrir a gestação.</b> Transtorno psiquiátrico não tratado na gestação tem risco próprio — prematuridade, baixo peso, pior vínculo, uso de substâncias, suicídio (causa importante de morte materna). A decisão é sempre <b>risco do fármaco × risco da doença não tratada</b>, e não "na dúvida, suspender".</div>
-
-<h3>Princípios</h3>
-<ul class="checklist">
-<li><b>Monoterapia sempre que possível</b>, na menor dose eficaz — melhor uma droga em dose plena que duas em dose baixa</li>
-<li>Se a gestação for descoberta com o paciente estável, <b>em geral se mantém o esquema</b> — trocar expõe o feto a duas drogas e arrisca recaída. <b>Exceções: valproato e carbamazepina</b>, que devem ser reavaliados com urgência</li>
-<li>Preferir droga com maior histórico de uso, e não a mais nova</li>
-<li><b>Volume plasmático sobe ~30% no 3º trimestre</b> — níveis séricos caem e a dose frequentemente precisa subir; reavaliar no pós-parto para evitar intoxicação</li>
-<li>Ácido fólico em toda mulher em idade fértil em uso de anticonvulsivante</li>
-<li><b>Puerpério é o período de maior risco de recaída</b> no bipolar — planejar antes do parto</li>
-</ul>
-
-<h3>Antidepressivos</h3>
-<div class="table-wrap"><table>
-<thead><tr><th>Fármaco</th><th>Gestação</th><th>Lactação</th></tr></thead>
-<tbody>
-<tr><td data-label="Fármaco"><b>Sertralina</b></td><td data-label="Gestação"><b>1ª escolha</b> — maior volume de dados, sem sinal consistente de malformação</td><td data-label="Lactação"><b>Preferida</b> — das mais baixas transferências para o leite</td></tr>
-<tr><td data-label="Fármaco">Escitalopram / citalopram</td><td data-label="Gestação">Alternativa aceitável</td><td data-label="Lactação">Compatível</td></tr>
-<tr><td data-label="Fármaco">Fluoxetina</td><td data-label="Gestação">Aceitável; muitos dados</td><td data-label="Lactação">Meia-vida longa — maior acúmulo no lactente que a sertralina</td></tr>
-<tr><td data-label="Fármaco"><b>Paroxetina</b></td><td data-label="Gestação"><b>Evitar</b> — sinal de malformação cardíaca no 1º trimestre</td><td data-label="Lactação">Baixa transferência, mas evitar iniciar</td></tr>
-<tr><td data-label="Fármaco">Venlafaxina / duloxetina</td><td data-label="Gestação">Usar se houve resposta prévia; menos dados que os ISRS</td><td data-label="Lactação">Aceitável com monitorização do lactente</td></tr>
-<tr><td data-label="Fármaco">Tricíclicos</td><td data-label="Gestação">Nortriptilina é a preferida da classe</td><td data-label="Lactação">Compatível</td></tr>
-<tr><td data-label="Fármaco">Bupropiona</td><td data-label="Gestação">Reservar para indicação específica (tabagismo)</td><td data-label="Lactação">Relatos de convulsão no lactente — cautela</td></tr>
-</tbody>
-</table></div>
-<div class="callout gest">Uso de ISRS no 3º trimestre associa-se à <b>síndrome de má adaptação neonatal</b> — irritabilidade, tremor, taquipneia e dificuldade alimentar, autolimitada em poucos dias. Isso <b>não é indicação de suspender</b> o antidepressivo antes do parto: a retirada aumenta a recaída materna sem benefício neonatal demonstrado. Avisar a equipe da maternidade basta.</div>
-
-<h3>Estabilizadores — a decisão mais difícil</h3>
-<div class="table-wrap"><table>
-<thead><tr><th>Fármaco</th><th>Risco</th><th>Conduta</th></tr></thead>
-<tbody>
-<tr><td data-label="Fármaco"><b>Valproato</b></td><td data-label="Risco"><b>O mais teratogênico da psiquiatria</b>: defeitos de tubo neural, malformações múltiplas (~9–11%), redução de QI e maior risco de autismo e TDAH</td><td data-label="Conduta"><b>Contraindicado.</b> Não prescrever a mulher em idade fértil sem contracepção eficaz e discussão registrada</td></tr>
-<tr><td data-label="Fármaco"><b>Carbamazepina</b></td><td data-label="Risco">Espinha bífida, deficiência de vitamina K tardia; teratogenicidade próxima à do valproato</td><td data-label="Conduta">Evitar; se mantida, folato e vitamina K no fim da gestação</td></tr>
-<tr><td data-label="Fármaco"><b>Lítio</b></td><td data-label="Risco">Malformação cardíaca — risco <b>bem menor do que se pensava</b>. Cardiopatia em ~2,4% dos expostos contra 1,15% dos não expostos; anomalia de Ebstein em torno de 0,6% contra 0,18%. O risco é <b>dose-dependente</b> e não apareceu com doses ≤600mg/dia</td><td data-label="Conduta">Pode ser mantido quando o benefício é claro (bipolar grave, boa resposta prévia, risco suicida). Menor dose eficaz, litemia frequente, <b>ecocardiograma fetal</b> e ultrassom morfológico. Hidratação no periparto; suspender 24–48h antes do parto</td></tr>
-<tr><td data-label="Fármaco"><b>Lamotrigina</b></td><td data-label="Risco">Perfil favorável — <b>sem aumento consistente de malformação</b></td><td data-label="Conduta">Preferida na prevenção de depressão bipolar. O <b>clearance sobe muito na gestação</b>: monitorar e ajustar, reduzindo rápido no pós-parto</td></tr>
-<tr><td data-label="Fármaco"><b>Quetiapina</b></td><td data-label="Risco">Boa alternativa ao valproato em mulher em idade fértil</td><td data-label="Conduta">Considerada primeira escolha entre os antipsicóticos nesse cenário</td></tr>
-</tbody>
-</table></div>
-<div class="callout warn"><b>A conversa que precisa acontecer antes:</b> toda mulher em idade fértil que recebe valproato ou carbamazepina precisa de contracepção eficaz e de registro da discussão em prontuário. Lembrar que a <b>carbamazepina reduz a eficácia do anticoncepcional hormonal</b> por indução enzimática — a combinação "carbamazepina + pílula" é uma armadilha frequente.</div>
-
-<h3>Antipsicóticos e benzodiazepínicos</h3>
-<div class="table-wrap"><table>
-<thead><tr><th>Classe</th><th>Gestação</th><th>Lactação</th></tr></thead>
-<tbody>
-<tr><td data-label="Classe">Haloperidol</td><td data-label="Gestação">Longa experiência de uso; opção em agitação aguda na gestante</td><td data-label="Lactação">Compatível com monitorização</td></tr>
-<tr><td data-label="Classe">Quetiapina / olanzapina</td><td data-label="Gestação">Boa base de dados; olanzapina soma risco metabólico e de <b>diabetes gestacional</b></td><td data-label="Lactação">Quetiapina tem das menores transferências</td></tr>
-<tr><td data-label="Classe">Risperidona</td><td data-label="Gestação">Aceitável; hiperprolactinemia pode dificultar a concepção</td><td data-label="Lactação">Aceitável</td></tr>
-<tr><td data-label="Classe">Clozapina</td><td data-label="Gestação">Manter apenas se refratariedade justificar; risco de agranulocitose neonatal</td><td data-label="Lactação"><b>Evitar</b></td></tr>
-<tr><td data-label="Classe">Benzodiazepínicos</td><td data-label="Gestação">Cautela. Perto do parto: <b>hipotonia neonatal e abstinência no recém-nascido</b>. Uso pontual é diferente de uso contínuo</td><td data-label="Lactação">Preferir meia-vida curta e dose única; vigiar sedação e ganho de peso do lactente</td></tr>
-<tr><td data-label="Classe">Lítio</td><td data-label="Gestação">Ver acima</td><td data-label="Lactação">Passagem significativa ao leite — se amamentar, monitorar o lactente e manter hidratação</td></tr>
-</tbody>
-</table></div>
-<div class="callout gest"><b>Agitação aguda na gestante:</b> haloperidol ± prometazina é o esquema de escolha. <b>Valproato está fora.</b> Preferir via oral, decúbito lateral esquerdo a partir do 2º trimestre e monitorização materna e fetal. Convulsão em gestante ≥20 semanas é eclâmpsia até prova em contrário.</div>
-</div>
-</details>
-</section>
-
-<!-- ============ MONITORIZAÇÃO ============ -->
-<section class="block monit" id="monitorizacao">
-<details class="sec-fold" data-sec="monitorizacao">
-<summary class="block-head"><span class="idx monit-bg">10</span><h2>Monitorização e Interações</h2><span class="tag">exames · interações</span><span class="fold-ind" aria-hidden="true"></span></summary>
-<div class="sec-body">
-<h3>Exames por medicação</h3>
-<div class="table-wrap"><table>
-<thead><tr><th>Medicação</th><th>Exames</th><th>Frequência</th></tr></thead>
-<tbody>
-<tr><td data-label="Medicação"><b>Lítio</b></td><td data-label="Exames">Litemia (12h após a dose), creatinina e TFG, TSH, cálcio; basal com hemograma, glicemia e urina; ECG no idoso</td><td data-label="Frequência">Basal, após cada ajuste, a cada 3 meses no 1º ano, depois 6/6 meses se estável</td></tr>
-<tr><td data-label="Medicação"><b>Valproato</b></td><td data-label="Exames">Nível sérico, hemograma (plaquetas), TGO/TGP, amônia se sintomas, peso</td><td data-label="Frequência">Basal e a cada 3 meses no 1º ano</td></tr>
-<tr><td data-label="Medicação"><b>Carbamazepina</b></td><td data-label="Exames">Hemograma, TGO/TGP, <b>sódio</b>, nível sérico</td><td data-label="Frequência">Basal e a cada 3 meses no 1º ano</td></tr>
-<tr><td data-label="Medicação"><b>Clozapina</b></td><td data-label="Exames"><b>Neutrófilos</b>; troponina e CK-MB se suspeita de miocardite; perfil metabólico; avaliação de constipação a cada consulta</td><td data-label="Frequência">Semanal nas primeiras 18 semanas, depois mensal — ver nota abaixo</td></tr>
-<tr><td data-label="Medicação">Antipsicóticos atípicos</td><td data-label="Exames">Peso e IMC, circunferência abdominal, PA, glicemia ou HbA1c, perfil lipídico</td><td data-label="Frequência">Basal, 3 meses, 6 meses, depois anual</td></tr>
-<tr><td data-label="Medicação">Citalopram, escitalopram, ziprasidona, haloperidol</td><td data-label="Exames">ECG com QTc; K⁺ e Mg²⁺</td><td data-label="Frequência">Basal se cardiopatia, idade avançada ou polifarmácia com QT</td></tr>
-<tr><td data-label="Medicação">Venlafaxina / desvenlafaxina</td><td data-label="Exames">Pressão arterial</td><td data-label="Frequência">A cada consulta, sobretudo acima de 150mg</td></tr>
-</tbody>
-</table></div>
-<div class="callout monit"><b>Nota sobre a clozapina — mudou recentemente.</b> O programa restritivo de dispensação foi eliminado em 2025, mantendo-se a recomendação de monitorar neutrófilos; o consenso internacional seguinte propôs manter semanal por 18 semanas, depois a cada 4 semanas, e <b>após 2 anos</b> encerrar a contagem rotineira, substituindo-a por hemograma anual. Isso não altera automaticamente as exigências de dispensação no Brasil — confirmar o protocolo vigente da farmácia antes de espaçar exames.</div>
-
-<h3>Interações que causam dano</h3>
-<div class="table-wrap"><table>
-<thead><tr><th>Combinação</th><th>O que acontece</th></tr></thead>
-<tbody>
-<tr><td data-label="Combinação"><b>Lítio + AINE, tiazídico ou IECA/BRA</b></td><td data-label="Efeito">Elevam a litemia → intoxicação. A causa mais frequente de intoxicação em paciente antes estável</td></tr>
-<tr><td data-label="Combinação"><b>Valproato + lamotrigina</b></td><td data-label="Efeito">Dobra o nível da lamotrigina → Stevens-Johnson. Titular com metade da dose</td></tr>
-<tr><td data-label="Combinação"><b>Carbamazepina + praticamente tudo</b></td><td data-label="Efeito">Indução do CYP3A4 derruba níveis — inclusive de anticoncepcional, antirretroviral e da própria lamotrigina</td></tr>
-<tr><td data-label="Combinação"><b>Fluvoxamina + clozapina</b></td><td data-label="Efeito">Inibição do CYP1A2 eleva muito o nível da clozapina → toxicidade</td></tr>
-<tr><td data-label="Combinação"><b>Parar de fumar</b> em uso de clozapina ou olanzapina</td><td data-label="Efeito">A fumaça induz o CYP1A2; cessar <b>eleva o nível da droga</b> e pode causar toxicidade em dias</td></tr>
-<tr><td data-label="Combinação"><b>ISRS + tramadol, triptano, linezolida ou IMAO</b></td><td data-label="Efeito">Síndrome serotoninérgica</td></tr>
-<tr><td data-label="Combinação"><b>Olanzapina IM + BZD parenteral</b></td><td data-label="Efeito">Depressão cardiorrespiratória grave</td></tr>
-<tr><td data-label="Combinação"><b>BZD + opioide + álcool</b></td><td data-label="Efeito">Sinergia depressora respiratória — combinação frequente e letal nesta população</td></tr>
-<tr><td data-label="Combinação"><b>Múltiplos prolongadores de QT</b></td><td data-label="Efeito">Haloperidol, ziprasidona, metadona, ondansetrona, citalopram, macrolídeo → Torsades</td></tr>
-<tr><td data-label="Combinação">Fluoxetina ou paroxetina + tricíclico</td><td data-label="Efeito">Inibição do CYP2D6 eleva o nível do tricíclico → cardiotoxicidade</td></tr>
-</tbody>
-</table></div>
-
-<h3>Princípios de prescrição segura</h3>
-<ul class="checklist">
-<li><b>Antes:</b> diagnóstico, idade, comorbidades, substâncias em uso, alergias, gestação e interações</li>
-<li><b>Durante:</b> menor dose eficaz, <b>uma mudança por vez</b>, e orientar o tempo esperado de resposta — paciente que não sabe que vai demorar abandona na segunda semana</li>
-<li><b>Depois:</b> reavaliar em prazo definido, orientar sinais de alerta, registrar e discutir em equipe</li>
-<li>Em etilista: risco maior de rebaixamento com BZD, sempre repor tiamina, monitorar SSVV com mais frequência</li>
-<li><b>Não existe medicação que trate um contexto ruim</b> — moradia, renda, vínculo e rede entram no plano junto com a receita</li>
-</ul>
-</div>
-</details>
-</section>
-<!-- ============ PSICOESTIMULANTES ============ -->
 <section class="block est" id="psicoestimulantes">
 <details class="sec-fold" data-sec="psicoestimulantes">
-<summary class="block-head"><span class="idx est-bg">11</span><h2>Psicoestimulantes</h2><span class="tag">conversão · troca · suspensão</span><span class="fold-ind" aria-hidden="true"></span></summary>
+<summary class="block-head"><span class="idx est-bg">05</span><h2>Psicoestimulantes</h2><span class="tag">conversão · troca · suspensão</span><span class="fold-ind" aria-hidden="true"></span></summary>
 <div class="sec-body">
 <div class="callout est"><b>Aqui a conversão entre apresentações do mesmo fármaco é confiável; entre fármacos diferentes, não é.</b> Metilfenidato e anfetamina têm potências e curvas distintas, e a resposta individual varia muito. Trocar de classe exige <b>retitular do início</b>, não aplicar um fator de conversão.</div>
 
@@ -1318,10 +983,462 @@
 </div>
 </details>
 </section>
-<!-- ============ REFERÊNCIAS ============ -->
+<section class="block agit" id="agitacao">
+<details class="sec-fold" data-sec="agitacao">
+<summary class="block-head"><span class="idx agit-bg">06</span><h2>Agitação Aguda</h2><span class="tag">VO · IM · combinações</span><span class="fold-ind" aria-hidden="true"></span></summary>
+<div class="sec-body">
+<div class="callout warn"><b>Contenção química é conforto e segurança, nunca punição.</b> O objetivo é acalmar o paciente a ponto de permitir avaliação e diálogo — não derrubá-lo. Sedação excessiva mascara o exame neurológico, e é justamente o exame que vai revelar a causa orgânica que você ainda não descartou.</div>
+
+<h3>Antes de medicar</h3>
+<div class="seq">
+<div class="step"><div class="n">1</div><div class="t">Causa provável</div><div class="d">psicose, mania, intoxicação, abstinência, delirium, dor</div></div>
+<div class="step"><div class="n">2</div><div class="t">Glicemia e SSVV</div><div class="d">+ oximetria — hipoglicemia imita agitação psiquiátrica</div></div>
+<div class="step"><div class="n">3</div><div class="t">Desescalada verbal</div><div class="d">ambiente calmo, distância segura, voz firme não confrontativa</div></div>
+<div class="step"><div class="n">4</div><div class="t">VO se aceitar</div><div class="d">resposta em 30–60min · mais digno e mais seguro</div></div>
+<div class="step"><div class="n">5</div><div class="t">IM se recusa</div><div class="d">ou risco iminente · início em 15–30min</div></div>
+<div class="step"><div class="n">6</div><div class="t">Monitorar</div><div class="d">SSVV e nível de consciência a cada 15min</div></div>
+</div>
+<div class="callout agit"><b>Regra prática que organiza a escolha:</b> se a agitação vem de <b>abstinência</b>, a base é benzodiazepínico. Se vem de <b>psicose ou mania</b>, a base é antipsicótico. Se vem de <b>intoxicação por estimulante</b>, a base é benzodiazepínico. Se vem de <b>intoxicação por depressor</b>, evite sedar mais — trate o suporte.</div>
+
+<h3>Medicações isoladas</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Medicação</th><th>Dose</th><th>Indicação</th><th>Atenção</th></tr></thead>
+<tbody>
+<tr><td data-label="Medicação">Haloperidol</td><td class="dose" data-label="Dose">IM 5mg (1 amp de 5mg/mL) · VO 25–50gts (2mg/mL)</td><td data-label="Indicação">Sintomas produtivos, agitação psicótica</td><td data-label="Atenção">EPS; repetir em 30–60min se necessário. Não fazer EV</td></tr>
+<tr><td data-label="Medicação">Prometazina</td><td class="dose" data-label="Dose">IM 25–50mg (amp 50mg/2mL) · VO 1–2cp de 25mg</td><td data-label="Indicação">Sedação e prevenção de distonia</td><td data-label="Atenção">Sedação importante, efeito anticolinérgico, hipotensão</td></tr>
+<tr><td data-label="Medicação">Clorpromazina</td><td class="dose" data-label="Dose">VO 25–50gts (40mg/mL)</td><td data-label="Indicação">Fissura, agitação, contenção</td><td data-label="Atenção"><b>Hipotensão</b>; cautela em etilista</td></tr>
+<tr><td data-label="Medicação">Midazolam</td><td class="dose" data-label="Dose">IM 7,5–15mg (amp 15mg/3mL → 1,5–3mL)</td><td data-label="Indicação">Sedação rápida; preferível em intoxicação por estimulante</td><td data-label="Atenção"><b>Depressão respiratória</b>; oximetria obrigatória; risco alto em etilista</td></tr>
+<tr><td data-label="Medicação">Olanzapina</td><td class="dose" data-label="Dose">IM 10mg</td><td data-label="Indicação">Agitação em mania e psicose</td><td data-label="Atenção"><b>Nunca com BZD parenteral</b> — depressão cardiorrespiratória</td></tr>
+<tr><td data-label="Medicação">Clonazepam</td><td class="dose" data-label="Dose">VO 5–20gts (2,5mg/mL)</td><td data-label="Indicação">Sedação e ansiedade</td><td data-label="Atenção">Rebaixamento em etilista</td></tr>
+<tr><td data-label="Medicação">Valproato</td><td class="dose" data-label="Dose">VO 5–10mL (50mg/mL)</td><td data-label="Indicação">Contenção e estabilização em mania</td><td data-label="Atenção"><b>Contraindicado em gestante</b></td></tr>
+<tr><td data-label="Medicação">Diazepam</td><td class="dose" data-label="Dose">VO 10mg</td><td data-label="Indicação">Abstinência alcoólica leve a moderada</td><td data-label="Atenção">Rebaixamento; não fazer IM</td></tr>
+</tbody>
+</table></div>
+
+<h3>Combinações</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Esquema</th><th>Composição</th><th>Indicação</th><th>Atenção</th></tr></thead>
+<tbody>
+<tr><td data-label="Esquema"><b>HF (Haldol + Fenergan)</b></td><td class="dose" data-label="Composição">Haloperidol 5mg <span class="amp">(5mg/mL, amp 1mL)</span> IM + Prometazina 50mg <span class="amp">(25mg/mL, amp 2mL = 50mg)</span> IM</td><td data-label="Indicação">Agitação psicótica ou maníaca grave — o esquema de referência</td><td data-label="Atenção">A prometazina mitiga a distonia do haloperidol e soma sedação</td></tr>
+<tr><td data-label="Esquema">Haloperidol + Midazolam</td><td class="dose" data-label="Composição">Haloperidol 5mg <span class="amp">(5mg/mL, amp 1mL)</span> IM + Midazolam 7,5–15mg <span class="amp">(5mg/mL, amp 3mL = 15mg)</span> IM</td><td data-label="Indicação">Agitação intensa, contenção potente</td><td data-label="Atenção"><b>Maior risco de depressão respiratória.</b> SSVV a cada 15min, oximetria e flumazenil acessível — mas ver a ressalva abaixo</td></tr>
+<tr><td data-label="Esquema">Haloperidol + Clonazepam</td><td class="dose" data-label="Composição">Haloperidol 25–50gts + Clonazepam 10–20gts VO</td><td data-label="Indicação">Contenção com sedação adicional, por via oral</td><td data-label="Atenção">Rebaixamento, sobretudo em etilista</td></tr>
+<tr><td data-label="Esquema">Haloperidol + Prometazina VO</td><td class="dose" data-label="Composição">Haloperidol 25–50gts + Prometazina 1–2cp</td><td data-label="Indicação">Equivalente oral do HF</td><td data-label="Atenção">Preferir sempre que o paciente aceitar</td></tr>
+<tr><td data-label="Esquema">Haloperidol + Clorpromazina</td><td class="dose" data-label="Composição">Haloperidol 25–50gts + Clorpromazina 20–50gts</td><td data-label="Indicação">Agitação muito grave</td><td data-label="Atenção">Hipotensão importante, rebaixamento</td></tr>
+<tr><td data-label="Esquema">Clorpromazina + Clonazepam</td><td class="dose" data-label="Composição">Clorpromazina 20–50gts + Clonazepam 10–20gts</td><td data-label="Indicação">Contenção sem haloperidol</td><td data-label="Atenção">Hipotensão e rebaixamento somados</td></tr>
+</tbody>
+</table></div>
+<div class="callout warn"><b>Sobre "ter flumazenil à mão":</b> tê-lo disponível é correto, mas ele <b>não é o plano</b>. Na depressão respiratória por midazolam, a conduta é suporte ventilatório; o flumazenil pode precipitar convulsão refratária em usuário crônico de BZD ou em co-ingestão de proconvulsivante — situação comum nesta população. O antídoto de verdade é a bolsa-válvula-máscara.</div>
+
+<h3>Situações que mudam a escolha</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Contexto</th><th>Fazer</th><th>Evitar</th></tr></thead>
+<tbody>
+<tr><td data-label="Contexto">Abstinência alcoólica</td><td data-label="Fazer">Benzodiazepínico como base</td><td data-label="Evitar"><b>Antipsicótico isolado</b> — reduz o limiar convulsivo</td></tr>
+<tr><td data-label="Contexto">Intoxicação alcoólica aguda</td><td data-label="Fazer">Haloperidol em dose baixa; contenção verbal; monitorização</td><td data-label="Evitar">BZD adicional — sinergia depressora</td></tr>
+<tr><td data-label="Contexto">Intoxicação por cocaína/crack</td><td data-label="Fazer">Benzodiazepínico</td><td data-label="Evitar"><b>Betabloqueador</b>; haloperidol se houver hipertermia (piora a termorregulação)</td></tr>
+<tr><td data-label="Contexto">Delirium</td><td data-label="Fazer">Tratar a causa; haloperidol em dose baixa se necessário</td><td data-label="Evitar">BZD (piora a confusão), salvo abstinência</td></tr>
+<tr><td data-label="Contexto">Idoso</td><td data-label="Fazer">Metade da dose; haloperidol baixa dose</td><td data-label="Evitar">BZD e anticolinérgicos</td></tr>
+<tr><td data-label="Contexto">Gestante</td><td data-label="Fazer">Haloperidol ± prometazina</td><td data-label="Evitar"><b>Valproato</b>; BZD com cautela — seção 11</td></tr>
+</tbody>
+</table></div>
+<h3>Contenção mecânica</h3>
+<div class="callout warn"><b>É procedimento médico, não medida disciplinar.</b> Só depois de esgotadas desescalada verbal, oferta de medicação oral e manejo ambiental. Nunca por conveniência da equipe, punição ou falta de pessoal.</div>
+<ul class="checklist">
+<li><b>Indicação:</b> risco iminente de agressão a si ou a outros que não cede por outros meios, ou necessidade de garantir tratamento vital em paciente sem condição de consentir</li>
+<li><b>Equipe de 4 a 5 pessoas</b>, uma para cada membro e uma para a cabeça, com um profissional coordenando e falando — só uma voz</li>
+<li><b>Decúbito dorsal com cabeceira elevada</b>; nunca em prona (risco de asfixia posicional). Faixas nos quatro membros, acolchoadas, firmes sem comprimir; verificar pulso e perfusão distal</li>
+<li>Retirar objetos de risco; manter privacidade e o mínimo de exposição</li>
+<li><b>Medicar em seguida</b> — a contenção é ponte para a sedação, não substituto dela</li>
+<li><b>Vigilância contínua</b>, com checagem a cada 15–30min: sinais vitais, perfusão, nível de consciência, via aérea, posição das faixas, hidratação e necessidades fisiológicas</li>
+<li><b>Reavaliar de hora em hora</b> a necessidade de manter. <b>Retirar tão logo cesse o risco</b>, e de forma progressiva</li>
+<li><b>Registrar</b>: motivo, o que foi tentado antes, horário de início, quem participou, medicação usada, checagens realizadas e horário da retirada</li>
+<li><b>Complicações a vigiar:</b> asfixia posicional, aspiração, rabdomiólise, trombose venosa, lesão de plexo, desidratação, e o dano à aliança terapêutica — conversar depois com o paciente sobre o que aconteceu</li>
+</ul>
+</div>
+</details>
+</section>
+<!-- ============ CRISES ============ -->
+<section class="block cri" id="crises">
+<details class="sec-fold" data-sec="crises">
+<summary class="block-head"><span class="idx cri-bg">07</span><h2>Avaliação de Risco e Crises</h2><span class="tag">suicídio · psicose · personalidade</span><span class="fold-ind" aria-hidden="true"></span></summary>
+<div class="sec-body">
+
+<h3>Avaliação de risco suicida</h3>
+<div class="callout cri"><b>Perguntar sobre suicídio não induz suicídio.</b> Perguntar diretamente alivia e é a única forma de avaliar. A sequência é: ideação → planejamento → método → acesso ao meio → intenção → preparativos. Cada degrau aumenta o risco.</div>
+<div class="table-wrap"><table>
+<thead><tr><th>O que investigar</th><th>Perguntas que funcionam</th></tr></thead>
+<tbody>
+<tr><td data-label="Investigar">Ideação</td><td data-label="Perguntas">"Tem pensado que não vale a pena viver?" · "Já pensou em acabar com a própria vida?"</td></tr>
+<tr><td data-label="Investigar">Planejamento e método</td><td data-label="Perguntas">"Chegou a pensar em como faria?" · "Já pensou em quando?"</td></tr>
+<tr><td data-label="Investigar">Acesso ao meio</td><td data-label="Perguntas">"Tem isso em casa?" — <b>o acesso é o fator mais modificável de todos</b></td></tr>
+<tr><td data-label="Investigar">Tentativas prévias</td><td data-label="Perguntas">"Já tentou antes? O que aconteceu?" — <b>tentativa prévia é o preditor isolado mais forte</b></td></tr>
+<tr><td data-label="Investigar">Intenção e ambivalência</td><td data-label="Perguntas">"O que te segura?" — a resposta mostra os fatores de proteção reais</td></tr>
+<tr><td data-label="Investigar">Fatores agravantes</td><td data-label="Perguntas">Uso de álcool ou substância, desesperança, dor crônica, perda recente, isolamento, doença grave, agitação e insônia intensas</td></tr>
+</tbody>
+</table></div>
+<div class="table-wrap"><table>
+<thead><tr><th>Risco</th><th>Quadro</th><th>Conduta</th></tr></thead>
+<tbody>
+<tr><td data-label="Risco"><b>Baixo</b></td><td data-label="Quadro">Ideação passiva, sem plano, crítica preservada, rede de apoio presente</td><td data-label="Conduta">Retorno ambulatorial em 1–2 semanas, plano de segurança, contato de emergência, envolver a família</td></tr>
+<tr><td data-label="Risco"><b>Moderado</b></td><td data-label="Quadro">Ideação ativa sem plano estruturado, com fatores de proteção</td><td data-label="Conduta">Retorno em 24–72h, plano de segurança escrito, <b>restrição de acesso ao meio</b>, acionar a rede, não sair sozinho</td></tr>
+<tr><td data-label="Risco"><b>Alto</b></td><td data-label="Quadro">Ideação ativa com plano e meio disponíveis, tentativa recente, desesperança intensa, sem rede</td><td data-label="Conduta"><b>Não deixar sozinho.</b> Hospitalidade noturna ou internação; vigilância; retirar meios; comunicar a família ainda que sem consentimento — risco de morte autoriza a quebra de sigilo</td></tr>
+</tbody>
+</table></div>
+<ul class="checklist">
+<li><b>Plano de segurança</b> — construir com o paciente, não para ele: sinais de alerta que ele reconhece, o que já funcionou antes, quem ele pode chamar, como restringir o acesso ao meio, para onde ir na crise</li>
+<li><b>Restrição de meios é a intervenção com maior efeito</b>: guardar medicação com terceiro, retirar arma da casa, reduzir estoque de comprimidos na receita</li>
+<li>Tratar o que é tratável e agrava: insônia, dor, agitação, uso de substância, e o transtorno de base</li>
+<li><b>Período de maior risco:</b> as primeiras semanas após alta hospitalar e o início do tratamento antidepressivo em jovem — encurtar intervalos de retorno</li>
+<li>Registrar em prontuário o que foi avaliado, a conclusão de risco e a conduta — inclusive a decisão de não internar</li>
+</ul>
+
+<h3>Autolesão sem intenção suicida e crise em transtorno de personalidade</h3>
+<div class="callout warn"><b>Autolesão não é sinônimo de tentativa de suicídio</b> — na maioria das vezes é regulação de afeto insuportável, não desejo de morrer. Tratar as duas como a mesma coisa leva a internar quem não precisa e a subestimar quem precisa. <b>Mas os dois coexistem</b>: quem se autolesiona tem risco aumentado de suicídio ao longo da vida. Avalie as duas coisas separadamente, na mesma consulta.</div>
+<div class="table-wrap"><table>
+<thead><tr><th>Eixo</th><th>Conduta</th></tr></thead>
+<tbody>
+<tr><td data-label="Eixo">Postura</td><td data-label="Conduta"><b>Validar o sofrimento sem validar o comportamento.</b> Tom neutro, sem alarme e sem reprovação — reação intensa da equipe, para qualquer lado, reforça o ciclo</td></tr>
+<tr><td data-label="Eixo">Cuidar da lesão</td><td data-label="Conduta">Tratar o ferimento com o mesmo cuidado técnico de qualquer outro, com analgesia. Recusar analgesia como "lição" é iatrogenia</td></tr>
+<tr><td data-label="Eixo">Medicação</td><td data-label="Conduta"><b>O menos possível.</b> Crise de disregulação não responde a medicação e a benzodiazepinização crônica piora impulsividade e desinibição. Se indispensável, dose única e pontual</td></tr>
+<tr><td data-label="Eixo">Internação</td><td data-label="Conduta"><b>Evitar internação prolongada</b> — costuma agravar, por regressão e reforço. Reservar para risco de suicídio agudo, com prazo curto e objetivo claro</td></tr>
+<tr><td data-label="Eixo">O que muda o curso</td><td data-label="Conduta">Vínculo estável, plano de crise combinado antes, continuidade com o mesmo profissional e psicoterapia estruturada. <b>Medicação é adjuvante, não tratamento</b></td></tr>
+<tr><td data-label="Eixo">Equipe</td><td data-label="Conduta">Combinar conduta única entre plantonistas — divergência entre profissionais alimenta o quadro. Levar para supervisão</td></tr>
+</tbody>
+</table></div>
+
+<h3>Primeiro episódio psicótico</h3>
+<ul class="checklist">
+<li><b>Antes de assumir psicose primária, descartar:</b> substância (maconha, estimulante, alucinógeno, abstinência de álcool ou BZD), <b>delirium</b>, causa orgânica (infecção, epilepsia, tumor, autoimune, tireoide, HIV, sífilis, B12), corticoide e outras drogas</li>
+<li><b>Pistas de organicidade:</b> início súbito, idade atípica, <b>alucinação visual</b> predominante, flutuação do nível de consciência, sinal neurológico focal, confusão, desorientação</li>
+<li><b>Investigação mínima:</b> hemograma, eletrólitos, glicemia, função renal e hepática, TSH, B12, VDRL, HIV, toxicológico; imagem de crânio e EEG conforme a suspeita</li>
+<li><b>Tratar cedo importa:</b> maior duração de psicose não tratada associa-se a pior resposta e pior funcionalidade</li>
+<li><b>Começar baixo:</b> paciente virgem de tratamento é muito mais sensível — risperidona 1–2mg/dia ou olanzapina 5mg/dia, subindo devagar. Dose alta de entrada gera extrapiramidal e perde a adesão logo no início</li>
+<li>Preferir atípico pelo perfil de efeito; evitar depot na abordagem inicial</li>
+<li><b>Com a família:</b> explicar que é quadro tratável, orientar sobre adesão, reduzir crítica e hostilidade em casa, e combinar retorno próximo</li>
+</ul>
+</div>
+</details>
+</section>
+<section class="block abst" id="abstinencias">
+<details class="sec-fold" data-sec="abstinencias">
+<summary class="block-head"><span class="idx abst-bg">08</span><h2>Abstinências</h2><span class="tag">álcool · opioide · BZD</span><span class="fold-ind" aria-hidden="true"></span></summary>
+<div class="sec-body">
+<h3>Abstinência alcoólica — linha do tempo</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Tempo</th><th>Quadro</th><th>Risco</th></tr></thead>
+<tbody>
+<tr><td data-label="Tempo">6–12h</td><td data-label="Quadro">Tremor, sudorese, ansiedade, náusea, taquicardia</td><td data-label="Risco">Baixo — tratável ambulatorialmente</td></tr>
+<tr><td data-label="Tempo">12–24h</td><td data-label="Quadro"><b>Alucinose alcoólica</b> — alucinações com sensório preservado</td><td data-label="Risco">Sinal de gravidade; sensório <b>preservado</b> a distingue do DT</td></tr>
+<tr><td data-label="Tempo">24–48h</td><td data-label="Quadro"><b>Convulsão</b> tônico-clônica generalizada</td><td data-label="Risco">Anuncia risco de DT</td></tr>
+<tr><td data-label="Tempo">48–96h</td><td data-label="Quadro"><b>Delirium tremens</b> — confusão, desorientação, flutuação, febre, disautonomia</td><td data-label="Risco"><b>Mortalidade 5–15% sem tratamento adequado</b></td></tr>
+</tbody>
+</table></div>
+
+<h3>Tratamento</h3>
+<ul class="checklist">
+<li><b>Base:</b> benzodiazepínico de meia-vida longa — diazepam 10mg VO/EV. O efeito "ataque e decrescendo" protege contra convulsão e DT</li>
+<li><b>Esquema guiado por sintomas</b> (CIWA-Ar) reduz dose total e tempo de tratamento em relação ao horário fixo</li>
+<li><b>Não medicar por horário se o paciente estiver sonolento</b> — medicar por sintoma, reavaliando a cada 1–4h</li>
+<li><b>Hepatopatia grave:</b> trocar para lorazepam ou oxazepam</li>
+<li><b>Tiamina no tratamento da encefalopatia de Wernicke: <b>500mg EV 8/8h por 2–3 dias</b> (diluída em 100–250mL de SF 0,9%, correr em 30min) → <b>250mg/dia EV/IM por mais 3–5 dias</b> → manutenção <b>100mg/dia VO</b>. <b>Profilaxia</b> no etilista sem sinais de Wernicke: <b>250–300mg/dia</b>. Em ambos os casos, <b>antes de qualquer carga de glicose</b></b></li>
+<li>Repor K⁺, Mg²⁺ e fósforo; hidratação cuidadosa; avaliar folato e complexo B</li>
+<li>Esquema misto (dose fixa + demanda) em quem tem convulsão prévia, CIWA inicial muito alto ou demência</li>
+</ul>
+<div class="callout warn"><b>Correção importante:</b> <b>fenitoína não é eficaz</b> na convulsão por abstinência alcoólica — a fisiopatologia é GABAérgica, não focal. A conduta é benzodiazepínico (diazepam 10mg EV, ou midazolam 10mg IM sem acesso) e, depois da crise, <b>aumentar o BZD profilático</b>. Hidantalização só se houver outra causa estrutural de convulsão.</div>
+
+<h3>CIWA-Ar — faixas e conduta</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Escore</th><th>Gravidade</th><th>Conduta</th></tr></thead>
+<tbody>
+<tr><td data-label="Escore">&lt;8</td><td data-label="Gravidade">Leve</td><td data-label="Conduta">Geralmente sem necessidade de BZD; suporte e observação</td></tr>
+<tr><td data-label="Escore">8–15</td><td data-label="Gravidade">Moderada</td><td data-label="Conduta">Diazepam 10mg <span class="amp">(amp 2mL = 10mg)</span> a cada 1–2h enquanto CIWA-Ar ≥8; reavaliar</td></tr>
+<tr><td data-label="Escore">&gt;15</td><td data-label="Gravidade">Grave</td><td data-label="Conduta">BZD agressivo, vigilância para DT, considerar internação</td></tr>
+</tbody>
+</table></div>
+<p class="lede">Avalia 10 domínios (náusea, tremor, sudorese, ansiedade, agitação, alterações tátil, auditiva e visual, cefaleia, orientação); escore máximo 67. <b>Meta única: manter abaixo de 8.</b></p>
+
+<h3>Quando internar</h3>
+<ul class="checklist">
+<li>CIWA-Ar &gt;15 ou em ascensão</li>
+<li>História de convulsão por abstinência ou de delirium tremens</li>
+<li>Sinais autonômicos graves: FC &gt;120, PA &gt;180/110, temperatura &gt;38,5°C</li>
+<li>Alucinações ativas, confusão ou sinais neurológicos focais</li>
+<li>Comorbidade clínica descompensada, gestação, idoso frágil</li>
+<li>Ausência de suporte social ou risco de recaída imediata</li>
+<li>Co-ingestão de outras substâncias de risco</li>
+</ul>
+<div class="callout warn"><b>Delirium tremens instalado:</b> BZD em dose alta (diazepam 10mg EV a cada 5–10min até sedação leve) com monitorização contínua. Refratário: fenobarbital ou propofol em ambiente de terapia intensiva. <b>Risco clínico precede risco psiquiátrico</b> — esse paciente vai para a urgência clínica.</div>
+
+<h3>Abstinência de opioides</h3>
+<ul class="checklist">
+<li>Quadro de "gripe exuberante": <b>midríase</b>, lacrimejamento, rinorreia, piloereção, bocejos, mialgia, dor abdominal, diarreia, ansiedade</li>
+<li>Desconfortável e dramática, mas <b>raramente fatal</b> — ao contrário da alcoólica</li>
+<li>Quantificada pela <b>COWS</b> (Clinical Opiate Withdrawal Scale)</li>
+<li><b>Sintomático:</b> clonidina 0,1–0,2mg VO 6/6h (sintomas autonômicos), loperamida (diarreia), ibuprofeno (dor), ondansetrona (náusea), hidroxizina (ansiedade e insônia)</li>
+<li><b>Substitutivo:</b> metadona ou buprenorfina, em serviço habilitado</li>
+<li><b>Naltrexona só após 7–10 dias livre de opioide</b> — antes disso precipita abstinência aguda</li>
+</ul>
+
+<h3>Abstinência de estimulantes e de benzodiazepínicos</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Substância</th><th>Quadro</th><th>Conduta</th></tr></thead>
+<tbody>
+<tr><td data-label="Substância">Cocaína / crack</td><td data-label="Quadro">Sem síndrome física grave. Predomina o <b>"crash"</b>: disforia intensa, fadiga, hipersonia, fissura</td><td data-label="Conduta"><b>O risco é comportamental</b> — ideação suicida e recaída. Ambiente protegido, avaliação de risco, tratar comorbidade</td></tr>
+<tr><td data-label="Substância">Benzodiazepínicos</td><td data-label="Quadro">Início tardio conforme a meia-vida (dias a semanas). <b>Convulsão e delirium</b> — perigosa como a alcoólica</td><td data-label="Conduta">Converter para BZD de meia-vida longa (diazepam) e desmamar <b>5–10% a cada 2 semanas</b>, podendo levar meses. Nunca suspender abruptamente</td></tr>
+<tr><td data-label="Substância">Nicotina</td><td data-label="Quadro">Irritabilidade, ansiedade, fissura, aumento de apetite</td><td data-label="Conduta">Reposição de nicotina, bupropiona ou vareniclina; atenção à interação — parar de fumar <b>eleva o nível de clozapina e olanzapina</b></td></tr>
+</tbody>
+</table></div>
+</div>
+</details>
+</section>
+<section class="block emerg" id="emergencias">
+<details class="sec-fold" data-sec="emergencias">
+<summary class="block-head"><span class="idx emerg-bg">09</span><h2>Emergências Neuropsiquiátricas</h2><span class="tag">SNM · EPS · Wernicke</span><span class="fold-ind" aria-hidden="true"></span></summary>
+<div class="sec-body">
+<h3>Espectro dos efeitos extrapiramidais</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Quadro</th><th>Quando aparece</th><th>Como se apresenta</th><th>Tratamento</th></tr></thead>
+<tbody>
+<tr><td data-label="Quadro"><b>Distonia aguda</b></td><td data-label="Quando">Horas a dias</td><td data-label="Apresentação">Torcicolo, crise oculógira, trismo, protrusão de língua; <b>laringoespasmo é emergência</b></td><td data-label="Tratamento"><b>Biperideno 5mg IM/EV</b> (1 amp), repetir em 30min se necessário — resposta em 15–30min. Formas leves: 2mg VO 2–3×/dia. Sem biperideno: prometazina 25–50mg IM</td></tr>
+<tr><td data-label="Quadro"><b>Acatisia</b></td><td data-label="Quando">Dias a semanas</td><td data-label="Apresentação">Inquietação interna insuportável, incapacidade de ficar parado. <b>Confundida com piora da agitação</b> — e aí se aumenta o antipsicótico, piorando tudo</td><td data-label="Tratamento">Reduzir a dose; propranolol 20–40mg 12/12h; benzodiazepínico; mirtazapina. <b>Anticolinérgico não resolve</b></td></tr>
+<tr><td data-label="Quadro"><b>Parkinsonismo</b></td><td data-label="Quando">Semanas a meses</td><td data-label="Apresentação">Tremor, rigidez, bradicinesia, fácies em máscara</td><td data-label="Tratamento">Reduzir dose, trocar por atípico, anticolinérgico</td></tr>
+<tr><td data-label="Quadro"><b>Discinesia tardia</b></td><td data-label="Quando">Meses a anos</td><td data-label="Apresentação">Movimentos involuntários orofaciais e de tronco</td><td data-label="Tratamento">Suspender ou trocar (clozapina); valbenazina/tetrabenazina. <b>Anticolinérgico piora</b></td></tr>
+</tbody>
+</table></div>
+<div class="callout emerg"><b>A distinção que muda a conduta:</b> acatisia e agitação psicótica parecem iguais à distância. Pergunte se a inquietação é <b>interna</b> ("não consigo ficar parado, é uma aflição nas pernas") — se for, aumentar o antipsicótico piora. Anticolinérgico resolve distonia e parkinsonismo, não resolve acatisia e agrava discinesia tardia.</div>
+
+<h3>Síndrome neuroléptica maligna × serotoninérgica</h3>
+<div class="table-wrap"><table>
+<thead><tr><th></th><th>Neuroléptica maligna</th><th>Serotoninérgica</th></tr></thead>
+<tbody>
+<tr><td data-label="—">Gatilho</td><td data-label="SNM">Antipsicótico (início ou aumento); retirada de dopaminérgico</td><td data-label="Serotoninérgica">Serotoninérgico associado a outro (ISRS + tramadol, triptano, IMAO, linezolida)</td></tr>
+<tr><td data-label="—">Instalação</td><td data-label="SNM"><b>Dias</b> — lenta</td><td data-label="Serotoninérgica"><b>Horas</b> — rápida</td></tr>
+<tr><td data-label="—">Neuromuscular</td><td data-label="SNM"><b>Rigidez "em cano de chumbo"</b>, generalizada, com hiporreflexia</td><td data-label="Serotoninérgica"><b>Hiperreflexia e clônus</b>, predomínio em membros inferiores; tremor</td></tr>
+<tr><td data-label="—">Outros</td><td data-label="SNM">Febre alta, disautonomia, <b>CPK muito elevada</b>, leucocitose</td><td data-label="Serotoninérgica">Midríase, diarreia, hiperatividade autonômica</td></tr>
+<tr><td data-label="—">Conduta</td><td data-label="SNM">Suspender antipsicótico, resfriar, hidratar (risco de rabdomiólise e IRA); dantroleno, bromocriptina; UTI</td><td data-label="Serotoninérgica">Suspender o agente, benzodiazepínico, resfriar; ciproeptadina 12mg de ataque, depois 2mg 2/2h</td></tr>
+</tbody>
+</table></div>
+<div class="callout warn"><b>O clônus é o sinal que separa as duas</b> e deve ser procurado ativamente na dorsiflexão do pé. Rigidez lenta e rígida com CPK alta é SNM; clônus rápido com hiperreflexia é serotoninérgica.</div>
+
+<h3>Encefalopatia de Wernicke</h3>
+<ul class="checklist">
+<li>Deficiência de tiamina no etilista e no desnutrido. <b>Emergência</b> e subdiagnosticada</li>
+<li>Tríade clássica (confusão + ataxia + oftalmoplegia/nistagmo) presente em <b>menos de 20%</b> — não esperar por ela</li>
+<li>Tiamina no tratamento da encefalopatia de Wernicke: <b>500mg EV 8/8h por 2–3 dias</b> (diluída em 100–250mL de SF 0,9%, correr em 30min) → <b>250mg/dia EV/IM por mais 3–5 dias</b> → manutenção <b>100mg/dia VO</b>. <b>Profilaxia</b> no etilista sem sinais de Wernicke: <b>250–300mg/dia</b>. Em ambos os casos, <b>antes de qualquer carga de glicose</b></li>
+<li><b>Sempre antes ou junto da glicose</b> — carga glicídica sem tiamina precipita o quadro</li>
+<li>Não tratada evolui para <b>síndrome de Korsakoff</b>: amnésia anterógrada irreversível com confabulação</li>
+</ul>
+
+<h3>Catatonia</h3>
+<div class="callout emerg"><b>Subdiagnosticada porque não se pensa nela.</b> Aparece na depressão grave, na mania, na esquizofrenia, no transtorno do espectro autista e em causas orgânicas — não é sinônimo de esquizofrenia. Paciente "que não responde", "negativista" ou "sem colaborar" pode estar catatônico.</div>
+<div class="table-wrap"><table>
+<thead><tr><th>Sinal</th><th>Como se apresenta</th></tr></thead>
+<tbody>
+<tr><td data-label="Sinal">Estupor e mutismo</td><td data-label="Apresentação">Ausência de resposta e de fala, com vigília preservada</td></tr>
+<tr><td data-label="Sinal">Catalepsia e flexibilidade cérea</td><td data-label="Apresentação">Mantém posturas impostas; resistência plástica ao movimento passivo</td></tr>
+<tr><td data-label="Sinal">Negativismo</td><td data-label="Apresentação">Resiste ou faz o oposto do solicitado, sem motivo aparente</td></tr>
+<tr><td data-label="Sinal">Ecolalia e ecopraxia</td><td data-label="Apresentação">Repete fala e gestos do examinador</td></tr>
+<tr><td data-label="Sinal">Estereotipia, maneirismo, careteamento</td><td data-label="Apresentação">Movimentos repetitivos sem finalidade</td></tr>
+<tr><td data-label="Sinal">Agitação catatônica</td><td data-label="Apresentação">Excitação sem propósito, não responsiva ao ambiente</td></tr>
+</tbody>
+</table></div>
+<ul class="checklist">
+<li><b>Teste do lorazepam:</b> 1–2mg EV ou VO — melhora em minutos a poucas horas confirma o diagnóstico e já é tratamento. Onde não há lorazepam, diazepam EV serve como alternativa</li>
+<li><b>Tratamento:</b> benzodiazepínico em dose titulada e mantida; <b>eletroconvulsoterapia</b> é o tratamento definitivo nos casos refratários ou graves</li>
+<li><b>Suspender ou evitar antipsicótico</b> enquanto catatônico — pode precipitar a forma maligna</li>
+<li><b>Suporte clínico é parte do tratamento:</b> hidratação, nutrição, profilaxia de trombose, cuidado de pele e prevenção de broncoaspiração</li>
+<li>Investigar causa orgânica: infecção, distúrbio metabólico, epilepsia, encefalite autoimune</li>
+</ul>
+<div class="callout warn"><b>Catatonia maligna × síndrome neuroléptica maligna.</b> A forma maligna cursa com febre, disautonomia, rigidez e CPK alta — quadro praticamente idêntico ao da SNM. O que orienta é a história: sinais catatônicos <b>antes</b> do antipsicótico apontam catatonia maligna, e aí a conduta é benzodiazepínico e eletroconvulsoterapia, não apenas retirar a droga. Nos dois casos, suspender o antipsicótico e tratar em terapia intensiva.</div>
+<h3>Outras urgências</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Quadro</th><th>Reconhecimento</th><th>Conduta</th></tr></thead>
+<tbody>
+<tr><td data-label="Quadro">Intoxicação por lítio</td><td data-label="Reconhecimento">Tremor grosseiro, ataxia, confusão em paciente estável que iniciou AINE ou desidratou</td><td data-label="Conduta">Ver seção 03</td></tr>
+<tr><td data-label="Quadro">Agranulocitose por clozapina</td><td data-label="Reconhecimento">Febre, odinofagia, infecção em usuário de clozapina</td><td data-label="Conduta">Hemograma urgente, suspender, não reintroduzir</td></tr>
+<tr><td data-label="Quadro">Íleo por clozapina</td><td data-label="Reconhecimento">Constipação progressiva, distensão, parada de eliminação</td><td data-label="Conduta">Avaliação cirúrgica — complicação fatal mais frequente da droga</td></tr>
+<tr><td data-label="Quadro">Rash por lamotrigina</td><td data-label="Reconhecimento">Qualquer exantema nas primeiras 8 semanas, sobretudo com acometimento de mucosa</td><td data-label="Conduta"><b>Suspender imediatamente</b>; avaliar Stevens-Johnson</td></tr>
+<tr><td data-label="Quadro">Hiponatremia por carbamazepina/oxcarbazepina</td><td data-label="Reconhecimento">Confusão, cefaleia, convulsão; mais comum no idoso</td><td data-label="Conduta">Dosar sódio, suspender, corrigir com cautela</td></tr>
+<tr><td data-label="Quadro">Priapismo por trazodona</td><td data-label="Reconhecimento">Ereção dolorosa e prolongada</td><td data-label="Conduta">Urgência urológica — risco de disfunção permanente</td></tr>
+</tbody>
+</table></div>
+<p class="lede">Intoxicações exógenas em geral, toxíndromes e antídotos → <a href="guia_bolso_paciente_critico.html#tox" style="color:inherit;font-weight:600;">Guia de Paciente Crítico, seção 10 — Toxicologia →</a></p>
+</div>
+</details>
+</section>
+<section class="block troca" id="troca">
+<details class="sec-fold" data-sec="troca">
+<summary class="block-head"><span class="idx troca-bg">10</span><h2>Decisão Terapêutica</h2><span class="tag">esperar · trocar · manter</span><span class="fold-ind" aria-hidden="true"></span></summary>
+<div class="sec-body">
+<div class="callout troca"><b>Quatro decisões, nesta ordem:</b> iniciar, esperar, ajustar ou não mexer. <b>Iniciar</b> quando há sofrimento significativo, risco ou diagnóstico estabelecido. <b>Esperar</b> quando o tempo mínimo de resposta ainda não passou. <b>Ajustar</b> diante de resposta parcial após tempo adequado, efeito intolerável ou nova fase. <b>Não mexer</b> em quem está estável há meses ou em esquema de especialista.</div>
+
+<h3>Quanto tempo esperar antes de concluir que falhou</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Classe</th><th>Resposta inicial</th><th>Resposta plena</th><th>Só troque depois de</th></tr></thead>
+<tbody>
+<tr><td data-label="Classe">Antidepressivo</td><td data-label="Inicial">3–4 semanas</td><td data-label="Plena">6–8 semanas</td><td data-label="Trocar">4–6 semanas <b>em dose otimizada</b>, com adesão confirmada</td></tr>
+<tr><td data-label="Classe">Antidepressivo no TOC</td><td data-label="Inicial">4–6 semanas</td><td data-label="Plena">10–12 semanas</td><td data-label="Trocar">12 semanas em dose alta</td></tr>
+<tr><td data-label="Classe">Antipsicótico</td><td data-label="Inicial">1–2 semanas (agitação responde antes)</td><td data-label="Plena">4–6 semanas</td><td data-label="Trocar">4–6 semanas em dose adequada</td></tr>
+<tr><td data-label="Classe">Lítio</td><td data-label="Inicial">1–2 semanas em mania</td><td data-label="Plena">Profilaxia: meses</td><td data-label="Trocar">Nível terapêutico confirmado por litemia</td></tr>
+<tr><td data-label="Classe">Lamotrigina</td><td data-label="Inicial">—</td><td data-label="Plena">Após atingir 200mg</td><td data-label="Trocar">Titulação completa</td></tr>
+</tbody>
+</table></div>
+<div class="callout warn"><b>Antes de trocar qualquer coisa, cheque as quatro:</b> ① adesão real, não a declarada; ② dose otimizada até o teto tolerado; ③ diagnóstico correto — descartar bipolaridade, uso de substância, hipotireoidismo, anemia, apneia; ④ contexto — nenhuma medicação trata desemprego, violência doméstica ou situação de rua.</div>
+
+<h3>Métodos de troca — vale para qualquer classe</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Método</th><th>Como fazer</th><th>Quando usar</th></tr></thead>
+<tbody>
+<tr><td data-label="Método"><b>Cruzada</b> (padrão)</td><td data-label="Como">Reduzir o primeiro enquanto sobe o segundo</td><td data-label="Quando">Maioria das trocas</td></tr>
+<tr><td data-label="Método">Direta</td><td data-label="Como">Parar um e começar o outro no dia seguinte</td><td data-label="Quando">Só entre fármacos muito semelhantes, em dose baixa</td></tr>
+<tr><td data-label="Método">Sobreposição com retirada lenta</td><td data-label="Como">Levar o novo à dose plena e só então retirar o antigo</td><td data-label="Quando">Paciente <b>instável</b>, ou saindo de droga com rebote (clozapina, olanzapina, lítio)</td></tr>
+<tr><td data-label="Método">Com intervalo (<i>washout</i>)</td><td data-label="Como">Suspender e aguardar antes de iniciar</td><td data-label="Quando"><b>Só é obrigatório com IMAO</b> — 14 dias, ou 5 semanas ao sair da fluoxetina</td></tr>
+</tbody>
+</table></div>
+<div class="callout troca"><b>Onde está o detalhe de cada classe:</b> troca e desmame de <a href="#antidepressivos" style="color:inherit;font-weight:600;">antidepressivo (seção 01)</a> · <a href="#antipsicoticos" style="color:inherit;font-weight:600;">antipsicótico (seção 02)</a> · <a href="#estabilizadores" style="color:inherit;font-weight:600;">estabilizador (seção 03)</a> · <a href="#benzodiazepinicos" style="color:inherit;font-weight:600;">benzodiazepínico (seção 04)</a>. Cada uma tem as armadilhas próprias do mecanismo.</div>
+
+<h3>O que muda conforme a droga que sai</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Ao retirar</th><th>Fenômeno esperado</th><th>Não confundir com</th></tr></thead>
+<tbody>
+<tr><td data-label="Ao retirar">ISRS/IRSN de meia-vida curta</td><td data-label="Fenômeno">Síndrome de descontinuação (FINISH), em dias</td><td data-label="Não confundir">Recaída depressiva — esta leva semanas</td></tr>
+<tr><td data-label="Ao retirar">Tricíclico</td><td data-label="Fenômeno">Rebote colinérgico: náusea, cólica, sudorese, insônia</td><td data-label="Não confundir">Gastroenterite, ansiedade</td></tr>
+<tr><td data-label="Ao retirar">Olanzapina, quetiapina, clozapina</td><td data-label="Fenômeno">Rebote colinérgico e insônia intensa</td><td data-label="Não confundir">Recaída psicótica — leva a reintroduzir sem necessidade</td></tr>
+<tr><td data-label="Ao retirar">Clozapina abruptamente</td><td data-label="Fenômeno"><b>Psicose de rebote grave</b></td><td data-label="Não confundir">"Piora natural da doença"</td></tr>
+<tr><td data-label="Ao retirar">Antipsicótico de uso longo</td><td data-label="Fenômeno">Discinesia de retirada; psicose de supersensibilidade</td><td data-label="Não confundir">Discinesia tardia nova</td></tr>
+<tr><td data-label="Ao retirar">Lítio</td><td data-label="Fenômeno"><b>Mania de rebote precoce</b></td><td data-label="Não confundir">Ciclagem natural do transtorno</td></tr>
+<tr><td data-label="Ao retirar">Benzodiazepínico</td><td data-label="Fenômeno">Ansiedade de rebote, insônia; convulsão se abrupto</td><td data-label="Não confundir">Retorno do transtorno de base</td></tr>
+<tr><td data-label="Ao retirar">Carbamazepina</td><td data-label="Fenômeno">Fim da indução em 2–4 semanas — <b>outros fármacos sobem</b></td><td data-label="Não confundir">Efeito adverso do fármaco novo</td></tr>
+</tbody>
+</table></div>
+
+<h3>Por quanto tempo manter</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Situação</th><th>Duração após remissão</th></tr></thead>
+<tbody>
+<tr><td data-label="Situação">1º episódio depressivo ou ansioso</td><td data-label="Duração">6–12 meses</td></tr>
+<tr><td data-label="Situação">2º episódio</td><td data-label="Duração">2 anos</td></tr>
+<tr><td data-label="Situação">≥3 episódios, episódio grave, risco suicida, sintomas residuais ou história familiar forte</td><td data-label="Duração"><b>Indefinida</b></td></tr>
+<tr><td data-label="Situação">Transtorno bipolar</td><td data-label="Duração">Estabilizador em geral <b>indefinido</b></td></tr>
+<tr><td data-label="Situação">Esquizofrenia — 1º episódio</td><td data-label="Duração">1–2 anos no mínimo</td></tr>
+<tr><td data-label="Situação">Esquizofrenia — múltiplos episódios</td><td data-label="Duração"><b>Indefinida</b></td></tr>
+<tr><td data-label="Situação">Benzodiazepínico</td><td data-label="Duração"><b>2–4 semanas</b> — com data de saída definida já na primeira receita</td></tr>
+</tbody>
+</table></div>
+<p class="lede"><b>Remissão não é cura.</b> A maior parte das recaídas evitáveis vem de suspensão precoce logo depois que o paciente melhora.</p>
+</div>
+</details>
+</section>
+<section class="block gest" id="gestacao">
+<details class="sec-fold" data-sec="gestacao">
+<summary class="block-head"><span class="idx gest-bg">11</span><h2>Gestação e Lactação</h2><span class="tag">risco por classe</span><span class="fold-ind" aria-hidden="true"></span></summary>
+<div class="sec-body">
+<div class="callout gest"><b>O erro mais comum é suspender tudo ao descobrir a gestação.</b> Transtorno psiquiátrico não tratado na gestação tem risco próprio — prematuridade, baixo peso, pior vínculo, uso de substâncias, suicídio (causa importante de morte materna). A decisão é sempre <b>risco do fármaco × risco da doença não tratada</b>, e não "na dúvida, suspender".</div>
+
+<h3>Princípios</h3>
+<ul class="checklist">
+<li><b>Monoterapia sempre que possível</b>, na menor dose eficaz — melhor uma droga em dose plena que duas em dose baixa</li>
+<li>Se a gestação for descoberta com o paciente estável, <b>em geral se mantém o esquema</b> — trocar expõe o feto a duas drogas e arrisca recaída. <b>Exceções: valproato e carbamazepina</b>, que devem ser reavaliados com urgência</li>
+<li>Preferir droga com maior histórico de uso, e não a mais nova</li>
+<li><b>Volume plasmático sobe ~30% no 3º trimestre</b> — níveis séricos caem e a dose frequentemente precisa subir; reavaliar no pós-parto para evitar intoxicação</li>
+<li>Ácido fólico em toda mulher em idade fértil em uso de anticonvulsivante</li>
+<li><b>Puerpério é o período de maior risco de recaída</b> no bipolar — planejar antes do parto</li>
+</ul>
+
+<h3>Antidepressivos</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Fármaco</th><th>Gestação</th><th>Lactação</th></tr></thead>
+<tbody>
+<tr><td data-label="Fármaco"><b>Sertralina</b></td><td data-label="Gestação"><b>1ª escolha</b> — maior volume de dados, sem sinal consistente de malformação</td><td data-label="Lactação"><b>Preferida</b> — das mais baixas transferências para o leite</td></tr>
+<tr><td data-label="Fármaco">Escitalopram / citalopram</td><td data-label="Gestação">Alternativa aceitável</td><td data-label="Lactação">Compatível</td></tr>
+<tr><td data-label="Fármaco">Fluoxetina</td><td data-label="Gestação">Aceitável; muitos dados</td><td data-label="Lactação">Meia-vida longa — maior acúmulo no lactente que a sertralina</td></tr>
+<tr><td data-label="Fármaco"><b>Paroxetina</b></td><td data-label="Gestação"><b>Evitar</b> — sinal de malformação cardíaca no 1º trimestre</td><td data-label="Lactação">Baixa transferência, mas evitar iniciar</td></tr>
+<tr><td data-label="Fármaco">Venlafaxina / duloxetina</td><td data-label="Gestação">Usar se houve resposta prévia; menos dados que os ISRS</td><td data-label="Lactação">Aceitável com monitorização do lactente</td></tr>
+<tr><td data-label="Fármaco">Tricíclicos</td><td data-label="Gestação">Nortriptilina é a preferida da classe</td><td data-label="Lactação">Compatível</td></tr>
+<tr><td data-label="Fármaco">Bupropiona</td><td data-label="Gestação">Reservar para indicação específica (tabagismo)</td><td data-label="Lactação">Relatos de convulsão no lactente — cautela</td></tr>
+</tbody>
+</table></div>
+<div class="callout gest">Uso de ISRS no 3º trimestre associa-se à <b>síndrome de má adaptação neonatal</b> — irritabilidade, tremor, taquipneia e dificuldade alimentar, autolimitada em poucos dias. Isso <b>não é indicação de suspender</b> o antidepressivo antes do parto: a retirada aumenta a recaída materna sem benefício neonatal demonstrado. Avisar a equipe da maternidade basta.</div>
+
+<h3>Estabilizadores — a decisão mais difícil</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Fármaco</th><th>Risco</th><th>Conduta</th></tr></thead>
+<tbody>
+<tr><td data-label="Fármaco"><b>Valproato</b></td><td data-label="Risco"><b>O mais teratogênico da psiquiatria</b>: defeitos de tubo neural, malformações múltiplas (~9–11%), redução de QI e maior risco de autismo e TDAH</td><td data-label="Conduta"><b>Contraindicado.</b> Não prescrever a mulher em idade fértil sem contracepção eficaz e discussão registrada</td></tr>
+<tr><td data-label="Fármaco"><b>Carbamazepina</b></td><td data-label="Risco">Espinha bífida, deficiência de vitamina K tardia; teratogenicidade próxima à do valproato</td><td data-label="Conduta">Evitar; se mantida, folato e vitamina K no fim da gestação</td></tr>
+<tr><td data-label="Fármaco"><b>Lítio</b></td><td data-label="Risco">Malformação cardíaca — risco <b>bem menor do que se pensava</b>. Cardiopatia em ~2,4% dos expostos contra 1,15% dos não expostos; anomalia de Ebstein em torno de 0,6% contra 0,18%. O risco é <b>dose-dependente</b> e não apareceu com doses ≤600mg/dia</td><td data-label="Conduta">Pode ser mantido quando o benefício é claro (bipolar grave, boa resposta prévia, risco suicida). Menor dose eficaz, litemia frequente, <b>ecocardiograma fetal</b> e ultrassom morfológico. Hidratação no periparto; suspender 24–48h antes do parto</td></tr>
+<tr><td data-label="Fármaco"><b>Lamotrigina</b></td><td data-label="Risco">Perfil favorável — <b>sem aumento consistente de malformação</b></td><td data-label="Conduta">Preferida na prevenção de depressão bipolar. O <b>clearance sobe muito na gestação</b>: monitorar e ajustar, reduzindo rápido no pós-parto</td></tr>
+<tr><td data-label="Fármaco"><b>Quetiapina</b></td><td data-label="Risco">Boa alternativa ao valproato em mulher em idade fértil</td><td data-label="Conduta">Considerada primeira escolha entre os antipsicóticos nesse cenário</td></tr>
+</tbody>
+</table></div>
+<div class="callout warn"><b>A conversa que precisa acontecer antes:</b> toda mulher em idade fértil que recebe valproato ou carbamazepina precisa de contracepção eficaz e de registro da discussão em prontuário. Lembrar que a <b>carbamazepina reduz a eficácia do anticoncepcional hormonal</b> por indução enzimática — a combinação "carbamazepina + pílula" é uma armadilha frequente.</div>
+
+<h3>Antipsicóticos e benzodiazepínicos</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Classe</th><th>Gestação</th><th>Lactação</th></tr></thead>
+<tbody>
+<tr><td data-label="Classe">Haloperidol</td><td data-label="Gestação">Longa experiência de uso; opção em agitação aguda na gestante</td><td data-label="Lactação">Compatível com monitorização</td></tr>
+<tr><td data-label="Classe">Quetiapina / olanzapina</td><td data-label="Gestação">Boa base de dados; olanzapina soma risco metabólico e de <b>diabetes gestacional</b></td><td data-label="Lactação">Quetiapina tem das menores transferências</td></tr>
+<tr><td data-label="Classe">Risperidona</td><td data-label="Gestação">Aceitável; hiperprolactinemia pode dificultar a concepção</td><td data-label="Lactação">Aceitável</td></tr>
+<tr><td data-label="Classe">Clozapina</td><td data-label="Gestação">Manter apenas se refratariedade justificar; risco de agranulocitose neonatal</td><td data-label="Lactação"><b>Evitar</b></td></tr>
+<tr><td data-label="Classe">Benzodiazepínicos</td><td data-label="Gestação">Cautela. Perto do parto: <b>hipotonia neonatal e abstinência no recém-nascido</b>. Uso pontual é diferente de uso contínuo</td><td data-label="Lactação">Preferir meia-vida curta e dose única; vigiar sedação e ganho de peso do lactente</td></tr>
+<tr><td data-label="Classe">Lítio</td><td data-label="Gestação">Ver acima</td><td data-label="Lactação">Passagem significativa ao leite — se amamentar, monitorar o lactente e manter hidratação</td></tr>
+</tbody>
+</table></div>
+<div class="callout gest"><b>Agitação aguda na gestante:</b> haloperidol ± prometazina é o esquema de escolha. <b>Valproato está fora.</b> Preferir via oral, decúbito lateral esquerdo a partir do 2º trimestre e monitorização materna e fetal. Convulsão em gestante ≥20 semanas é eclâmpsia até prova em contrário.</div>
+</div>
+</details>
+</section>
+<section class="block monit" id="monitorizacao">
+<details class="sec-fold" data-sec="monitorizacao">
+<summary class="block-head"><span class="idx monit-bg">12</span><h2>Monitorização e Interações</h2><span class="tag">exames · interações</span><span class="fold-ind" aria-hidden="true"></span></summary>
+<div class="sec-body">
+<h3>Exames por medicação</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Medicação</th><th>Exames</th><th>Frequência</th></tr></thead>
+<tbody>
+<tr><td data-label="Medicação"><b>Lítio</b></td><td data-label="Exames">Litemia (12h após a dose), creatinina e TFG, TSH, cálcio; basal com hemograma, glicemia e urina; ECG no idoso</td><td data-label="Frequência">Basal, após cada ajuste, a cada 3 meses no 1º ano, depois 6/6 meses se estável</td></tr>
+<tr><td data-label="Medicação"><b>Valproato</b></td><td data-label="Exames">Nível sérico, hemograma (plaquetas), TGO/TGP, amônia se sintomas, peso</td><td data-label="Frequência">Basal e a cada 3 meses no 1º ano</td></tr>
+<tr><td data-label="Medicação"><b>Carbamazepina</b></td><td data-label="Exames">Hemograma, TGO/TGP, <b>sódio</b>, nível sérico</td><td data-label="Frequência">Basal e a cada 3 meses no 1º ano</td></tr>
+<tr><td data-label="Medicação"><b>Clozapina</b></td><td data-label="Exames"><b>Neutrófilos</b>; troponina e CK-MB se suspeita de miocardite; perfil metabólico; avaliação de constipação a cada consulta</td><td data-label="Frequência">Semanal nas primeiras 18 semanas, depois mensal — ver nota abaixo</td></tr>
+<tr><td data-label="Medicação">Antipsicóticos atípicos</td><td data-label="Exames">Peso e IMC, circunferência abdominal, PA, glicemia ou HbA1c, perfil lipídico</td><td data-label="Frequência">Basal, 3 meses, 6 meses, depois anual</td></tr>
+<tr><td data-label="Medicação">Citalopram, escitalopram, ziprasidona, haloperidol</td><td data-label="Exames">ECG com QTc; K⁺ e Mg²⁺</td><td data-label="Frequência">Basal se cardiopatia, idade avançada ou polifarmácia com QT</td></tr>
+<tr><td data-label="Medicação">Venlafaxina / desvenlafaxina</td><td data-label="Exames">Pressão arterial</td><td data-label="Frequência">A cada consulta, sobretudo acima de 150mg</td></tr>
+</tbody>
+</table></div>
+<div class="callout monit"><b>Nota sobre a clozapina — mudou recentemente.</b> O programa restritivo de dispensação foi eliminado em 2025, mantendo-se a recomendação de monitorar neutrófilos; o consenso internacional seguinte propôs manter semanal por 18 semanas, depois a cada 4 semanas, e <b>após 2 anos</b> encerrar a contagem rotineira, substituindo-a por hemograma anual. Isso não altera automaticamente as exigências de dispensação no Brasil — confirmar o protocolo vigente da farmácia antes de espaçar exames.</div>
+
+<h3>Interações que causam dano</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Combinação</th><th>O que acontece</th></tr></thead>
+<tbody>
+<tr><td data-label="Combinação"><b>Lítio + AINE, tiazídico ou IECA/BRA</b></td><td data-label="Efeito">Elevam a litemia → intoxicação. A causa mais frequente de intoxicação em paciente antes estável</td></tr>
+<tr><td data-label="Combinação"><b>Valproato + lamotrigina</b></td><td data-label="Efeito">Dobra o nível da lamotrigina → Stevens-Johnson. Titular com metade da dose</td></tr>
+<tr><td data-label="Combinação"><b>Carbamazepina + praticamente tudo</b></td><td data-label="Efeito">Indução do CYP3A4 derruba níveis — inclusive de anticoncepcional, antirretroviral e da própria lamotrigina</td></tr>
+<tr><td data-label="Combinação"><b>Fluvoxamina + clozapina</b></td><td data-label="Efeito">Inibição do CYP1A2 eleva muito o nível da clozapina → toxicidade</td></tr>
+<tr><td data-label="Combinação"><b>Parar de fumar</b> em uso de clozapina ou olanzapina</td><td data-label="Efeito">A fumaça induz o CYP1A2; cessar <b>eleva o nível da droga</b> e pode causar toxicidade em dias</td></tr>
+<tr><td data-label="Combinação"><b>ISRS + tramadol, triptano, linezolida ou IMAO</b></td><td data-label="Efeito">Síndrome serotoninérgica</td></tr>
+<tr><td data-label="Combinação"><b>Olanzapina IM + BZD parenteral</b></td><td data-label="Efeito">Depressão cardiorrespiratória grave</td></tr>
+<tr><td data-label="Combinação"><b>BZD + opioide + álcool</b></td><td data-label="Efeito">Sinergia depressora respiratória — combinação frequente e letal nesta população</td></tr>
+<tr><td data-label="Combinação"><b>Múltiplos prolongadores de QT</b></td><td data-label="Efeito">Haloperidol, ziprasidona, metadona, ondansetrona, citalopram, macrolídeo → Torsades</td></tr>
+<tr><td data-label="Combinação">Fluoxetina ou paroxetina + tricíclico</td><td data-label="Efeito">Inibição do CYP2D6 eleva o nível do tricíclico → cardiotoxicidade</td></tr>
+</tbody>
+</table></div>
+
+<h3>Princípios de prescrição segura</h3>
+<ul class="checklist">
+<li><b>Antes:</b> diagnóstico, idade, comorbidades, substâncias em uso, alergias, gestação e interações</li>
+<li><b>Durante:</b> menor dose eficaz, <b>uma mudança por vez</b>, e orientar o tempo esperado de resposta — paciente que não sabe que vai demorar abandona na segunda semana</li>
+<li><b>Depois:</b> reavaliar em prazo definido, orientar sinais de alerta, registrar e discutir em equipe</li>
+<li>Em etilista: risco maior de rebaixamento com BZD, sempre repor tiamina, monitorar SSVV com mais frequência</li>
+<li><b>Não existe medicação que trate um contexto ruim</b> — moradia, renda, vínculo e rede entram no plano junto com a receita</li>
+</ul>
+</div>
+</details>
+</section>
 <section class="block bib" id="referencias">
 <details class="sec-fold" data-sec="referencias">
-<summary class="block-head"><span class="idx bib-bg">12</span><h2>Referências</h2><span class="tag">fontes · rastreabilidade</span><span class="fold-ind" aria-hidden="true"></span></summary>
+<summary class="block-head"><span class="idx bib-bg">13</span><h2>Referências</h2><span class="tag">fontes · rastreabilidade</span><span class="fold-ind" aria-hidden="true"></span></summary>
 <div class="sec-body">
 <h3>Como usar esta lista</h3>
 <div class="callout bib">Os três guias — <b>Paciente Crítico</b>, <b>Plantão</b> e <b>Psicofarmacologia</b> — compartilham esta mesma lista, de modo que qualquer conduta consultada em qualquer um deles possa ser rastreada até a fonte. Onde diretriz brasileira e internacional divergem, os guias seguem a <b>conduta praticável na rede local</b> e sinalizam a diferença no próprio card. Diretrizes mudam: confirme a versão vigente antes de usar como respaldo formal.</div>
@@ -1387,6 +1504,10 @@
 <li>DALGALARRONDO, P. <b>Psicopatologia e Semiologia dos Transtornos Mentais</b></li>
 <li>Associação Brasileira de Psiquiatria. <b>Emergências Psiquiátricas</b> e diretrizes de manejo da agitação psicomotora</li>
 <li><b>CIWA-Ar</b> (Sullivan et al., 1989) e <b>COWS</b> — escalas de abstinência alcoólica e de opioides</li>
+<li>Diretrizes de <b>avaliação e manejo do risco de suicídio</b> (ABP, OMS, Ministério da Saúde) e planos de segurança</li>
+<li>Literatura de <b>catatonia</b> — escala de Bush-Francis, teste do lorazepam e eletroconvulsoterapia</li>
+<li>Diretrizes de <b>primeiro episódio psicótico</b> e de intervenção precoce</li>
+<li>Recomendações sobre <b>contenção mecânica</b> em serviços de saúde mental (CFM, ABP) e prevenção de complicações</li>
 <li><b>The Ashton Manual</b> — <i>Benzodiazepines: How They Work and How to Withdraw</i>: tabela de equivalências e esquemas de desmame</li>
 <li>NHS Specialist Pharmacy Service — <b>equivalências de benzodiazepínicos orais</b> e conversão de drogas Z (as fontes divergem; ver a ressalva no card)</li>
 <li>Diretrizes de TDAH no adulto e no adolescente (NICE, CADDRA, ABDA) — escolha de formulação, titulação e conversão entre apresentações de metilfenidato</li>
@@ -1442,7 +1563,7 @@
 <button class="fab" id="fabTop" title="Voltar ao topo" type="button">↑</button>
 </div>
 <footer>
-  Guia de bolso de uso pessoal — consulte sempre protocolos institucionais vigentes e julgamento clínico individualizado. As colunas de referência recalculam pelo peso informado no topo; confira sempre pelo peso real do paciente — o campo ⚖ no topo faz isso pelas células marcadas.<br/><span class="rev">Última revisão: 01/09/2026 · v1.8 — ícone próprio embutido; apresentação da ampola completada. v1.7 — apresentação da ampola ao lado da dose onde ainda faltava. v1.6 — referências alinhadas às dos outros dois guias. v1.5 — nova seção 11 (Psicoestimulantes: apresentações, conversão entre formulações de metilfenidato, troca com lisdexanfetamina, suspensão e cuidados no paciente com uso de substâncias); seção de benzodiazepínicos ampliada com tabela de equivalências, conversão das drogas Z e esquema prático de desmame. v1.4 — nova seção de Referências comum aos três guias; citações retiradas do corpo do texto; tiamina, alvo da CIWA-Ar, propranolol na acatisia e biperideno alinhados entre os guias; correções de layout (barra de utilidades em uma linha, alvos de toque, quebra de título). v1.3 — barra de seções de volta no topo, agora com uma 2ª linha que mostra os tópicos da seção em leitura e acompanha a rolagem; painel de índice removido; busca segue na lupa flutuante. v1.2 — barra de abas do topo e caixa de busca substituídas por um índice em painel inferior, com seções e tópicos navegáveis direto; busca segue na lupa flutuante. v1.1 — classes separadas corretamente por mecanismo (ISRS, IRSN, atípicos, tricíclicos e IMAO; típicos por potência, atípicos e agonistas parciais; lítio, anticonvulsivantes e antipsicóticos estabilizadores; benzodiazepínicos por meia-vida e via metabólica, com drogas Z), e cada classe passou a ter troca e desmame próprios. v1.0 — psicofarmacologia por classe, uso agudo, abstinências, emergências neuropsiquiátricas, troca e desmame, gestação e lactação, monitorização e interações.</span>
+  Guia de bolso de uso pessoal — consulte sempre protocolos institucionais vigentes e julgamento clínico individualizado. As colunas de referência recalculam pelo peso informado no topo; confira sempre pelo peso real do paciente — o campo ⚖ no topo faz isso pelas células marcadas.<br/><span class="rev">Última revisão: 02/09/2026 · v1.11 — nova seção 07 (Risco e Crises: avaliação de risco suicida, autolesão e crise em transtorno de personalidade, primeiro episódio psicótico); catatonia acrescentada às Emergências e contenção mecânica à Agitação. v1.10. Histórico resumido: classes separadas por mecanismo, com troca e desmame próprios; psicoestimulantes, gestação e lactação, monitorização e interações; seção de Referências comum aos três guias.</span>
 </footer>
 <script>
 (function(){
@@ -1701,7 +1822,7 @@
   var index = [];
   (function(){
     var n = 0;
-    var CL = ['ad', 'ap', 'eh', 'bzd', 'agit', 'abst', 'emerg', 'troca', 'gest', 'monit', 'est', 'bib'];
+    var CL = ['ad', 'ap', 'eh', 'bzd', 'est', 'agit', 'cri', 'abst', 'emerg', 'troca', 'gest', 'monit', 'bib'];
     document.querySelectorAll('section.block').forEach(function(sec){
       var h2 = sec.querySelector('h2');
       var secName = h2 ? h2.textContent.trim() : '';

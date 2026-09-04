@@ -6,7 +6,7 @@
 <meta content="#F3F5F8" id="metaTheme" name="theme-color"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="yes" name="mobile-web-app-capable"/>
-<title>Guia de Bolso · Plantão</title>
+<title>ClinRef · Guia de Plantão</title>
 <link rel="manifest" href="manifest-plantao.webmanifest"/>
 <link rel="icon" type="image/png" sizes="192x192" href="icones/plantao-192.png"/>
 <link rel="icon" type="image/svg+xml" href="icones/plantao.svg"/>
@@ -277,21 +277,30 @@
   html[data-theme="dark"] .callout.apr{color:#B6E5DF;}
   @media (max-width:640px){ .apr td:first-child{color:var(--apr);} }
   .amp{font-family:var(--mono);font-size:.82em;color:var(--ink-soft);}
+
+  .voltar{display:inline-flex;align-items:center;gap:7px;text-decoration:none;
+    font-family:var(--mono);font-size:12.5px;font-weight:600;color:var(--ink-soft);
+    background:var(--surface);border:1px solid var(--line);border-radius:999px;
+    padding:9px 15px 9px 12px;margin-bottom:14px;min-height:40px;transition:.15s ease;}
+  .voltar:hover{color:var(--ink);border-color:#9AA7B2;}
+  .voltar svg{flex-shrink:0;}
+  @media print{ .voltar{display:none !important;} }
 </style>
 </head>
 <body>
 <div class="masthead">
 <div class="pulse-line"></div>
+<a class="voltar" href="index.html"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>ClinRef</a>
 <div class="eyebrow"><span class="dot"></span> Referência rápida · plantão</div>
 <h1 class="title">Guia de Bolso do Plantão</h1>
-<p class="subtitle">Prescrições, diluições, condutas e cuidados paliativos condensados por sistema — para consulta rápida à beira-leito. Algoritmos complexos (taquiarritmia, bradiarritmia/BAV, ECG de IAM, sequência completa de IOT) estão no <a href="guia_bolso_paciente_critico.html" style="color:inherit;font-weight:600;">Guia de Paciente Crítico →</a>. Convenção: nome genérico primeiro, nome comercial entre parênteses. Calculadoras rápidas (DHE, dengue, TFG, infusões) na seção 10.</p>
+<p class="subtitle">Prescrições, diluições, condutas e cuidados paliativos condensados por sistema — para consulta rápida à beira-leito. Algoritmos complexos (taquiarritmia, bradiarritmia/BAV, ECG de IAM, sequência completa de IOT) estão no <a href="guia_bolso_paciente_critico.html" style="color:inherit;font-weight:600;">Guia de Paciente Crítico →</a> e psicofármacos em detalhe no <a href="guia_bolso_psiquiatria.html" style="color:inherit;font-weight:600;">Guia de Psicofarmacologia →</a>. Convenção: nome genérico primeiro, nome comercial entre parênteses. Calculadoras rápidas (DHE, dengue, TFG, infusões) na seção 10.</p>
 </div>
 <nav class="tabs">
 <div class="tabs-inner" id="tabsInner">
 <a class="tab" data-cat="card" href="#card" style="--accent:#C5321F">Cardio</a>
+<a class="tab" data-cat="res" href="#res" style="--accent:#0E7C86">Resp</a>
 <a class="tab" data-cat="air" href="#air" style="--accent:#1D5FBF">Via Aérea</a>
 <a class="tab" data-cat="neu" href="#neu" style="--accent:#7A3FC4">Neuro/Psiq</a>
-<a class="tab" data-cat="res" href="#res" style="--accent:#0E7C86">Resp</a>
 <a class="tab" data-cat="gas" href="#gas" style="--accent:#A8631B">GI/Hepato</a>
 <a class="tab" data-cat="ren" href="#ren" style="--accent:#D97706">Renal/Metab</a>
 <a class="tab" data-cat="inf" href="#inf" style="--accent:#15803D">Infecto</a>
@@ -310,6 +319,15 @@
 </div>
 <main>
 <!-- ======================= CARDIO ======================= -->
+<!-- ======================= VIA AÉREA / SEDAÇÃO ======================= -->
+<!-- ======================= NEURO / PSIQ ======================= -->
+<!-- ======================= RESPIRATÓRIO ======================= -->
+<!-- ======================= GASTRO/HEPATO ======================= -->
+<!-- ======================= RENAL/METABOLICO ======================= -->
+<!-- ======================= INFECTO ======================= -->
+<!-- ======================= DOR / TOX / DIVERSOS ======================= -->
+<!-- ======================= PALIATIVOS ======================= -->
+<!-- ======================= CALCULADORAS ======================= -->
 <section class="sec" id="card" style="--accent:#C5321F">
 <div class="head"><span class="idx">01</span><h2>Cardiovascular</h2><span class="tag">arritmias · SCA · aminas</span></div>
 <details>
@@ -467,10 +485,153 @@
 </table></div>
 </div>
 </details>
+
+<details>
+<summary>Insuficiência cardíaca descompensada — perfis</summary>
+<div class="body">
+<p class="lede">Duas perguntas à beira do leito definem o tratamento: <b>está congesto?</b> (úmido ou seco) e <b>está perfundindo?</b> (quente ou frio).</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Perfil</th><th>Como reconhecer</th><th>Conduta</th></tr></thead>
+<tbody>
+<tr><td data-label="Perfil"><b>B — quente e úmido</b><br/>(o mais comum)</td><td data-label="Reconhecer">Congesto e bem perfundido: dispneia, ortopneia, turgência jugular, estertores, edema, B3 — extremidades quentes, PA normal ou alta</td><td data-label="Conduta"><b>Diurético</b> — furosemida EV, dose ≥ 2× a domiciliar, em bolus ou infusão · <b>vasodilatador</b> se PA alta (nitroglicerina) · restringir sódio e água · pesar diariamente</td></tr>
+<tr><td data-label="Perfil"><b>A — quente e seco</b></td><td data-label="Reconhecer">Compensado — sintoma provavelmente não é IC</td><td data-label="Conduta">Revisar o diagnóstico e a adesão; ajustar terapia oral</td></tr>
+<tr><td data-label="Perfil"><b>C — frio e úmido</b><br/>(o mais grave)</td><td data-label="Reconhecer">Congesto e hipoperfundido: extremidades frias, TEC lento, pressão de pulso estreita, sonolência, oligúria, hiponatremia, lactato alto</td><td data-label="Conduta"><b>Inotrópico</b> (dobutamina) para restaurar perfusão <b>antes</b> de diurético pleno · vasopressor se PAS baixa · suspender betabloqueador · avaliar suporte avançado</td></tr>
+<tr><td data-label="Perfil"><b>L — frio e seco</b></td><td data-label="Reconhecer">Hipoperfundido sem congestão — hipovolêmico</td><td data-label="Conduta">Prova de volume cautelosa, depois reavaliar; inotrópico se persistir</td></tr>
+</tbody>
+</table></div>
+<div class="callout warn"><b>O erro clássico é diurético no perfil frio.</b> Sem perfusão o diurético não chega ao rim, e ainda reduz a pré-carga de quem já tem débito baixo. Perfusão primeiro, congestão depois.</div>
+<ul class="checklist">
+<li><b>Betabloqueador:</b> manter no perfil quente; reduzir ou suspender no frio, e reintroduzir antes da alta</li>
+<li><b>IECA/BRA e espironolactona:</b> manter salvo hipotensão, injúria renal ou hipercalemia — suspender "por precaução" piora o prognóstico</li>
+<li><b>Procurar o gatilho sempre:</b> má adesão, infecção, fibrilação atrial, isquemia, AINE, anemia, tireoide, sal e álcool</li>
+<li>Alta só com: peso estável, sem dispneia ao esforço leve, oral otimizada, retorno agendado e <b>orientação de pesagem diária</b></li>
+</ul>
+</div>
+</details>
+
+<details>
+<summary>Síncope — estratificação</summary>
+<div class="body">
+<p class="lede">Perda súbita e transitória da consciência com recuperação espontânea e completa. A pergunta não é "por que desmaiou", é <b>este paciente pode ir para casa?</b></p>
+<div class="table-wrap"><table>
+<thead><tr><th>Tipo</th><th>Pistas</th></tr></thead>
+<tbody>
+<tr><td data-label="Tipo"><b>Reflexa</b> (vasovagal) — a mais comum</td><td data-label="Pistas">Gatilho identificável (dor, emoção, calor, aglomeração, micção, tosse), <b>pródromo</b> de náusea, sudorese e visão turva, em pé, recuperação rápida e completa</td></tr>
+<tr><td data-label="Tipo">Ortostática</td><td data-label="Pistas">Ao levantar; desidratação, sangramento, anti-hipertensivo, alfabloqueador, neuropatia autonômica. <b>Medir PA deitado e em pé</b></td></tr>
+<tr><td data-label="Tipo"><b>Cardíaca</b> — a que mata</td><td data-label="Pistas"><b>Sem pródromo</b>, em esforço ou deitado, palpitação antes, dor torácica ou dispneia, cardiopatia conhecida, <b>história familiar de morte súbita</b> antes dos 50, ECG alterado</td></tr>
+</tbody>
+</table></div>
+<ul class="checklist">
+<li><b>ECG em todos.</b> Procurar: bloqueio bifascicular ou BAV, QT longo ou curto, padrão de Brugada, pré-excitação, sinais de isquemia, hipertrofia, onda épsilon</li>
+<li>Glicemia, hemograma e beta-HCG conforme o caso; troponina e imagem só se a história sugerir</li>
+<li><b>Sinais de alta gravidade que internam:</b> síncope <b>em esforço</b> ou em decúbito · palpitação precedente · sopro novo ou cardiopatia estrutural · ECG anormal · anemia ou sangramento · dispneia · idoso com trauma associado · história familiar de morte súbita</li>
+<li><b>Vai para casa:</b> quadro reflexo típico, recorrente e igual aos anteriores, ECG normal, exame normal, sem cardiopatia — com orientação de hidratação, sal, manobras de contrapressão e evitar gatilhos</li>
+<li><b>Não é síncope:</b> convulsão (movimento tônico-clônico, mordedura lateral de língua, confusão pós-ictal prolongada), hipoglicemia, intoxicação, AIT vertebrobasilar, quadro conversivo</li>
+</ul>
+<div class="callout warn">Síncope <b>durante</b> o esforço é cardíaca até prova em contrário — estenose aórtica, cardiomiopatia hipertrófica, arritmia. Síncope <b>logo após</b> o esforço costuma ser reflexa. A diferença de uma palavra na anamnese muda o destino do paciente.</div>
+</div>
+</details>
 </section>
-<!-- ======================= VIA AÉREA / SEDAÇÃO ======================= -->
+<section class="sec" id="res" style="--accent:#0E7C86">
+<div class="head"><span class="idx">02</span><h2>Respiratório</h2><span class="tag">asma · DPOC · EAP · pneumonia</span></div>
+<details>
+<summary>Asma / DPOC — crise</summary>
+<div class="body table-wrap"><table>
+<thead><tr><th>Droga</th><th>Dose</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Droga">Salbutamol/Fenoterol + Ipratrópio (inalatório)</td><td data-label="Dose">8 jatos 20/20min na 1ªh; manutenção 1/1h–4/4h</td></tr>
+<tr><td class="drug" data-label="Droga">Fenoterol + Ipratrópio (nebulização)</td><td data-label="Dose">Fenoterol 10–20 gotas (crianças: peso/3) + Ipratrópio 0,25mg/mL 30 gotas + 5mL SF0,9%</td></tr>
+<tr><td class="drug" data-label="Droga">Hidrocortisona</td><td data-label="Dose">100mg EV 24/24h</td></tr>
+<tr><td class="drug" data-label="Droga">Prednisona</td><td data-label="Dose">20mg VO 2cp (manutenção: 40mg/dia por 5–7 dias)</td></tr>
+<tr><td class="drug" data-label="Droga">Sulfato de Magnésio 10% (refratário)</td><td data-label="Dose">20mL+80mL SF0,9%, correr 20–30min</td></tr>
+<tr><td class="drug" data-label="Droga">Adrenalina (refratariedade mantida)</td><td data-label="Dose">0,01mg/kg SC/IM (0,3–0,5mg a cada 20min)</td></tr>
+<tr><td class="drug" data-label="Droga">Terbutalina (alternativa)</td><td data-label="Dose">0,25mg SC 20/20min</td></tr>
+</tbody>
+</table>
+<p class="lede">DPOC manutenção: Salmeterol+Fluticasona (Seretide) 25/50mcg 2 jatos 12/12h + Tiotrópio (Spiriva) 2,5mcg 2 jatos/manhã. O₂ domiciliar se PaO₂≤55mmHg ou Sat≤88%, ou PaO₂ 56–59 + policitemia/cor pulmonale.</p>
+</div>
+</details>
+<details>
+<summary>Edema agudo de pulmão</summary>
+<div class="body">
+<div class="callout info"><b>Ventilação não invasiva (CPAP/BiPAP):</b> iniciar precocemente em todo paciente sem contraindicação — reduz necessidade de IOT e mortalidade (evidência consistente, pilar do tratamento junto com diuréticos/vasodilatadores).</div>
+<div class="table-wrap"><table>
+<thead><tr><th>Droga</th><th>Dose</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Droga">Furosemida 20mg/2mL</td><td data-label="Dose">≥2x a dose domiciliar, EV, até melhora da congestão</td></tr>
+<tr><td class="drug" data-label="Droga">Nitroglicerina (Tridil) 50mg/5mL</td><td data-label="Dose">1amp+245mL SG5% EV BIC</td></tr>
+<tr><td class="drug" data-label="Droga">Dobutamina 250mg/20mL</td><td data-label="Dose">1amp+230mL SF0,9% (se disfunção de VE)</td></tr>
+<tr><td class="drug" data-label="Droga">Morfina 10mg/mL (uso seletivo)</td><td data-label="Dose">1amp+9mL ABD, 3–5mL EV lento a cada 5–30min</td></tr>
+</tbody>
+</table></div>
+<p class="lede">Morfina: as diretrizes atuais desencorajam uso rotineiro em EAP — associada a maior mortalidade/IOT em estudos observacionais (registro ADHERE). Reservar para dor/ansiedade significativa, com cautela.</p>
+</div>
+</details>
+<details>
+<summary>TVP e TEP</summary>
+<div class="body">
+<div class="callout info"><b>Suspeita clínica:</b> iniciar anticoagulação terapêutica empírica + solicitar Doppler venoso para confirmação — não atrasar a anticoagulação aguardando o exame se a suspeita for alta.</div>
+<div class="subhead">Anticoagulação oral direta (DOAC) — 1ª linha atual na maioria dos casos (CHEST 2021)</div>
+<div class="table-wrap"><table>
+<thead><tr><th>Droga</th><th>Dose</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Droga">Rivaroxabana</td><td data-label="Dose">15mg VO 12/12h ×21 dias, depois 20mg VO 1x/dia (manutenção)</td></tr>
+<tr><td class="drug" data-label="Droga">Apixabana</td><td data-label="Dose">10mg VO 12/12h ×7 dias, depois 5mg VO 12/12h (manutenção)</td></tr>
+</tbody>
+</table></div>
+<p class="lede">Duração mínima 3 meses (provocado) — considerar indefinida se não provocado/recorrente. <b>Preferir Heparina/Enoxaparina em vez de DOAC</b> se: câncer ativo (LMWH ainda referência, embora DOAC seja aceitável em casos selecionados), gestação, síndrome antifosfolípide, ClCr muito reduzido, ou instabilidade/necessidade de reversão rápida.</p>
+<div class="subhead">Heparinização parenteral (instabilidade, contraindicação a DOAC, ou ponte)</div>
+<div class="table-wrap"><table>
+<thead><tr><th>Droga</th><th>Dose</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Droga">Heparina não fracionada (terapêutica)</td><td data-label="Dose">5.000U/mL, diluir 5mL em 250mL SF0,9% (100U/mL); posologia <span class="dose">16U/kg/h</span> (peso×0,16 = mL/h → <span class="dose wv" data-d="1" data-k1="0.16" data-u="mL/h">11,2mL/h</span>)</td></tr>
+</tbody>
+</table></div>
+<p class="lede">PTTa 6/6h, alvo 1,5–2,5x controle.</p>
+<div class="subhead">Enoxaparina — referência rápida (todos os contextos)</div>
+<div class="table-wrap"><table>
+<thead><tr><th>Contexto</th><th>Dose</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Contexto">Profilático</td><td data-label="Dose">1mg/kg SC 1x/dia (MID) — ou dose fixa 40mg SC 1x/dia (padrão em peso médio, ex: profilaxia pós-AVE)</td></tr>
+<tr><td class="drug" data-label="Contexto">Terapêutico (TVP/TEP, SCA)</td><td data-label="Dose">1mg/kg SC 12/12h (BID) — em TVP/TEP, alternativa: 1,5mg/kg SC 1x/dia</td></tr>
+<tr><td class="drug" data-label="Contexto">Terapêutico, &gt;75 anos</td><td data-label="Dose">0,75mg/kg SC 12/12h</td></tr>
+<tr><td class="drug" data-label="Contexto">DRC / ClCr&lt;30</td><td data-label="Dose">1mg/kg SC 1x/dia (mesma dose do profilático, independente do contexto)</td></tr>
+</tbody>
+</table></div>
+</div>
+</details>
+<details>
+<summary>Pneumonia comunitária</summary>
+<div class="body">
+<p><b>CURB-65:</b> Confusão · Ureia≥43 · FR≥30 · PAS≤90/PAD≤60 · idade≥65. 0–1 = ambulatório; ≥2 = internar; tubo/choque = CTI.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Gravidade</th><th>Esquema</th><th>Duração</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Gravidade">Ambulatório, hígido</td><td data-label="Esquema">Amoxicilina 1g 8/8h — ou Doxiciclina 100mg 12/12h — ou Azitromicina 500mg 1x/dia</td><td data-label="Duração">5 dias (mín. 48–72h afebril)</td></tr>
+<tr><td class="drug" data-label="Gravidade">Ambulatório c/ comorbidade ou ATB recente</td><td data-label="Esquema">Amoxicilina+Clavulanato 875/125mg 12/12h + Azitromicina 500mg 1x/dia — ou Levofloxacino 750mg 1x/dia (monoterapia)</td><td data-label="Duração">5–7 dias</td></tr>
+<tr><td class="drug" data-label="Gravidade">Enfermaria</td><td data-label="Esquema">Ceftriaxona 1–2g/dia + Azitromicina 500mg 1x/dia — ou Levofloxacino 750mg 1x/dia (monoterapia)</td><td data-label="Duração">5–7 dias</td></tr>
+<tr><td class="drug" data-label="Gravidade">CTI</td><td data-label="Esquema">Ceftriaxona 2g/dia (ou Ampicilina-Sulbactam 3g 6/6h) + Azitromicina 500mg/dia ou Levofloxacino 750mg/dia</td><td data-label="Duração">7 dias</td></tr>
+<tr><td class="drug" data-label="Gravidade">CTI + risco de MRSA</td><td data-label="Esquema">+ Vancomicina 15–20mg/kg 12/12h (~1–1,5g) — ou Linezolida 600mg 12/12h</td><td data-label="Duração">7 dias</td></tr>
+<tr><td class="drug" data-label="Gravidade">CTI + risco de Pseudomonas</td><td data-label="Esquema">+ Piperacilina-Tazobactam 4,5g 6/6h, ou Cefepime 2g 8/8h, ou Meropenem 1g 8/8h — associado a Levofloxacino 750mg/dia ou Ciprofloxacino 400mg 12/12h</td><td data-label="Duração">7 dias (estender se complicada)</td></tr>
+</tbody>
+</table></div>
+<div class="callout">Derrame parapneumônico complicado: pH&lt;7,2, LDH&gt;1000, glicose&lt;40-60, pus/bactérias → drenagem em selo d'água.</div>
+</div>
+</details>
+<details>
+<summary>Síndromes torácicas específicas</summary>
+<div class="body table-wrap"><table>
+<thead><tr><th>Síndrome</th><th>Achados</th></tr></thead>
+<tbody>
+<tr><td class="drug" data-label="Síndrome">Veia cava superior</td><td data-label="Achados">Edema/congestão de face, circulação colateral, turgência jugular. Causas: Ca pulmão, linfoma, trombose sobre CVC. Elevar cabeceira (furosemida controversa)</td></tr>
+<tr><td class="drug" data-label="Síndrome">Pancoast</td><td data-label="Achados">Dor em ombro/escápula ipsilateral + distribuição de nervo ulnar + destruição de 1ª-2ª costelas no RX</td></tr>
+<tr><td class="drug" data-label="Síndrome">Horner</td><td data-label="Achados">Miose + ptose + enoftalmia + anidrose facial ipsilateral (associada a Pancoast)</td></tr>
+</tbody>
+</table></div>
+</details>
+</section>
 <section class="sec" id="air" style="--accent:#1D5FBF">
-<div class="head"><span class="idx">02</span><h2>Via Aérea &amp; Sedação</h2><span class="tag">IOT · sedoanalgesia · BNM</span></div>
+<div class="head"><span class="idx">03</span><h2>Via Aérea &amp; Sedação</h2><span class="tag">IOT · sedoanalgesia · BNM</span></div>
 <details>
 <summary>Intubação — indução</summary>
 <div class="body table-wrap"><table>
@@ -527,9 +688,8 @@
 </div>
 </details>
 </section>
-<!-- ======================= NEURO / PSIQ ======================= -->
 <section class="sec" id="neu" style="--accent:#7A3FC4">
-<div class="head"><span class="idx">03</span><h2>Neurologia &amp; Psiquiatria</h2><span class="tag">convulsão · AVE · HIC · agitação</span></div>
+<div class="head"><span class="idx">04</span><h2>Neurologia &amp; Psiquiatria</h2><span class="tag">convulsão · AVE · HIC · agitação</span></div>
 <div class="callout"><b>Psicofarmacologia completa — escolha dentro de cada classe, faixas de dose, uso agudo e combinações, escalonamento, troca e desmame, gestação e lactação, monitorização laboratorial e interações → <a href="guia_bolso_psiquiatria.html" style="color:inherit;font-weight:600;">Guia de Psicofarmacologia →</a></b></div>
 <details>
 <summary>Crise convulsiva / estado de mal epiléptico</summary>
@@ -774,106 +934,6 @@
 </div>
 </details>
 </section>
-<!-- ======================= RESPIRATÓRIO ======================= -->
-<section class="sec" id="res" style="--accent:#0E7C86">
-<div class="head"><span class="idx">04</span><h2>Respiratório</h2><span class="tag">asma · DPOC · EAP · pneumonia</span></div>
-<details>
-<summary>Asma / DPOC — crise</summary>
-<div class="body table-wrap"><table>
-<thead><tr><th>Droga</th><th>Dose</th></tr></thead>
-<tbody>
-<tr><td class="drug" data-label="Droga">Salbutamol/Fenoterol + Ipratrópio (inalatório)</td><td data-label="Dose">8 jatos 20/20min na 1ªh; manutenção 1/1h–4/4h</td></tr>
-<tr><td class="drug" data-label="Droga">Fenoterol + Ipratrópio (nebulização)</td><td data-label="Dose">Fenoterol 10–20 gotas (crianças: peso/3) + Ipratrópio 0,25mg/mL 30 gotas + 5mL SF0,9%</td></tr>
-<tr><td class="drug" data-label="Droga">Hidrocortisona</td><td data-label="Dose">100mg EV 24/24h</td></tr>
-<tr><td class="drug" data-label="Droga">Prednisona</td><td data-label="Dose">20mg VO 2cp (manutenção: 40mg/dia por 5–7 dias)</td></tr>
-<tr><td class="drug" data-label="Droga">Sulfato de Magnésio 10% (refratário)</td><td data-label="Dose">20mL+80mL SF0,9%, correr 20–30min</td></tr>
-<tr><td class="drug" data-label="Droga">Adrenalina (refratariedade mantida)</td><td data-label="Dose">0,01mg/kg SC/IM (0,3–0,5mg a cada 20min)</td></tr>
-<tr><td class="drug" data-label="Droga">Terbutalina (alternativa)</td><td data-label="Dose">0,25mg SC 20/20min</td></tr>
-</tbody>
-</table>
-<p class="lede">DPOC manutenção: Salmeterol+Fluticasona (Seretide) 25/50mcg 2 jatos 12/12h + Tiotrópio (Spiriva) 2,5mcg 2 jatos/manhã. O₂ domiciliar se PaO₂≤55mmHg ou Sat≤88%, ou PaO₂ 56–59 + policitemia/cor pulmonale.</p>
-</div>
-</details>
-<details>
-<summary>Edema agudo de pulmão</summary>
-<div class="body">
-<div class="callout info"><b>Ventilação não invasiva (CPAP/BiPAP):</b> iniciar precocemente em todo paciente sem contraindicação — reduz necessidade de IOT e mortalidade (evidência consistente, pilar do tratamento junto com diuréticos/vasodilatadores).</div>
-<div class="table-wrap"><table>
-<thead><tr><th>Droga</th><th>Dose</th></tr></thead>
-<tbody>
-<tr><td class="drug" data-label="Droga">Furosemida 20mg/2mL</td><td data-label="Dose">≥2x a dose domiciliar, EV, até melhora da congestão</td></tr>
-<tr><td class="drug" data-label="Droga">Nitroglicerina (Tridil) 50mg/5mL</td><td data-label="Dose">1amp+245mL SG5% EV BIC</td></tr>
-<tr><td class="drug" data-label="Droga">Dobutamina 250mg/20mL</td><td data-label="Dose">1amp+230mL SF0,9% (se disfunção de VE)</td></tr>
-<tr><td class="drug" data-label="Droga">Morfina 10mg/mL (uso seletivo)</td><td data-label="Dose">1amp+9mL ABD, 3–5mL EV lento a cada 5–30min</td></tr>
-</tbody>
-</table></div>
-<p class="lede">Morfina: as diretrizes atuais desencorajam uso rotineiro em EAP — associada a maior mortalidade/IOT em estudos observacionais (registro ADHERE). Reservar para dor/ansiedade significativa, com cautela.</p>
-</div>
-</details>
-<details>
-<summary>TVP e TEP</summary>
-<div class="body">
-<div class="callout info"><b>Suspeita clínica:</b> iniciar anticoagulação terapêutica empírica + solicitar Doppler venoso para confirmação — não atrasar a anticoagulação aguardando o exame se a suspeita for alta.</div>
-<div class="subhead">Anticoagulação oral direta (DOAC) — 1ª linha atual na maioria dos casos (CHEST 2021)</div>
-<div class="table-wrap"><table>
-<thead><tr><th>Droga</th><th>Dose</th></tr></thead>
-<tbody>
-<tr><td class="drug" data-label="Droga">Rivaroxabana</td><td data-label="Dose">15mg VO 12/12h ×21 dias, depois 20mg VO 1x/dia (manutenção)</td></tr>
-<tr><td class="drug" data-label="Droga">Apixabana</td><td data-label="Dose">10mg VO 12/12h ×7 dias, depois 5mg VO 12/12h (manutenção)</td></tr>
-</tbody>
-</table></div>
-<p class="lede">Duração mínima 3 meses (provocado) — considerar indefinida se não provocado/recorrente. <b>Preferir Heparina/Enoxaparina em vez de DOAC</b> se: câncer ativo (LMWH ainda referência, embora DOAC seja aceitável em casos selecionados), gestação, síndrome antifosfolípide, ClCr muito reduzido, ou instabilidade/necessidade de reversão rápida.</p>
-<div class="subhead">Heparinização parenteral (instabilidade, contraindicação a DOAC, ou ponte)</div>
-<div class="table-wrap"><table>
-<thead><tr><th>Droga</th><th>Dose</th></tr></thead>
-<tbody>
-<tr><td class="drug" data-label="Droga">Heparina não fracionada (terapêutica)</td><td data-label="Dose">5.000U/mL, diluir 5mL em 250mL SF0,9% (100U/mL); posologia <span class="dose">16U/kg/h</span> (peso×0,16 = mL/h → <span class="dose wv" data-d="1" data-k1="0.16" data-u="mL/h">11,2mL/h</span>)</td></tr>
-</tbody>
-</table></div>
-<p class="lede">PTTa 6/6h, alvo 1,5–2,5x controle.</p>
-<div class="subhead">Enoxaparina — referência rápida (todos os contextos)</div>
-<div class="table-wrap"><table>
-<thead><tr><th>Contexto</th><th>Dose</th></tr></thead>
-<tbody>
-<tr><td class="drug" data-label="Contexto">Profilático</td><td data-label="Dose">1mg/kg SC 1x/dia (MID) — ou dose fixa 40mg SC 1x/dia (padrão em peso médio, ex: profilaxia pós-AVE)</td></tr>
-<tr><td class="drug" data-label="Contexto">Terapêutico (TVP/TEP, SCA)</td><td data-label="Dose">1mg/kg SC 12/12h (BID) — em TVP/TEP, alternativa: 1,5mg/kg SC 1x/dia</td></tr>
-<tr><td class="drug" data-label="Contexto">Terapêutico, &gt;75 anos</td><td data-label="Dose">0,75mg/kg SC 12/12h</td></tr>
-<tr><td class="drug" data-label="Contexto">DRC / ClCr&lt;30</td><td data-label="Dose">1mg/kg SC 1x/dia (mesma dose do profilático, independente do contexto)</td></tr>
-</tbody>
-</table></div>
-</div>
-</details>
-<details>
-<summary>Pneumonia comunitária</summary>
-<div class="body">
-<p><b>CURB-65:</b> Confusão · Ureia≥43 · FR≥30 · PAS≤90/PAD≤60 · idade≥65. 0–1 = ambulatório; ≥2 = internar; tubo/choque = CTI.</p>
-<div class="table-wrap"><table>
-<thead><tr><th>Gravidade</th><th>Esquema</th><th>Duração</th></tr></thead>
-<tbody>
-<tr><td class="drug" data-label="Gravidade">Ambulatório, hígido</td><td data-label="Esquema">Amoxicilina 1g 8/8h — ou Doxiciclina 100mg 12/12h — ou Azitromicina 500mg 1x/dia</td><td data-label="Duração">5 dias (mín. 48–72h afebril)</td></tr>
-<tr><td class="drug" data-label="Gravidade">Ambulatório c/ comorbidade ou ATB recente</td><td data-label="Esquema">Amoxicilina+Clavulanato 875/125mg 12/12h + Azitromicina 500mg 1x/dia — ou Levofloxacino 750mg 1x/dia (monoterapia)</td><td data-label="Duração">5–7 dias</td></tr>
-<tr><td class="drug" data-label="Gravidade">Enfermaria</td><td data-label="Esquema">Ceftriaxona 1–2g/dia + Azitromicina 500mg 1x/dia — ou Levofloxacino 750mg 1x/dia (monoterapia)</td><td data-label="Duração">5–7 dias</td></tr>
-<tr><td class="drug" data-label="Gravidade">CTI</td><td data-label="Esquema">Ceftriaxona 2g/dia (ou Ampicilina-Sulbactam 3g 6/6h) + Azitromicina 500mg/dia ou Levofloxacino 750mg/dia</td><td data-label="Duração">7 dias</td></tr>
-<tr><td class="drug" data-label="Gravidade">CTI + risco de MRSA</td><td data-label="Esquema">+ Vancomicina 15–20mg/kg 12/12h (~1–1,5g) — ou Linezolida 600mg 12/12h</td><td data-label="Duração">7 dias</td></tr>
-<tr><td class="drug" data-label="Gravidade">CTI + risco de Pseudomonas</td><td data-label="Esquema">+ Piperacilina-Tazobactam 4,5g 6/6h, ou Cefepime 2g 8/8h, ou Meropenem 1g 8/8h — associado a Levofloxacino 750mg/dia ou Ciprofloxacino 400mg 12/12h</td><td data-label="Duração">7 dias (estender se complicada)</td></tr>
-</tbody>
-</table></div>
-<div class="callout">Derrame parapneumônico complicado: pH&lt;7,2, LDH&gt;1000, glicose&lt;40-60, pus/bactérias → drenagem em selo d'água.</div>
-</div>
-</details>
-<details>
-<summary>Síndromes torácicas específicas</summary>
-<div class="body table-wrap"><table>
-<thead><tr><th>Síndrome</th><th>Achados</th></tr></thead>
-<tbody>
-<tr><td class="drug" data-label="Síndrome">Veia cava superior</td><td data-label="Achados">Edema/congestão de face, circulação colateral, turgência jugular. Causas: Ca pulmão, linfoma, trombose sobre CVC. Elevar cabeceira (furosemida controversa)</td></tr>
-<tr><td class="drug" data-label="Síndrome">Pancoast</td><td data-label="Achados">Dor em ombro/escápula ipsilateral + distribuição de nervo ulnar + destruição de 1ª-2ª costelas no RX</td></tr>
-<tr><td class="drug" data-label="Síndrome">Horner</td><td data-label="Achados">Miose + ptose + enoftalmia + anidrose facial ipsilateral (associada a Pancoast)</td></tr>
-</tbody>
-</table></div>
-</details>
-</section>
-<!-- ======================= GASTRO/HEPATO ======================= -->
 <section class="sec" id="gas" style="--accent:#A8631B">
 <div class="head"><span class="idx">05</span><h2>GI / Hepato / Cirurgia</h2><span class="tag">HDA · ascite · abdome agudo</span></div>
 <details>
@@ -960,8 +1020,53 @@
 </tbody>
 </table></div>
 </details>
+
+<details>
+<summary>Profilaxia de úlcera de estresse</summary>
+<div class="body">
+<div class="callout warn"><b>Não é para todo paciente internado.</b> Prescrever inibidor de bomba de rotina em enfermaria aumenta pneumonia, infecção por <i>C. difficile</i> e interações, sem benefício demonstrado. A indicação é de <b>paciente grave com fator de risco</b>.</div>
+<div class="table-wrap"><table>
+<thead><tr><th>Situação</th><th>Conduta</th></tr></thead>
+<tbody>
+<tr><td data-label="Situação"><b>Indicação forte</b></td><td data-label="Conduta">Ventilação mecânica &gt;48h · coagulopatia (plaquetas &lt;50.000, RNI &gt;1,5 ou TTPa &gt;2×) · história de úlcera ou sangramento digestivo no último ano</td></tr>
+<tr><td data-label="Situação">Considerar</td><td data-label="Conduta">Queimadura extensa, TCE grave ou lesão medular, choque ou sepse grave, uso de corticoide em dose alta associado a AINE, disfunção hepática ou renal grave, dois ou mais fatores menores</td></tr>
+<tr><td data-label="Situação"><b>Não indicar</b></td><td data-label="Conduta">Paciente de enfermaria clinicamente estável, uso isolado de corticoide, "porque está internado", uso isolado de anticoagulante profilático</td></tr>
+<tr><td data-label="Situação">Droga</td><td data-label="Conduta">Omeprazol 40mg EV 1×/dia, ou pantoprazol 40mg EV 1×/dia. Bloqueador H2 (ranitidina, onde disponível) é alternativa</td></tr>
+<tr><td data-label="Situação">Quando suspender</td><td data-label="Conduta">Assim que o fator de risco cessar — <b>extubado e alimentando, suspenda</b>. Rever na alta: profilaxia iniciada na UTI não deve virar prescrição crônica</td></tr>
+<tr><td data-label="Situação">Nutrição enteral</td><td data-label="Conduta">Dieta enteral em curso reduz o risco e, em paciente sem outro fator, pode dispensar a profilaxia farmacológica</td></tr>
+</tbody>
+</table></div>
+</div>
+</details>
+
+<details>
+<summary>Pancreatite aguda</summary>
+<div class="body">
+<p class="lede"><b>Diagnóstico: 2 de 3</b> — dor abdominal típica (epigástrica, em faixa, irradiada ao dorso) · lipase ou amilase <b>≥3× o limite superior</b> · imagem compatível. Com os dois primeiros, <b>a tomografia não é necessária na admissão</b> — e feita cedo demais subestima a necrose.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Eixo</th><th>Conduta</th></tr></thead>
+<tbody>
+<tr><td data-label="Eixo"><b>Hidratação</b> — o que muda desfecho</td><td data-label="Conduta">Ringer lactato, <b>1,5mL/kg/h</b> após bolus inicial de 10mL/kg se hipovolêmico. Reavaliar em 6, 12, 24 e 48h por diurese, FC, PA, ureia e hematócrito. <b>A hidratação agressiva de rotina foi abandonada</b> — excesso causa sobrecarga e piora respiratória</td></tr>
+<tr><td data-label="Eixo">Causa</td><td data-label="Conduta">Ultrassom de abdome <b>em todos</b> (biliar é a causa mais comum), triglicerídeos e cálcio, história de álcool e de drogas</td></tr>
+<tr><td data-label="Eixo">Dor</td><td data-label="Conduta">Analgesia plena, inclusive opioide — <b>não há razão para poupar morfina</b> por medo do esfíncter de Oddi</td></tr>
+<tr><td data-label="Eixo">Dieta</td><td data-label="Conduta"><b>Reintroduzir precocemente</b>, em 24–48h, assim que houver tolerância — jejum prolongado piora o desfecho. Via oral leve; se não tolerar, enteral por sonda, não parenteral</td></tr>
+<tr><td data-label="Eixo"><b>Antibiótico</b></td><td data-label="Conduta"><b>Não fazer profilaxia</b>, nem na necrosante. Só se infecção documentada ou fortemente suspeita (necrose com gás, piora após 7–10 dias, sepse) — aí carbapenêmico</td></tr>
+<tr><td data-label="Eixo">CPRE</td><td data-label="Conduta">Urgente (&lt;24h) apenas na <b>colangite associada</b>. Sem colangite, não é urgência. Colecistectomia na mesma internação na biliar leve</td></tr>
+</tbody>
+</table></div>
+<div class="table-wrap"><table>
+<thead><tr><th>Gravidade</th><th>Como reconhecer</th></tr></thead>
+<tbody>
+<tr><td data-label="Gravidade">Leve</td><td data-label="Reconhecer">Sem falência orgânica nem complicação local — a maioria; alta em poucos dias</td></tr>
+<tr><td data-label="Gravidade">Moderadamente grave</td><td data-label="Reconhecer">Falência orgânica transitória (&lt;48h) ou complicação local</td></tr>
+<tr><td data-label="Gravidade"><b>Grave</b></td><td data-label="Reconhecer"><b>Falência orgânica persistente &gt;48h</b> — respiratória, renal ou cardiovascular. Terapia intensiva</td></tr>
+<tr><td data-label="Gravidade">Sinais de alarme precoces</td><td data-label="Reconhecer">BISAP ≥3, ureia em ascensão, hematócrito subindo (hemoconcentração), PCR &gt;150 em 48h, idade &gt;60, obesidade, derrame pleural</td></tr>
+</tbody>
+</table></div>
+<div class="callout warn">O marcador mais útil nas primeiras 48h é a <b>ureia em ascensão</b> — sinaliza reposição insuficiente e prediz mortalidade melhor que os escores clássicos. <b>O valor da lipase não indica gravidade</b>: não repetir para acompanhar.</div>
+</div>
+</details>
 </section>
-<!-- ======================= RENAL/METABOLICO ======================= -->
 <section class="sec" id="ren" style="--accent:#D97706">
 <div class="head"><span class="idx">06</span><h2>Renal / Metabólico / Endócrino</h2><span class="tag">eletrólitos · glicemia · acidose</span></div>
 <details>
@@ -991,7 +1096,8 @@
 <tr><td class="drug" data-label="Situação">Hiponatremia — protocolo alternativo (bolus)</td><td data-label="Conduta">NaCl 10% 100mL + SF0,9% 400mL — infundir <span class="dose">100mL em bolus/60min</span>, reavaliar Na sérico antes de repetir</td></tr>
 <tr><td class="drug" data-label="Situação">Hipernatremia</td><td data-label="Conduta">Água filtrada por SNE 200mL 6/6h, ou NaCl 0,45%, ou SGI5% 60mL/h — corrigir <span class="dose">máx 10mEq/L em 24h</span> (correção rápida demais causa edema cerebral)</td></tr>
 </tbody>
-</table></div>
+</table><div class="callout warn"><b>O limite de 8–10mEq/L em 24h é de segurança, não de eficácia.</b> Corrigir hiponatremia crônica rápido demais causa <b>síndrome de desmielinização osmótica</b> (mielinólise pontina), que aparece 2 a 6 dias depois, quando o paciente já parecia melhor: disartria, disfagia, tetraparesia, síndrome do cativeiro. É irreversível.<br/><b>Mais rígido ainda (máx 8mEq/24h)</b> se: Na &lt;105, etilismo, desnutrição, hepatopatia, hipocalemia — o cérebro nesses casos tolera menos.<br/><b>Se passou do limite:</b> pare a solução hipertônica e <b>reabaixe o sódio</b> com soro glicosado 5% e, se necessário, desmopressina 2mcg EV — o resgate nas primeiras horas ainda evita a lesão. Dosar sódio a cada 2–4h durante a correção ativa.</div>
+</div>
 </details>
 <details>
 <summary>Distúrbios de cálcio, magnésio e paratireoide</summary>
@@ -1067,8 +1173,41 @@
 <div class="callout">Vigiar síndrome de realimentação: rebaixamento de consciência + mioclonia (associada a hipofosfatemia/hipocalemia/hipomagnesemia na reintrodução calórica).</div>
 </div>
 </details>
+
+<details>
+<summary>Crise tireotóxica e coma mixedematoso</summary>
+<div class="body">
+<div class="table-wrap"><table>
+<thead><tr><th></th><th>Crise tireotóxica</th><th>Coma mixedematoso</th></tr></thead>
+<tbody>
+<tr><td data-label="—">Reconhecer</td><td data-label="Tireotóxica"><b>Febre alta, taquicardia desproporcional, FA, agitação ou delirium, vômito e diarreia</b>, insuficiência cardíaca. Gatilho: infecção, cirurgia, parto, suspensão da droga, contraste iodado</td><td data-label="Mixedematoso"><b>Hipotermia, bradicardia, rebaixamento, hipoventilação com hipercapnia, hiponatremia, hipoglicemia</b>. Gatilho: frio, infecção, sedativo, suspensão da levotiroxina</td></tr>
+<tr><td data-label="—">Confirmar</td><td data-label="Tireotóxica">TSH suprimido com T4 livre alto — <b>não esperar o resultado para tratar</b>; escore de Burch-Wartofsky ajuda</td><td data-label="Mixedematoso">TSH alto com T4 livre baixo; no hipotireoidismo central o TSH pode ser normal</td></tr>
+<tr><td data-label="—">Ordem do tratamento</td><td data-label="Tireotóxica"><b>1.</b> Propranolol 40–80mg VO 6/6h (ou 0,5–1mg EV lento) — controla o adrenérgico<br/><b>2.</b> Propiltiouracil 200mg 4/4h VO/SNG (preferido na crise, bloqueia conversão) ou metimazol 20mg 6/6h<br/><b>3.</b> Iodo (Lugol) <b>só 1h depois</b> da tionamida — antes disso alimenta a síntese<br/><b>4.</b> Hidrocortisona 100mg EV 8/8h<br/><b>5.</b> Resfriar, hidratar, tratar o gatilho. <b>AAS não</b> — desloca hormônio da proteína</td><td data-label="Mixedematoso"><b>1.</b> Levotiroxina 200–400mcg EV em ataque, depois 50–100mcg/dia (sem EV: dose alta por SNG)<br/><b>2.</b> <b>Hidrocortisona 100mg EV 8/8h antes</b> do hormônio — insuficiência adrenal associada é frequente e a levotiroxina isolada pode precipitar crise<br/><b>3.</b> Aquecimento passivo, suporte ventilatório, corrigir sódio e glicose com cautela<br/><b>4.</b> Tratar o gatilho</td></tr>
+<tr><td data-label="—">Onde tratar</td><td data-label="Tireotóxica">Terapia intensiva — mortalidade relevante</td><td data-label="Mixedematoso">Terapia intensiva</td></tr>
+</tbody>
+</table></div>
+<div class="callout warn">As duas armadilhas de ordem: no <b>mixedema</b>, corticoide <b>antes</b> da levotiroxina; na <b>tireotóxica</b>, tionamida <b>antes</b> do iodo. Inverter qualquer uma das duas piora o quadro.</div>
+</div>
+</details>
+
+<details>
+<summary>Cetoacidose euglicêmica (iSGLT2)</summary>
+<div class="body">
+<div class="callout warn"><b>A armadilha:</b> paciente em uso de dapagliflozina, empagliflozina ou canagliflozina com acidose metabólica e cetose, mas <b>glicemia normal ou pouco elevada</b> — frequentemente abaixo de 250mg/dL. Sem pensar nisso, o diagnóstico é perdido e o paciente recebe hidratação e alta.</div>
+<div class="table-wrap"><table>
+<thead><tr><th>Item</th><th>Detalhe</th></tr></thead>
+<tbody>
+<tr><td data-label="Item">Quando suspeitar</td><td data-label="Detalhe">Náusea, vômito, dor abdominal, dispneia ou mal-estar em usuário de iSGLT2, com <b>acidose metabólica de ânion-gap alto</b> sem outra explicação</td></tr>
+<tr><td data-label="Item">Gatilhos</td><td data-label="Detalhe"><b>Jejum, cirurgia, infecção, desidratação, dieta muito restrita em carboidrato, redução abrupta de insulina, álcool</b> — a maioria dos casos tem um deles</td></tr>
+<tr><td data-label="Item">Confirmar</td><td data-label="Detalhe">Gasometria com acidose e ânion-gap alargado + <b>cetonemia</b> (ou cetonúria). A glicemia normal não exclui — se você não dosar cetona, não faz o diagnóstico</td></tr>
+<tr><td data-label="Item"><b>Tratar</b></td><td data-label="Detalhe">Suspender o iSGLT2 · hidratação · <b>insulina EV em infusão junto com soro glicosado desde o início</b> — a insulina é necessária para interromper a cetogênese, e a glicose evita hipoglicemia · repor potássio pelas mesmas regras da cetoacidose clássica</td></tr>
+<tr><td data-label="Item">Duração</td><td data-label="Detalhe">Costuma levar <b>mais tempo</b> para resolver que a cetoacidose clássica — manter insulina até fechar o ânion-gap, não até normalizar a glicemia</td></tr>
+<tr><td data-label="Item">Prevenir</td><td data-label="Detalhe"><b>Suspender o iSGLT2 3 dias antes de cirurgia eletiva</b> e em qualquer internação com jejum ou doença aguda</td></tr>
+</tbody>
+</table></div>
+</div>
+</details>
 </section>
-<!-- ======================= INFECTO ======================= -->
 <section class="sec" id="inf" style="--accent:#15803D">
 <div class="head"><span class="idx">07</span><h2>Infectologia</h2><span class="tag">ATB · sepse · HIV · ITU</span></div>
 <details>
@@ -1234,8 +1373,144 @@
 </tbody>
 </table></div>
 </details>
+
+<details>
+<summary>Neutropenia febril e síndrome de lise tumoral</summary>
+<div class="body">
+<p class="lede"><b>Neutropenia febril</b> — temperatura ≥38,3°C isolada ou ≥38,0°C por 1h, com neutrófilos &lt;500 (ou &lt;1.000 em queda).</p>
+<ul class="checklist">
+<li><b>Antibiótico na primeira hora</b>, antes de qualquer resultado — o atraso é o que mata. Colher hemoculturas sem atrasar a droga</li>
+<li>Esquema inicial: <b>cefepima 2g EV 8/8h</b> ou piperacilina-tazobactam 4,5g EV 6/6h — cobertura antipseudomonas é obrigatória</li>
+<li>Acrescentar <b>vancomicina</b> se: cateter com sinal de infecção, mucosite grave, instabilidade hemodinâmica, colonização por MRSA ou infecção de pele</li>
+<li>Antifúngico se a febre persiste após 4–7 dias de antibiótico adequado</li>
+<li><b>Não fazer toque retal, supositório nem medir temperatura retal</b> — risco de bacteremia por translocação</li>
+<li>Escore MASCC ≥21 identifica baixo risco, candidato a tratamento ambulatorial em serviço com retaguarda</li>
+</ul>
+<p class="lede"><b>Síndrome de lise tumoral</b> — após quimioterapia de tumor volumoso e responsivo, ou espontânea em leucemia e linfoma agressivos.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Achado</th><th>Conduta</th></tr></thead>
+<tbody>
+<tr><td data-label="Achado"><b>Hipercalemia</b> — a que mata primeiro</td><td data-label="Conduta">Tratar como hipercalemia grave (ver card de potássio); monitorização contínua</td></tr>
+<tr><td data-label="Achado">Hiperfosfatemia e hipocalcemia</td><td data-label="Conduta">Quelante de fósforo; <b>repor cálcio só se sintomático</b> — repor com fósforo alto precipita no tecido</td></tr>
+<tr><td data-label="Achado">Hiperuricemia</td><td data-label="Conduta">Alopurinol na profilaxia; <b>rasburicase</b> se ácido úrico já alto ou alto risco (contraindicada em deficiência de G6PD)</td></tr>
+<tr><td data-label="Achado">Base do tratamento</td><td data-label="Conduta"><b>Hidratação vigorosa</b> (2–3L/m²/dia), débito urinário alto. <b>Não alcalinizar de rotina</b> — piora a precipitação de fosfato de cálcio</td></tr>
+<tr><td data-label="Achado">Refratário</td><td data-label="Conduta">Diálise — indicação precoce se hipercalemia ou hiperfosfatemia refratárias, oligúria ou sobrecarga</td></tr>
+</tbody>
+</table></div>
+</div>
+</details>
+
+<details>
+<summary>Epistaxe</summary>
+<div class="body">
+<div class="table-wrap"><table>
+<thead><tr><th>Passo</th><th>Conduta</th></tr></thead>
+<tbody>
+<tr><td data-label="Passo">1 — compressão</td><td data-label="Conduta">Sentado, <b>cabeça inclinada para a frente</b> (não para trás), comprimir a asa nasal contra o septo por <b>10–15min sem soltar</b>. Resolve a maioria</td></tr>
+<tr><td data-label="Passo">2 — vasoconstritor</td><td data-label="Conduta">Algodão embebido em oximetazolina ou adrenalina 1:1000 + lidocaína, deixar 10min e recomprimir</td></tr>
+<tr><td data-label="Passo">3 — cauterização</td><td data-label="Conduta">Se ponto sangrante visível no septo anterior (área de Little): nitrato de prata, <b>de um lado só</b> — cauterizar os dois lados do septo pode causar perfuração</td></tr>
+<tr><td data-label="Passo">4 — tamponamento anterior</td><td data-label="Conduta">Esponja expansiva ou gaze com pomada; manter 48–72h. <b>Antibiótico enquanto tamponado</b> (amoxicilina-clavulanato ou cefalexina) pelo risco de sinusite e síndrome do choque tóxico</td></tr>
+<tr><td data-label="Passo">5 — posterior</td><td data-label="Conduta">Sangramento que escorre pela orofaringe apesar do tampão anterior: sonda com balão ou tampão posterior — <b>internar</b>, risco de reflexo vagal e hipoxemia. Chamar otorrino</td></tr>
+</tbody>
+</table></div>
+<ul class="checklist">
+<li>Medir PA — hipertensão costuma ser consequência do estresse, não causa; tratar a hipertensão não estanca o sangramento</li>
+<li>Perguntar por <b>anticoagulante e antiagregante</b>; colher coagulograma e hemograma se volumoso, recorrente ou anticoagulado</li>
+<li>Anticoagulação em geral <b>não se suspende</b> por epistaxe controlável; reversão só em sangramento grave</li>
+<li>Recorrente unilateral em adulto, sobretudo com obstrução nasal: investigar tumor — encaminhar</li>
+</ul>
+</div>
+</details>
+
+<details>
+<summary>IST — abordagem sindrômica, sífilis e seguimento</summary>
+<div class="body">
+<p class="lede">As doses estão no card anterior. Aqui está o que decide <b>qual síndrome é</b>, como interpretar a sorologia e o que fazer depois da receita.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Síndrome</th><th>O que pensar</th><th>Tratar empiricamente</th></tr></thead>
+<tbody>
+<tr><td data-label="Síndrome"><b>Corrimento uretral</b></td><td data-label="Pensar">Gonococo (abundante, purulento, incubação curta) × clamídia (mucoide, mais discreto) — na prática não se separa clinicamente</td><td data-label="Tratar">Cobrir <b>os dois</b>: ceftriaxona + doxiciclina</td></tr>
+<tr><td data-label="Síndrome"><b>Úlcera genital</b></td><td data-label="Pensar"><b>Sífilis</b> — única, indolor, fundo limpo, base endurecida · <b>herpes</b> — vesículas agrupadas, dolorosas, recorrentes · <b>cancro mole</b> — múltiplas, dolorosas, fundo sujo, adenite que fistuliza · <b>LGV</b> — úlcera fugaz + adenopatia volumosa · <b>donovanose</b> — crônica, vegetante, indolor</td><td data-label="Tratar">Sem laboratório imediato: benzatina + azitromicina 1g; associar aciclovir se houver vesícula</td></tr>
+<tr><td data-label="Síndrome"><b>Corrimento vaginal</b></td><td data-label="Pensar">Vaginose — odor de peixe, pH &gt;4,5, teste das aminas positivo · candidíase — grumoso, prurido, pH normal · tricomoníase — amarelo-esverdeado bolhoso, colo em framboesa</td><td data-label="Tratar">Conforme o quadro; tricomoníase é IST e exige tratar a parceria</td></tr>
+<tr><td data-label="Síndrome"><b>Dor pélvica (DIP)</b></td><td data-label="Pensar">Dor à mobilização do colo, anexial ou hipogástrica em mulher sexualmente ativa — <b>o limiar para tratar é baixo</b>, a sequela é infertilidade</td><td data-label="Tratar">Esquema tríplice; internar se gravidez, abscesso, sepse, falha oral ou dúvida cirúrgica</td></tr>
+<tr><td data-label="Síndrome">Epididimite</td><td data-label="Pensar">Dor e edema testicular de instalação subaguda — <b>excluir torção</b>, que é súbita e cirúrgica</td><td data-label="Tratar">Ceftriaxona + doxiciclina 10 dias; se prática anal, cobrir enterobactérias</td></tr>
+</tbody>
+</table></div>
+
+<p class="lede"><b>Sífilis — interpretar os testes</b></p>
+<div class="table-wrap"><table>
+<thead><tr><th>Treponêmico</th><th>Não treponêmico (VDRL)</th><th>Interpretação</th></tr></thead>
+<tbody>
+<tr><td data-label="Trep.">Reagente</td><td data-label="VDRL">Reagente</td><td data-label="Leitura"><b>Sífilis ativa</b> ou cicatriz sorológica se tratada com queda documentada — tratar se não houver histórico confiável</td></tr>
+<tr><td data-label="Trep.">Reagente</td><td data-label="VDRL">Não reagente</td><td data-label="Leitura">Sífilis tratada, muito precoce, ou tardia com VDRL negativado</td></tr>
+<tr><td data-label="Trep.">Não reagente</td><td data-label="VDRL">Reagente</td><td data-label="Leitura">Falso-positivo (gestação, doença autoimune, infecção viral) — repetir</td></tr>
+</tbody>
+</table></div>
+<ul class="checklist">
+<li><b>Estadiar antes de tratar:</b> recente (&lt;1 ano — primária, secundária, latente recente) recebe <b>dose única</b>; tardia ou de duração ignorada recebe <b>3 doses semanais</b>. Perder o intervalo por mais de 14 dias obriga a reiniciar o esquema</li>
+<li><b>Neurossífilis</b> — alteração visual, auditiva, neurológica ou psiquiátrica em qualquer estágio: punção lombar e tratamento com penicilina cristalina EV, não benzatina</li>
+<li><b>Reação de Jarisch-Herxheimer</b> — febre, calafrio e piora das lesões nas primeiras 24h após a penicilina. É esperada e autolimitada; tratar com antitérmico e avisar antes, para não confundir com alergia. Em gestante pode desencadear contração</li>
+<li><b>Alergia à penicilina em gestante:</b> não há alternativa que trate o feto — a conduta é <b>dessensibilização</b>, não substituição por doxiciclina</li>
+<li><b>Seguimento:</b> VDRL a cada 3 meses no primeiro ano. Sucesso = <b>queda de 2 diluições</b> (ex.: 1:32 → 1:8) em até 6 meses (12 na tardia). Subida de 2 diluições = reinfecção ou falha</li>
+</ul>
+
+<p class="lede"><b>Outras que aparecem no plantão</b></p>
+<div class="table-wrap"><table>
+<thead><tr><th>Quadro</th><th>Conduta</th></tr></thead>
+<tbody>
+<tr><td data-label="Quadro">Herpes genital — primeiro episódio</td><td data-label="Conduta">Aciclovir 400mg VO 8/8h por 7–10 dias · recorrência: 5 dias · supressão se ≥6 episódios/ano: 400mg 12/12h</td></tr>
+<tr><td data-label="Quadro">Condiloma acuminado (HPV)</td><td data-label="Conduta">Ácido tricloroacético 80–90% em consultório, semanal · crioterapia · imiquimode domiciliar. Não trata o vírus, trata a lesão</td></tr>
+<tr><td data-label="Quadro">Cancro mole</td><td data-label="Conduta">Azitromicina 1g VO dose única ou ceftriaxona 500mg IM</td></tr>
+<tr><td data-label="Quadro">LGV</td><td data-label="Conduta">Doxiciclina 100mg 12/12h por 21 dias</td></tr>
+<tr><td data-label="Quadro">Donovanose</td><td data-label="Conduta">Doxiciclina ou azitromicina por no mínimo 21 dias, até epitelização completa</td></tr>
+</tbody>
+</table></div>
+<div class="callout warn"><b>O que não pode faltar em toda consulta de IST:</b> testar <b>HIV, sífilis, hepatite B e C</b> · tratar a <b>parceria sexual</b> dos últimos 60 dias, ainda que assintomática · oferecer <b>PEP ou PrEP</b> conforme o caso · vacinar para hepatite B e HPV se indicado · orientar abstinência sexual até 7 dias após o tratamento de ambos · notificar sífilis, HIV e hepatites.</div>
+</div>
+</details>
+
+<details>
+<summary>Influenza e síndrome respiratória aguda grave</summary>
+<div class="body">
+<div class="table-wrap"><table>
+<thead><tr><th>Definição</th><th>Critérios</th></tr></thead>
+<tbody>
+<tr><td data-label="Definição"><b>Síndrome gripal</b></td><td data-label="Critérios">Febre (ainda que referida) + tosse ou dor de garganta + pelo menos um entre cefaleia, mialgia e artralgia</td></tr>
+<tr><td data-label="Definição"><b>SRAG</b></td><td data-label="Critérios">Síndrome gripal + <b>dispneia, SpO₂ &lt;95%, desconforto respiratório, piora de doença de base</b> ou hipotensão. Notificação imediata e coleta de swab</td></tr>
+</tbody>
+</table></div>
+<div class="table-wrap"><table>
+<thead><tr><th>Item</th><th>Conduta</th></tr></thead>
+<tbody>
+<tr><td data-label="Item"><b>Oseltamivir — quem trata</b></td><td data-label="Conduta"><b>Todo caso de SRAG</b>, e toda síndrome gripal em grupo de risco: &lt;5 ou ≥60 anos, gestante e puérpera até 2 semanas, imunossuprimido, doença crônica cardíaca, pulmonar, renal, hepática, neurológica ou metabólica, obesidade, indígena</td></tr>
+<tr><td data-label="Item">Dose</td><td data-label="Conduta"><b>75mg VO 12/12h por 5 dias</b>. ClCr 30–60: 30mg 12/12h · ClCr 10–30: 30mg 1×/dia</td></tr>
+<tr><td data-label="Item"><b>Quando iniciar</b></td><td data-label="Conduta">Idealmente em <b>48h</b>, mas <b>não deixar de tratar</b> quem chega depois estando grave ou hospitalizado — o benefício persiste. <b>Não esperar o resultado do swab</b> para começar</td></tr>
+<tr><td data-label="Item">Suporte</td><td data-label="Conduta">Oxigênio para SpO₂ ≥94% (≥92% em pneumopata crônico), hidratação, antitérmico. Corticoide <b>não é rotina</b> — reservar para indicação própria, como asma ou DPOC exacerbada</td></tr>
+<tr><td data-label="Item">Antibiótico</td><td data-label="Conduta">Só se suspeita de <b>pneumonia bacteriana secundária</b> — piora após melhora inicial, consolidação focal, leucocitose com desvio, procalcitonina alta. Cobrir pneumococo e <i>S. aureus</i></td></tr>
+<tr><td data-label="Item">Precaução</td><td data-label="Conduta">Gotículas; aerossóis em procedimentos geradores. Máscara no paciente, quarto individual quando possível</td></tr>
+<tr><td data-label="Item">Profilaxia</td><td data-label="Conduta">Oseltamivir 75mg 1×/dia por 10 dias em contactante de alto risco não vacinado, iniciando em até 48h da exposição</td></tr>
+</tbody>
+</table></div>
+</div>
+</details>
+
+<details>
+<summary>Olho vermelho — o que não pode passar</summary>
+<div class="body">
+<div class="callout warn"><b>Três sinais que tiram o caso do balcão:</b> <b>dor ocular verdadeira</b> (não ardor), <b>baixa de acuidade visual</b> e <b>fotofobia</b>. Com qualquer um deles, não é conjuntivite — é avaliação oftalmológica.</div>
+<div class="table-wrap"><table>
+<thead><tr><th>Quadro</th><th>Reconhecer</th><th>Conduta</th></tr></thead>
+<tbody>
+<tr><td data-label="Quadro">Conjuntivite</td><td data-label="Reconhecer">Hiperemia difusa, secreção, sem dor nem baixa visual; pupila normal</td><td data-label="Conduta">Viral: suporte e higiene · bacteriana: colírio antibiótico · alérgica: anti-histamínico</td></tr>
+<tr><td data-label="Quadro"><b>Glaucoma agudo de ângulo fechado</b></td><td data-label="Reconhecer"><b>Dor intensa, náusea e vômito</b> (chega parecendo abdome agudo ou enxaqueca), visão turva com halos, olho endurecido, <b>pupila média fixa</b>, córnea embaçada</td><td data-label="Conduta"><b>Emergência</b> — oftalmologia imediata. Enquanto isso: acetazolamida, colírio hipotensor, analgesia e antiemético. <b>Não dilatar a pupila</b>; suspender anticolinérgico</td></tr>
+<tr><td data-label="Quadro">Uveíte anterior</td><td data-label="Reconhecer">Dor, fotofobia, hiperemia <b>perilímbica</b>, pupila miótica e irregular</td><td data-label="Conduta">Oftalmologia; investigar doença sistêmica associada</td></tr>
+<tr><td data-label="Quadro">Ceratite / úlcera de córnea</td><td data-label="Reconhecer">Dor forte, sensação de corpo estranho, uso de lente de contato, fluoresceína captante</td><td data-label="Conduta">Oftalmologia. <b>Nunca prescrever colírio com corticoide</b> sem exame — em herpes ou úlcera, agrava e pode perfurar</td></tr>
+<tr><td data-label="Quadro">Hemorragia subconjuntival</td><td data-label="Reconhecer">Mancha vermelha bem delimitada, indolor, visão normal</td><td data-label="Conduta">Benigna; medir PA e revisar anticoagulação se recorrente</td></tr>
+</tbody>
+</table></div>
+</div>
+</details>
 </section>
-<!-- ======================= DOR / TOX / DIVERSOS ======================= -->
 <section class="sec" id="div" style="--accent:#B5308C">
 <div class="head"><span class="idx">08</span><h2>Dor · Alergia · Toxicologia · Diversos</h2><span class="tag">analgesia · intoxicações · hemocomponentes</span></div>
 <details>
@@ -1334,7 +1609,7 @@
 <div class="body table-wrap"><table>
 <thead><tr><th>Componente</th><th>Indicação / Dose</th></tr></thead>
 <tbody>
-<tr><td class="drug" data-label="Componente">Concentrado de hemácias</td><td data-label="Indicação / Dose">1 bolsa=300mL, infundir 60–120min (máx 4h); eleva Hb 1–1,5. Reação febril não hemolítica recorrente → hemácias leucodepletadas</td></tr>
+<tr><td class="drug" data-label="Componente">Concentrado de hemácias</td><td data-label="Indicação / Dose"><b>Quando transfundir</b> — estratégia restritiva: <b>Hb &lt;7</b> na maioria dos internados, inclusive no choque séptico após estabilização · <b>Hb &lt;8</b> em cardiopata, síndrome coronariana aguda, pós-operatório de cirurgia cardíaca ou ortopédica · <b>sintomas</b> (angina, dispneia, taquicardia, hipotensão) independem do número. Sangramento ativo com instabilidade: transfundir sem esperar a Hb, que ainda não caiu.<br/><b>Prescrever</b> 1 bolsa (≈300mL) por vez, correr em 60–120min (máx 4h), <b>reavaliar Hb e sintomas antes da próxima</b> — transfusão é unidade a unidade, não "2 bolsas" de rotina. Cada bolsa eleva a Hb em ~1–1,5. Reação febril não hemolítica recorrente → hemácias leucodepletadas</td></tr>
 <tr><td class="drug" data-label="Componente">Plaquetas</td><td data-label="Indicação / Dose">1 unidade/7–10kg; transfundir se &lt;10.000, ou &lt;20.000 com febre/mucosite/anticoagulante, ou &lt;50.000 com sangramento GI/genitourinário ou procedimento; &gt;100.000 se sangramento em SNC/oftálmico ou cirurgia neuro/oftalmológica. Incremento &lt;5.000 = refratário</td></tr>
 <tr><td class="drug" data-label="Componente">Plasma fresco congelado</td><td data-label="Indicação / Dose">Deficiência de fatores + sangramento ativo, ou RNI&gt;1,5/TTPa&gt;1,5x antes de procedimento invasivo</td></tr>
 <tr><td class="drug" data-label="Componente">Crioprecipitado</td><td data-label="Indicação / Dose">Hipofibrinogenemia — 1 unidade/10kg</td></tr>
@@ -1437,8 +1712,202 @@
 <div class="callout">Manter corticoide crônico com reforço de estresse cirúrgico (Hidrocortisona 50–100mg + doses adicionais). AINE: suspender 1–3d. Metformina: suspender 24–48h antes.</div>
 </div>
 </details>
+
+<details>
+<summary>Coagulograma alterado e vitamina K</summary>
+<div class="body">
+<div class="table-wrap"><table>
+<thead><tr><th>Padrão</th><th>Via afetada</th><th>Causas mais comuns</th></tr></thead>
+<tbody>
+<tr><td data-label="Padrão"><b>TP/RNI alargado isolado</b></td><td data-label="Via">Extrínseca — fator VII, o de meia-vida mais curta</td><td data-label="Causas">Varfarina (é o primeiro a alterar), <b>deficiência de vitamina K</b>, hepatopatia inicial</td></tr>
+<tr><td data-label="Padrão"><b>TTPa alargado isolado</b></td><td data-label="Via">Intrínseca — VIII, IX, XI, XII</td><td data-label="Causas">Heparina, hemofilia, doença de von Willebrand, <b>anticoagulante lúpico</b> (paradoxalmente trombogênico), deficiência de XII (não sangra)</td></tr>
+<tr><td data-label="Padrão"><b>Os dois alargados</b></td><td data-label="Via">Via comum ou déficit global</td><td data-label="Causas">Hepatopatia avançada, CIVD, deficiência grave de vitamina K, anticoagulação plena, transfusão maciça, hipofibrinogenemia</td></tr>
+<tr><td data-label="Padrão">Só plaquetas baixas</td><td data-label="Via">Plaquetária</td><td data-label="Causas">PTI, sepse, hiperesplenismo, drogas, dengue, <b>HIT</b> (se heparina há 5–10 dias)</td></tr>
+<tr><td data-label="Padrão">Sangramento com coagulograma normal</td><td data-label="Via">Função plaquetária ou vascular</td><td data-label="Causas">Antiagregante, uremia, von Willebrand leve, fragilidade vascular</td></tr>
+</tbody>
+</table></div>
+<div class="callout"><b>Teste que separa deficiência de vitamina K de hepatopatia:</b> na deficiência de vitamina K o <b>fator V é normal</b> (não depende dela) e o RNI corrige com a reposição em 12–24h. Na hepatopatia o fator V também cai e a reposição corrige pouco. Na prática: se o RNI melhora com vitamina K, o fígado está razoável.</div>
+
+<p class="lede"><b>Vitamina K = fitomenadiona (vitamina K₁).</b> É esse o nome no rótulo e na farmácia — daí a dificuldade de encontrá-la nos manuais quando se procura por "vitamina K".</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Item</th><th>Detalhe</th></tr></thead>
+<tbody>
+<tr><td data-label="Item">Apresentação</td><td data-label="Detalhe"><span class="amp">amp 1mL = 10mg (10mg/mL)</span> — nomes comerciais correntes: Kanakion MM, Kavit, Eskavit. Existe apresentação de 2mg/0,2mL para doses pequenas</td></tr>
+<tr><td data-label="Item">Indicações além da varfarina</td><td data-label="Detalhe"><b>Hepatopatia</b> com RNI alargado · <b>desnutrição</b> e etilismo · <b>antibioticoterapia prolongada</b> (reduz a flora produtora) · <b>colestase e má absorção</b> (icterícia obstrutiva, fístula biliar, doença celíaca, ressecção intestinal, fibrose cística) · nutrição parenteral sem reposição · recém-nascido</td></tr>
+<tr><td data-label="Item">Dose usual</td><td data-label="Detalhe">Deficiência sem sangramento: <b>10mg VO ou EV 1×/dia por 3 dias</b>. Sangramento grave: <b>10mg EV lento</b> + complexo protrombínico ou plasma. RNI alto sem sangramento: 2,5–5mg VO</td></tr>
+<tr><td data-label="Item">Como administrar EV</td><td data-label="Detalhe"><b>Diluir em 50–100mL de SF 0,9% e correr em 20–30min.</b> Injeção rápida causa reação anafilactoide. Fotossensível — proteger a bolsa e usar logo após abrir a ampola</td></tr>
+<tr><td data-label="Item">Atenção à apresentação</td><td data-label="Detalhe">A formulação em <b>micelas mistas</b> é a liberada para uso endovenoso. Algumas apresentações em propilenoglicol trazem a via EV como contraindicada e são de uso IM — <b>conferir a bula da ampola que está na sua mão</b></td></tr>
+<tr><td data-label="Item">Tempo de resposta</td><td data-label="Detalhe">RNI começa a cair em <b>6–12h</b> e normaliza em 24h. Se o sangramento é grave, a vitamina K <b>não é o tratamento imediato</b> — é o complexo protrombínico ou o plasma; ela impede o retorno do RNI depois</td></tr>
+</tbody>
+</table></div>
+<div class="callout warn">Dose alta de vitamina K em quem precisa voltar a anticoagular deixa o paciente <b>resistente à varfarina por dias</b>. No RNI alto sem sangramento, prefira a via oral e a menor dose eficaz.</div>
+</div>
+</details>
+
+<details>
+<summary>Acidentes por animais peçonhentos</summary>
+<div class="body">
+<div class="callout warn"><b>O soro é específico e a indicação é pela gravidade, não pelo peso.</b> Criança recebe a mesma dose do adulto. A via é <b>endovenosa</b>, sem teste de sensibilidade prévio, com equipe preparada para anafilaxia. Notificação compulsória e contato com o <b>CIATox — 0800 722 6001</b>.</div>
+<div class="table-wrap"><table>
+<thead><tr><th>Acidente</th><th>Reconhecer</th><th>Soro (ampolas EV)</th></tr></thead>
+<tbody>
+<tr><td data-label="Acidente"><b>Botrópico</b> (jararaca) — o mais comum</td><td data-label="Reconhecer">Dor e edema progressivo, equimose, bolhas, sangramento local e sistêmico, <b>coagulograma incoagulável</b>, injúria renal</td><td data-label="Soro">Leve 2–4 · Moderado 4–8 · Grave 12 (antibotrópico)</td></tr>
+<tr><td data-label="Acidente"><b>Crotálico</b> (cascavel)</td><td data-label="Reconhecer">Pouca dor local; <b>fácies miastênica (ptose), mialgia intensa, urina escura</b> por rabdomiólise, injúria renal</td><td data-label="Soro">Leve 5 · Moderado 10 · Grave 20 (anticrotálico)</td></tr>
+<tr><td data-label="Acidente"><b>Laquético</b> (surucucu)</td><td data-label="Reconhecer">Quadro botrópico + <b>vagal</b>: bradicardia, hipotensão, diarreia, vômito</td><td data-label="Soro">Moderado 10 · Grave 20 (antilaquético)</td></tr>
+<tr><td data-label="Acidente"><b>Elapídico</b> (coral)</td><td data-label="Reconhecer">Sem alteração local; <b>paralisia flácida descendente</b> com risco de insuficiência respiratória</td><td data-label="Soro">10 (antielapídico) — <b>todo caso é grave</b>; preparar via aérea</td></tr>
+<tr><td data-label="Acidente"><b>Escorpiônico</b></td><td data-label="Reconhecer">Dor intensa local. <b>Grave em criança</b>: vômitos repetidos, sudorese, agitação, taquicardia, edema pulmonar, choque</td><td data-label="Soro">Moderado 2–3 · Grave 4–6 (antiescorpiônico ou antiaracnídico)</td></tr>
+<tr><td data-label="Acidente"><b>Loxoscélico</b> (aranha-marrom)</td><td data-label="Reconhecer">Lesão de evolução lenta, com placa marmórea e necrose; forma cutâneo-visceral com <b>hemólise e icterícia</b></td><td data-label="Soro">Cutânea grave ou hemolítica: 5 (antiloxoscélico ou antiaracnídico) + corticoide</td></tr>
+<tr><td data-label="Acidente"><b>Fonêutrico</b> (armadeira)</td><td data-label="Reconhecer">Dor local intensa e desproporcional; grave em criança, com sudorese, vômito, priapismo, edema pulmonar</td><td data-label="Soro">Em geral só analgesia — bloqueio local com lidocaína 2% sem vaso; soro só em grave</td></tr>
+</tbody>
+</table></div>
+<ul class="checklist">
+<li><b>Sempre:</b> analgesia, elevação do membro, limpeza, <b>profilaxia antitetânica</b> e hidratação para proteger o rim</li>
+<li><b>Nunca:</b> torniquete, incisão, sucção, aplicação de substâncias na ferida</li>
+<li>No botrópico e no laquético, o <b>tempo de coagulação normalizado em 24h</b> indica soro suficiente; se persiste incoagulável, repetir</li>
+<li>Antibiótico só se houver infecção secundária, que é frequente no botrópico</li>
+</ul>
+</div>
+</details>
+
+<details>
+<summary>Reação transfusional aguda</summary>
+<div class="body">
+<div class="callout warn"><b>Primeira medida, em qualquer reação: parar a transfusão</b>, manter o acesso com SF 0,9%, checar a identificação da bolsa e do paciente, aferir sinais vitais e comunicar o banco de sangue. Não retomar a mesma bolsa.</div>
+<div class="table-wrap"><table>
+<thead><tr><th>Reação</th><th>Quadro</th><th>Conduta</th></tr></thead>
+<tbody>
+<tr><td data-label="Reação"><b>Febril não hemolítica</b><br/>(a mais comum)</td><td data-label="Quadro">Febre ≥1°C acima do basal, calafrio, sem hipotensão nem hemólise</td><td data-label="Conduta">Parar, antitérmico. <b>Diagnóstico de exclusão</b> — só assuma depois de descartar hemolítica e sepse. Nas próximas, hemácias desleucocitadas</td></tr>
+<tr><td data-label="Reação"><b>Hemolítica aguda</b><br/>(a mais grave)</td><td data-label="Quadro">Febre, dor lombar e no trajeto da veia, hipotensão, <b>urina escura</b>, sangramento por CIVD, injúria renal. Costuma começar nos primeiros mL</td><td data-label="Conduta">Parar imediatamente · <b>hidratação vigorosa</b> para proteger o rim · suporte hemodinâmico · devolver bolsa e colher amostras para reteste · monitorar função renal, LDH, bilirrubina, haptoglobina e coagulograma</td></tr>
+<tr><td data-label="Reação">Alérgica leve (urticária)</td><td data-label="Quadro">Prurido e placas, sem sintoma sistêmico</td><td data-label="Conduta">Pausar, anti-histamínico; <b>única reação em que se pode retomar</b> lentamente se houver resolução completa</td></tr>
+<tr><td data-label="Reação">Anafilática</td><td data-label="Quadro">Broncoespasmo, angioedema, hipotensão. Suspeitar de <b>deficiência de IgA</b> se recorrente</td><td data-label="Conduta">Parar · adrenalina IM · manejo de anafilaxia (ver card) · nas próximas, hemocomponente lavado</td></tr>
+<tr><td data-label="Reação"><b>TRALI</b></td><td data-label="Quadro">Dispneia e hipoxemia com <b>infiltrado bilateral em até 6h</b>, sem sinal de sobrecarga — jugulares planas, PA normal ou baixa</td><td data-label="Conduta">Parar · suporte ventilatório, oxigênio, muitas vezes VNI ou IOT · <b>não é sobrecarga: diurético não ajuda</b> · notificar a hemoterapia</td></tr>
+<tr><td data-label="Reação"><b>TACO</b> (sobrecarga)</td><td data-label="Quadro">Dispneia com <b>hipertensão, turgência jugular e B3</b>, geralmente em idoso, cardiopata ou transfusão rápida</td><td data-label="Conduta">Parar · sentar o paciente · <b>furosemida EV</b> · oxigênio. Prevenir transfundindo devagar, uma bolsa por vez</td></tr>
+<tr><td data-label="Reação">Contaminação bacteriana</td><td data-label="Quadro">Febre alta, calafrio intenso e choque logo no início — mais comum com plaquetas</td><td data-label="Conduta">Parar · hemocultura do paciente e da bolsa · <b>antibiótico de amplo espectro imediato</b> · suporte</td></tr>
+</tbody>
+</table></div>
+<div class="callout"><b>Dispneia durante a transfusão — como separar:</b> TACO tem <b>hipertensão e jugular cheia</b> e responde a diurético; TRALI tem <b>PA normal ou baixa e jugular plana</b> e piora com diurético. É a mesma distinção de congestão versus lesão pulmonar.</div>
+</div>
+</details>
+
+<details>
+<summary>Constatação e declaração de óbito</summary>
+<div class="body">
+<p class="lede"><b>Constatação</b> — verificar e registrar: ausência de pulso central e de batimentos à ausculta por pelo menos 1 minuto, ausência de movimento respiratório, <b>pupilas fixas e arreativas</b>, ausência de resposta a estímulo doloroso. Registrar em prontuário o horário exato e os achados. Comunicar a família pessoalmente, sem eufemismo.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Situação</th><th>Quem preenche</th></tr></thead>
+<tbody>
+<tr><td data-label="Situação"><b>Morte natural com assistência médica</b></td><td data-label="Quem">O médico que assistia o paciente, ou o plantonista que constatou</td></tr>
+<tr><td data-label="Situação">Morte natural <b>sem</b> assistência</td><td data-label="Quem">Serviço de Verificação de Óbito (SVO); onde não houver, médico designado</td></tr>
+<tr><td data-label="Situação"><b>Morte violenta ou suspeita</b> — acidente, homicídio, suicídio, causa externa <b>em qualquer momento da cadeia</b></td><td data-label="Quem"><b>IML — não preencher a declaração.</b> Preservar o corpo e acionar a autoridade policial</td></tr>
+<tr><td data-label="Situação">Óbito fetal</td><td data-label="Quem">Declaração obrigatória se ≥20 semanas, ≥500g ou ≥25cm</td></tr>
+</tbody>
+</table></div>
+<p class="lede"><b>Preenchimento da causa — cadeia em ordem inversa</b>, do que matou agora para o que começou tudo:</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Linha</th><th>O que escrever</th><th>Exemplo</th></tr></thead>
+<tbody>
+<tr><td data-label="Linha">I-a</td><td data-label="O quê">Causa <b>imediata</b> da morte</td><td data-label="Exemplo">Choque séptico</td></tr>
+<tr><td data-label="Linha">I-b</td><td data-label="O quê">Consequente a…</td><td data-label="Exemplo">Pneumonia aspirativa</td></tr>
+<tr><td data-label="Linha">I-c</td><td data-label="O quê">Consequente a…</td><td data-label="Exemplo">Disfagia por sequela de AVE</td></tr>
+<tr><td data-label="Linha">I-d</td><td data-label="O quê"><b>Causa básica</b> — a que iniciou a cadeia</td><td data-label="Exemplo">Acidente vascular encefálico isquêmico</td></tr>
+<tr><td data-label="Linha">II</td><td data-label="O quê">Contribuíram, mas fora da cadeia</td><td data-label="Exemplo">Diabetes, hipertensão</td></tr>
+</tbody>
+</table></div>
+<div class="callout warn"><b>Não escrever como causa:</b> parada cardiorrespiratória, falência de múltiplos órgãos, senilidade, caquexia, choque, insuficiência respiratória — <b>são modos de morrer, não causas</b>. Se usadas isoladamente, a declaração volta. Sempre pergunte "e por que isso aconteceu?" até chegar à doença.</div>
+<ul class="checklist">
+<li>Não rasurar; erro exige nova via. Nunca assinar em branco nem assinar óbito que não constatou</li>
+<li>Registrar sempre o horário da constatação, não o horário estimado da morte</li>
+<li>Em caso de dúvida sobre causa externa remota — queda que levou a fratura e depois a óbito meses depois — <b>é IML</b>, ainda que a morte imediata pareça natural</li>
+<li>Paciente em cuidados paliativos com morte esperada: a declaração é do médico assistente e a causa básica é a doença de base</li>
+</ul>
+</div>
+</details>
+
+<details>
+<summary>Doença falciforme — crise vaso-oclusiva e síndrome torácica</summary>
+<div class="body">
+<div class="callout warn"><b>A dor é real e costuma ser subtratada.</b> O paciente conhece a própria crise e a dose que funciona. Analgesia plena e rápida é o padrão de cuidado, não concessão — hesitar por medo de dependência é o erro mais frequente nessa população.</div>
+<div class="table-wrap"><table>
+<thead><tr><th>Eixo</th><th>Conduta</th></tr></thead>
+<tbody>
+<tr><td data-label="Eixo"><b>Analgesia</b></td><td data-label="Conduta"><b>Opioide na primeira hora</b> — morfina EV, titulada; dipirona e AINE como adjuvantes se função renal permitir. Reavaliar a cada 15–30min até controle. Considerar o esquema que já funcionou em crises anteriores</td></tr>
+<tr><td data-label="Eixo">Hidratação</td><td data-label="Conduta">Manutenção, <b>sem hiper-hidratar</b> — excesso precipita síndrome torácica aguda</td></tr>
+<tr><td data-label="Eixo">Oxigênio</td><td data-label="Conduta">Só se SpO₂ &lt;95% ou queda em relação ao basal do paciente</td></tr>
+<tr><td data-label="Eixo">Investigar sempre</td><td data-label="Conduta">Febre (risco de infecção por germe encapsulado), hemograma com reticulócitos, e <b>gatilho</b>: infecção, frio, desidratação, estresse, altitude</td></tr>
+<tr><td data-label="Eixo">Febre</td><td data-label="Conduta">Asplenia funcional — <b>febre é urgência</b>: hemocultura e antibiótico com cobertura para pneumococo sem esperar</td></tr>
+</tbody>
+</table></div>
+<div class="callout warn"><b>Síndrome torácica aguda</b> — infiltrado novo ao RX + febre, dor torácica, tosse, dispneia ou hipoxemia. É a principal causa de morte. Pode surgir <b>24–72h depois</b> da crise dolorosa, muitas vezes precipitada por hipoventilação da própria dor.<br/>Conduta: antibiótico cobrindo germe atípico (cefalosporina + macrolídeo) · oxigênio · analgesia que permita respirar fundo · <b>espirometria de incentivo</b> · hidratação cautelosa · transfusão simples, ou exsanguineotransfusão se grave.</div>
+<ul class="checklist">
+<li><b>Prevenir enquanto interna:</b> espirometria de incentivo de hora em hora — reduz síndrome torácica</li>
+<li>Manter hidroxiureia e ácido fólico de uso domiciliar</li>
+<li>Sequestro esplênico, priapismo, AVE e crise aplástica são as outras emergências a lembrar</li>
+</ul>
+</div>
+</details>
+
+<details>
+<summary>Idoso internado — desprescrição, quedas e delirium</summary>
+<div class="body">
+<div class="table-wrap"><table>
+<thead><tr><th>Classe</th><th>Por que evitar no idoso</th><th>Alternativa</th></tr></thead>
+<tbody>
+<tr><td data-label="Classe"><b>Benzodiazepínicos</b></td><td data-label="Por quê">Queda, fratura, confusão, piora cognitiva</td><td data-label="Alternativa">Higiene do sono; trazodona em dose baixa se indispensável</td></tr>
+<tr><td data-label="Classe">Anticolinérgicos (amitriptilina, prometazina, hioscina, difenidramina)</td><td data-label="Por quê">Delirium, retenção urinária, constipação, glaucoma, queda</td><td data-label="Alternativa">Trocar por opção sem carga anticolinérgica</td></tr>
+<tr><td data-label="Classe">AINEs</td><td data-label="Por quê">Injúria renal, sangramento digestivo, descompensação de IC e HAS</td><td data-label="Alternativa">Dipirona, paracetamol, opioide fraco</td></tr>
+<tr><td data-label="Classe">Antipsicóticos em demência</td><td data-label="Por quê">Aumento de mortalidade e de AVE</td><td data-label="Alternativa">Medidas não farmacológicas; se inevitável, menor dose e menor tempo</td></tr>
+<tr><td data-label="Classe">Sulfonilureia de longa ação</td><td data-label="Por quê">Hipoglicemia prolongada</td><td data-label="Alternativa">Metformina se função renal permitir; alvos glicêmicos mais frouxos</td></tr>
+<tr><td data-label="Classe">Inibidor de bomba crônico sem indicação</td><td data-label="Por quê">Fratura, <i>C. difficile</i>, hipomagnesemia</td><td data-label="Alternativa">Rever indicação e suspender</td></tr>
+</tbody>
+</table></div>
+<ul class="checklist">
+<li><b>Delirium não é esperado por ser idoso.</b> Agudo, flutuante, com desatenção — procurar causa: infecção, dor, retenção urinária, fecaloma, droga nova, distúrbio metabólico, abstinência. Tratar a causa; antipsicótico só se risco</li>
+<li><b>Prevenção que funciona:</b> orientar no tempo, óculos e aparelho auditivo disponíveis, mobilizar cedo, dormir sem interrupção, hidratar, evitar sonda e contenção</li>
+<li><b>Queda:</b> revisar toda a prescrição, medir PA deitado e em pé, avaliar visão, marcha e calçado, ambiente sem obstáculos. Após uma queda, procurar fratura e <b>hematoma subdural</b> — em idoso anticoagulado pode ser tardio</li>
+<li><b>Na alta:</b> a lista de medicações é uma oportunidade — cada droga precisa de indicação ativa. Desprescrever é ato clínico, não omissão</li>
+</ul>
+</div>
+</details>
+
+<details>
+<summary>Farmacodermia grave — SSJ/NET e DRESS</summary>
+<div class="body">
+<div class="callout warn"><b>Sinais de alarme em qualquer exantema por droga:</b> acometimento de <b>mucosa</b> (boca, olhos, genital) · dor cutânea desproporcional · bolhas ou descolamento · <b>sinal de Nikolsky</b> · edema de face · febre alta · linfonodomegalia · eosinofilia ou transaminases alteradas. Qualquer um deles muda o quadro de "alergia leve" para emergência.</div>
+<div class="table-wrap"><table>
+<thead><tr><th></th><th>SSJ / NET</th><th>DRESS</th></tr></thead>
+<tbody>
+<tr><td data-label="—">Início após a droga</td><td data-label="SSJ/NET">4 dias a 4 semanas</td><td data-label="DRESS"><b>2 a 8 semanas</b> — tardio, e por isso a droga costuma não ser suspeitada</td></tr>
+<tr><td data-label="—">Pele</td><td data-label="SSJ/NET">Máculas dolorosas que confluem, bolhas e <b>descolamento</b>. SSJ &lt;10% · sobreposição 10–30% · <b>NET &gt;30%</b> da superfície</td><td data-label="DRESS">Exantema morbiliforme extenso, infiltrado, com <b>edema facial</b> característico</td></tr>
+<tr><td data-label="—">Mucosa</td><td data-label="SSJ/NET"><b>Sempre acometida</b> — ao menos dois sítios: oral, ocular, genital</td><td data-label="DRESS">Pouco ou não acometida</td></tr>
+<tr><td data-label="—">Sistêmico</td><td data-label="SSJ/NET">Febre, desidratação, infecção secundária — comporta-se como grande queimado</td><td data-label="DRESS"><b>Eosinofilia</b>, linfócitos atípicos, <b>hepatite</b>, nefrite, miocardite, tireoidite tardia</td></tr>
+<tr><td data-label="—">Conduta</td><td data-label="SSJ/NET"><b>Suspender a droga imediatamente</b> · cuidado de ferida e reposição volêmica como em queimadura · analgesia · <b>avaliação oftalmológica precoce</b> (sequela cega) · transferir para centro de queimados ou UTI · antibiótico só se infecção</td><td data-label="DRESS"><b>Suspender a droga</b> · <b>corticoide sistêmico</b> (prednisona 0,5–1mg/kg/dia) com desmame lento, de semanas · monitorar função hepática, renal e cardíaca · vigiar recidiva ao reduzir</td></tr>
+</tbody>
+</table></div>
+<div class="table-wrap"><table>
+<thead><tr><th>Drogas mais implicadas</th></tr></thead>
+<tbody>
+<tr><td data-label="Drogas"><b>Anticonvulsivantes</b> — carbamazepina, <b>lamotrigina</b>, fenitoína, fenobarbital · <b>alopurinol</b> · sulfas (SMX-TMP) · <b>nevirapina</b> · AINEs oxicam · antibióticos betalactâmicos · dapsona · vancomicina (DRESS)</td></tr>
+</tbody>
+</table></div>
+<div class="callout warn"><b>Cruzada com o guia de psicofarmacologia:</b> a titulação lenta da lamotrigina existe por causa disso, e a associação com valproato dobra o risco. <b>Rash nas primeiras 8 semanas de lamotrigina: suspender e não reintroduzir.</b> Registrar a alergia em prontuário e orientar o paciente a nunca mais usar a classe.</div>
+</div>
+</details>
+
+<details>
+<summary>Hipotermia e emergências por calor</summary>
+<div class="body">
+<div class="table-wrap"><table>
+<thead><tr><th>Quadro</th><th>Reconhecer</th><th>Conduta</th></tr></thead>
+<tbody>
+<tr><td data-label="Quadro"><b>Hipotermia</b> (&lt;35°C central)</td><td data-label="Reconhecer">Leve 32–35: tremor, confusão · Moderada 28–32: <b>o tremor cessa</b>, bradicardia, rebaixamento · Grave &lt;28: rigidez, arritmia, aparência de morte. ECG pode mostrar <b>onda J de Osborn</b></td><td data-label="Conduta">Medir temperatura <b>central</b> · retirar roupa úmida · reaquecimento passivo (leve), com manta térmica e soro aquecido (moderada), extracorpóreo (grave) · <b>manusear com cuidado</b>: movimento brusco precipita fibrilação · procurar causa: álcool, sepse, hipotireoidismo, hipoglicemia, trauma</td></tr>
+<tr><td data-label="Quadro">Exaustão pelo calor</td><td data-label="Reconhecer">Temperatura &lt;40°C, <b>sensório preservado</b>, sudorese, fraqueza, cãibra, náusea</td><td data-label="Conduta">Ambiente fresco, repouso, reidratação oral ou EV; melhora rápida</td></tr>
+<tr><td data-label="Quadro"><b>Intermação</b> (golpe de calor)</td><td data-label="Reconhecer">Temperatura <b>&gt;40°C com alteração do sensório</b> — confusão, convulsão, coma. A pele pode estar seca ou suada</td><td data-label="Conduta"><b>Emergência.</b> Resfriamento imediato e agressivo (imersão em água fria é o mais eficaz; alternativa é água morna + ventilação), alvo &lt;39°C em menos de 30min · hidratação · <b>antitérmico não funciona</b>, não é febre · vigiar rabdomiólise, injúria renal, CIVD e hepatite. Benzodiazepínico se tremor ou convulsão</td></tr>
+</tbody>
+</table></div>
+<div class="callout warn">Na hipotermia grave, <b>ninguém está morto até estar quente e morto</b> — a reanimação se mantém durante o reaquecimento, porque a hipotermia protege o cérebro e o exame neurológico não é confiável nessa temperatura.</div>
+</div>
+</details>
 </section>
-<!-- ======================= PALIATIVOS ======================= -->
 <section class="sec" id="pal" style="--accent:#0F766E">
 <div class="head"><span class="idx">09</span><h2>Cuidados Paliativos</h2><span class="tag">opioides · sintomas · fim de vida</span></div>
 <details>
@@ -1604,7 +2073,6 @@ Exemplo: morfina 30mg/dia VO → resgate de 5mg VO. Se usar ≥3 resgates/dia, <
 </div>
 </details>
 </section>
-<!-- ======================= CALCULADORAS ======================= -->
 <section class="sec" id="calc" style="--accent:#4F46E5">
 <div class="head"><span class="idx">10</span><h2>Calculadoras</h2><span class="tag">DHE · dengue · TFG · infusões</span></div>
 <details>
@@ -1950,6 +2418,24 @@ Exemplo: morfina 30mg/dia VO → resgate de 5mg VO. Se usar ≥3 resgates/dia, <
 <li><b>Surviving Sepsis</b> e protocolos institucionais de antibioticoterapia empírica — ajustar sempre ao perfil de resistência local</li>
 <li>Diretrizes de tromboembolismo venoso e de reversão de anticoagulação; escores <b>Wells</b> e <b>PERC</b></li>
 <li>Diretrizes de cetoacidose diabética, estado hiperosmolar, distúrbios hidroeletrolíticos e ácido-base</li>
+<li>Diretrizes de emergências endócrinas — <b>crise tireotóxica</b> (escore de Burch-Wartofsky) e <b>coma mixedematoso</b></li>
+<li>Diretrizes de <b>pancreatite aguda</b> (classificação de Atlanta revisada, BISAP) e de reposição volêmica moderada</li>
+<li>Diretrizes de <b>insuficiência cardíaca</b> (SBC, AHA/ACC, ESC) — perfis clínico-hemodinâmicos de Stevenson</li>
+<li><b>Hemovigilância</b> — reações transfusionais agudas (ANVISA, AABB); limiares de transfusão restritiva (TRICC, TRISS)</li>
+<li>Diretrizes de <b>síncope</b> (ESC, ACC/AHA) — estratificação de risco e critérios de internação</li>
+<li>Conselho Federal de Medicina e Ministério da Saúde — <b>Manual de Preenchimento da Declaração de Óbito</b> e regras do SVO e do IML</li>
+<li>Ministério da Saúde — <b>Doença Falciforme: condutas básicas</b>; manejo da crise vaso-oclusiva e da síndrome torácica aguda</li>
+<li><b>Critérios de Beers</b> e literatura de desprescrição, prevenção de quedas e delirium no idoso hospitalizado</li>
+<li>Ministério da Saúde — <b>Protocolo Clínico e Diretrizes Terapêuticas para IST</b> (abordagem sindrômica, sífilis, seguimento sorológico)</li>
+<li>Ministério da Saúde — <b>Protocolo de tratamento de Influenza</b> e vigilância de SRAG</li>
+<li>Literatura de <b>farmacodermias graves</b> — SSJ/NET (SCORTEN) e DRESS (critérios RegiSCAR)</li>
+<li>Alertas e literatura sobre <b>cetoacidose euglicêmica</b> associada a inibidores de SGLT2</li>
+<li>Diretrizes de <b>emergências oftalmológicas</b> e de <b>hipotermia e doenças relacionadas ao calor</b></li>
+<li>Diretrizes de <b>neutropenia febril</b> (IDSA/ASCO, escore MASCC) e de <b>síndrome de lise tumoral</b></li>
+<li>Ministério da Saúde — <b>Manual de Diagnóstico e Tratamento de Acidentes por Animais Peçonhentos</b> e Guia de Vigilância em Saúde</li>
+<li>Bula da <b>fitomenadiona</b> (vitamina K₁) e guias farmacêuticos hospitalares — apresentações, via e diluição</li>
+<li>Literatura sobre <b>correção da hiponatremia</b> e prevenção da síndrome de desmielinização osmótica</li>
+<li>Consensos de <b>profilaxia de úlcera de estresse</b> em pacientes críticos</li>
 <li>Diretrizes de <b>distúrbios hidroeletrolíticos e ácido-base</b> — hiponatremia, hiper e hipocalemia, hipocalcemia, hipomagnesemia e gasometria</li>
 <li>Fórmulas de uso corrente: <b>Cockcroft-Gault</b> e <b>CKD-EPI</b> (função renal), peso predito, correção de sódio e de cálcio, déficit hídrico</li>
 <li>Bulas e rótulos dos fabricantes registrados na <b>ANVISA</b> — apresentações e concentrações das ampolas; a apresentação varia entre fabricante e entre hospitais, conferir sempre o rótulo</li>
@@ -1979,7 +2465,7 @@ Exemplo: morfina 30mg/dia VO → resgate de 5mg VO. Se usar ≥3 resgates/dia, <
 <button class="fab" id="fabTop" title="Voltar ao topo" type="button">↑</button>
 </div>
 <footer>
-  Guia de bolso de uso pessoal, condensado a partir de material de estudo próprio — consulte sempre protocolos institucionais vigentes e julgamento clínico individualizado. Doses de referência para adulto padrão; ajustar por peso, função renal/hepática e contexto clínico.<br/><span class="rev">Última revisão: 01/09/2026 · v2.12 — ícone próprio embutido; citações remanescentes removidas do corpo; apresentação da ampola completada. v2.11 — apresentação da ampola ao lado da dose nas demais seções, não só na seção de Apresentações. v2.10 — nova seção de Apresentações (o que vem em 1 ampola); fatores de infusão contínua corrigidos para exibir a faixa de dose declarada. v2.9 — nova seção de Referências comum aos três guias; cores das abas restauradas; tiamina e alvo da CIWA-Ar alinhados entre os guias; correções de layout e de alvos de toque. v2.8 — barra de seções de volta no topo, agora com uma 2ª linha que lista os cards da seção em leitura e acompanha a rolagem; painel de índice removido; busca segue na lupa flutuante. v2.7 — barra de abas do topo e caixa de busca substituídas por um índice em painel inferior, com seções e cards navegáveis direto; busca segue na lupa flutuante. v2.6 — link para o novo Guia de Psicofarmacologia e Manejo Psiquiátrico; v2.5 — referências fixas de "70kg" substituídas por valores que recalculam pelo peso informado (succinilcolina em mL, fenitoína em ampolas, gentamicina em mg); v2.4 — barra de seções acompanha automaticamente a seção em leitura; v2.3 — links cruzados para as seções de Choque (02), SCA (08) e AVE (09) do Guia de Paciente Crítico, renumeradas após a inclusão da seção de Choque alinhada à Surviving Sepsis Campaign 2026.</span>
+  Guia de bolso de uso pessoal, condensado a partir de material de estudo próprio — consulte sempre protocolos institucionais vigentes e julgamento clínico individualizado. Doses de referência para adulto padrão; ajustar por peso, função renal/hepática e contexto clínico.<br/><span class="rev">Última revisão: 02/09/2026 · v2.17 — card de IST ampliado (abordagem sindrômica, sorologia e seguimento da sífilis, herpes e condiloma); novos cards de farmacodermia grave, influenza e SRAG, cetoacidose euglicêmica, olho vermelho e emergências térmicas. v2.16 — novos cards: pancreatite aguda, insuficiência cardíaca descompensada por perfis, reação transfusional aguda, síncope, constatação e declaração de óbito, epistaxe, doença falciforme e idoso internado; limiar transfusional de hemácias acrescentado ao card de hemocomponentes. v2.15 — novos cards: interpretação do coagulograma e vitamina K (fitomenadiona) fora da varfarina, profilaxia de úlcera de estresse, crise tireotóxica e coma mixedematoso, neutropenia febril e lise tumoral, acidentes por animais peçonhentos; alerta de desmielinização osmótica no card de sódio. v2.14. Histórico resumido: calculadoras, reversão de anticoagulação, eclâmpsia e CIWA-Ar acrescentadas; doses e apresentação da ampola junto de cada medicação; seções reagrupadas por sistema; seção de Referências comum aos três guias.</span>
 </footer>
 <script>
 (function(){
