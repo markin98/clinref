@@ -37,20 +37,22 @@ Netlify (com proteção por senha) ou manter os arquivos apenas no aparelho.
 ## Conteúdo desta pasta
 
 - `index.html` — página inicial ClinRef, com os três guias
-- `guia_bolso_paciente_critico.html`
-- `guia_bolso_plantao.html`
-- `guia_bolso_psiquiatria.html`
-- `manifest-*.webmanifest` — define nome e ícone de cada atalho
 - `sw.js` — faz funcionar sem internet
-- `icones/` — ícones nos tamanhos usados pelo Android e iOS
+- `manifest-clinref.webmanifest` e `icones/` (raiz) — atalho da página inicial
+- `paciente_critico/` — guia, manifest e ícones do guia de paciente crítico
+- `plantao/` — guia, manifest e ícones do guia de plantão
+- `psiquiatria/` — guia, manifest e ícones do guia de psiquiatria, mais as fichas
+  estruturadas de psicofármacos (`README.md`, `TEMPLATE.md`, `farmacos/`)
 
 ## Se os ícones não aparecerem
 
-Significa que a pasta `icones` não subiu junto. O upload pela web do GitHub às vezes
-ignora subpastas quando se arrasta o conteúdo solto. Duas saídas:
+Significa que alguma pasta `icones/` não subiu junto — cada guia tem a sua
+(`paciente_critico/icones/`, `plantao/icones/`, `psiquiatria/icones/`), além da
+da raiz. O upload pela web do GitHub às vezes ignora subpastas quando se arrasta
+o conteúdo solto. Duas saídas:
 
-- Arraste a **pasta `icones` inteira** numa segunda operação de *Add file → Upload files*, ou
-- Descompacte o `clinref.zip` e arraste a **pasta toda** de uma vez.
+- Arraste **cada pasta `icones/` inteira** numa operação de *Add file → Upload files*, ou
+- Descompacte o `clinref.zip` e arraste a **pasta toda** de uma vez, preservando a árvore.
 
 A página inicial funciona mesmo sem a pasta (os ícones dela estão embutidos no HTML),
 mas os atalhos na tela inicial precisam dos arquivos em `icones/` para ganhar o ícone certo.

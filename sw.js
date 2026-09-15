@@ -1,15 +1,17 @@
 /* Service worker — guarda os guias no aparelho para funcionar sem sinal */
-const CACHE = 'clinref-v1';
+const CACHE = 'clinref-v2';
 const ARQUIVOS = [
   './', './index.html',
-  './guia_bolso_paciente_critico.html',
-  './guia_bolso_plantao.html',
-  './guia_bolso_psiquiatria.html',
   './manifest-clinref.webmanifest','./icones/clinref-192.png','./icones/clinref-512.png',
-  './manifest-critico.webmanifest','./manifest-plantao.webmanifest','./manifest-psiquiatria.webmanifest',
-  './icones/critico-192.png','./icones/critico-512.png','./icones/critico.svg',
-  './icones/plantao-192.png','./icones/plantao-512.png','./icones/plantao.svg',
-  './icones/psiquiatria-192.png','./icones/psiquiatria-512.png','./icones/psiquiatria.svg'
+  './paciente_critico/guia_bolso_paciente_critico.html',
+  './paciente_critico/manifest-critico.webmanifest',
+  './paciente_critico/icones/critico-192.png','./paciente_critico/icones/critico-512.png','./paciente_critico/icones/critico.svg',
+  './plantao/guia_bolso_plantao.html',
+  './plantao/manifest-plantao.webmanifest',
+  './plantao/icones/plantao-192.png','./plantao/icones/plantao-512.png','./plantao/icones/plantao.svg',
+  './psiquiatria/guia_bolso_psiquiatria.html',
+  './psiquiatria/manifest-psiquiatria.webmanifest',
+  './psiquiatria/icones/psiquiatria-192.png','./psiquiatria/icones/psiquiatria-512.png','./psiquiatria/icones/psiquiatria.svg'
 ];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(ARQUIVOS)).then(() => self.skipWaiting()));
