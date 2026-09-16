@@ -1,17 +1,17 @@
 /* Service worker — guarda os guias no aparelho para funcionar sem sinal */
-const CACHE = 'clinref-v2';
+const CACHE = 'clinref-v3';
 const ARQUIVOS = [
   './', './index.html',
   './manifest-clinref.webmanifest','./icones/clinref-192.png','./icones/clinref-512.png',
-  './paciente_critico/guia_bolso_paciente_critico.html',
-  './paciente_critico/manifest-critico.webmanifest',
-  './paciente_critico/icones/critico-192.png','./paciente_critico/icones/critico-512.png','./paciente_critico/icones/critico.svg',
-  './plantao/guia_bolso_plantao.html',
-  './plantao/manifest-plantao.webmanifest',
-  './plantao/icones/plantao-192.png','./plantao/icones/plantao-512.png','./plantao/icones/plantao.svg',
-  './psiquiatria/guia_bolso_psiquiatria.html',
-  './psiquiatria/manifest-psiquiatria.webmanifest',
-  './psiquiatria/icones/psiquiatria-192.png','./psiquiatria/icones/psiquiatria-512.png','./psiquiatria/icones/psiquiatria.svg'
+  './guias/paciente_critico/guia_bolso_paciente_critico.html',
+  './guias/paciente_critico/manifest-critico.webmanifest',
+  './guias/paciente_critico/icones/critico-192.png','./guias/paciente_critico/icones/critico-512.png','./guias/paciente_critico/icones/critico.svg',
+  './guias/plantao/guia_bolso_plantao.html',
+  './guias/plantao/manifest-plantao.webmanifest',
+  './guias/plantao/icones/plantao-192.png','./guias/plantao/icones/plantao-512.png','./guias/plantao/icones/plantao.svg',
+  './guias/psiquiatria/guia_bolso_psiquiatria.html',
+  './guias/psiquiatria/manifest-psiquiatria.webmanifest',
+  './guias/psiquiatria/icones/psiquiatria-192.png','./guias/psiquiatria/icones/psiquiatria-512.png','./guias/psiquiatria/icones/psiquiatria.svg'
 ];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(ARQUIVOS)).then(() => self.skipWaiting()));

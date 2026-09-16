@@ -36,20 +36,21 @@ Netlify (com proteção por senha) ou manter os arquivos apenas no aparelho.
 
 ## Conteúdo desta pasta
 
-- `index.html` — página inicial ClinRef, com os três guias
+- `index.html` — página inicial ClinRef, com os guias disponíveis
 - `sw.js` — faz funcionar sem internet
 - `manifest-clinref.webmanifest` e `icones/` (raiz) — atalho da página inicial
-- `paciente_critico/` — guia, manifest e ícones do guia de paciente crítico
-- `plantao/` — guia, manifest e ícones do guia de plantão
-- `psiquiatria/` — guia, manifest e ícones do guia de psiquiatria, mais as fichas
-  estruturadas de psicofármacos (`README.md`, `TEMPLATE.md`, `farmacos/`)
+- `guias/` — um guia por especialidade ou cenário de atendimento, cada um com seu
+  próprio HTML, manifest e ícones (`guias/paciente_critico/`, `guias/plantao/`,
+  `guias/psiquiatria/`; novas áreas — cardiologia, gastro etc. — entram aqui do
+  mesmo jeito, sem mudar a estrutura)
+- `farmacos/` — fichas estruturadas de fármacos, compartilhadas entre todos os
+  guias (`README.md`, `TEMPLATE.md`, uma ficha por fármaco)
 
 ## Se os ícones não aparecerem
 
-Significa que alguma pasta `icones/` não subiu junto — cada guia tem a sua
-(`paciente_critico/icones/`, `plantao/icones/`, `psiquiatria/icones/`), além da
-da raiz. O upload pela web do GitHub às vezes ignora subpastas quando se arrasta
-o conteúdo solto. Duas saídas:
+Significa que alguma pasta `icones/` não subiu junto — cada guia tem a sua, dentro
+de `guias/<nome-do-guia>/icones/`, além da da raiz. O upload pela web do GitHub
+às vezes ignora subpastas quando se arrasta o conteúdo solto. Duas saídas:
 
 - Arraste **cada pasta `icones/` inteira** numa operação de *Add file → Upload files*, ou
 - Descompacte o `clinref.zip` e arraste a **pasta toda** de uma vez, preservando a árvore.
