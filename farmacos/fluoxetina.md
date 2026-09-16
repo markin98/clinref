@@ -1,6 +1,8 @@
 ---
+tipo_ficha: psicofarmaco
 farmaco: Fluoxetina
 classe: ISRS
+guias_relacionados: [psiquiatria]
 alvo_primario: SERT
 meia_vida: 4–6 d (fluoxetina) / 4–16 d (norfluoxetina)
 metabolito_ativo: norfluoxetina
@@ -127,4 +129,4 @@ Peso; sódio (sobretudo em idosos); rastreio de bipolaridade antes do início; a
 
 **Em uma linha:** inibição potente do SERT somada a antagonismo 5-HT2C (ativador, anorexígeno, pró-dopaminérgico frontal), com metabólito ativo de meia-vida longa. Encaixa em depressão com lentificação e hipersonia, adolescente, baixa adesão e bulimia; evitar em ansioso insone, idoso polimedicado, usuária de tamoxifeno e lactante.
 
-**Fontes:** Stahl, *Essential Psychopharmacology*; bulas Anvisa e FDA; PDSP Ki Database; UpToDate.
+**Fontes:** stahl, bulas-anvisa, bula-fda, pdsp-ki, uptodate

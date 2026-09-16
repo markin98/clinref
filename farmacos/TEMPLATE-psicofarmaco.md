@@ -1,6 +1,8 @@
 ---
+tipo_ficha: psicofarmaco
 farmaco: 
 classe: 
+guias_relacionados: [psiquiatria]
 alvo_primario: 
 meia_vida: 
 metabolito_ativo: 

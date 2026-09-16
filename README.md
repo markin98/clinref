@@ -43,8 +43,11 @@ Netlify (com proteção por senha) ou manter os arquivos apenas no aparelho.
   próprio HTML, manifest e ícones (`guias/paciente_critico/`, `guias/plantao/`,
   `guias/psiquiatria/`; novas áreas — cardiologia, gastro etc. — entram aqui do
   mesmo jeito, sem mudar a estrutura)
-- `farmacos/` — fichas estruturadas de fármacos, compartilhadas entre todos os
-  guias (`README.md`, `TEMPLATE.md`, uma ficha por fármaco)
+- `farmacos/`, `procedimentos/`, `escalas/` — fichas estruturadas (fármaco, conduta/
+  procedimento, escala clínica), compartilhadas entre todos os guias — um item citado
+  em mais de um guia tem uma única ficha, nunca uma cópia por guia
+- `referencias/` — registro central das fontes usadas nas fichas (`fontes.md`), citadas
+  por chave em vez de reescritas por extenso em cada arquivo
 
 ## Se os ícones não aparecerem
 
