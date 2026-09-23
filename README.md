@@ -36,21 +36,27 @@ Netlify (com proteção por senha) ou manter os arquivos apenas no aparelho.
 
 ## Conteúdo desta pasta
 
-- `index.html` — página inicial ClinRef, com os três guias
-- `guia_bolso_paciente_critico.html`
-- `guia_bolso_plantao.html`
-- `guia_bolso_psiquiatria.html`
-- `manifest-*.webmanifest` — define nome e ícone de cada atalho
+- `index.html` — página inicial ClinRef, com os guias disponíveis
 - `sw.js` — faz funcionar sem internet
-- `icones/` — ícones nos tamanhos usados pelo Android e iOS
+- `manifest-clinref.webmanifest` e `icones/` (raiz) — atalho da página inicial
+- `guias/` — um guia por especialidade ou cenário de atendimento, cada um com seu
+  próprio HTML, manifest e ícones (`guias/paciente_critico/`, `guias/plantao/`,
+  `guias/psiquiatria/`; novas áreas — cardiologia, gastro etc. — entram aqui do
+  mesmo jeito, sem mudar a estrutura)
+- `farmacos/`, `procedimentos/`, `escalas/` — fichas estruturadas (fármaco, conduta/
+  procedimento, escala clínica), compartilhadas entre todos os guias — um item citado
+  em mais de um guia tem uma única ficha, nunca uma cópia por guia
+- `referencias/` — registro central das fontes usadas nas fichas (`fontes.md`), citadas
+  por chave em vez de reescritas por extenso em cada arquivo
 
 ## Se os ícones não aparecerem
 
-Significa que a pasta `icones` não subiu junto. O upload pela web do GitHub às vezes
-ignora subpastas quando se arrasta o conteúdo solto. Duas saídas:
+Significa que alguma pasta `icones/` não subiu junto — cada guia tem a sua, dentro
+de `guias/<nome-do-guia>/icones/`, além da da raiz. O upload pela web do GitHub
+às vezes ignora subpastas quando se arrasta o conteúdo solto. Duas saídas:
 
-- Arraste a **pasta `icones` inteira** numa segunda operação de *Add file → Upload files*, ou
-- Descompacte o `clinref.zip` e arraste a **pasta toda** de uma vez.
+- Arraste **cada pasta `icones/` inteira** numa operação de *Add file → Upload files*, ou
+- Descompacte o `clinref.zip` e arraste a **pasta toda** de uma vez, preservando a árvore.
 
 A página inicial funciona mesmo sem a pasta (os ícones dela estão embutidos no HTML),
 mas os atalhos na tela inicial precisam dos arquivos em `icones/` para ganhar o ícone certo.
